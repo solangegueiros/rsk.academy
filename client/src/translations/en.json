@@ -1,0 +1,10 @@
+{
+  "about": "About",
+  "articles": "Articles",
+  "home": "Home",
+  "search": "Search",
+  "topBanner": "Welcome to RSK Academy",
+  "connect": "Connect to a wallet",
+  "copied": "Copied",
+  "error": { "network": "Wrong Network", "connect": "Error Connecting" }
+}

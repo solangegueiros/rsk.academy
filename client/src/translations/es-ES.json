@@ -1,0 +1,10 @@
+{
+  "about": "Sobre",
+  "articles": "Artículos",
+  "home": "Comienzo",
+  "search": "Buscar",
+  "topBanner": "Bienvenido a RSK Academy",
+  "connect": "Conectarse a una billetera",
+  "copied": "Copiado",
+  "error": { "network": "Red Incorrecta", "connect": "Error de conexión" }
+}
