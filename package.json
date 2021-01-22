@@ -1,0 +1,9 @@
+{
+  "name": "rsk.academy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^1.2.1"
+  }
+}

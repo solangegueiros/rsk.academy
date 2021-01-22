@@ -1,0 +1,8 @@
+{
+  "extends": ["kentcdodds", "kentcdodds/react", "kentcdodds/jsx-a11y"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "import/no-unresolved": "off",
+    "react/prop-types": "off"
+  }
+}
