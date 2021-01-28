@@ -1,0 +1,15 @@
+export default {
+  about: 'Sobre',
+  articles: 'Artigos',
+  home: 'Início',
+  search: 'Pesquisa',
+  topBanner: 'Bem-vindo à RSK Academy',
+  connect: 'Conecte a uma carteira',
+  copied: 'Copiado',
+  error: { network: 'Rede errada', connect: 'Erro de conexão' },
+  portfolio: 'Carteria',
+  courses: 'Cursos',
+  projects: 'Projetos',
+  blog: 'Blog',
+  editPage: 'Edite essa página',
+}

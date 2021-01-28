@@ -1,0 +1,3 @@
+@chakra-ui/icons @chakra-ui/props-docs @chakra-ui/react @chakra-ui/skip-nav @chakra-ui/theme-tools @docusaurus/utils @emotion/react @emotion/styled @ethersproject/providers @mdx-js/react @octokit/rest @reduxjs/toolkit @rsksmart/rsk-utils @walletconnect/web3-provider @web3-react/core @web3-react/injected-connector date-fns framer-motion lodash next next-localization next-mdx-enhanced next-seo prism-react-renderer prop-types react react-dom react-icons react-redux react-remove-scroll react-spinners react-table remark-autolink-headings remark-emoji remark-images remark-slug remark-toc remark-unwrap-images shelljs
+
+eslint eslint-config-kentcdodds husky lint-staged next-compose-plugins prettier
