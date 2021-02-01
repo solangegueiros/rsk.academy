@@ -1,0 +1,362 @@
+{
+  "routes": [
+    {
+      "title": {
+        "en": "Module 1",
+        "es": "Módulo 1",
+        "pt": "Módulo 1"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Intro",
+            "es": "Intro",
+            "pt": "Introdução"
+          },
+          "path": "/courses/dev/01"
+        },
+        {
+          "title": {
+            "en": "Wallet",
+            "es": "Billetera",
+            "pt": "Carteira"
+          },
+          "path": "/courses/dev/01/wallet",
+          "open": true,
+          "routes": [
+            {
+              "title": {
+                "en": "Understand Wallets",
+                "es": "Entender las Carteras",
+                "pt": "Entenda Carteiras"
+              },
+              "path": "/courses/dev/01/wallet/understand-wallets"
+            },
+            {
+              "title": {
+                "en": "Install Web Wallet",
+                "es": "Instalar Web Wallet",
+                "pt": "Instalar Web Wallet"
+              },
+              "path": "/courses/dev/01/wallet/install-web-wallet"
+            },
+            {
+              "title": {
+                "en": "First Transfer",
+                "es": "Primera Transferencia",
+                "pt": "Primeira Transferência"
+              },
+              "path": "/courses/dev/01/wallet/first-transfer"
+            },
+            {
+              "title": {
+                "en": "Connecting to Academy",
+                "es": "Conectando a Academy",
+                "pt": "Conectando-se à Academia"
+              },
+              "path": "/courses/dev/01/wallet/connecting-to-academy"
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Introduction to Smart Contracts",
+            "es": "Introducción a los Contratos Inteligentes",
+            "pt": "Introdução aos Smart Contracts"
+          },
+          "path": "/courses/dev/01/introduction-to-smart-contract",
+          "open": true,
+          "routes": [
+            {
+              "title": {
+                "en": "Remix",
+                "es": "Remix",
+                "pt": "Remix"
+              },
+              "path": "/courses/dev/01/introduction-to-smart-contract/remix"
+            },
+            {
+              "title": {
+                "en": "Interact with dApp",
+                "es": "Interactuar con dApp",
+                "pt": "IInteraja com dApp"
+              },
+              "path": "/courses/dev/01/introduction-to-smart-contract/interact-with-dapp"
+            },
+            {
+              "title": {
+                "en": "Subscribe to Academy",
+                "es": "Suscríbete a Academy",
+                "pt": "Inscreva-se na Academia"
+              },
+              "path": "/courses/dev/01/introduction-to-smart-contract/subscribe-to-academy"
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Smart Contract: Name",
+            "es": "Contrato Inteligente: Name",
+            "pt": "Contrato Inteligente: Name"
+          },
+          "path": "/courses/dev/01/smart-contract-name",
+          "open": true,
+          "routes": [
+            {
+              "title": {
+                "en": "Project: Name Smart Contract",
+                "es": "Proyecto: Name Contratos Inteligentes",
+                "pt": "Projeto: Name Contratos Inteligentes"
+              },
+              "path": "/courses/dev/01/smart-contract-name/project-name-smart-contract"
+            },
+            {
+              "title": {
+                "en": "Web3 Providers",
+                "es": "Proveedores de Web3",
+                "pt": "Provedores Web3"
+              },
+              "path": "/courses/dev/01/smart-contract-name/web3-providers"
+            },
+            {
+              "title": {
+                "en": "Publish on RSK Testnet",
+                "es": "Publicar en RSK Testnet",
+                "pt": "Publicar em RSK Testnet"
+              },
+              "path": "/courses/dev/01/smart-contract-name/publish-on-rsk-testnet"
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Transfers Using Smart Contracts",
+            "es": "Transferencias Mediante Contratos Inteligentes",
+            "pt": "Transferências usando Contratos Inteligentes"
+          },
+          "path": "/courses/dev/01/transfers-using-smart-contracts",
+          "open": true,
+          "routes": [
+            {
+              "title": {
+                "en": "Payable",
+                "es": "Pagadero",
+                "pt": "Pagável"
+              },
+              "path": "/courses/dev/01/transfers-using-smart-contracts/payable",
+              "new": true
+            },
+            {
+              "title": {
+                "en": "Contract to Contract ABI",
+                "es": "Contrato a Contrato ABI",
+                "pt": "Contrato para Contratar ABI"
+              },
+              "path": "/courses/dev/01/transfers-using-smart-contracts/contract-to-contract-abi"
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Interfaces",
+            "es": "Interfaces",
+            "pt": "Interfaces"
+          },
+          "path": "/courses/dev/01/interfaces",
+          "open": true,
+          "sort": true,
+          "routes": [
+            {
+              "title": {
+                "en": "Interact with Other Contracts",
+                "es": "Interactuar con Otros contratos",
+                "pt": "Interaja com Outros Contratos"
+              },
+              "path": "/courses/dev/01/interfaces/interact-with-other-contracts"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "Module 2",
+        "es": "Módulo 2",
+        "pt": "Módulo 2"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Intro",
+            "es": "Intro",
+            "pt": "Introdução"
+          },
+          "path": "/courses/dev/02"
+        },
+        {
+          "title": {
+            "en": "Wallet",
+            "es": "Billetera",
+            "pt": "Carteira"
+          },
+          "path": "/courses/dev/02/wallet",
+          "open": true,
+          "routes": [
+            {
+              "title": {
+                "en": "Understand Wallets",
+                "es": "Entender las Carteras",
+                "pt": "Entenda Carteiras"
+              },
+              "path": "/courses/dev/02/wallet/understand-wallets"
+            },
+            {
+              "title": {
+                "en": "Install Web Wallet",
+                "es": "Instalar Web Wallet",
+                "pt": "Instalar Web Wallet"
+              },
+              "path": "/courses/dev/02/wallet/install-web-wallet"
+            },
+            {
+              "title": {
+                "en": "First Transfer",
+                "es": "Primera Transferencia",
+                "pt": "Primeira Transferência"
+              },
+              "path": "/courses/dev/02/wallet/first-transfer"
+            },
+            {
+              "title": {
+                "en": "Connecting to Academy",
+                "es": "Conectando a Academy",
+                "pt": "Conectando-se à Academia"
+              },
+              "path": "/courses/dev/02/wallet/connecting-to-academy"
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Introduction to Smart Contracts",
+            "es": "Introducción a los Contratos Inteligentes",
+            "pt": "Introdução aos Smart Contracts"
+          },
+          "path": "/courses/dev/02/introduction-to-smart-contract",
+          "open": true,
+          "routes": [
+            {
+              "title": {
+                "en": "Remix",
+                "es": "Remix",
+                "pt": "Remix"
+              },
+              "path": "/courses/dev/02/introduction-to-smart-contract/remix"
+            },
+            {
+              "title": {
+                "en": "Interact with dApp",
+                "es": "Interactuar con dApp",
+                "pt": "IInteraja com dApp"
+              },
+              "path": "/courses/dev/02/introduction-to-smart-contract/interact-with-dapp"
+            },
+            {
+              "title": {
+                "en": "Subscribe to Academy",
+                "es": "Suscríbete a Academy",
+                "pt": "Inscreva-se na Academia"
+              },
+              "path": "/courses/dev/02/introduction-to-smart-contract/subscribe-to-academy"
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Smart Contract: Name",
+            "es": "Contrato Inteligente: Name",
+            "pt": "Contrato Inteligente: Name"
+          },
+          "path": "/courses/dev/02/smart-contract-name",
+          "open": true,
+          "routes": [
+            {
+              "title": {
+                "en": "Project: Name Smart Contract",
+                "es": "Proyecto: Name Contratos Inteligentes",
+                "pt": "Projeto: Name Contratos Inteligentes"
+              },
+              "path": "/courses/dev/02/smart-contract-name/project-name-smart-contract"
+            },
+            {
+              "title": {
+                "en": "Web3 Providers",
+                "es": "Proveedores de Web3",
+                "pt": "Provedores Web3"
+              },
+              "path": "/courses/dev/02/smart-contract-name/web3-providers"
+            },
+            {
+              "title": {
+                "en": "Publish on RSK Testnet",
+                "es": "Publicar en RSK Testnet",
+                "pt": "Publicar em RSK Testnet"
+              },
+              "path": "/courses/dev/02/smart-contract-name/publish-on-rsk-testnet"
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Transfers Using Smart Contracts",
+            "es": "Transferencias Mediante Contratos Inteligentes",
+            "pt": "Transferências usando Contratos Inteligentes"
+          },
+          "path": "/courses/dev/02/transfers-using-smart-contracts",
+          "open": true,
+          "routes": [
+            {
+              "title": {
+                "en": "Payable",
+                "es": "Pagadero",
+                "pt": "Pagável"
+              },
+              "path": "/courses/dev/02/transfers-using-smart-contracts/payable",
+              "new": true
+            },
+            {
+              "title": {
+                "en": "Contract to Contract ABI",
+                "es": "Contrato a Contrato ABI",
+                "pt": "Contrato para Contratar ABI"
+              },
+              "path": "/courses/dev/02/transfers-using-smart-contracts/contract-to-contract-abi"
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Interfaces",
+            "es": "Interfaces",
+            "pt": "Interfaces"
+          },
+          "path": "/courses/dev/02/interfaces",
+          "open": true,
+          "sort": true,
+          "routes": [
+            {
+              "title": {
+                "en": "Interact with Other Contracts",
+                "es": "Interactuar con Otros contratos",
+                "pt": "Interaja com Outros Contratos"
+              },
+              "path": "/courses/dev/02/interfaces/interact-with-other-contracts"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
