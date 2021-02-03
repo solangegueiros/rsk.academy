@@ -26,6 +26,8 @@ import { injected } from '@/connectors/index'
 import { shortenAddress } from '@/utils/shorten-address'
 import { NETWORK_LABELS } from '@/constants/index'
 
+const WALLET_CONNECTION_DELAY = 1000
+
 export const WalletConnect = () => {
   const { deactivate, account, activate, error, chainId } = useWeb3React()
   const { hasCopied, onCopy } = useClipboard(account)
@@ -38,19 +40,22 @@ export const WalletConnect = () => {
 
   const colorScheme = useColorModeValue('rsk.green', 'rsk.light')
 
-  async function tryConnect() {
+  function tryConnect() {
     setPending(true)
     try {
-      if (hasWebWallet) {
-        await activate(injected, undefined, true)
+      if (!hasWebWallet) {
+        setPending(false)
+        return dispatch(toggleWalletModal())
       }
 
-      dispatch(toggleWalletModal())
+      setTimeout(async () => {
+        await activate(injected, undefined, true)
+        setPending(false)
+      }, WALLET_CONNECTION_DELAY)
     } catch (err) {
       if (err instanceof UnsupportedChainIdError) {
         activate(injected)
       }
-    } finally {
       setPending(false)
     }
   }
@@ -94,6 +99,7 @@ export const WalletConnect = () => {
           variant='outline'
           colorScheme={colorScheme}
           onClick={tryConnect}
+          isLoading={pending}
         >
           {t('connect')}
         </Button>
