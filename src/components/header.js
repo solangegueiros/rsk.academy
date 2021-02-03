@@ -19,6 +19,7 @@ import {
   MobileNavButton,
   MobileNavContent,
   NavLink,
+  Logo,
 } from '@/components/index'
 import { useRouter } from 'next/router'
 
@@ -52,7 +53,7 @@ const MainNavLinkGroup = props => {
   )
 }
 
-export const Header = () => {
+export const Header = props => {
   const mobileNavBtnRef = useRef()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -72,12 +73,22 @@ export const Header = () => {
         boxShadow='sm'
         mb={4}
         zIndex='sticky'
+        {...props}
       >
         <Container maxW={1200} h='4.5rem'>
           <HStack justify='space-between' align='center' h='full' w='full'>
             <NextLink href='/' passHref>
-              <chakra.a fontWeight='bold' fontSize='1.5rem' mr={4}>
-                RSK Academy
+              <chakra.a
+                fontWeight='bold'
+                fontSize='5em'
+                lineHeight='1'
+                mr={4}
+                d='flex'
+                justifyContent='center'
+                alignItems='center'
+                color={useColorModeValue('black', 'rsk.dark.50')}
+              >
+                <Logo h='full' />
               </chakra.a>
             </NextLink>
             {useBreakpointValue({ base: false, md: true }) && (
