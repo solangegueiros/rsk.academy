@@ -32,6 +32,7 @@ export const Highlight = ({
 }) => {
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
   const theme = useColorModeValue(nightOwlLight, nightOwl)
+  const lineHighlightColor = useColorModeValue('rsk.green.50', 'rsk.dark.400')
 
   return (
     <BaseHighlight
@@ -53,7 +54,7 @@ export const Highlight = ({
                 <chakra.div
                   key={i}
                   px='5'
-                  bg={shouldHighlightLine(i) ? 'whiteAlpha.200' : undefined}
+                  bg={shouldHighlightLine(i) ? lineHighlightColor : undefined}
                   {...lineProps}
                 >
                   {showLines && (
