@@ -11,6 +11,8 @@
     "react/jsx-no-undef": "warn",
     "import/no-unresolved": "off",
     "react/prop-types": "warn",
-    "consistent-return": "warn"
+    "consistent-return": "warn",
+    "radix": "off",
+    "no-negated-condition": "off"
   }
 }

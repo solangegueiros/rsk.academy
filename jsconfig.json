@@ -4,7 +4,9 @@
     "baseUrl": "./src",
     "paths": {
       "@/components/*": ["components/*"],
+      "@/config/*": ["config/*"],
       "@/configs/*": ["configs/*"],
+      "@/context/*": ["context/*"],
       "@/connectors/*": ["connectors/*"],
       "@/constants/*": ["constants/*"],
       "@/contracts/*": ["contracts/*"],

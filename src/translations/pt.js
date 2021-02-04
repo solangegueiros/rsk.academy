@@ -6,7 +6,11 @@ export default {
   topBanner: 'Bem-vindo à RSK Academy',
   connect: 'Conecte a uma carteira',
   copied: 'Copiado',
-  error: { network: 'Rede errada', connect: 'Erro de conexão' },
+  error: {
+    network: 'Rede errada',
+    connect: 'Erro de conexão',
+    changeNetwork: 'Mudar de Rede',
+  },
   portfolio: 'Carteria',
   courses: 'Cursos',
   projects: 'Projetos',
@@ -14,4 +18,5 @@ export default {
   editPage: 'Edite essa página',
   next: 'Próxima',
   previous: 'Anterior',
+  logout: 'Logout',
 }
