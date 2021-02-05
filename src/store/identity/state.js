@@ -1,7 +1,7 @@
 import { SUPPORTED_CHAINS } from '@/constants/supported-chains'
 
 export const initialState = {
-  address: '',
+  account: '',
   chainId: null,
   error: null,
   isUnsupportedChainError: false,

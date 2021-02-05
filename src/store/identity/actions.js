@@ -1,5 +1,5 @@
 import { clearRloginStorage, rLogin } from '@/connectors/rLogin'
-import { getAccountAndNetwork } from '@/utils/ethrpc'
+import { getAccountAndNetwork } from '@/utils/web3-rpc'
 import { identitySlice } from './slice'
 
 export const {
@@ -15,9 +15,9 @@ export const login = context => async dispatch => {
     const provider = await rLogin.connect()
     context.setProvider(provider)
 
-    const [address, chainId] = await getAccountAndNetwork(provider)
+    const [account, chainId] = await getAccountAndNetwork(provider)
 
-    dispatch(changeAccount({ address }))
+    dispatch(changeAccount({ account }))
     dispatch(changeChainId({ chainId: parseInt(chainId) }))
   } catch (err) {
     console.error('rLogin Error', err)

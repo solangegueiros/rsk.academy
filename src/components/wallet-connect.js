@@ -20,13 +20,13 @@ export const WalletConnect = () => {
   const {
     activate,
     deactivate,
-    address,
+    account,
     chainId,
     isLoggedIn,
     error,
     isUnsupportedChainError,
   } = useRLogin()
-  const { hasCopied, onCopy } = useClipboard(address)
+  const { hasCopied, onCopy } = useClipboard(account)
   const context = useContext(Web3ProviderContext)
 
   const { t } = useI18n()
@@ -79,7 +79,7 @@ export const WalletConnect = () => {
           >
             {hasCopied
               ? t('copied')
-              : `${address.slice(0, 4)}...${address.slice(address.length - 4)}`}
+              : `${account.slice(0, 4)}...${account.slice(account.length - 4)}`}
           </Button>
           <Tooltip hasArrow label={t('logout')}>
             <IconButton ml='-1px' icon={<FiLogOut />} onClick={deactivate} />

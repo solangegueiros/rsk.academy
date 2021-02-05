@@ -1,8 +1,8 @@
 import { initialState } from './state'
 
 export const reducers = {
-  changeAccount: (state, { payload: { address } }) => {
-    state.address = address
+  changeAccount: (state, { payload: { account } }) => {
+    state.account = account
     state.error = null
   },
   changeChainId: (state, { payload: { chainId } }) => {

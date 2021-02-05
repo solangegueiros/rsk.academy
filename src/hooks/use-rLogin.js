@@ -1,3 +1,6 @@
+import { useContext, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import {
   login,
   logout,
@@ -5,13 +8,11 @@ import {
   changeChainId,
   setChainError,
 } from '@/store/identity/actions'
-import { Web3ProviderContext } from 'context/Web3Provider'
-import { useContext, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { Web3ProviderContext } from '@/context/Web3Provider'
 
 export const useRLogin = () => {
   const {
-    address,
+    account,
     chainId,
     error,
     isUnsupportedChainError,
@@ -33,21 +34,24 @@ export const useRLogin = () => {
   }, [context])
 
   useEffect(() => {
-    window.ethereum.on('accountsChanged', accounts => {
-      if (isLoggedIn) {
-        dispatch(changeAccount({ address: accounts[0] }))
-      }
-    })
-    window.ethereum.on('chainChanged', networkId => {
-      dispatch(changeChainId({ chainId: networkId }))
-    })
+    if (typeof window !== 'undefined' && window.ethereum) {
+      window.ethereum.autoRefreshOnNetworkChange = false
+      window.ethereum.on('accountsChanged', accounts => {
+        if (isLoggedIn) {
+          dispatch(changeAccount({ account: accounts[0] }))
+        }
+      })
+      window.ethereum.on('chainChanged', networkId => {
+        dispatch(changeChainId({ chainId: networkId }))
+      })
+    }
   }, [])
 
   const activate = () => dispatch(login(context))
   const deactivate = () => dispatch(logout(context))
 
   return {
-    address,
+    account,
     chainId,
     isUnsupportedChainError,
     activate,

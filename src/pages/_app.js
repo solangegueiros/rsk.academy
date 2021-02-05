@@ -1,12 +1,13 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import { Provider as ReduxProvider } from 'react-redux'
 import { DefaultSeo } from 'next-seo'
+import Head from 'next/head'
+import dynamic from 'next/dynamic'
+
 import store from '@/store/store'
 import theme from '@/theme/index'
 import siteConfig from '@/configs/site-config'
-import dynamic from 'next/dynamic'
-import Head from 'next/head'
-import { Web3Provider } from 'context/Web3Provider'
+import { Web3Provider } from '@/context/Web3Provider'
 
 const LocaleProvider = dynamic(() => import('../components/locale-provider'))
 

@@ -35,7 +35,7 @@ async function getUserData(username) {
 }
 
 const EDIT_URL =
-  'https://github.com/solangegueiros/rsk.academy/edit/develop/website/pages'
+  'https://github.com/solangegueiros/rsk.academy/edit/main/src/pages'
 
 function fileToPath(str) {
   return addLeadingSlash(str.replace('.mdx', ''))
