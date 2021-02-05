@@ -24,40 +24,47 @@ export const WalletConnect = () => {
     chainId,
     isLoggedIn,
     error,
-    isChainError,
+    isUnsupportedChainError,
   } = useRLogin()
   const { hasCopied, onCopy } = useClipboard(address)
   const context = useContext(Web3ProviderContext)
-
-  console.log('chainId', chainId)
-  console.log('isChainError', isChainError)
 
   const { t } = useI18n()
 
   const colorScheme = useColorModeValue('rsk.green', 'rsk.light')
 
   const getWalletStatus = () => {
-    if (isChainError) {
-      return (
-        <ButtonGroup isAttached colorScheme='red'>
-          <Button leftIcon={<MdErrorOutline />}>
-            {isChainError ? t('error.network') : t('error.connect')}
-          </Button>
-          <IconButton icon={<FiLogOut />} onClick={deactivate} />
-        </ButtonGroup>
-      )
-    } else if (error) {
-      return (
-        <ButtonGroup isAttached colorScheme='red'>
-          <Button leftIcon={<MdErrorOutline />}>
-            {error === 'Modal closed by user'
-              ? t('error.changeNetwork')
-              : t('error.network')}
-          </Button>
-          <IconButton icon={<FiLogOut />} onClick={deactivate} />
-        </ButtonGroup>
-      )
-    } else if (address) {
+    if (isLoggedIn) {
+      if (isUnsupportedChainError) {
+        return (
+          <ButtonGroup isAttached colorScheme='red'>
+            <Button leftIcon={<MdErrorOutline />}>{t('error.network')}</Button>
+            <Tooltip hasArrow label={t('logout')}>
+              <IconButton ml='-1px' icon={<FiLogOut />} onClick={deactivate} />
+            </Tooltip>
+          </ButtonGroup>
+        )
+      }
+
+      if (error) {
+        if (error === 'Modal closed by user') {
+          return (
+            <ButtonGroup isAttached colorScheme='yellow'>
+              <Button leftIcon={<MdErrorOutline />}>
+                {t('error.network')}
+              </Button>
+            </ButtonGroup>
+          )
+        } else
+          return (
+            <ButtonGroup isAttached colorScheme='red'>
+              <Button leftIcon={<MdErrorOutline />}>
+                {t('error.connect')}
+              </Button>
+            </ButtonGroup>
+          )
+      }
+
       return (
         <ButtonGroup
           colorScheme={colorScheme}
@@ -79,17 +86,17 @@ export const WalletConnect = () => {
           </Tooltip>
         </ButtonGroup>
       )
-    } else {
-      return (
-        <Button
-          variant='outline'
-          colorScheme={colorScheme}
-          onClick={() => activate(context)}
-        >
-          {t('connect')}
-        </Button>
-      )
     }
+
+    return (
+      <Button
+        variant='outline'
+        colorScheme={colorScheme}
+        onClick={() => activate(context)}
+      >
+        {t('connect')}
+      </Button>
+    )
   }
 
   return (

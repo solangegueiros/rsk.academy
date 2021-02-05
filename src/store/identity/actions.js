@@ -7,7 +7,7 @@ export const {
   changeChainId,
   reset,
   setError,
-  checkChainError,
+  setChainError,
 } = identitySlice.actions
 
 export const login = context => async dispatch => {

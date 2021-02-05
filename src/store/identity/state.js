@@ -4,6 +4,6 @@ export const initialState = {
   address: '',
   chainId: null,
   error: null,
-  isChainError: false,
+  isUnsupportedChainError: false,
   supportedChains: SUPPORTED_CHAINS,
 }

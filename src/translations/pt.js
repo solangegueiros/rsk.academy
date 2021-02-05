@@ -18,5 +18,5 @@ export default {
   editPage: 'Edite essa página',
   next: 'Próxima',
   previous: 'Anterior',
-  logout: 'Logout',
+  logout: 'Deslogar',
 }

@@ -6,19 +6,14 @@ export const reducers = {
     state.error = null
   },
   changeChainId: (state, { payload: { chainId } }) => {
-    state.chainId = chainId
+    state.chainId = parseInt(chainId)
     state.error = null
   },
-  reset: _state => initialState,
+  reset: () => ({ ...initialState }),
   setError: (state, { payload: { error } }) => {
     state.error = error
   },
   setChainError: (state, { payload }) => {
-    state.isChainError = payload
-  },
-  checkChainError: state => {
-    const isChainError =
-      state.chainId && !state.supportedChains.includes(parseInt(state.chainId))
-    state.isChainError = isChainError
+    state.isUnsupportedChainError = payload
   },
 }

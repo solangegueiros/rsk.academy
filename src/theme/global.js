@@ -16,5 +16,23 @@ export const styles = {
         color: mode('rsk.green.700', 'rsk.light.900')(props),
       },
     },
+    '.rlogin-modal-container': {
+      '.rlogin-modal-card': {
+        bg: mode('white', 'rsk.dark.500')(props),
+      },
+      '.rlogin-modal-header': {
+        bg: mode('white', 'rsk.dark.600')(props),
+      },
+      '.rlogin-provider-container': {
+        bg: mode('blackAlpha.200', 'whiteAlpha.200'),
+        _hover: {
+          bg: mode('blackAlpha.300', 'whiteAlpha.30'),
+        },
+      },
+      '.rlogin-header2, .rlogin-footer-text a': {
+        color: mode('rsk.green.500', 'rsk.light.500')(props),
+        fontWeight: 'bold !important',
+      },
+    },
   }),
 }
