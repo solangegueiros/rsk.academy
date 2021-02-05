@@ -10,6 +10,7 @@
     "react/jsx-filename-extension": "warn",
     "react/jsx-no-undef": "warn",
     "import/no-unresolved": "off",
+    "import/extensions": "off",
     "react/prop-types": "warn",
     "consistent-return": "warn",
     "radix": "off",

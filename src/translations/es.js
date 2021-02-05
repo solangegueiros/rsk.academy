@@ -19,4 +19,12 @@ export default {
   next: 'Siguiente',
   previous: 'Anterior',
   logout: 'Cierre de Sesión',
+  contract: {
+    mustConnect:
+      'Debe conectar su billetera para interactuar con el contrato inteligente',
+    notDeployed:
+      'El contrato inteligente no se ha implementado en la red detectada',
+    getBalance: 'Obtener equilibrio',
+    balanceIs: 'El equilibrio es',
+  },
 }

@@ -19,4 +19,11 @@ export default {
   next: 'Next',
   previous: 'Previous',
   logout: 'Logout',
+  contract: {
+    mustConnect:
+      'You must connect your wallet in order to interact with smart contract',
+    notDeployed: 'Smart contract has not been deployed to detected network',
+    getBalance: 'Get Balance',
+    balanceIs: 'Balance is',
+  },
 }
