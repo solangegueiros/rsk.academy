@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { walletSlice } from './account/slice'
+import thunk from 'redux-thunk'
+import { identitySlice } from './identity/slice'
 
 export default configureStore({
+  middleware: [thunk],
+  devTools: true,
   reducer: {
-    wallet: walletSlice.reducer,
+    identity: identitySlice.reducer,
   },
 })

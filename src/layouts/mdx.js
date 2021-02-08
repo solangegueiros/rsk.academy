@@ -16,6 +16,8 @@ import {
   Sidebar,
 } from '@/components/index'
 
+import AcademyWallet from '@/components/contracts/AcademyWallet'
+
 export function getRoutes(slug) {
   const configMap = {
     '/blog': blogSidebar,
@@ -40,7 +42,9 @@ function MDXLayout({ frontmatter, children }) {
   const routeContext = getRouteContext(route, routes)
 
   return (
-    <MDXProvider components={{ ...chakraComponents, ...MdxComponents }}>
+    <MDXProvider
+      components={{ ...chakraComponents, ...MdxComponents, AcademyWallet }}
+    >
       <PageContainer
         frontmatter={frontmatter}
         sidebar={<Sidebar routes={routes} />}

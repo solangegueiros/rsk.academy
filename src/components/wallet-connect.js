@@ -1,76 +1,70 @@
-import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core'
 import { MdContentCopy, MdErrorOutline } from 'react-icons/md'
-import { useState } from 'react'
+import { useContext } from 'react'
 import {
   Button,
   ButtonGroup,
   IconButton,
   Tag,
+  Tooltip,
   useClipboard,
   useColorModeValue,
-  Modal,
-  ModalBody,
-  ModalContent,
-  VStack,
-  ModalHeader,
-  ModalCloseButton,
-  ModalFooter,
-  Link as ChakraLink,
 } from '@chakra-ui/react'
-import { useDispatch, useSelector } from 'react-redux'
 import { useI18n } from 'next-localization'
 import { FiLogOut } from 'react-icons/fi'
 
-import { toggleWalletModal } from '@/store/account/actions'
-import { injected } from '@/connectors/index'
-import { shortenAddress } from '@/utils/shorten-address'
-import { NETWORK_LABELS } from '@/constants/index'
+import { useRLogin } from '@/hooks/use-rLogin'
+import { Web3ProviderContext } from '@/context/Web3Provider'
+import { NETWORK_LABELS } from '@/constants/supported-chains'
 
 export const WalletConnect = () => {
-  const { deactivate, account, activate, error, chainId } = useWeb3React()
+  const {
+    activate,
+    deactivate,
+    account,
+    chainId,
+    isLoggedIn,
+    error,
+    isUnsupportedChainError,
+  } = useRLogin()
   const { hasCopied, onCopy } = useClipboard(account)
-  const [pending, setPending] = useState(false)
-  const dispatch = useDispatch()
+  const context = useContext(Web3ProviderContext)
+
   const { t } = useI18n()
-  const { isWalletModalOpen } = useSelector(state => state.wallet)
-  const hasWebWallet =
-    typeof window !== 'undefined' && (window.web3 || window.ethereum)
 
   const colorScheme = useColorModeValue('rsk.green', 'rsk.light')
 
-  async function tryConnect() {
-    setPending(true)
-    try {
-      if (hasWebWallet) {
-        await activate(injected, undefined, true)
-      }
-
-      dispatch(toggleWalletModal())
-    } catch (err) {
-      if (err instanceof UnsupportedChainIdError) {
-        activate(injected)
-      }
-    } finally {
-      setPending(false)
-    }
-  }
-
   const getWalletStatus = () => {
-    if (error) {
-      return (
-        <ButtonGroup isAttached colorScheme='red'>
-          <Button
-            isLoading={pending || !(error instanceof UnsupportedChainIdError)}
-            leftIcon={<MdErrorOutline />}
-          >
-            {error instanceof UnsupportedChainIdError
-              ? t('error.network')
-              : t('error.connect')}
-          </Button>
-          <IconButton icon={<FiLogOut />} onClick={deactivate} />
-        </ButtonGroup>
-      )
-    } else if (account) {
+    if (isLoggedIn) {
+      if (isUnsupportedChainError) {
+        return (
+          <ButtonGroup isAttached colorScheme='red'>
+            <Button leftIcon={<MdErrorOutline />}>{t('error.network')}</Button>
+            <Tooltip hasArrow label={t('logout')}>
+              <IconButton ml='-1px' icon={<FiLogOut />} onClick={deactivate} />
+            </Tooltip>
+          </ButtonGroup>
+        )
+      }
+
+      if (error) {
+        if (error === 'Modal closed by user') {
+          return (
+            <ButtonGroup isAttached colorScheme='yellow'>
+              <Button leftIcon={<MdErrorOutline />}>
+                {t('error.network')}
+              </Button>
+            </ButtonGroup>
+          )
+        } else
+          return (
+            <ButtonGroup isAttached colorScheme='red'>
+              <Button leftIcon={<MdErrorOutline />}>
+                {t('error.connect')}
+              </Button>
+            </ButtonGroup>
+          )
+      }
+
       return (
         <ButtonGroup
           colorScheme={colorScheme}
@@ -83,61 +77,34 @@ export const WalletConnect = () => {
             leftIcon={!hasCopied && <MdContentCopy />}
             isTruncated
           >
-            {hasCopied ? t('copied') : shortenAddress(account)}
+            {hasCopied
+              ? t('copied')
+              : `${account.slice(0, 4)}...${account.slice(account.length - 4)}`}
           </Button>
-          <IconButton icon={<FiLogOut />} onClick={deactivate} />
+          <Tooltip hasArrow label={t('logout')}>
+            <IconButton ml='-1px' icon={<FiLogOut />} onClick={deactivate} />
+          </Tooltip>
         </ButtonGroup>
       )
-    } else {
-      return (
-        <Button
-          variant='outline'
-          colorScheme={colorScheme}
-          onClick={tryConnect}
-        >
-          {t('connect')}
-        </Button>
-      )
     }
+
+    return (
+      <Button
+        variant='outline'
+        colorScheme={colorScheme}
+        onClick={() => activate(context)}
+      >
+        {t('connect')}
+      </Button>
+    )
   }
 
   return (
     <>
-      {NETWORK_LABELS[chainId] && (
+      {isLoggedIn && NETWORK_LABELS[chainId] && (
         <Tag colorScheme='orange'>{NETWORK_LABELS[chainId]}</Tag>
       )}
       {getWalletStatus()}
-      <Modal
-        isOpen={isWalletModalOpen}
-        onClose={() => dispatch(toggleWalletModal())}
-        isCentered
-        size='lg'
-      >
-        <ModalContent>
-          <ModalHeader>
-            Need a wallet?
-            <ModalCloseButton />
-          </ModalHeader>
-          <ModalBody>
-            <VStack>
-              <Button w='full' as={ChakraLink} href='https://metamask.io'>
-                Download Metamask
-              </Button>
-              <Button
-                w='full'
-                as={ChakraLink}
-                href='https://chrome.google.com/webstore/detail/nifty-wallet/jbdaocneiiinmjbjlgalhcelgbejmnid?hl=en'
-              >
-                Download Nifty
-              </Button>
-            </VStack>
-          </ModalBody>
-          <ModalFooter fontSize='0.875em' justifyContent='center'>
-            If you have MetaMask/Nifty wallet already, please activate the
-            extension.
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
     </>
   )
 }
