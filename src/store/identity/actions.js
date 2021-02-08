@@ -17,7 +17,7 @@ export const login = context => async dispatch => {
 
     const [account, chainId] = await getAccountAndNetwork(provider)
 
-    dispatch(changeAccount({ account }))
+    dispatch(changeAccount({ account: account.toLowerCase() }))
     dispatch(changeChainId({ chainId: parseInt(chainId) }))
   } catch (err) {
     console.error('rLogin Error', err)
