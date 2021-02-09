@@ -7,7 +7,6 @@ import {
   Tag,
   Tooltip,
   useClipboard,
-  useColorModeValue,
 } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
 import { FiLogOut } from 'react-icons/fi'
@@ -30,8 +29,6 @@ export const WalletConnect = () => {
   const context = useContext(Web3ProviderContext)
 
   const { t } = useI18n()
-
-  const colorScheme = useColorModeValue('rsk.green', 'rsk.light')
 
   const getWalletStatus = () => {
     if (isLoggedIn) {
@@ -66,12 +63,7 @@ export const WalletConnect = () => {
       }
 
       return (
-        <ButtonGroup
-          colorScheme={colorScheme}
-          variant='outline'
-          role='group'
-          isAttached
-        >
+        <ButtonGroup variant='inversed' role='group' isAttached>
           <Button
             onClick={onCopy}
             leftIcon={!hasCopied && <MdContentCopy />}
@@ -89,11 +81,7 @@ export const WalletConnect = () => {
     }
 
     return (
-      <Button
-        variant='outline'
-        colorScheme={colorScheme}
-        onClick={() => activate(context)}
-      >
+      <Button variant='inversed' onClick={() => activate(context)}>
         {t('connect')}
       </Button>
     )

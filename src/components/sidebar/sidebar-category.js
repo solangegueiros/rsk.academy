@@ -1,4 +1,4 @@
-import { chakra, useColorModeValue } from '@chakra-ui/react'
+import { Box, Text, useColorModeValue } from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
 
 export const SidebarCategory = props => {
@@ -42,8 +42,8 @@ export const SidebarCategory = props => {
   }, [toggle, shouldScroll, isMobile, contentRef])
 
   return (
-    <chakra.div mt='8' ref={ref} {...rest}>
-      <chakra.p
+    <Box mt='8' ref={ref} {...rest}>
+      <Text
         width='full'
         textTransform='uppercase'
         letterSpacing='wider'
@@ -53,14 +53,14 @@ export const SidebarCategory = props => {
         alignItems='center'
         justifyContent='space-between'
         userSelect='none'
-        color={useColorModeValue('gray.500', 'whiteAlpha.400')}
+        color={useColorModeValue('dark.100', 'dark.200')}
       >
         {title}
-      </chakra.p>
-      <chakra.div role='group' hidden={!toggle} mt='16px' mx='-3'>
+      </Text>
+      <Box role='group' hidden={!toggle} mt={2} mx='-3'>
         {children}
-      </chakra.div>
-    </chakra.div>
+      </Box>
+    </Box>
   )
 }
 

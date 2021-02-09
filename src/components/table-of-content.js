@@ -26,7 +26,7 @@ export const TableOfContents = ({ tableOfContents, slug }) => {
     items: [{ items = [] }],
   } = tableOfContents
 
-  const color = useColorModeValue('rsk.green.500', 'rsk.light.500')
+  const color = useColorModeValue('primary.500', 'light.500')
 
   if (!items.length) return null
 

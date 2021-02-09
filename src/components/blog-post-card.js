@@ -5,7 +5,6 @@ import {
   Heading,
   HStack,
   Icon,
-  LinkBox,
   Tag,
   Text,
   useColorModeValue,
@@ -17,23 +16,21 @@ import Link from 'next/link'
 
 export const BlogPostCard = ({ post }) => {
   const readableDate = format(parseISO(post.date), 'MMMM dd, yyyy')
-  const tagScheme = useColorModeValue('rsk.green', 'rsk.light')
+  const tagScheme = useColorModeValue('primary', 'light')
 
   return (
     <Link href={post.slug} passHref>
-      <LinkBox
-        as='article'
-        href={post.slug}
+      <Box
         tabIndex={0}
         cursor='pointer'
         position='relative'
         borderRadius='md'
         alignItems='flex-start'
-        p={3}
-        bg={useColorModeValue('white', 'rsk.dark.700')}
+        p={6}
+        bg={useColorModeValue('white', 'dark.600')}
         boxShadow='md'
       >
-        <VStack align='flex-start' mb='5'>
+        <VStack align='flex-start'>
           <Heading as='h3' size='lg'>
             {post.title}
           </Heading>
@@ -56,7 +53,7 @@ export const BlogPostCard = ({ post }) => {
             </HStack>
           </HStack>
         </VStack>
-      </LinkBox>
+      </Box>
     </Link>
   )
 }

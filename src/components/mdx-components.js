@@ -33,7 +33,7 @@ const TData = props => (
 )
 
 const LinkedHeading = props => {
-  const color = useColorModeValue('rsk.green.500', 'rsk.text.500')
+  const color = useColorModeValue('primary.500', 'rsk.text.500')
   return (
     <chakra.h2 data-group='' css={{ scrollMarginBlock: '6.875rem' }} {...props}>
       <span>{props.children}</span>

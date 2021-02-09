@@ -15,14 +15,14 @@ const StyledLink = React.forwardRef(function StyledLink(props, ref) {
       ref={ref}
       fontSize='sm'
       fontWeight='500'
-      color={useColorModeValue('rsk.dark.500', 'rsk.light.50')}
+      color={useColorModeValue('dark.500', 'gray.100')}
       transition='all 0.2s'
       borderWidth={1}
       borderColor='transparent'
-      _hover={{ color: useColorModeValue('rsk.green.500', 'rsk.light.500') }}
+      _hover={{ color: useColorModeValue('primary.500', 'light.500') }}
       _activeLink={{
-        borderColor: useColorModeValue('rsk.green.500', 'rsk.light.500'),
-        color: useColorModeValue('rsk.green.500', 'rsk.light.500'),
+        borderColor: useColorModeValue('primary.500', 'light.500'),
+        color: useColorModeValue('primary.500', 'light.500'),
         fontWeight: '600',
       }}
       {...rest}

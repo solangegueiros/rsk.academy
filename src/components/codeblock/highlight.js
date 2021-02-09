@@ -32,7 +32,7 @@ export const Highlight = ({
 }) => {
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
   const theme = useColorModeValue(nightOwlLight, nightOwl)
-  const lineHighlightColor = useColorModeValue('rsk.green.50', 'rsk.dark.400')
+  const lineHighlightColor = useColorModeValue('primary.50', 'dark.400')
 
   return (
     <BaseHighlight

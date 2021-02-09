@@ -27,9 +27,9 @@ export const MobileNavLink = ({ href, children }) => {
   const [, group] = href.split('/')
   const isActive = pathname.includes(group)
 
-  const bg = useColorModeValue('rsk.green.500', 'rsk.light.500')
-  const color = useColorModeValue('white', 'rsk.dark.500')
-  const activeHoverBg = useColorModeValue('rsk.green.500', 'rsk.dark.500')
+  const bg = useColorModeValue('primary.500', 'light.500')
+  const color = useColorModeValue('white', 'dark.500')
+  const activeHoverBg = useColorModeValue('primary.500', 'dark.500')
   const hoverBg = useColorModeValue('gray.100', 'whiteAlpha.100')
 
   return (
@@ -63,8 +63,8 @@ export const MobileNavContent = props => {
   const { locale, locales, pathname } = router
   const { t } = useI18n()
 
-  const bg = useColorModeValue('white', 'rsk.dark.500')
-  const colorScheme = useColorModeValue('rsk.green', 'rsk.light')
+  const bg = useColorModeValue('white', 'dark.500')
+  const colorScheme = useColorModeValue('primary', 'light')
 
   const handleChange = async lang => {
     await router.push(router.pathname, router.asPath, { locale: lang })
