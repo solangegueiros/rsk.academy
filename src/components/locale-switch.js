@@ -12,8 +12,7 @@ export const LocaleSwitch = props => {
   const { locale, locales } = router
   const { isOpen, onToggle } = useDisclosure()
 
-  const colorScheme = useColorModeValue('rsk.green', 'rsk.light')
-  const bg = useColorModeValue('white', 'rsk.dark.500')
+  const bg = useColorModeValue('white', 'dark.500')
 
   const handleChange = async lang => {
     await router.push(router.pathname, router.asPath, { locale: lang })
@@ -22,12 +21,7 @@ export const LocaleSwitch = props => {
 
   return (
     <Box {...props} pos='relative'>
-      <Button
-        colorScheme={colorScheme}
-        onClick={onToggle}
-        boxSize='40px'
-        rounded='full'
-      >
+      <Button variant='normal' onClick={onToggle} boxSize='40px' rounded='full'>
         {locale.toUpperCase()}
       </Button>
       <Collapse in={isOpen}>
@@ -38,12 +32,11 @@ export const LocaleSwitch = props => {
               <Button
                 key={code}
                 onClick={() => handleChange(code)}
-                colorScheme={colorScheme}
                 bg={bg}
                 my={2}
                 boxSize='40px'
                 rounded='full'
-                variant='outline'
+                variant='inversed'
               >
                 {code.toUpperCase()}
               </Button>

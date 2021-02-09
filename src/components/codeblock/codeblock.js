@@ -14,7 +14,7 @@ export const CopyButton = props => (
     size={useBreakpointValue({ base: 'sm', sm: 'xs' })}
     position='absolute'
     textTransform='uppercase'
-    colorScheme={useColorModeValue('rsk.green', 'rsk.light')}
+    colorScheme={useColorModeValue('primary', 'light')}
     top={useBreakpointValue({ base: '-1rem', sm: 4 })}
     zIndex='1'
     right={useBreakpointValue({ base: 0, sm: 4 })}
@@ -35,8 +35,8 @@ export const CodeBlock = props => {
         overflow='auto'
         rounded='8px'
         my='8'
-        bg={useColorModeValue('white', 'rsk.dark.700')}
-        boxShadow='sm'
+        bg={useColorModeValue('white', 'dark.600')}
+        boxShadow='md'
       >
         <Highlight
           codeString={children}

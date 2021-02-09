@@ -19,9 +19,9 @@ export const SidebarContent = props => {
   const { routes, pathname, contentRef } = props
   const { locale, defaultLocale } = useRouter()
 
-  const color = useColorModeValue('rsk.green.500', 'rsk.light.500')
-  const newBadgeColor = useColorModeValue('white', 'rsk.dark.500')
-  const newBadgeColorScheme = useColorModeValue('rsk.green', 'rsk.light')
+  const color = useColorModeValue('primary.500', 'light.500')
+  const newBadgeColor = useColorModeValue('white', 'dark.500')
+  const newBadgeColorScheme = useColorModeValue('primary', 'light')
 
   return (
     <Box>
@@ -115,8 +115,6 @@ export const Sidebar = ({ routes }) => {
   const isPage = path => pathname.includes(`/courses/${path}`)
   const isCoursesPage = sidebars.some(sidebar => isPage(sidebar))
 
-  const colorScheme = useColorModeValue('rsk.green', 'rsk.light')
-
   return (
     <Flex flexDir='column' display={{ base: 'none', md: 'block' }} w='320px'>
       {isCoursesPage && (
@@ -127,11 +125,7 @@ export const Sidebar = ({ routes }) => {
                 key={category}
                 href={`/courses/${category}/01/${locale}`}
               >
-                <Button
-                  colorScheme={colorScheme}
-                  variant={isPage(category) ? 'solid' : 'outline'}
-                  // isFullWidth
-                >
+                <Button variant={isPage(category) ? 'normal' : 'inversed'}>
                   {_.upperFirst(category)}
                 </Button>
               </NextLink>

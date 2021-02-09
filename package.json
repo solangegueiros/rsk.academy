@@ -8,7 +8,7 @@
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "format": "prettier --write .",
+    "format": "prettier --config .prettierrc --write .",
     "lint": "eslint . --ext js,mdx",
     "test": "jest",
     "test-all": "yarn lint && yarn test"
@@ -20,10 +20,10 @@
   },
   "lint-staged": {
     "*.+(js|mdx)": [
-      "eslint"
+      "yarn lint"
     ],
     "*.+(js|json|yml|yaml|md|mdx)": [
-      "prettier --write"
+      "yarn format"
     ]
   },
   "dependencies": {

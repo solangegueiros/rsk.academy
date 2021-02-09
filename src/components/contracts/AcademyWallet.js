@@ -35,8 +35,8 @@ const AcademyWallet = () => {
   const toast = useToast()
   const { t } = useI18n()
   const { register, handleSubmit, reset, errors } = useForm()
-  const colorScheme = useColorModeValue('rsk.green', 'rsk.light')
-  const color = useColorModeValue('rsk.green.500', 'rsk.light.500')
+  const colorScheme = useColorModeValue('primary', 'light')
+  const color = useColorModeValue('primary.500', 'light.500')
 
   const { hasCopied, onCopy } = useClipboard(contractAddress)
 
@@ -73,9 +73,9 @@ const AcademyWallet = () => {
 
   return (
     <Box
-      bg={useColorModeValue('white', 'rsk.dark.400')}
+      bg={useColorModeValue('white', 'dark.400')}
       p={8}
-      boxShadow='sm'
+      boxShadow='md'
       borderRadius={10}
     >
       <HStack mb={4} justify='center'>

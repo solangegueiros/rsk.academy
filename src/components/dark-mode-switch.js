@@ -8,8 +8,7 @@ export const DarkModeSwitch = props => {
   return (
     <IconButton
       isRound
-      colorScheme={useColorModeValue('rsk.green', 'rsk.light')}
-      variant='outline'
+      variant='inversed'
       icon={<ColorModeIcon />}
       onClick={toggleColorMode}
       {...props}

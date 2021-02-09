@@ -18,13 +18,13 @@ export const NavLink = props => {
         px='3'
         borderRadius='full'
         transition='all 0.3s'
-        color={useColorModeValue('rsk.dark.500', 'rsk.dark.50')}
+        color={useColorModeValue('dark.500', 'dark.50')}
         fontWeight='normal'
-        _hover={{ bg: useColorModeValue('rsk.green.50', 'whiteAlpha.100') }}
+        _hover={{ bg: useColorModeValue('primary.50', 'whiteAlpha.100') }}
         _activeLink={{
           fontWeight: 'semibold',
-          color: useColorModeValue('white', 'rsk.dark.500'),
-          bg: useColorModeValue('rsk.green.500', 'rsk.light.500'),
+          color: useColorModeValue('white', 'dark.500'),
+          bg: useColorModeValue('primary.500', 'light.500'),
         }}
         {...rest}
       />

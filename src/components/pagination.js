@@ -24,7 +24,7 @@ export const PaginationLink = props => {
           mt='1'
           fontSize='lg'
           fontWeight='bold'
-          color={useColorModeValue('rsk.green.500', 'rsk.light.500')}
+          color={useColorModeValue('primary.500', 'light.500')}
         >
           {children}
         </Text>

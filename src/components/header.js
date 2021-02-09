@@ -69,8 +69,8 @@ export const Header = props => {
         left='0'
         right='0'
         maxW='full'
-        bg={useColorModeValue('white', 'rsk.dark.700')}
-        boxShadow='sm'
+        bg={useColorModeValue('white', 'dark.600')}
+        boxShadow='md'
         mb={4}
         zIndex='sticky'
         {...props}
@@ -86,7 +86,7 @@ export const Header = props => {
                 d='flex'
                 justifyContent='center'
                 alignItems='center'
-                color={useColorModeValue('black', 'rsk.dark.50')}
+                color={useColorModeValue('black', 'dark.50')}
               >
                 <Logo h='full' />
               </chakra.a>
