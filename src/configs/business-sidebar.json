@@ -40,6 +40,14 @@
                 "pt": "Lição 2"
               },
               "path": "/courses/business/01/topic-01/lesson-02"
+            },
+            {
+              "title": {
+                "en": "Lesson 3",
+                "es": "Lección 3",
+                "pt": "Lição 3"
+              },
+              "path": "/courses/business/01/topic-01/lesson-03"
             }
           ]
         },
@@ -67,6 +75,14 @@
                 "pt": "Lição 2"
               },
               "path": "/courses/business/01/topic-02/lesson-02"
+            },
+            {
+              "title": {
+                "en": "Lesson 3",
+                "es": "Lección 3",
+                "pt": "Lição 3"
+              },
+              "path": "/courses/business/01/topic-02/lesson-03"
             }
           ]
         }
@@ -112,6 +128,14 @@
                 "pt": "Lição 2"
               },
               "path": "/courses/business/02/topic-01/lesson-02"
+            },
+            {
+              "title": {
+                "en": "Lesson 3",
+                "es": "Lección 3",
+                "pt": "Lição 3"
+              },
+              "path": "/courses/business/02/topic-01/lesson-03"
             }
           ]
         },
@@ -139,6 +163,14 @@
                 "pt": "Lição 2"
               },
               "path": "/courses/business/02/topic-02/lesson-02"
+            },
+            {
+              "title": {
+                "en": "Lesson 3",
+                "es": "Lección 3",
+                "pt": "Lição 3"
+              },
+              "path": "/courses/business/02/topic-02/lesson-03"
             }
           ]
         },
@@ -166,6 +198,14 @@
                 "pt": "Lição 2"
               },
               "path": "/courses/business/02/topic-03/lesson-02"
+            },
+            {
+              "title": {
+                "en": "Lesson 3",
+                "es": "Lección 3",
+                "pt": "Lição 3"
+              },
+              "path": "/courses/business/02/topic-03/lesson-03"
             }
           ]
         }

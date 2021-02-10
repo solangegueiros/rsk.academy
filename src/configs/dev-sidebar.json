@@ -43,6 +43,14 @@
             },
             {
               "title": {
+                "en": "Rsk Faucet",
+                "es": "Rsk Faucet",
+                "pt": "Rsk Faucet"
+              },
+              "path": "/courses/dev/01/wallet/rsk-faucet"
+            },
+            {
+              "title": {
                 "en": "First Transfer",
                 "es": "Primera Transferencia",
                 "pt": "Primeira Transferência"

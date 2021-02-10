@@ -2,6 +2,7 @@
 import { Alert, Box, chakra, Kbd, useColorModeValue } from '@chakra-ui/react'
 
 import { CodeBlock, IconsList, PropsTable } from '@/components/index'
+import { useState } from 'react'
 
 const Pre = props => <chakra.div my='2em' borderRadius='sm' {...props} />
 
@@ -64,6 +65,25 @@ const InlineCode = props => (
   />
 )
 
+const MdxImage = props => {
+  const INITIAL_WIDTH = 400
+  const [w, setW] = useState(INITIAL_WIDTH)
+
+  const toggleWidth = () => setW(w === INITIAL_WIDTH ? 800 : INITIAL_WIDTH)
+
+  return (
+    <chakra.img
+      layout='fill'
+      apply='mdx.img'
+      w={w}
+      my={2}
+      onClick={toggleWidth}
+      cursor={w === INITIAL_WIDTH ? 'zoom-in' : 'zoom-out'}
+      {...props}
+    />
+  )
+}
+
 export const MdxComponents = {
   h1: props => <chakra.h1 apply='mdx.h1' {...props} />,
   h2: props => <LinkedHeading apply='mdx.h2' {...props} />,
@@ -84,6 +104,7 @@ export const MdxComponents = {
   ul: props => <chakra.ul apply='mdx.ul' {...props} />,
   ol: props => <chakra.ol apply='mdx.ul' {...props} />,
   li: props => <chakra.li pb='4px' {...props} />,
+  img: props => <MdxImage {...props} />,
   blockquote: props => (
     <Alert
       mt='4'
