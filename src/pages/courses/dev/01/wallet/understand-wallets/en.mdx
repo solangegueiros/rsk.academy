@@ -1,13 +1,40 @@
 ---
-title: 'Understand Wallets'
-description: 'What are wallets?'
+title: 'Understand crypto wallets'
+description: 'What are crypto wallets?'
 ---
 
-We're excited that you chose RSK to help in your journey to become a Blockchain developer!
+## Crypto wallets
 
-We believe that the best type of learning is the hands-on experience.
+TODO
 
-We set to accomplish this through several coding tutorials, projects, and challenges defined for you.
+To have cryptos, we need tR-BTC and an address to store them.
+
+The best way is to create a wallet from a mnemonic, using the pattern defined at [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)
+
+There are a few ways to do this.
+
+One is to create using a web wallet, 
+such as [Metamask](https://metamask.io/) 
+or [Nifty](https://www.poa.network/for-users/nifty-wallet) wallet.
+These wallets generate the mnemonic for you.
+
+## Mnemonic
+
+TODO
+
+Copy these 12 words, we'll use it later.
+
+### iancoleman.io/bip39
+
+This web app:
+
+[iancoleman.io/bip39](https://iancoleman.io/bip39/)
+
+is very useful for understanding mnemonics and derived keys.
+
+On the other hand, it is not so safe to generate a mnemonic and private keys on a website.
+
+## Code test
 
 ```js ln={8-10} viewlines
 var abi = UPDATE_ABI_HERE
@@ -34,30 +61,9 @@ var instance = Contract.new(
 )
 ```
 
-## Curriculum Structure
+## Code test 2
 
 ```js
 const x = [12, 'a', { a: 3 }]
 ```
 
-The curriculum is split into
-
-distinct modules starting with programming basics and ends with deployment of decentralized applications on RSK blockchain!
-
-The curriculum starts in the first module and progresses at a level of difficulty, sequentially to the others. Each module builds on knowledge from the previous module.
-
-The course makes no assumptions about your previous knowledge and it starts from the very basics of programming.
-
-At later stages in the curriculum you will learn how to port your programming knowledge over to development on your local machine so you can begin working on your own projects!
-
-## Slack Channel
-
-Be sure to join our Slack channel and join in the discussion with the IOVLabs community!
-
-[Slack Channel](https://join.slack.com/t/open-rsk-dev/shared_invite/zt-kk3yfuc6-qn~DrpMLvADkAUu1pbAcZA)
-
-# References
-
-https://docs.soliditylang.org/
-
-https://eth.wiki/
