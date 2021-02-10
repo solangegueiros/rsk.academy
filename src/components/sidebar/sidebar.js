@@ -2,15 +2,12 @@ import {
   Badge,
   Box,
   Flex,
-  Button,
-  ButtonGroup,
   chakra,
   Stack,
   useColorModeValue,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import * as React from 'react'
-import NextLink from 'next/link'
 import _ from 'lodash'
 
 import { SidebarCategory, SidebarLink } from '@/components/index'
@@ -108,31 +105,11 @@ export const SidebarContent = props => {
 }
 
 export const Sidebar = ({ routes }) => {
-  const { pathname, locale } = useRouter()
+  const { pathname } = useRouter()
   const ref = React.useRef(null)
-  const sidebars = ['dev', 'business']
-
-  const isPage = path => pathname.includes(`/courses/${path}`)
-  const isCoursesPage = sidebars.some(sidebar => isPage(sidebar))
 
   return (
     <Flex flexDir='column' display={{ base: 'none', md: 'block' }} w='320px'>
-      {isCoursesPage && (
-        <Flex pos='sticky' top='5.5rem'>
-          <ButtonGroup w='90%'>
-            {sidebars.map(category => (
-              <NextLink
-                key={category}
-                href={`/courses/${category}/01/${locale}`}
-              >
-                <Button variant={isPage(category) ? 'normal' : 'inversed'}>
-                  {_.upperFirst(category)}
-                </Button>
-              </NextLink>
-            ))}
-          </ButtonGroup>
-        </Flex>
-      )}
       <Box
         pos='sticky'
         top='9rem'

@@ -2,6 +2,24 @@
   "routes": [
     {
       "title": {
+        "en": "Business",
+        "es": "Negocio",
+        "pt": "O Negócio"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Welcome",
+            "es": "¡Bienvenido!",
+            "pt": "Bem-vinda"
+          },
+          "path": "/courses/business"
+        }
+      ]
+    },
+    {
+      "title": {
         "en": "Unit 1",
         "es": "Módulo 1",
         "pt": "Módulo 1"

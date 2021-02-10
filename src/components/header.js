@@ -21,15 +21,13 @@ import {
   NavLink,
   Logo,
 } from '@/components/index'
-import { useRouter } from 'next/router'
 
 const MainNavLinkGroup = props => {
   const { t } = useI18n()
-  const { locale } = useRouter()
 
   const mainNavLinks = [
     {
-      href: `/courses/dev/01/${locale}`,
+      href: `/courses`,
       label: 'courses',
     },
     {
