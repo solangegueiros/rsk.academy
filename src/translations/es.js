@@ -19,6 +19,8 @@ export default {
   next: 'Siguiente',
   previous: 'Anterior',
   logout: 'Cierre de Sesión',
+  developer: 'Desarrollador',
+  business: 'Negocio',
   contract: {
     mustConnect:
       'Debe conectar su billetera para interactuar con el contrato inteligente',

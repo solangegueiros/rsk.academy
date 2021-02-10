@@ -19,6 +19,8 @@ export default {
   next: 'Próxima',
   previous: 'Anterior',
   logout: 'Deslogar',
+  developer: 'Desenvolvedor',
+  business: 'O Negócio',
   contract: {
     mustConnect:
       'Você deve conectar sua carteira para interagir com o contrato inteligente',

@@ -19,6 +19,8 @@ export default {
   next: 'Next',
   previous: 'Previous',
   logout: 'Logout',
+  developer: 'Developer',
+  business: 'Business',
   contract: {
     mustConnect:
       'You must connect your wallet in order to interact with smart contract',
