@@ -110,6 +110,14 @@
         },
         {
           "title": {
+            "en": "Your first smart contract: name",
+            "es": "Tu primer contrato inteligente: name",
+            "pt": "Seu primeiro contrato inteligente: name"
+          },
+          "path": "/courses/dev/02/smart-contract-name"
+        },        
+        {
+          "title": {
             "en": "Interact with dApp",
             "es": "Interactuar con dApp",
             "pt": "IInteraja com dApp"
@@ -123,14 +131,6 @@
             "pt": "Inscreva-se na Academia"
           },
           "path": "/courses/dev/02/subscribe-to-academy"
-        },
-        {
-          "title": {
-            "en": "Project: Name Smart Contract",
-            "es": "Proyecto: Name Contratos Inteligentes",
-            "pt": "Projeto: Name Contratos Inteligentes"
-          },
-          "path": "/courses/dev/02/smart-contract-name"
         },
         {
           "title": {
