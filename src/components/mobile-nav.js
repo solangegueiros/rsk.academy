@@ -40,7 +40,7 @@ export const MobileNavLink = ({ href, children }) => {
         as='button'
         rounded='md'
         transition='0.2s all'
-        fontWeight={isActive ? 'semibold' : 'medium'}
+        fontWeight={isActive ? '600' : '400'}
         bg={isActive ? bg : undefined}
         borderWidth={isActive ? undefined : '1px'}
         color={isActive ? color : undefined}

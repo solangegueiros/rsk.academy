@@ -10,7 +10,7 @@ export const mdx = {
     mt: '4rem',
     mb: '0.5rem',
     lineHeight: 1.3,
-    fontWeight: 'semibold',
+    fontWeight: '600',
     fontSize: '1.5rem',
     '& + h3': {
       mt: '1.5rem',
@@ -19,17 +19,17 @@ export const mdx = {
   h3: {
     mt: '3rem',
     lineHeight: 1.25,
-    fontWeight: 'semibold',
+    fontWeight: '600',
     fontSize: '1.25rem',
   },
   h4: {
     mt: '3rem',
     lineHeight: 1.375,
-    fontWeight: 'semibold',
+    fontWeight: '600',
     fontSize: '1.125rem',
   },
   a: {
-    fontWeight: 'semibold',
+    fontWeight: '600',
     transition: 'color 0.15s',
     transitionTimingFunction: 'ease-out',
   },
