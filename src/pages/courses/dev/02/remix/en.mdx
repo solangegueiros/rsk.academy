@@ -1,0 +1,76 @@
+---
+title: 'Remix'
+description: 'Remix'
+---
+
+## Remix
+
+Remix is an online web tool. It is an IDE (Integrated Development Environment) used to write, compile, deploy and debug Solidity code. Can be connected with Metamask and used to deploy smart contracts to both the RSK Testnet and Mainnet.
+
+Go to [remix.ethereum.org](https://remix.ethereum.org/)
+
+![remix.ethereum.org](/img/courses/dev/02/remix/image-08.png)
+
+In home / welcome page, select `environment Solidity`
+
+![Remix environment Solidity](/img/courses/dev/02/remix/image-09.png)
+
+## Terminal
+
+> Translate
+
+En Remix, en la parte de abajo, a la derecha, hay una terminal con algunas bibliotecas disponibles.
+
+Puedes enviar comandos y transacciones aquí. Esta área también presenta el resultado de transacciones y / o llamadas a funciones de contrato inteligente.
+
+¡Esta zona de retorno es muy importante para mirar los resultados!
+
+![remix terminal](/img/courses/dev/02/remix/image-10.png)
+
+## Compilador Solidity
+
+En el tercer botón en el lado izquierdo, haz clic en Solidity compiler
+
+![remix solidity compiler](/img/courses/dev/02/remix/image-11.png)
+
+Es útil habilitar la compilación automática (auto-compile), para compilar contratos inteligentes automáticamente al editar en Remix.
+
+![auto-compile](/img/courses/dev/02/remix/image-12.png)
+
+# Conexión de Remix con RSK testnet a través de una billetera
+
+Con la red RSK testnet seleccionada en la billetera Nifty o Metamask ...
+
+En Remix, en el lado izquierdo, ubica el botón Deploy and run transactions (Implementar y ejecutar transacciones).
+
+Por ahora es el cuarto botón
+
+![Deploy and run transactions](/img/courses/dev/02/remix/image-13.png)
+
+En Environment, elige `Injected Web3`
+
+![Injected Web3](/img/courses/dev/02/remix/image-14.png)
+
+Injected Web3 conecta Remix con una cuenta activa en Nifty / Metamask
+
+### En Metamask
+
+Se abrirá una ventana popup de Metamask para autorizar la conexión.
+
+Primero seleccione la cuenta y haz clic en botón Next. Probablemente solo tengas una.
+
+![Metamask select accounts](/img/courses/dev/02/remix/image-15.png)
+
+Después haz clic en botón Connect.
+
+![Metamask connect](/img/courses/dev/02/remix/image-16.png)
+
+### Remix conectado
+
+En Remix, en Deploy and run transactions, mira el Custom Network
+
+![Injected Web3 - ChainID 31](/img/courses/dev/02/remix/image-17.png)
+
+ChainID 31 se definió en la red personalizada RSK Testnet en Metamask.
+
+¡Listo! Ahora es posible publicar cualquier contrato inteligente en RSK testnet.
