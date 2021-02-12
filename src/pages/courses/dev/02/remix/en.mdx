@@ -1,6 +1,6 @@
 ---
 title: 'Remix'
-description: 'Remix'
+description: 'Remix IDE (Integrated Development Environment)'
 ---
 
 ## Remix
@@ -9,72 +9,74 @@ Remix is an online web tool. It is an IDE (Integrated Development Environment) u
 
 Go to [remix.ethereum.org](https://remix.ethereum.org/)
 
-![remix.ethereum.org](/img/courses/dev/02/remix/image-08.png)
+![remix.ethereum.org](/img/courses/dev/02/remix/image-01.png)
 
 In home / welcome page, select `environment Solidity`
 
-![Remix environment Solidity](/img/courses/dev/02/remix/image-09.png)
+![Remix environment Solidity](/img/courses/dev/02/remix/image-02.png)
 
 ## Terminal
 
-> Translate
+On the right below side of Remix is located a terminal including some libraries.
 
-En Remix, en la parte de abajo, a la derecha, hay una terminal con algunas bibliotecas disponibles.
+You can send commands and transactions over there. 
+This part also presents the result of transactions / calls to smart contract functions.
 
-Puedes enviar comandos y transacciones aquí. Esta área también presenta el resultado de transacciones y / o llamadas a funciones de contrato inteligente.
+This section is very important to follow results!
 
-¡Esta zona de retorno es muy importante para mirar los resultados!
-
-![remix terminal](/img/courses/dev/02/remix/image-10.png)
+![remix terminal](/img/courses/dev/02/remix/image-03.png)
 
 ## Compilador Solidity
 
-En el tercer botón en el lado izquierdo, haz clic en Solidity compiler
+In the 3rd button at left side click on `Solidity compiler`.
 
-![remix solidity compiler](/img/courses/dev/02/remix/image-11.png)
+![remix solidity compiler](/img/courses/dev/02/remix/image-04.png)
 
-Es útil habilitar la compilación automática (auto-compile), para compilar contratos inteligentes automáticamente al editar en Remix.
+It is useful to enable auto-compile in order to compile smart contracts automaticallywhile editing in Remix.
 
-![auto-compile](/img/courses/dev/02/remix/image-12.png)
+![auto-compile](/img/courses/dev/02/remix/image-05.png)
 
 ## JavascriptVM
 
-> TODO
+On the left side, click `Deploy and run transactions`, it is the fourth button.
 
-# Conexión de Remix con RSK testnet a través de una billetera
+![deploy and run transactions](/img/courses/dev/02/remix/image-10.png)
 
-Con la red RSK testnet seleccionada en la billetera Nifty o Metamask ...
+Remix has the envirnment `JavaScriptVM`, a blockchain simulator running in browser memory.
 
-En Remix, en el lado izquierdo, ubica el botón Deploy and run transactions (Implementar y ejecutar transacciones).
+![JavaScriptVM](/img/courses/dev/02/remix/image-11.png)
 
-Por ahora es el cuarto botón
+# Connect Remix to RSK Testnet
+
+First of all, be sure that you selected the RSK network in Nifty / Metamask.
+
+Then, in Remix, on the left side, locate the fourth button - Deploy and run transactions.
 
 ![Deploy and run transactions](/img/courses/dev/02/remix/image-13.png)
 
-En Environment, elige `Injected Web3`
+In Environment, choose Injected Web3
 
 ![Injected Web3](/img/courses/dev/02/remix/image-14.png)
 
-Injected Web3 conecta Remix con una cuenta activa en Nifty / Metamask
+Injected Web3 connects Remix with active accounts on the web wallet
 
-### En Metamask
+### At Metamask
 
-Se abrirá una ventana popup de Metamask para autorizar la conexión.
+A Metamask popup window will open to authorize the connection.
 
-Primero seleccione la cuenta y haz clic en botón Next. Probablemente solo tengas una.
+First, select the account and click the Next button. 
+You probably only have one, and in the other window, click the Connect button.
 
 ![Metamask select accounts](/img/courses/dev/02/remix/image-15.png)
-
-Después haz clic en botón Connect.
 
 ![Metamask connect](/img/courses/dev/02/remix/image-16.png)
 
 ### Remix conectado
 
-En Remix, en Deploy and run transactions, mira el Custom Network
+In Remix, in Deploy and run transactions, look at the Custom Network.
 
 ![Injected Web3 - ChainID 31](/img/courses/dev/02/remix/image-17.png)
 
-ChainID 31 se definió en la red personalizada RSK Testnet en Metamask.
+ChainID 31 was defined at RSK Testnet custom network in Metamask.
 
-¡Listo! Ahora es posible publicar cualquier contrato inteligente en RSK testnet.
+Done! Now it is possible to publish any smart contract on RSK network.

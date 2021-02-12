@@ -3,5 +3,125 @@ title: 'Smart Contract Name'
 description: 'Smart Contract Name'
 ---
 
+Seu primeiro smart contract terá seu nome registrado nele, 
+associando-o a sua wallet criada no último módulo.
+
+Ele será utilizado para sua inscrição na RSK Academy.
+Desta forma será possível identificar os estudantes :)
+
+No futuro, também será utilizado em outros projetos do curso.
+
+Em diversos momentos do curso utilizamos a abordagem "faça primeiro e depois entenda o que foi feito", 
+para que o aluno tenha o prazer de programar e entender na prática, com menos tempo exclusivo de teoria.
+Esta lição acontecerá desta forma.
+
+Utilizaremos Remix para criar seu primeiro smart contract.
+
+Abra [remix.ethereum.org](http://remix.ethereum.org/)
+
+Na ultima lição, já foi explicado o básico do Remix, então vamos diretamente criar um arquivo.
+
 > D:\BLOCKCHAIN\SOLANGE.DEV\GITHUB\rsk.solange.dev\es\remix-metamask\readme.md
+
+# Crea un smart contract
+
+1. Haz clic en el segundo botón en el lado izquierdo - file explorer 
+2. Haz clic en `create a new file`
+
+![create a new file](/img/courses/dev/02/smart-contract-name/image-01.png)
+
+Nombre del archivo / file name: `Name.sol`
+
+![filename Name.sol](/img/courses/dev/02/smart-contract-name/image-02.png)
+
+Copia este ejemplo:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.1;
+
+contract Name {
+    string private name;
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+        name = "Your fullname";
+    }
+
+    function getName() public view returns (string memory) {
+        return name;
+    }
+}
+```
+
+Y pégalo aquí:
+
+![Name.sol](/img/courses/dev/02/smart-contract-name/image-03.png)
+
+## Name.sol
+
+Este contrato inteligente tiene:
+
+* Una variable privada `name` para almacenar tu nombre
+* Una variable publica `owner` para almacenar la dirección del creador del contrato inteligente
+* `constructor`, que se ejecuta solo en el momento de publicar el smart contract
+* Una función `getName()` para devolver el nombre almacenado en la variable `name`
+
+## Actualiza tu nombre
+
+Dentro del `constructor`, en la línea 9, reemplace el mensaje "Your fullname" con su nombre completo.
+Por ejemplo, cambiaré a "Solange Gueiros":
+
+```solidity
+name = "Solange Gueiros";
+```
+
+Este será el resultado:
+
+![name Solange Gueiros](/img/courses/dev/02/smart-contract-name/image-04.png)
+
+# Compila un contrato inteligente
+
+Si habilitó la compilación automática (auto-compile), el contrato inteligente ya está compilado y aparecerá una luz verde junto al tercer botón de la izquierda: Solidity compiler.
+
+![compilation successful](/img/courses/dev/02/smart-contract-name/image-06.png)
+
+Si no lo ha habilitado:
+
+1. Clique no 3o botão do lado esquerdo - `Solidity compiler`
+2. Clique no botão Compile Name.sol
+3. Verifica el letrero verde en el tercer botón con el mensaje: compilation successful
+
+![Compile smart contract](/img/courses/dev/02/smart-contract-name/image-05.png)
+
+![Compile Name.sol](/img/courses/dev/02/smart-contract-name/image-07.png)
+
+## Publicar en JavascriptVM
+
+En el panel lateral izquierdo, ve al botón `Deploy and run transactions`.
+
+![Deploy and run transactions](/img/courses/dev/02/smart-contract-name/image-08.png)
+
+En este momento solo tenemos un contrato inteligente, 
+por lo que se selecciona automáticamente en el dropbox.
+
+Haz clic en el botón `Deploy`
+
+![Deploy](/img/courses/dev/02/smart-contract-name/image-09.png)
+
+
+
+> Translate
+
+Na parte de baixo, à direita, aparecerá a mensagem: `creation of Name pending...`
+
+E, em sequida, a transação confirmada.
+
+![transaction confirmed](/img/courses/dev/02/smart-contract-name/image-10.png)
+
+Na linha da transação, clique no símbolo ao lado do botão debug (do lado direito do botão), para ver os detalhes:
+
+![transaction details](/img/courses/dev/02/smart-contract-name/image-11.png)
+
 

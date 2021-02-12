@@ -11,3 +11,102 @@ Let's use Remix to create your first smart contract.
 
 > D:\BLOCKCHAIN\SOLANGE.DEV\GITHUB\rsk.solange.dev\en\ethereum-devs\remix-and-metamask-with-rsk-testnet.md
 
+
+Seu primeiro smart contract terá seu nome registrado nele, 
+associando-o a sua wallet criada no último módulo.
+
+Ele será utilizado para sua inscrição na RSK Academy.
+Desta forma será possível identificar os estudantes :)
+
+No futuro, também será utilizado em outros projetos do curso.
+
+Em diversos momentos do curso utilizamos a abordagem "faça primeiro e depois entenda o que foi feito", 
+para que o aluno tenha o prazer de programar e entender na prática, com menos tempo exclusivo de teoria.
+Esta lição acontecerá desta forma.
+
+Utilizaremos Remix para criar seu primeiro smart contract.
+
+Abra [remix.ethereum.org](http://remix.ethereum.org/)
+
+Na ultima lição, já foi explicado o básico do Remix, então vamos diretamente criar um arquivo.
+
+## Create a smart contract
+
+1. Click on the second button on the left side - file explorer
+2. Click on the button `create a new file`
+
+![create a new file](/img/courses/dev/02/smart-contract-name/image-01.png)
+
+File name: `Name.sol`
+
+![filename Name.sol](/img/courses/dev/02/smart-contract-name/image-02.png)
+
+Copy the smart contract inline below:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.1;
+
+contract Name {
+    string private name;
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+        name = "Your fullname";
+    }
+
+    function getName() public view returns (string memory) {
+        return name;
+    }
+}
+```
+
+Paste it into Remix here:
+
+![Name.sol](/img/courses/dev/02/smart-contract-name/image-03.png)
+
+## Name.sol
+
+This smart contract has:
+
+* A private variable `name` to store your name
+* A public variable `owner` to store the smart contract owner address
+* `constructor`, which is executed only in the moment of publish the smart contract
+* A function `getName()` to return the name stored at variable `name`
+
+## Update your name
+
+Inside the `constructor`, on line 9, change the text "Your fullname" for your fullname.
+For example, I will change to "Solange Gueiros":
+
+```solidity
+name = "Solange Gueiros";
+```
+
+This is the result:
+
+![name Solange Gueiros](/img/courses/dev/02/smart-contract-name/image-04.png)
+
+## Compile a smart contract
+
+In the 3rd button at left side click on Solidity compiler
+
+Check if it is compiled, or configure auto-compile.
+
+![Compile smart contract](/images/image-16.png)
+
+Se você não habilitou o auto-compile, siga estes passos:
+
+Click on the button Compile Name.sol
+
+![Compile Name.sol](/images/image-19.png)
+
+Check the green sign at 3rd button with the message `compilation successful`
+
+![compilation successful](/images/image-20.png)
+
+## Publish on JavascriptVM
+
+> TODO
+

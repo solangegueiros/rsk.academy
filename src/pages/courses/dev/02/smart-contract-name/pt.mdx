@@ -3,7 +3,7 @@ title: 'Smart Contract Name'
 description: 'Smart Contract Name'
 ---
 
-Seu primeiro smart contract terá seu nome e email gravados nele, 
+Seu primeiro smart contract terá seu nome registrado nele, 
 associando-o a sua wallet criada no último módulo.
 
 Ele será utilizado para sua inscrição na RSK Academy.
@@ -11,7 +11,8 @@ Desta forma será possível identificar os estudantes :)
 
 No futuro, também será utilizado em outros projetos do curso.
 
-Em diversos momentos do curso utilizamos a abordagem "faça primeiro e depois entenda o que foi feito".
+Em diversos momentos do curso utilizamos a abordagem "faça primeiro e depois entenda o que foi feito", 
+para que o aluno tenha o prazer de programar e entender na prática, com menos tempo exclusivo de teoria.
 Esta lição acontecerá desta forma.
 
 Utilizaremos Remix para criar seu primeiro smart contract.
@@ -24,215 +25,148 @@ Na ultima lição, já foi explicado o básico do Remix, então vamos diretament
 
 ## Crie um smart contract
 
-Clique no 2o botão do lado esquerdo - file explorer
+1. Clique no 2o botão do lado esquerdo - file explorer
+2. Clique no primeiro símbolo à direita do `browser`, com a mensagem `create a new file`
 
-![file explorer](/images/image-12.png)
-
-> UPDATE images
-Clique no símbolo `+` create a new file
-
-![create a new file](/images/image-13.png)
+![create a new file](/img/courses/dev/02/smart-contract-name/image-01.png)
 
 Nome do arquivo / file name: `Name.sol`
 
-![filename Name.sol](/images/image-14.png)
+![filename Name.sol](/img/courses/dev/02/smart-contract-name/image-02.png)
 
 Copie esse exemplo:
 
-> UPDATE code
-
-```shell
-pragma solidity >=0.4.0 <0.7.0;
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.1;
 
 contract Name {
-    uint storedData;
+    string private name;
+    address public owner;
 
-    function set(uint x) public {
-        storedData = x;
+    constructor() {
+        owner = msg.sender;
+        name = "Your fullname";
     }
 
-    function get() public view returns (uint) {
-        return storedData;
+    function getName() public view returns (string memory) {
+        return name;
     }
 }
 ```
 
 E cole aqui:
-![Name.sol](/images/image-15.png)
 
-### Name.sol
+![Name.sol](/img/courses/dev/02/smart-contract-name/image-03.png)
 
-> UPDATE
+## Name.sol
 
-Este smart contract tem:
+Este smart contract possui:
 
-* Uma variável `storedData` para armazenar um número
-* Uma função `get()` para retornar o número armazenado na variável `storedData`
-* Uma função `set()` para alterar o número armazenado na variável `storedData`
+* A variável privada `name` para armazenar seu nome
+* A variável pública `owner` para armazenar o endereço do criador do smart contract
+* `constructor`, que é executado apenas no momento da publicação do smart contract
+* A função `getName()` para retornar o nome armazenado na variável `name`
 
+## Atualize seu nome
+
+Dentro do `constructor`, na linha 9, troque a mensagem "Your fullname" pelo seu nome completo.
+Por exemplo, vou trocar para "Solange Gueiros":
+
+```solidity
+name = "Solange Gueiros";
+```
+
+Este será o resultado:
+
+![name Solange Gueiros](/img/courses/dev/02/smart-contract-name/image-04.png)
 
 ## Compilar o smart contract
 
-Clique no 3o botão do lado esquerdo - Solidity compiler
+Se você habilitou o auto-compile, 
+o smart contract já estará compilado e 
+aparecerá um sinal verde no 3o botão com a mensagem `compilation successful`
 
-![Compile smart contract](/images/image-16.png)
+![compilation successful](/img/courses/dev/02/smart-contract-name/image-06.png)
 
-Costumo deixar habilitado o auto-compile
+Se você não habilitou o auto-compile, siga estes passos:
 
-![enable auto-compile](/images/image-17.png)
+1. Clique no 3o botão do lado esquerdo - `Solidity compiler`
+2. Clique no botão `Compile Name.sol`
+3. Verifique o sinal verde no 3o botão com a mensagem `compilation successful`
 
-![enable auto-compile](/images/image-18.png)
+![Compile smart contract](/img/courses/dev/02/smart-contract-name/image-05.png)
 
-Clique no botão Compile SimpleStorage.sol
+![Compile Name.sol](/img/courses/dev/02/smart-contract-name/image-07.png)
 
-![Compile SimpleStorage.sol](/images/image-19.png)
+## Publicar na JavascriptVM
 
-Verifique o sinal verde no 3o botão com a mensagem `compilation successful`
+No painel à esquerda, clique no botão `Deploy and run transactions`. 
 
-![compilation successful](/images/image-20.png)
-
-## Publish on JavascriptVM
-
-> TODO
-
-## Publique o smart contract na RSK testnet
-
-No painel à esquerda, clique no botão `Deploy and run transactions`. Atualmente é o 4o botão.
-
-![Deploy and run transactions](/images/image-21.png)
+![Deploy and run transactions](/img/courses/dev/02/smart-contract-name/image-08.png)
 
 Como nós só temos um smart contract, ele é automaticamente selecionado na lista.
 
-![SimpleStorage.sol](/images/image-22.png)
+Clique no botão `Deploy`
 
-clique no botão `Deploy`.
+![Deploy](/img/courses/dev/02/smart-contract-name/image-09.png)
 
-Metamask abrirá uma janela do tipo "popup" para confirmar a transação configurada pelo Remix para fazer a publicação do smart contract SimpleStorage.sol
+Na parte de baixo, à direita, aparecerá a mensagem: `creation of Name pending...`
 
-![Deploy](/images/image-23.png)
+E, em sequida, a transação confirmada.
 
-Clique em confirme - confirm.
-
-Na parte de baixo, à direita, aparecerá a mensagem: `creation of SimpleStorage pending...`
-
-![creation of SimpleStorage pending](/images/image-24.png)
-
-
-![transaction confirmed](/images/image-25.png)
-
-Quando for confirmada, podemos verificá-la:
-
-![check the transaction](/images/image-26.png)
+![transaction confirmed](/img/courses/dev/02/smart-contract-name/image-10.png)
 
 Na linha da transação, clique no símbolo ao lado do botão debug (do lado direito do botão), para ver os detalhes:
 
-![transaction details](/images/image-27.png)
+![transaction details](/img/courses/dev/02/smart-contract-name/image-11.png)
 
-Copie o hash da transação para verificá-la no blockchain explorer
+## Endereço do smart contract
 
-![transaction hash](/images/image-28.png)
-
-![transaction hash copied](/images/image-29.png)
-
-Neste examplo, o hash da transação é:
-
-0x419c4b17ec0bf59568d9b5f5c7f0e4678039f52b9c644c2914ccd0bd2bb331da
-
-## RSK Explorer
-
-O RSK explorer é o blockchain explorer para as transações da RSK. Estamos utilizando o explorer da Testnet:
-
-[explorer.testnet.rsk.co](https://explorer.testnet.rsk.co/)
-
-![explorer](/images/image-30.png)
-
-Cole o hash da transação no campo de pesquisa, no alto da tela
-
-![search](/images/image-31.png)
-
-![search transaction](/images/image-32.png)
-
-Este é o resultado:
-
-![explorer transaction result](/images/image-33.png)
-
-Você pode verificar meu exemplo aqui: [`0x419c4b17ec0bf59568d9b5f5c7f0e4678039f52b9c644c2914ccd0bd2bb331da`](https://explorer.testnet.rsk.co/tx/0x419c4b17ec0bf59568d9b5f5c7f0e4678039f52b9c644c2914ccd0bd2bb331da)
+> TODO
 
 ## Interagindo com o smart contract
 
-Quando fazemos a publicação de um smart contract utilizando Remix, podemos encontrá-lo no painel a esquerda, no item deploy and run transactions:
+Quando fazemos a publicação de um smart contract utilizando Remix, podemos encontrá-lo na parte de paixo a esquerda, no painel `deploy and run transactions`:
 
-![deployed contracts](/images/image-34.png)
+![deployed contracts](/img/courses/dev/02/smart-contract-name/image-12.png)
 
-Clique em `>` para enxergar os detalhes do SimpleStorage:
+Clique em `>` para enxergar os detalhes do Name:
 
-![Deployed SimpleStorage](/images/image-35.png)
+![Deployed Name](/img/courses/dev/02/smart-contract-name/image-13.png)
 
-Aparecerão as mesmas funções que criamos em nosso smart contract!
+Aparecerá um botão `getName`, correspondente à a função que criamos em nosso smart contract!
 
-Os botões laranja são as funções que fazem alterações no blockchain, são chamadas alterações de estado. Este tipo de função gasta gas quando utilizada.
+E também um botão `owner`.
+Mas... não criamos uma função `owner`... qual a origem deste botão?
 
-Os botões azuis são as funções somente leitura (read-only) e não fazem nenhuma alteração no blockchain. Não gastamos gas quando fazemos uma chamada para este tipo de função.
+Sempre que uma váriável com a visibilidade pública é criada, 
+Solidity cria um "getter" para ela,
+ou seja, uma função que retorna seu valor.
+Ela é representada pelo botão `owner`.
 
-### Get
+Botões azuis são as funções somente leitura (read-only) e não fazem nenhuma alteração no blockchain. 
+Não gastamos gas quando fazemos uma chamada para este tipo de função.
 
-Primeiro vamos verificar o valor armazenado logo após a publicação.
+### getName
 
-Clique no botão get
+Primeiro vamos verificar o nome armazenado logo após a publicação.
 
-![get](/images/image-36.png)
+Clique no botão `getName`
 
-Não temos nenhum valor armazenado porque não definimos nada quando fizemos a publicação.
+> TODO
 
-No área de mensagens à direita, podemos verificar que foi chamada a função `SimpleStorage.get()`:
+![getName](/img/courses/dev/02/smart-contract-name/image-14.png)
 
-![transaction get](/images/image-37.png)
 
-### Set
+No área de mensagens à direita, podemos verificar que foi chamada a função `Name.getName()`:
 
-Defina um valor no campo do lado direito do botão set, e depois clique no botão.
+![transaction getName](/images/image-37.png)
 
-![value to set](/images/image-38.png)
+### owner
 
-Abrirá uma janela popup do Metamask, para confirmar a transação para armazenar o valor no blockchain.
 
-![confirm transaction](/images/image-39.png)
 
-Clique em confirme - confirm
-
-No painel de mensagens embaixo, à direita, podemos verificar que a transação está pendente, esperando a confirmação no blockchain:
-
-![transaction status](/images/image-40.png)
-
-Depois de alguns segundos, Metamask mostrará quando a transação for confirmada!
-
-![transaction mined](/images/image-41.png)
-
-No painel de mensagens embaixo, à direita, temos os detalhes da transação:
-
-![transaction details](/images/image-42.png)
-
-Você pode copiar o hash da transação e também verificar no RSK explorer: [`0xb9f4d73e7555d2b3cdf516f2d3044daa58669f7324cb957f2b83da21a6c89b4b`](https://explorer.testnet.rsk.co/tx/0xb9f4d73e7555d2b3cdf516f2d3044daa58669f7324cb957f2b83da21a6c89b4b)
-
-![explorer](/images/image-43.png)
-
-### Get (novamente)
-
-Agora que temos o valor 2020 salvo, podemos consultar
-
-Clique no botão get
-
-![get](/images/image-44.png)
-
-E o valor está correto!
-
-## Transações no Metamask
-
-É possível verificar todas as transações no Metamask
-
-![Metamask transactions](/images/image-45.png)
-
-![Metamask transactions](/images/image-46.png)
 
 ## Considerações finais
 
