@@ -8,7 +8,6 @@ description: 'Remix IDE (Integrated Development Environment - entorno de desarro
 Remix es una herramienta online. Es un IDE (Integrated Development Environment - entorno de desarrollo integrado) que se utiliza para escribir, compilar, publicar y depurar código fuente en Solidity. Se puede conectar a una billetera web y, como resultado, a cualquier red configurada en esta billetera.
 
 Ve a
-
 [http://remix.ethereum.org/](http://remix.ethereum.org/)
 
 ![remix.ethereum.org](/img/courses/dev/02/remix/image-01.png)
@@ -21,7 +20,8 @@ En la página de inicio / bienvenida (home / welcome), elige environment Solidit
 
 En Remix, en la parte de abajo, a la derecha, hay una terminal con algunas bibliotecas disponibles.
 
-Puedes enviar comandos y transacciones aquí. Esta área también presenta el resultado de transacciones y / o llamadas a funciones de contrato inteligente.
+Puedes enviar comandos y transacciones aquí. 
+Esta área también presenta el resultado de transacciones y / o llamadas a funciones de contrato inteligente.
 
 > ¡Esta zona de retorno es muy importante para mirar los resultados!
 
@@ -48,7 +48,7 @@ un simulador de Blockchain que se ejecuta en la memoria del navegador.
 
 ![JavaScriptVM](/img/courses/dev/02/remix/image-11.png)
 
-### Accounts
+### Accounts / cuentas
 
 Este simulador tiene varias direcciones / cuentas con Ethers ficticios que podemos elegir para publicar un contrato inteligente o interactuar con él.
 
@@ -59,13 +59,25 @@ A continuación, se muestra un ejemplo de la lista de cuentas:
 En algunas versiones de Remix, 
 la lista de cuentas se cambia cada vez que inicia Remix o actualiza la página.
 
-# Conexión de Remix con RSK testnet a través de una billetera
+## Web3 Providers
 
-Con la red RSK testnet seleccionada en la billetera Nifty o Metamask ...
+> TODO
 
-En Remix, en el lado izquierdo, ubica el botón Deploy and run transactions (Implementar y ejecutar transacciones).
+- Remote
+- Localhost
+- Third party
 
-Por ahora es el cuarto botón
+### Web3 Injected
+
+Web3 Injected es un proveedor web3 inyectado por un complemento de navegador como 
+[MetaMask](https://metamask.io/) o [Nifty](https://www.poa.network/for-users/nifty-wallet).
+
+# Conexión de Remix con RSK testnet a través de una billetera web
+
+Una vez que configures y selecciones la red RSK en la billetera Nifty o Metamask:
+
+En Remix, en el panel izquierdo, haz clic en el botón `Deploy and run transactions` (Implementar y ejecutar transacciones). 
+Por ahora es el cuarto botón.
 
 ![Deploy and run transactions](/img/courses/dev/02/remix/image-13.png)
 
@@ -73,7 +85,7 @@ En Environment, elige `Injected Web3`
 
 ![Injected Web3](/img/courses/dev/02/remix/image-14.png)
 
-Injected Web3 conecta Remix con una cuenta activa en Nifty / Metamask
+Injected Web3 conecta Remix con la cuenta activa / seleccionada en Nifty / Metamask.
 
 ### En Metamask
 

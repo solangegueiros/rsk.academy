@@ -28,9 +28,9 @@
       "routes": [
         {
           "title": {
-            "en": "Wallets",
-            "es": "Billeteras",
-            "pt": "Wallets"
+            "en": "Overview",
+            "es": "Overview",
+            "pt": "Overview"
           },
           "path": "/courses/dev/01"
         },
@@ -38,7 +38,7 @@
           "title": {
             "en": "Understand Wallets",
             "es": "Entende las billeteras",
-            "pt": "Entenda wallets"
+            "pt": "Entendendo wallets"
           },
           "path": "/courses/dev/01/understand-wallets"
         },
@@ -46,7 +46,7 @@
           "title": {
             "en": "Install Web Wallet",
             "es": "Instalar Web Wallet",
-            "pt": "Instalar Web Wallet"
+            "pt": "Instalando uma web wallet"
           },
           "path": "/courses/dev/01/install-web-wallet"
         },
@@ -68,9 +68,9 @@
         },
         {
           "title": {
-            "en": "First Transfer",
-            "es": "Primera Transferencia",
-            "pt": "Primeira Transferência"
+            "en": "First transfer",
+            "es": "Primera transferencia",
+            "pt": "Sua primeira transferência"
           },
           "path": "/courses/dev/01/first-transfer"
         }
@@ -115,38 +115,22 @@
             "pt": "Seu primeiro contrato inteligente: name"
           },
           "path": "/courses/dev/02/smart-contract-name"
-        },        
-        {
-          "title": {
-            "en": "Interact with dApp",
-            "es": "Interactuar con dApp",
-            "pt": "IInteraja com dApp"
-          },
-          "path": "/courses/dev/02/interact-with-dapp"
         },
         {
           "title": {
-            "en": "Subscribe to Academy",
-            "es": "Suscríbete a Academy",
-            "pt": "Inscreva-se na Academia"
+            "en": "Deploy on RSK testnet",
+            "es": "Deploy en RSK testnet",
+            "pt": "Publicando na RSK testnet"
+          },
+          "path": "/courses/dev/02/publish-on-rsk-testnet"
+        },
+        {
+          "title": {
+            "en": "Subscribe to RSK academy",
+            "es": "Suscríbete a RSK academy",
+            "pt": "Inscreva-se na RSK academy"
           },
           "path": "/courses/dev/02/subscribe-to-academy"
-        },
-        {
-          "title": {
-            "en": "Web3 Providers",
-            "es": "Proveedores de Web3",
-            "pt": "Provedores Web3"
-          },
-          "path": "/courses/dev/02/smart-contract-name/web3-providers"
-        },
-        {
-          "title": {
-            "en": "Publish on RSK Testnet",
-            "es": "Publicar en RSK Testnet",
-            "pt": "Publicar em RSK Testnet"
-          },
-          "path": "/courses/dev/02/smart-contract-name/publish-on-rsk-testnet"
         }
       ]
     },
@@ -194,6 +178,14 @@
             }
           ]
         },
+        {
+          "title": {
+            "en": "Interact with dApp",
+            "es": "Interactuar con dApp",
+            "pt": "Interagindo com dApp"
+          },
+          "path": "/courses/dev/02/interact-with-dapp"
+        },        
         {
           "title": {
             "en": "Interfaces",

@@ -1,149 +1,150 @@
 ---
-title: 'Publish on RSK Testnet'
+title: 'Publicando na RSK testnet'
 description: 'Publish on RSK Testnet'
 ---
 
-> TODO
+## Pré requisitos
 
-## Publique o smart contract na RSK testnet
+1. Selecione a RSK network em sua web wallet, Nifty ou Metamask.
+2. Tenha tR-BTC na sua carteira.
+3. No Remix, em `Environment`, garanta que selecionou a opção `Injected Web3`. 
 
-No painel à esquerda, clique no botão `Deploy and run transactions`. Atualmente é o 4o botão.
+![publish on RSK testnet](/img/courses/dev/02/publish-on-rsk-testnet/image-23.png)
 
-![Deploy and run transactions](/images/image-21.png)
+Primeiro, tenha certeza que selecionou RSK network em sua web wallet, Nifty ou Metamask.
+
+Verifique se tem tR-BTC na sua carteira, 
+dado que é necessário para pagar as taxas das transações para publicar smart contracts.
+Caso não tenha, siga as instruções em: [RSK faucet](/courses/dev/01/rsk-faucet).
+
+Não se esqueça de selecionar a opção `Injected Web3` em `Environment`, localizado em `Deploy and run transactions` no Remix.
+
+## Publicar um contrato inteligente na RSK testnet
+
+No Remix, vá no 4o ícone: `Deploy and run transactions`.
 
 Como nós só temos um smart contract, ele é automaticamente selecionado na lista.
 
-![SimpleStorage.sol](/images/image-22.png)
+![Contract Name.sol](/img/courses/dev/02/publish-on-rsk-testnet/image-24.png)
 
-clique no botão `Deploy`.
+Clique no botão `Deploy`.
 
-Metamask abrirá uma janela do tipo "popup" para confirmar a transação configurada pelo Remix para fazer a publicação do smart contract SimpleStorage.sol
+Sua web wallet abrirá uma janela do tipo "popup" para confirmar a transação configurada pelo Remix para fazer a publicação do smart contract.
 
-![Deploy](/images/image-23.png)
+![Nifty popup](/img/courses/dev/02/publish-on-rsk-testnet/image-25.png)
 
-Clique em confirme - confirm.
+Clique em confirm / submit.
 
-Na parte de baixo, à direita, aparecerá a mensagem: `creation of SimpleStorage pending...`
+Na parte abaixo, à direita, aparecerá a mensagem: `creation of Name pending...`
 
-![creation of SimpleStorage pending](/images/image-24.png)
+Um bloco na rede RSK leva, em média, 30 segundos para ser minerado, 
+então devemos esperar este tempo.
+Quando a transação for confirmada na rede, sua web wallet apresentará uma notificação como esta:
 
+![transaction confirmed](/img/courses/dev/02/publish-on-rsk-testnet/image-27.png)
 
-![transaction confirmed](/images/image-25.png)
+Depois podemos verificar os detalhes da transação no terminal do Remix:
 
-Quando for confirmada, podemos verificá-la:
-
-![check the transaction](/images/image-26.png)
-
-Na linha da transação, clique no símbolo ao lado do botão debug (do lado direito do botão), para ver os detalhes:
-
-![transaction details](/images/image-27.png)
+![check the transaction](/img/courses/dev/02/publish-on-rsk-testnet/image-28.png)
 
 Copie o hash da transação para verificá-la no blockchain explorer
 
-![transaction hash](/images/image-28.png)
+![transaction hash](/img/courses/dev/02/publish-on-rsk-testnet/image-29.png)
 
-![transaction hash copied](/images/image-29.png)
+Neste exemplo, o hash da transação é:
 
-Neste examplo, o hash da transação é:
-
-0x419c4b17ec0bf59568d9b5f5c7f0e4678039f52b9c644c2914ccd0bd2bb331da
+```
+0x050e216d2008a896f2e7799fee349c582f3e19bb6017e59cd8b323647624f999
+```
 
 ## RSK Explorer
 
-O RSK explorer é o blockchain explorer para as transações da RSK. Estamos utilizando o explorer da Testnet:
+> TODO
+blockchain explorer definition
+
+O RSK explorer é o blockchain explorer para as transações da RSK. 
+Estamos utilizando o explorer da Testnet:
 
 [explorer.testnet.rsk.co](https://explorer.testnet.rsk.co/)
 
-![explorer](/images/image-30.png)
+![explorer](/img/courses/dev/02/publish-on-rsk-testnet/image-30.png)
 
 Cole o hash da transação no campo de pesquisa, no alto da tela
 
-![search](/images/image-31.png)
+![explorer search](/img/courses/dev/02/publish-on-rsk-testnet/image-31.png)
 
-![search transaction](/images/image-32.png)
+![explorer search transaction](/img/courses/dev/02/publish-on-rsk-testnet/image-32.png)
 
 Este é o resultado:
 
-![explorer transaction result](/images/image-33.png)
+![explorer transaction result](/img/courses/dev/02/publish-on-rsk-testnet/image-33.png)
 
-Você pode verificar meu exemplo aqui: [`0x419c4b17ec0bf59568d9b5f5c7f0e4678039f52b9c644c2914ccd0bd2bb331da`](https://explorer.testnet.rsk.co/tx/0x419c4b17ec0bf59568d9b5f5c7f0e4678039f52b9c644c2914ccd0bd2bb331da)
+Você pode verificar meu exemplo aqui: [`0x050e216d2008a896f2e7799fee349c582f3e19bb6017e59cd8b323647624f999`](https://explorer.testnet.rsk.co/tx/0x050e216d2008a896f2e7799fee349c582f3e19bb6017e59cd8b323647624f999)
+
+## Endereço do seu smart contract
+
+Copie o endereço do seu smart contract e guarde-o. 
+Ele será utilizado em outros momentos do curso.
+
+Existem algumas maneiras de copiá-lo:
+
+1. No Remix
+
+Depois que o smart contract for publicado com o Remix, 
+podemos ver sua instância no painel à esquerda, na parte debaixo do item `deploy and run transactions`.
+
+Vá na seção `deployed contracts`, localize o smart contract e clique no ícone de cópia.
+
+![deployed contracts copy](/img/courses/dev/02/publish-on-rsk-testnet/image-34.png)
+
+2. No RSK explorer
+
+Localize a linha `Contract Address`, e clique no ícone de cópia.
+
+![transaction copy](/img/courses/dev/02/publish-on-rsk-testnet/image-35.png)
+
+Este é o endereço do meu smart contract name:
+
+```
+0x888be03Bbd234D88dBa228Ef04A53950A2006345
+```
 
 ## Interagindo com o smart contract
 
-Quando fazemos a publicação de um smart contract utilizando Remix, podemos encontrá-lo no painel a esquerda, no item deploy and run transactions:
+Da mesma foram que já interagimos com o smart contract publicado na JavascriptVM, 
+também podemos usar o Remix para interagir com um smart contract publicado em qualquer rede.
 
-![deployed contracts](/images/image-34.png)
+A única alteração é o Environment, ou seja, a rede conectada, que agora é `Injected Web3`.
 
-Clique em `>` para enxergar os detalhes do SimpleStorage:
+Em `deployed contracts`, no smart contract, clique em `>` para enxergar os detalhes:
 
-![Deployed SimpleStorage](/images/image-35.png)
+Clique nos botões e veja os resultados:
 
-Aparecerão as mesmas funções que criamos em nosso smart contract!
+![Name buttons](/img/courses/dev/02/publish-on-rsk-testnet/image-36.png)
 
-Os botões laranja são as funções que fazem alterações no blockchain, são chamadas alterações de estado. Este tipo de função gasta gas quando utilizada.
+Você também pode ver os detalhes das transações no terminal do Remix:
 
-Os botões azuis são as funções somente leitura (read-only) e não fazem nenhuma alteração no blockchain. Não gastamos gas quando fazemos uma chamada para este tipo de função.
+![call details](/img/courses/dev/02/publish-on-rsk-testnet/image-37.png)
 
-### Get
+Confira que o `owner` é a conta seleciona na sua web wallet.
 
-Primeiro vamos verificar o valor armazenado logo após a publicação.
+## Transações na web wallet
 
-Clique no botão get
+Também é possível verificar a transação na web wallet:
 
-![get](/images/image-36.png)
+![nifty transaction](/img/courses/dev/02/publish-on-rsk-testnet/image-38.png)
 
-Não temos nenhum valor armazenado porque não definimos nada quando fizemos a publicação.
+## At Address
 
-No área de mensagens à direita, podemos verificar que foi chamada a função `SimpleStorage.get()`:
+Interagindo com um smart contract já publicado na rede.
 
-![transaction get](/images/image-37.png)
-
-### Set
-
-Defina um valor no campo do lado direito do botão set, e depois clique no botão.
-
-![value to set](/images/image-38.png)
-
-Abrirá uma janela popup do Metamask, para confirmar a transação para armazenar o valor no blockchain.
-
-![confirm transaction](/images/image-39.png)
-
-Clique em confirme - confirm
-
-No painel de mensagens embaixo, à direita, podemos verificar que a transação está pendente, esperando a confirmação no blockchain:
-
-![transaction status](/images/image-40.png)
-
-Depois de alguns segundos, Metamask mostrará quando a transação for confirmada!
-
-![transaction mined](/images/image-41.png)
-
-No painel de mensagens embaixo, à direita, temos os detalhes da transação:
-
-![transaction details](/images/image-42.png)
-
-Você pode copiar o hash da transação e também verificar no RSK explorer: [`0xb9f4d73e7555d2b3cdf516f2d3044daa58669f7324cb957f2b83da21a6c89b4b`](https://explorer.testnet.rsk.co/tx/0xb9f4d73e7555d2b3cdf516f2d3044daa58669f7324cb957f2b83da21a6c89b4b)
-
-![explorer](/images/image-43.png)
-
-### Get (novamente)
-
-Agora que temos o valor 2020 salvo, podemos consultar
-
-Clique no botão get
-
-![get](/images/image-44.png)
-
-E o valor está correto!
-
-## Transações no Metamask
-
-É possível verificar todas as transações no Metamask
-
-![Metamask transactions](/images/image-45.png)
-
-![Metamask transactions](/images/image-46.png)
+> TODO
+Interagir com o meu smart contract Name
 
 ## Considerações finais
 
-Você imaginava que era tão fácil utilizar Remix e Metamask para criar um smart contract que pode ser utilizado em ambas as redes: Ethereum e RSK?
+Parabéns!
+Agora você já sabe publicar um smart contract em uma rede de blockchain "de verdade", e interagir com ele.
+
+Na próxima lição você aprenderá como seu smart contract pode interagir com outros 
+:)
