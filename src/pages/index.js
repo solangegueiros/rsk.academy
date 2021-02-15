@@ -7,11 +7,14 @@ import {
   Text,
   useColorModeValue,
   VStack,
+  SimpleGrid,
+  Icon,
 } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
 
 import { Container, Layout, Seo } from '@/components/index'
 import { useGradient } from '@/hooks/use-gradient'
+import { FaConnectdevelop } from 'react-icons/fa'
 
 const Home = () => {
   const gradient1 = useGradient('to-r')
@@ -22,9 +25,9 @@ const Home = () => {
     <Layout fluid>
       <Seo title={t('home')} description='Rsk Academy' />
       <Center
-        flex='1 0 0'
         bg={useColorModeValue('primary.500', 'light.500')}
         color={useColorModeValue('white', 'dark.500')}
+        h='calc(100vh - 70px)'
       >
         <Container flex='1'>
           <Flex
@@ -37,7 +40,7 @@ const Home = () => {
             <Heading color={useColorModeValue('white', 'dark.500')} mb={4}>
               Because Knowledge is Freedom
             </Heading>
-            <Text fontSize='1.2em'>
+            <Text fontSize='1.4em' maxW='container.md'>
               Educationg the new generations about Bitcoin, blockchain and open
               source technologies are the best way to empower them with the
               tools to build a better world.
@@ -46,7 +49,7 @@ const Home = () => {
         </Container>
       </Center>
 
-      <Center flex='1 0 0' bgGradient={gradient1}>
+      <Center bgGradient={gradient1}>
         <Container>
           <Flex
             direction={{ base: 'column', md: 'row' }}
@@ -57,7 +60,7 @@ const Home = () => {
           >
             <VStack mr={8} align='start' justify='center'>
               <Heading color='inherit'>Blockchain for developers</Heading>
-              <Text fontSize='1.2em'>
+              <Text fontSize='1.4em'>
                 Developers with technical background willing to become general
                 blockchain developers.
               </Text>
@@ -69,7 +72,7 @@ const Home = () => {
         </Container>
       </Center>
 
-      <Center flex='1 0 0' bgGradient={gradient2}>
+      <Center bgGradient={gradient2}>
         <Container>
           <Flex
             direction={{ base: 'column', md: 'row' }}
@@ -83,7 +86,7 @@ const Home = () => {
             </Box>
             <VStack align='start' justify='center'>
               <Heading color='inherit'>Blockchain for business</Heading>
-              <Text fontSize='1.2em'>
+              <Text fontSize='1.4em'>
                 Non-technical professionals willing to work on the blockchain
                 industry and/or use blockchain applications.
               </Text>
@@ -91,6 +94,51 @@ const Home = () => {
           </Flex>
         </Container>
       </Center>
+
+      <Container>
+        <SimpleGrid columns={{ base: 1, lg: 3 }} gap={16} py={24}>
+          <VStack textAlign='center' spacing={4}>
+            <Icon
+              color={useColorModeValue('primary.500', 'light.500')}
+              as={FaConnectdevelop}
+              boxSize={24}
+            />
+            <Text fontSize='1.4em'>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.{' '}
+            </Text>
+          </VStack>
+          <VStack textAlign='center' spacing={4}>
+            <Icon
+              color={useColorModeValue('primary.500', 'light.500')}
+              as={FaConnectdevelop}
+              boxSize={24}
+            />
+            <Text fontSize='1.4em'>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.{' '}
+            </Text>
+          </VStack>
+          <VStack textAlign='center' spacing={4}>
+            <Icon
+              color={useColorModeValue('primary.500', 'light.500')}
+              as={FaConnectdevelop}
+              boxSize={24}
+            />
+            <Text fontSize='1.4em'>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.{' '}
+            </Text>
+          </VStack>
+        </SimpleGrid>
+      </Container>
+
+      <Container py={16} mb={16}>
+        <VStack>
+          <Heading>Title</Heading>
+          <Text fontSize='1.4em'>
+            Non-technical professionals willing to work on the blockchain
+            industry and/or use blockchain applications.
+          </Text>
+        </VStack>
+      </Container>
     </Layout>
   )
 }
