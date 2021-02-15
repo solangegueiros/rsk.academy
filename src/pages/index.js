@@ -130,15 +130,16 @@ const Home = () => {
         </SimpleGrid>
       </Container>
 
-      <Container py={16} mb={16}>
-        <VStack>
-          <Heading>Partnerships - white label courses</Heading>
+      <Container py={32} mb={16}>
+        <VStack textAlign='center' spacing={4}>
+          <Heading mb={8}>Partnerships - white label courses</Heading>
           <Text fontSize='1.4em'>
-            White label: The partner can use its own trademark in the courses 
+            White label: The partner can use its own trademark in the courses
             while IOV provides the content and examination tools.
-            <br/>
-            Training mentors: IOV offers training for in-house mentors 
-            who can help students during the courses.
+          </Text>
+          <Text fontSize='1.4em'>
+            Training mentors: IOV offers training for in-house mentors who can
+            help students during the courses.
           </Text>
         </VStack>
       </Container>
