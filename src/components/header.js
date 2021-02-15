@@ -69,7 +69,6 @@ export const Header = props => {
         maxW='full'
         bg={useColorModeValue('white', 'dark.600')}
         boxShadow='md'
-        mb={4}
         zIndex='sticky'
         {...props}
       >
