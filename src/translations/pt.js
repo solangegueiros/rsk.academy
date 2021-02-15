@@ -1,5 +1,6 @@
 export default {
   about: 'Sobre',
+  admin: 'Admin',
   articles: 'Artigos',
   home: 'Início',
   search: 'Pesquisa',
@@ -26,6 +27,7 @@ export default {
       'Conectar sua wallet para interagir com o smart contract',
     notDeployed: 'O smart contract não foi publicado nesta rede',
     getBalance: 'Consultar saldo',
+    getThisBalance: 'Consultar saldo total da Academy Wallet',
     balanceIs: 'O saldo é',
   },
 }
