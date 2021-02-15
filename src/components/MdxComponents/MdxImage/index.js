@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import chakra from '@chakra-ui/react'
+import { chakra } from '@chakra-ui/react'
 
 export const MdxImage = props => {
   const INITIAL_WIDTH = 400
