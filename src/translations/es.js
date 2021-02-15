@@ -1,5 +1,6 @@
 export default {
   about: 'Sobre',
+  admin: 'Admin',
   articles: 'Artículos',
   home: 'Comienzo',
   search: 'Buscar',
@@ -26,7 +27,8 @@ export default {
       'Debe conectar su billetera para interactuar con el contrato inteligente',
     notDeployed:
       'El contrato inteligente no se ha implementado en la red detectada',
-    getBalance: 'Obtener equilibrio',
-    balanceIs: 'El equilibrio es',
+    getBalance: 'Obtener saldo',
+    getThisBalance: 'Obtener saldo total de Academy Wallet',
+    balanceIs: 'El saldo es',
   },
 }

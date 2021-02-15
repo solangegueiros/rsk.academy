@@ -14,15 +14,14 @@ export const NavLink = props => {
       <chakra.a
         aria-current={isActive ? 'page' : undefined}
         display='block'
-        py='1'
-        px='3'
+        py='2'
+        px='4'
         borderRadius='full'
         transition='all 0.3s'
         color={useColorModeValue('dark.500', 'dark.50')}
-        fontWeight='normal'
+        fontWeight='600'
         _hover={{ bg: useColorModeValue('primary.50', 'whiteAlpha.100') }}
         _activeLink={{
-          fontWeight: 'semibold',
           color: useColorModeValue('white', 'dark.500'),
           bg: useColorModeValue('primary.500', 'light.500'),
         }}

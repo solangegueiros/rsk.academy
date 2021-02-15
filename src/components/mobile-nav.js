@@ -40,7 +40,7 @@ export const MobileNavLink = ({ href, children }) => {
         as='button'
         rounded='md'
         transition='0.2s all'
-        fontWeight={isActive ? 'semibold' : 'medium'}
+        fontWeight={isActive ? '600' : '400'}
         bg={isActive ? bg : undefined}
         borderWidth={isActive ? undefined : '1px'}
         color={isActive ? color : undefined}
@@ -126,6 +126,7 @@ export const MobileNavContent = props => {
                       {t('projects')}
                     </MobileNavLink>
                     <MobileNavLink href='/blog'>{t('blog')}</MobileNavLink>
+                    <MobileNavLink href='/admin'>{t('admin')}</MobileNavLink>
                   </HStack>
                 </VStack>
               </Box>

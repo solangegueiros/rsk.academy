@@ -12,7 +12,7 @@
           "title": {
             "en": "Welcome",
             "es": "¡Bienvenido!",
-            "pt": "Bem-vinda"
+            "pt": "Bem-vindo(a)"
           },
           "path": "/courses/dev"
         }
@@ -20,249 +20,77 @@
     },
     {
       "title": {
-        "en": "Module 1",
-        "es": "Módulo 1",
-        "pt": "Módulo 1"
+        "en": "01 - wallets",
+        "es": "01 - billeteras",
+        "pt": "01 - Wallets"
       },
       "heading": true,
       "routes": [
         {
           "title": {
-            "en": "Intro",
-            "es": "Intro",
-            "pt": "Introdução"
+            "en": "Overview",
+            "es": "Overview",
+            "pt": "Overview"
           },
           "path": "/courses/dev/01"
         },
         {
           "title": {
-            "en": "Wallet",
-            "es": "Billetera",
-            "pt": "Carteira"
+            "en": "Understand Wallets",
+            "es": "Entende las billeteras",
+            "pt": "Entendendo wallets"
           },
-          "path": "/courses/dev/01/wallet",
-          "open": true,
-          "routes": [
-            {
-              "title": {
-                "en": "Understand Wallets",
-                "es": "Entender las Carteras",
-                "pt": "Entenda Carteiras"
-              },
-              "path": "/courses/dev/01/wallet/understand-wallets"
-            },
-            {
-              "title": {
-                "en": "Install Web Wallet",
-                "es": "Instalar Web Wallet",
-                "pt": "Instalar Web Wallet"
-              },
-              "path": "/courses/dev/01/wallet/install-web-wallet"
-            },
-            {
-              "title": {
-                "en": "Rsk Faucet",
-                "es": "Rsk Faucet",
-                "pt": "Rsk Faucet"
-              },
-              "path": "/courses/dev/01/wallet/rsk-faucet"
-            },
-            {
-              "title": {
-                "en": "First Transfer",
-                "es": "Primera Transferencia",
-                "pt": "Primeira Transferência"
-              },
-              "path": "/courses/dev/01/wallet/first-transfer"
-            },
-            {
-              "title": {
-                "en": "Connecting to Academy",
-                "es": "Conectando a Academy",
-                "pt": "Conectando-se à Academia"
-              },
-              "path": "/courses/dev/01/wallet/connecting-to-academy"
-            }
-          ]
+          "path": "/courses/dev/01/understand-wallets"
         },
         {
           "title": {
-            "en": "Introduction to Smart Contracts",
-            "es": "Introducción a los Contratos Inteligentes",
-            "pt": "Introdução aos Smart Contracts"
+            "en": "Install Web Wallet",
+            "es": "Instalar Web Wallet",
+            "pt": "Instalando uma web wallet"
           },
-          "path": "/courses/dev/01/introduction-to-smart-contract",
-          "open": true,
-          "routes": [
-            {
-              "title": {
-                "en": "Remix",
-                "es": "Remix",
-                "pt": "Remix"
-              },
-              "path": "/courses/dev/01/introduction-to-smart-contract/remix"
-            },
-            {
-              "title": {
-                "en": "Interact with dApp",
-                "es": "Interactuar con dApp",
-                "pt": "IInteraja com dApp"
-              },
-              "path": "/courses/dev/01/introduction-to-smart-contract/interact-with-dapp"
-            },
-            {
-              "title": {
-                "en": "Subscribe to Academy",
-                "es": "Suscríbete a Academy",
-                "pt": "Inscreva-se na Academia"
-              },
-              "path": "/courses/dev/01/introduction-to-smart-contract/subscribe-to-academy"
-            }
-          ]
+          "path": "/courses/dev/01/install-web-wallet"
         },
         {
           "title": {
-            "en": "Smart Contract: Name",
-            "es": "Contrato Inteligente: Name",
-            "pt": "Contrato Inteligente: Name"
+            "en": "Rsk Faucet",
+            "es": "Rsk Faucet",
+            "pt": "Rsk Faucet"
           },
-          "path": "/courses/dev/01/smart-contract-name",
-          "open": true,
-          "routes": [
-            {
-              "title": {
-                "en": "Project: Name Smart Contract",
-                "es": "Proyecto: Name Contratos Inteligentes",
-                "pt": "Projeto: Name Contratos Inteligentes"
-              },
-              "path": "/courses/dev/01/smart-contract-name/project-name-smart-contract"
-            },
-            {
-              "title": {
-                "en": "Web3 Providers",
-                "es": "Proveedores de Web3",
-                "pt": "Provedores Web3"
-              },
-              "path": "/courses/dev/01/smart-contract-name/web3-providers"
-            },
-            {
-              "title": {
-                "en": "Publish on RSK Testnet",
-                "es": "Publicar en RSK Testnet",
-                "pt": "Publicar em RSK Testnet"
-              },
-              "path": "/courses/dev/01/smart-contract-name/publish-on-rsk-testnet"
-            }
-          ]
+          "path": "/courses/dev/01/rsk-faucet"
         },
         {
           "title": {
-            "en": "Transfers Using Smart Contracts",
-            "es": "Transferencias Mediante Contratos Inteligentes",
-            "pt": "Transferências usando Contratos Inteligentes"
+            "en": "Connecting to Academy",
+            "es": "Conectando a Academy",
+            "pt": "Conectando-se à Academia"
           },
-          "path": "/courses/dev/01/transfers-using-smart-contracts",
-          "open": true,
-          "routes": [
-            {
-              "title": {
-                "en": "Payable",
-                "es": "Pagadero",
-                "pt": "Pagável"
-              },
-              "path": "/courses/dev/01/transfers-using-smart-contracts/payable",
-              "new": true
-            },
-            {
-              "title": {
-                "en": "Contract to Contract ABI",
-                "es": "Contrato a Contrato ABI",
-                "pt": "Contrato para Contratar ABI"
-              },
-              "path": "/courses/dev/01/transfers-using-smart-contracts/contract-to-contract-abi"
-            }
-          ]
+          "path": "/courses/dev/01/connecting-to-academy"
         },
         {
           "title": {
-            "en": "Interfaces",
-            "es": "Interfaces",
-            "pt": "Interfaces"
+            "en": "First transfer",
+            "es": "Primera transferencia",
+            "pt": "Sua primeira transferência"
           },
-          "path": "/courses/dev/01/interfaces",
-          "open": true,
-          "sort": true,
-          "routes": [
-            {
-              "title": {
-                "en": "Interact with Other Contracts",
-                "es": "Interactuar con Otros contratos",
-                "pt": "Interaja com Outros Contratos"
-              },
-              "path": "/courses/dev/01/interfaces/interact-with-other-contracts"
-            }
-          ]
+          "path": "/courses/dev/01/first-transfer"
         }
       ]
     },
     {
       "title": {
-        "en": "Module 2",
-        "es": "Módulo 2",
-        "pt": "Módulo 2"
+        "en": "02 - smart contracts intro",
+        "es": "02 - smart contracts intro",
+        "pt": "02 - smart contracts intro"
       },
       "heading": true,
       "routes": [
         {
           "title": {
-            "en": "Intro",
-            "es": "Intro",
-            "pt": "Introdução"
+            "en": "Overview",
+            "es": "Overview",
+            "pt": "Overview"
           },
           "path": "/courses/dev/02"
-        },
-        {
-          "title": {
-            "en": "Wallet",
-            "es": "Billetera",
-            "pt": "Carteira"
-          },
-          "path": "/courses/dev/02/wallet",
-          "open": true,
-          "routes": [
-            {
-              "title": {
-                "en": "Understand Wallets",
-                "es": "Entender las Carteras",
-                "pt": "Entenda Carteiras"
-              },
-              "path": "/courses/dev/02/wallet/understand-wallets"
-            },
-            {
-              "title": {
-                "en": "Install Web Wallet",
-                "es": "Instalar Web Wallet",
-                "pt": "Instalar Web Wallet"
-              },
-              "path": "/courses/dev/02/wallet/install-web-wallet"
-            },
-            {
-              "title": {
-                "en": "First Transfer",
-                "es": "Primera Transferencia",
-                "pt": "Primeira Transferência"
-              },
-              "path": "/courses/dev/02/wallet/first-transfer"
-            },
-            {
-              "title": {
-                "en": "Connecting to Academy",
-                "es": "Conectando a Academy",
-                "pt": "Conectando-se à Academia"
-              },
-              "path": "/courses/dev/02/wallet/connecting-to-academy"
-            }
-          ]
         },
         {
           "title": {
@@ -270,69 +98,57 @@
             "es": "Introducción a los Contratos Inteligentes",
             "pt": "Introdução aos Smart Contracts"
           },
-          "path": "/courses/dev/02/introduction-to-smart-contract",
-          "open": true,
-          "routes": [
-            {
-              "title": {
-                "en": "Remix",
-                "es": "Remix",
-                "pt": "Remix"
-              },
-              "path": "/courses/dev/02/introduction-to-smart-contract/remix"
-            },
-            {
-              "title": {
-                "en": "Interact with dApp",
-                "es": "Interactuar con dApp",
-                "pt": "IInteraja com dApp"
-              },
-              "path": "/courses/dev/02/introduction-to-smart-contract/interact-with-dapp"
-            },
-            {
-              "title": {
-                "en": "Subscribe to Academy",
-                "es": "Suscríbete a Academy",
-                "pt": "Inscreva-se na Academia"
-              },
-              "path": "/courses/dev/02/introduction-to-smart-contract/subscribe-to-academy"
-            }
-          ]
+          "path": "/courses/dev/02/introduction"
         },
         {
           "title": {
-            "en": "Smart Contract: Name",
-            "es": "Contrato Inteligente: Name",
-            "pt": "Contrato Inteligente: Name"
+            "en": "Remix",
+            "es": "Remix",
+            "pt": "Remix"
           },
-          "path": "/courses/dev/02/smart-contract-name",
-          "open": true,
-          "routes": [
-            {
-              "title": {
-                "en": "Project: Name Smart Contract",
-                "es": "Proyecto: Name Contratos Inteligentes",
-                "pt": "Projeto: Name Contratos Inteligentes"
-              },
-              "path": "/courses/dev/02/smart-contract-name/project-name-smart-contract"
-            },
-            {
-              "title": {
-                "en": "Web3 Providers",
-                "es": "Proveedores de Web3",
-                "pt": "Provedores Web3"
-              },
-              "path": "/courses/dev/02/smart-contract-name/web3-providers"
-            },
-            {
-              "title": {
-                "en": "Publish on RSK Testnet",
-                "es": "Publicar en RSK Testnet",
-                "pt": "Publicar em RSK Testnet"
-              },
-              "path": "/courses/dev/02/smart-contract-name/publish-on-rsk-testnet"
-            }
-          ]
+          "path": "/courses/dev/02/remix"
+        },
+        {
+          "title": {
+            "en": "Your first smart contract: name",
+            "es": "Tu primer contrato inteligente: name",
+            "pt": "Seu primeiro contrato inteligente: name"
+          },
+          "path": "/courses/dev/02/smart-contract-name"
+        },
+        {
+          "title": {
+            "en": "Deploy on RSK testnet",
+            "es": "Deploy en RSK testnet",
+            "pt": "Publicando na RSK testnet"
+          },
+          "path": "/courses/dev/02/publish-on-rsk-testnet"
+        },
+        {
+          "title": {
+            "en": "Subscribe to RSK academy",
+            "es": "Suscríbete a RSK academy",
+            "pt": "Inscreva-se na RSK academy"
+          },
+          "path": "/courses/dev/02/subscribe-to-academy"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "03 - transfers Using Smart Contracts",
+        "es": "03 - transferencias Mediante Contratos Inteligentes",
+        "pt": "03 - transferências usando Contratos Inteligentes"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Fundamentals",
+            "es": "Fundamentos",
+            "pt": "Fundamentos"
+          },
+          "path": "/courses/dev/03"
         },
         {
           "title": {
@@ -340,7 +156,7 @@
             "es": "Transferencias Mediante Contratos Inteligentes",
             "pt": "Transferências usando Contratos Inteligentes"
           },
-          "path": "/courses/dev/02/transfers-using-smart-contracts",
+          "path": "/courses/dev/03/transfers-using-smart-contracts",
           "open": true,
           "routes": [
             {
@@ -349,7 +165,7 @@
                 "es": "Pagadero",
                 "pt": "Pagável"
               },
-              "path": "/courses/dev/02/transfers-using-smart-contracts/payable",
+              "path": "/courses/dev/03/transfers-using-smart-contracts/payable",
               "new": true
             },
             {
@@ -358,17 +174,25 @@
                 "es": "Contrato a Contrato ABI",
                 "pt": "Contrato para Contratar ABI"
               },
-              "path": "/courses/dev/02/transfers-using-smart-contracts/contract-to-contract-abi"
+              "path": "/courses/dev/03/transfers-using-smart-contracts/contract-to-contract-abi"
             }
           ]
         },
+        {
+          "title": {
+            "en": "Interact with dApp",
+            "es": "Interactuar con dApp",
+            "pt": "Interagindo com dApp"
+          },
+          "path": "/courses/dev/02/interact-with-dapp"
+        },        
         {
           "title": {
             "en": "Interfaces",
             "es": "Interfaces",
             "pt": "Interfaces"
           },
-          "path": "/courses/dev/02/interfaces",
+          "path": "/courses/dev/03/interfaces",
           "open": true,
           "sort": true,
           "routes": [
@@ -378,7 +202,7 @@
                 "es": "Interactuar con Otros contratos",
                 "pt": "Interaja com Outros Contratos"
               },
-              "path": "/courses/dev/02/interfaces/interact-with-other-contracts"
+              "path": "/courses/dev/03/interfaces/interact-with-other-contracts"
             }
           ]
         }
