@@ -9,10 +9,11 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
-
-import { CodeBlock, IconsList, PropsTable } from '@/components/index'
 import { useRouter } from 'next/router'
 import { FiExternalLink } from 'react-icons/fi'
+
+import { CodeBlock, PropsTable } from '@/components/all'
+import { IconsList } from './IconsLists'
 
 const Pre = props => <chakra.div my='2em' borderRadius='sm' {...props} />
 

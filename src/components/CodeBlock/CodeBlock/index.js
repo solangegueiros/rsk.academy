@@ -1,26 +1,8 @@
-import {
-  Box,
-  Button,
-  useBreakpointValue,
-  useClipboard,
-  useColorModeValue,
-} from '@chakra-ui/react'
+import { Box, useClipboard, useColorModeValue } from '@chakra-ui/react'
 import React from 'react'
 
-import { Highlight } from '@/components/index'
-
-export const CopyButton = props => (
-  <Button
-    size={useBreakpointValue({ base: 'sm', sm: 'xs' })}
-    position='absolute'
-    textTransform='uppercase'
-    colorScheme={useColorModeValue('primary', 'light')}
-    top={useBreakpointValue({ base: '-1rem', sm: 4 })}
-    zIndex='1'
-    right={useBreakpointValue({ base: 0, sm: 4 })}
-    {...props}
-  />
-)
+import { Highlight } from '@/components/all'
+import { CopyButton } from '../CopyButton'
 
 export const CodeBlock = props => {
   const { className, children, viewlines, ln } = props

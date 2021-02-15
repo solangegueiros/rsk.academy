@@ -4,13 +4,8 @@ import { SkipNavContent, SkipNavLink } from '@chakra-ui/skip-nav'
 import { useRouter } from 'next/router'
 import { FaGithub } from 'react-icons/fa'
 
-import {
-  Container,
-  EditPageButton,
-  Header,
-  Seo,
-  PageTransition,
-} from '@/components/index'
+import { Container, Header, Seo, PageTransition } from '@/components/all'
+import { EditPageButton } from './EditPageButton'
 
 function useHeadingFocusOnRouteChange() {
   const router = useRouter()

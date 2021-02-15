@@ -3,25 +3,7 @@ import BaseHighlight, { defaultProps } from 'prism-react-renderer'
 import nightOwl from 'prism-react-renderer/themes/nightOwl'
 import nightOwlLight from 'prism-react-renderer/themes/nightOwlLight'
 import React from 'react'
-
-const REGEX = /{([\d,-]+)}/
-
-const calculateLinesToHighlight = meta => {
-  if (!REGEX.test(meta)) {
-    return () => false
-  }
-  const lineNumbers = REGEX.exec(meta)[1]
-    .split(`,`)
-    .map(v => v.split(`-`).map(x => parseInt(x, 10)))
-
-  return index => {
-    const lineNumber = index + 1
-    const inRange = lineNumbers.some(([start, end]) =>
-      end ? lineNumber >= start && lineNumber <= end : lineNumber === start,
-    )
-    return inRange
-  }
-}
+import { calculateLinesToHighlight } from './calculateLinesToHighligh'
 
 export const Highlight = ({
   codeString,

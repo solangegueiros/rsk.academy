@@ -23,8 +23,7 @@ export default {
   developer: 'Desenvolvedor',
   business: 'O Negócio',
   contract: {
-    mustConnect:
-      'Conectar sua wallet para interagir com o smart contract',
+    mustConnect: 'Conectar sua wallet para interagir com o smart contract',
     notDeployed: 'O smart contract não foi publicado nesta rede',
     getBalance: 'Consultar saldo',
     getThisBalance: 'Consultar saldo total da Academy Wallet',

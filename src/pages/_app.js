@@ -9,7 +9,7 @@ import theme from '@/theme/index'
 import siteConfig from '@/configs/site-config'
 import { Web3Provider } from '@/context/Web3Provider'
 
-const LocaleProvider = dynamic(() => import('../components/locale-provider'))
+const LocaleProvider = dynamic(() => import('../components/LocaleProvider'))
 
 function MyApp({ Component, pageProps }) {
   return (

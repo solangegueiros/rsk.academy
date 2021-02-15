@@ -1,7 +1,7 @@
 import * as React from 'react'
 import dynamic from 'next/dynamic'
 
-import { PageContainer } from '@/components/index'
+import { PageContainer } from '@/components/all'
 
 const MDXLayout = dynamic(() => import('./mdx'))
 
