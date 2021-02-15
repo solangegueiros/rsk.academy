@@ -1,7 +1,6 @@
 import { Container, Flex } from '@chakra-ui/react'
 
-import { Header } from '@/components/index'
-import Footer from './footer'
+import { Header, Footer } from '@/components/all'
 
 export const Layout = ({ children, fluid, ...rest }) => {
   return (

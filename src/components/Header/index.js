@@ -20,7 +20,7 @@ import {
   MobileNavContent,
   NavLink,
   Logo,
-} from '@/components/index'
+} from '@/components/all'
 
 const MainNavLinkGroup = props => {
   const { t } = useI18n()
@@ -41,7 +41,7 @@ const MainNavLinkGroup = props => {
     {
       href: '/admin',
       label: 'admin',
-    },    
+    },
   ]
 
   return (

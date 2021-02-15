@@ -6,7 +6,7 @@ import Link from 'next/link'
 import * as ComponentProps from '@chakra-ui/props-docs'
 import { theme } from '@chakra-ui/react'
 
-import { MdxComponents } from '@/components/index'
+import { MdxComponents } from '@/components/all'
 
 export function PropsTable({
   of,

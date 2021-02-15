@@ -16,10 +16,10 @@ import { useRouter } from 'next/router'
 import { useRef, useState, useEffect, forwardRef } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { RemoveScroll } from 'react-remove-scroll'
+import { useI18n } from 'next-localization'
 
 import { getRoutes } from '@/layouts/mdx'
-import { DarkModeSwitch, SidebarContent } from '@/components/index'
-import { useI18n } from 'next-localization'
+import { DarkModeSwitch, SidebarContent } from '@/components/all'
 
 export const MobileNavLink = ({ href, children }) => {
   const { pathname } = useRouter()

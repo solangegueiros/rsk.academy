@@ -1,7 +1,7 @@
 import { Heading } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
 
-import { Layout, Seo } from '@/components/index'
+import { Layout, Seo } from '@/components/all'
 
 const Portfolio = () => {
   const { t } = useI18n()

@@ -1,9 +1,8 @@
-import * as React from 'react'
 import { SimpleGrid } from '@chakra-ui/react'
-
-import { BlogPostCard, Layout } from '@/components/index'
-import { getBlogPosts } from '@/utils/get-blog-posts'
 import { useRouter } from 'next/router'
+
+import { BlogPostCard, Layout } from '@/components/all'
+import { getBlogPosts } from '@/utils/get-blog-posts'
 
 const BlogIndex = ({ posts }) => {
   const { locale } = useRouter()

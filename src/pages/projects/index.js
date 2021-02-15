@@ -1,8 +1,7 @@
 import { Heading, SimpleGrid } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
 
-import { Layout } from '@/components/index'
-import AcademyWallet from '@/components/contracts/AcademyWallet'
+import { Layout, AcademyWallet } from '@/components/all'
 
 const Projects = () => {
   const { t } = useI18n()

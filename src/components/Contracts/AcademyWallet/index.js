@@ -26,7 +26,7 @@ import AcademyWalletABI from '@/contracts/AcademyWallet.json'
 import { useRLogin } from '@/hooks/use-rLogin'
 import { useWeb3 } from '@/hooks/use-web3'
 
-const AcademyWallet = () => {
+export const AcademyWallet = () => {
   const { activate, chainId, isLoggedIn } = useRLogin()
   const [academyWalletContract, setAcademyWalletContract] = useState(null)
   const [balance, setBalance] = useState(null)

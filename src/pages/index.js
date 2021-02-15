@@ -11,10 +11,10 @@ import {
   Icon,
 } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
-
-import { Container, Layout, Seo } from '@/components/index'
-import { useGradient } from '@/hooks/use-gradient'
 import { FaConnectdevelop } from 'react-icons/fa'
+
+import { Container, Layout, Seo } from '@/components/all'
+import { useGradient } from '@/hooks/use-gradient'
 
 const Home = () => {
   const gradient1 = useGradient('to-r')

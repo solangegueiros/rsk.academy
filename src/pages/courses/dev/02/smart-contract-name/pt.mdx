@@ -3,7 +3,7 @@ title: 'Smart Contract Name'
 description: 'Smart Contract Name'
 ---
 
-Seu primeiro smart contract terá seu nome registrado nele, 
+Seu primeiro smart contract terá seu nome registrado nele,
 associando-o a sua wallet criada no último módulo.
 
 Ele será utilizado para sua inscrição na RSK Academy.
@@ -12,7 +12,7 @@ Desta forma será possível identificar os estudantes :)
 
 No futuro, também será utilizado em outros projetos do curso.
 
-Em diversos momentos do curso utilizamos a abordagem "faça primeiro e depois entenda o que foi feito", 
+Em diversos momentos do curso utilizamos a abordagem "faça primeiro e depois entenda o que foi feito",
 para que o aluno tenha o prazer de programar e entender na prática, com menos tempo exclusivo de teoria.
 Esta lição acontecerá desta forma.
 
@@ -62,13 +62,13 @@ E cole aqui:
 
 Este smart contract possui:
 
-* A variável privada `name` para armazenar seu nome
-* A variável pública `owner` para armazenar o endereço do criador do smart contract
-* `constructor`, que é executado apenas no momento da publicação do smart contract
-* A função `getName()` para retornar o nome armazenado na variável `name`
+- A variável privada `name` para armazenar seu nome
+- A variável pública `owner` para armazenar o endereço do criador do smart contract
+- `constructor`, que é executado apenas no momento da publicação do smart contract
+- A função `getName()` para retornar o nome armazenado na variável `name`
 
 > TODO
-explicar pragma, contract, tipos de variáveis, visibilidade, return
+> explicar pragma, contract, tipos de variáveis, visibilidade, return
 
 ## Atualize seu nome
 
@@ -86,8 +86,8 @@ Este será o resultado:
 
 ## Compile o smart contract
 
-Se você habilitou o auto-compile, 
-o smart contract já estará compilado e 
+Se você habilitou o auto-compile,
+o smart contract já estará compilado e
 aparecerá um sinal verde no 3o botão com a mensagem `compilation successful`.
 
 ![compilation successful](/img/courses/dev/02/smart-contract-name/image-06.png)
@@ -102,10 +102,10 @@ Se você não habilitou o auto-compile, siga estes passos:
 
 ## Publique na JavascriptVM
 
-Primeiro vamos publicar no ambiente `JavaScriptVM`, 
+Primeiro vamos publicar no ambiente `JavaScriptVM`,
 o simulador de Blockchain executado na memória do browser.
 
-No painel à esquerda, clique no botão `Deploy and run transactions`. 
+No painel à esquerda, clique no botão `Deploy and run transactions`.
 
 ![Deploy and run transactions](/img/courses/dev/02/smart-contract-name/image-08.png)
 
@@ -127,7 +127,7 @@ Na linha da transação, clique no símbolo ao lado do botão debug (do lado dir
 
 ## Interagindo com o smart contract
 
-Quando fazemos a publicação de um smart contract utilizando Remix, 
+Quando fazemos a publicação de um smart contract utilizando Remix,
 podemos encontrá-lo na parte de paixo à esquerda, no painel `deploy and run transactions`:
 
 ![deployed contracts](/img/courses/dev/02/smart-contract-name/image-12.png)
@@ -142,14 +142,14 @@ E também um botão `owner`.
 
 Mas... não criamos uma função `owner`. Qual a origem deste botão?
 
-Sempre que uma váriável com visibilidade pública é criada, 
-Solidity cria um "getter" para ela, 
+Sempre que uma váriável com visibilidade pública é criada,
+Solidity cria um "getter" para ela,
 ou seja, uma função que retorna seu valor.
 
-Este "getter" tem o próprio nome da variável. 
+Este "getter" tem o próprio nome da variável.
 Então, neste caso, ele é o botão `owner`.
 
-Botões azuis são as funções somente leitura (read-only) e não fazem nenhuma alteração no blockchain. 
+Botões azuis são as funções somente leitura (read-only) e não fazem nenhuma alteração no blockchain.
 Não gastamos gás quando fazemos uma chamada para este tipo de função.
 
 ### getName
@@ -174,14 +174,14 @@ Clicando na seta para baixo ao lado do botão Debug, é possível ver os detalhe
 ### owner
 
 O botão owner retorna o endereço de quem fez a publicação do smart contract.
-Ele foi definido dentro do `constructor`, como `msg.sender`, 
+Ele foi definido dentro do `constructor`, como `msg.sender`,
 que é o endereço utilizado para enviar a transação de criação do smart contract.
 
 Clique no botão `owner`
 
 ![owner](/img/courses/dev/02/smart-contract-name/image-17.png)
 
-Veja a lista de contas. 
+Veja a lista de contas.
 Você pode conferir que a conta retornada é a primeira da lista.
 
 ![first account](/img/courses/dev/02/smart-contract-name/image-20.png)
@@ -199,12 +199,11 @@ Clicando na seta para baixo ao lado do botão Debug, é possível ver os detalhe
 Em muitas situações, precisamos do endereço do smart contract para interagir com ele.
 
 > TODO
-Use AtAddress
+> Use AtAddress
 
 ## Considerações finais
 
 Você imaginava que era tão fácil utilizar Remix para criar um smart contract?
 
-Em breve vamos publicá-lo em uma rede de blockchain "de verdade" 
+Em breve vamos publicá-lo em uma rede de blockchain "de verdade"
 :)
-

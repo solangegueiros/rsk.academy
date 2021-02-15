@@ -2,21 +2,20 @@
 import * as chakraComponents from '@chakra-ui/react'
 import { MDXProvider } from '@mdx-js/react'
 
+import {
+  MdxComponents,
+  PageContainer,
+  Pagination,
+  Sidebar,
+  AcademyWallet,
+} from '@/components/all'
+
 import devSidebar from '@/configs/dev-sidebar.json'
 import businessSidebar from '@/configs/business-sidebar.json'
 import blogSidebar from '@/configs/blog-sidebar.json'
 
 import { findRouteByPath, removeFromLast } from '@/utils/find-route-by-path'
 import { getRouteContext } from '@/utils/get-route-context'
-
-import {
-  MdxComponents,
-  PageContainer,
-  Pagination,
-  Sidebar,
-} from '@/components/index'
-
-import AcademyWallet from '@/components/contracts/AcademyWallet'
 
 export function getRoutes(slug) {
   const configMap = {

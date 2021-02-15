@@ -10,7 +10,7 @@ import {
 import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
 
-import { Seo, Layout } from '@/components/index'
+import { Seo, Layout } from '@/components/all'
 
 const Courses = () => {
   const { t } = useI18n()

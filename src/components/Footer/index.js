@@ -9,9 +9,9 @@ import {
   Link,
   Button,
 } from '@chakra-ui/react'
-import { Container } from '@/components/index'
+import { Container } from '@/components/all'
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <Box bg='dark.600' color='dark.50' py={16}>
       <Container>

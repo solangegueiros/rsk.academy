@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import * as React from 'react'
 import _ from 'lodash'
 
-import { SidebarCategory, SidebarLink } from '@/components/index'
+import { SidebarCategory, SidebarLink } from '@/components/all'
 
 export const SidebarContent = props => {
   const { routes, pathname, contentRef } = props
