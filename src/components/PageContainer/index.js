@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useEffect } from 'react'
 import { Avatar, Box, chakra, Flex, HStack, Icon, Text } from '@chakra-ui/react'
 import { SkipNavContent, SkipNavLink } from '@chakra-ui/skip-nav'
@@ -73,6 +74,24 @@ export const PageContainer = props => {
       </Container>
     </>
   )
+}
+
+export const frontMatterType = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  editUrl: PropTypes.string,
+  author: PropTypes.shape({
+    avatarUrl: PropTypes.string,
+    name: PropTypes.string,
+    githubUrl: PropTypes.string,
+  }),
+}
+
+PageContainer.propTypes = {
+  frontmatter: PropTypes.shape(frontMatterType).isRequired,
+  children: PropTypes.node.isRequired,
+  sidebar: PropTypes.node,
+  pagination: PropTypes.node,
 }
 
 export default PageContainer

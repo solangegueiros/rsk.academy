@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { chakra, useColorModeValue } from '@chakra-ui/react'
 import BaseHighlight, { defaultProps } from 'prism-react-renderer'
 import nightOwl from 'prism-react-renderer/themes/nightOwl'
@@ -55,6 +56,13 @@ export const Highlight = ({
       )}
     </BaseHighlight>
   )
+}
+
+Highlight.propTypes = {
+  codeString: PropTypes.string.isRequired,
+  language: PropTypes.string,
+  metastring: PropTypes.string,
+  showLines: PropTypes.bool,
 }
 
 export default Highlight

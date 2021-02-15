@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types'
+import { forwardRef } from 'react'
 import { chakra, useColorModeValue } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
 
-const StyledLink = React.forwardRef(function StyledLink(props, ref) {
+const StyledLink = forwardRef(function StyledLink(props, ref) {
   const { isActive, ...rest } = props
 
   return (
@@ -31,7 +32,7 @@ const StyledLink = React.forwardRef(function StyledLink(props, ref) {
 })
 
 export const SidebarLink = props => {
-  const { href, icon, children, ...rest } = props
+  const { href, children, ...rest } = props
 
   const { pathname } = useRouter()
   const isActive = pathname === href
@@ -49,6 +50,15 @@ export const SidebarLink = props => {
       </NextLink>
     </chakra.div>
   )
+}
+
+StyledLink.propTypes = {
+  isActive: PropTypes.bool,
+}
+
+SidebarLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 export default SidebarLink

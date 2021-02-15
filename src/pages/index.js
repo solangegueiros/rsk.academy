@@ -22,7 +22,7 @@ const Home = () => {
 
   const { t } = useI18n()
   return (
-    <Layout fluid>
+    <Layout isStretched>
       <Seo title={t('home')} description='Rsk Academy' />
       <Center
         bg={useColorModeValue('primary.500', 'light.500')}

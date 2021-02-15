@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useState, createContext } from 'react'
 
 export const Web3ProviderContext = createContext({
@@ -21,4 +22,8 @@ export const Web3Provider = ({ children }) => {
       {children}
     </Web3ProviderContext.Provider>
   )
+}
+
+Web3Provider.propTypes = {
+  children: PropTypes.node.isRequired,
 }

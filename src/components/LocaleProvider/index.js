@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
 import { I18nProvider } from 'next-localization'
@@ -15,6 +16,10 @@ export const LocaleProvider = ({ children }) => {
       {children}
     </I18nProvider>
   )
+}
+
+LocaleProvider.propTypes = {
+  children: PropTypes.number.isRequired,
 }
 
 export default LocaleProvider

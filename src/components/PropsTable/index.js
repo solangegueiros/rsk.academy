@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-pascal-case */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable max-lines-per-function */
-import React from 'react'
+import PropTypes from 'prop-types'
+import React, { useMemo } from 'react'
 import Link from 'next/link'
 import * as ComponentProps from '@chakra-ui/props-docs'
 import { theme } from '@chakra-ui/react'
@@ -92,7 +93,7 @@ export function PropsTable({
     }
   }
 
-  const entries = React.useMemo(
+  const entries = useMemo(
     () =>
       Object.entries(info.props)
         .filter(([propName]) => {
@@ -163,6 +164,12 @@ Remove the use of <PropsTable of="${of}" /> for this component in the docs.`,
       </tbody>
     </MdxComponents.table>
   )
+}
+
+PropsTable.propTypes = {
+  omit: PropTypes.array,
+  only: PropTypes.array,
+  of: PropTypes.node,
 }
 
 export default PropsTable

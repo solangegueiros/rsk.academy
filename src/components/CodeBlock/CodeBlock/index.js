@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { Box, useClipboard, useColorModeValue } from '@chakra-ui/react'
 import React from 'react'
 
@@ -32,8 +33,11 @@ export const CodeBlock = props => {
   )
 }
 
-CodeBlock.defaultProps = {
-  mountStylesheet: false,
+CodeBlock.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  ln: PropTypes.string,
+  viewlines: PropTypes.bool,
 }
 
 export default CodeBlock
