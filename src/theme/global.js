@@ -5,7 +5,7 @@ export const styles = {
     body: {
       fontFamily: 'body',
       color: mode('dark.500', 'gray.100')(props),
-      bg: mode('gray.100', 'dark.500')(props),
+      bg: mode('gray.50', 'dark.500')(props),
       fontWeight: 400,
     },
     'h1, h2, h3, h4, a': {
