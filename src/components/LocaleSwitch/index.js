@@ -6,7 +6,6 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-
 export const LocaleSwitch = props => {
   const router = useRouter()
   const { locale, locales } = router

@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types'
 import { Container, Flex } from '@chakra-ui/react'
 
 import { Header, Footer } from '@/components/all'
 
-export const Layout = ({ children, fluid, ...rest }) => {
+export const Layout = ({ children, isStretched, ...rest }) => {
   return (
     <>
       <Flex minH='100vh' direction='column' {...rest}>
@@ -11,8 +12,8 @@ export const Layout = ({ children, fluid, ...rest }) => {
           as={Flex}
           flexDirection='column'
           flex='1'
-          px={fluid && 0}
-          maxW={fluid ? 'full' : 1200}
+          px={isStretched && 0}
+          maxW={isStretched ? 'full' : 1200}
         >
           {children}
         </Container>
@@ -20,6 +21,11 @@ export const Layout = ({ children, fluid, ...rest }) => {
       <Footer />
     </>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.number.isRequired,
+  isStretched: PropTypes.bool,
 }
 
 export default Layout

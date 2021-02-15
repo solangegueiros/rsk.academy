@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { chakra, useColorModeValue } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -29,6 +30,10 @@ export const NavLink = props => {
       />
     </NextLink>
   )
+}
+
+NavLink.propTypes = {
+  href: PropTypes.string.isRequired,
 }
 
 export default NavLink

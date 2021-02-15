@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { chakra, Icon, Stack, Link } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
 import { MdEdit } from 'react-icons/md'
@@ -20,4 +21,6 @@ export const EditPageButton = ({ href }) => {
   )
 }
 
-export default EditPageButton
+EditPageButton.propTypes = {
+  href: PropTypes.string.isRequired,
+}

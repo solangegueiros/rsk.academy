@@ -1,37 +1,10 @@
-import { Link, SimpleGrid, Text, useColorModeValue } from '@chakra-ui/react'
+import PropTypes from 'prop-types'
+import { SimpleGrid } from '@chakra-ui/react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
-import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { useI18n } from 'next-localization'
 
-export const PaginationLink = props => {
-  const { label, href, children, ...rest } = props
-
-  return (
-    <NextLink href={href} passHref>
-      <Link
-        _hover={{
-          textDecor: 'none',
-        }}
-        flex='1'
-        borderRadius='md'
-        {...rest}
-      >
-        <Text fontSize='sm' px='2'>
-          {label}
-        </Text>
-        <Text
-          mt='1'
-          fontSize='lg'
-          fontWeight='bold'
-          color={useColorModeValue('primary.500', 'light.500')}
-        >
-          {children}
-        </Text>
-      </Link>
-    </NextLink>
-  )
-}
+import { PaginationLink } from './PaginationLink'
 
 export const Pagination = ({ previous, next, ...rest }) => {
   const { locale, defaultLocale } = useRouter()
@@ -73,6 +46,11 @@ export const Pagination = ({ previous, next, ...rest }) => {
       )}
     </SimpleGrid>
   )
+}
+
+Pagination.propTypes = {
+  previous: PropTypes.string,
+  next: PropTypes.string,
 }
 
 export default Pagination

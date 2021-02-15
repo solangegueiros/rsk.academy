@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { TimeIcon } from '@chakra-ui/icons'
 import {
   Avatar,
@@ -56,4 +57,20 @@ export const BlogPostCard = ({ post }) => {
       </Box>
     </Link>
   )
+}
+
+export const postType = {
+  date: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  author: PropTypes.shape({
+    avatarUrl: PropTypes.string,
+    name: PropTypes.string,
+  }),
+  readTimeMinutes: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+}
+
+BlogPostCard.propTypes = {
+  post: PropTypes.shape(postType).isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string),
 }

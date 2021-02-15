@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { Box, Text, useColorModeValue } from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
 
@@ -62,6 +63,20 @@ export const SidebarCategory = props => {
       </Box>
     </Box>
   )
+}
+
+SidebarCategory.propTypes = {
+  isMobile: PropTypes.bool,
+  title: PropTypes.string,
+  selected: PropTypes.bool,
+  opened: PropTypes.bool,
+  children: PropTypes.number.isRequired,
+  contentRef: PropTypes.oneOf([
+    PropTypes.object,
+    PropTypes.shape({
+      current: PropTypes.any,
+    }),
+  ]),
 }
 
 export default SidebarCategory

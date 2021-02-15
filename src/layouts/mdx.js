@@ -1,4 +1,5 @@
 /* eslint-disable import/extensions */
+import PropTypes from 'prop-types'
 import * as chakraComponents from '@chakra-ui/react'
 import { MDXProvider } from '@mdx-js/react'
 
@@ -8,6 +9,7 @@ import {
   Pagination,
   Sidebar,
   AcademyWallet,
+  frontMatterType,
 } from '@/components/all'
 
 import devSidebar from '@/configs/dev-sidebar.json'
@@ -58,6 +60,11 @@ function MDXLayout({ frontmatter, children }) {
       </PageContainer>
     </MDXProvider>
   )
+}
+
+MDXLayout.propTypes = {
+  frontmatter: PropTypes.shape(frontMatterType).isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 export default MDXLayout

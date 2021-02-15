@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { ChakraProvider } from '@chakra-ui/react'
 import { Provider as ReduxProvider } from 'react-redux'
 import { DefaultSeo } from 'next-seo'
@@ -37,6 +38,11 @@ function MyApp({ Component, pageProps }) {
       </LocaleProvider>
     </>
   )
+}
+
+MyApp.propTypes = {
+  Component: PropTypes.node.isRequired,
+  pageProps: PropTypes.object,
 }
 
 export default MyApp
