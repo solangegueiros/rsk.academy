@@ -41,7 +41,7 @@ const Home = () => {
               Because Knowledge is Freedom
             </Heading>
             <Text fontSize='1.4em' maxW='container.md'>
-              Educationg the new generations about Bitcoin, blockchain and open
+              Educating the new generations about Bitcoin, blockchain and open
               source technologies are the best way to empower them with the
               tools to build a better world.
             </Text>
@@ -132,10 +132,13 @@ const Home = () => {
 
       <Container py={16} mb={16}>
         <VStack>
-          <Heading>Title</Heading>
+          <Heading>Partnerships - white label courses</Heading>
           <Text fontSize='1.4em'>
-            Non-technical professionals willing to work on the blockchain
-            industry and/or use blockchain applications.
+            White label: The partner can use its own trademark in the courses 
+            while IOV provides the content and examination tools.
+            <br/>
+            Training mentors: IOV offers training for in-house mentors 
+            who can help students during the courses.
           </Text>
         </VStack>
       </Container>
