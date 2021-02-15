@@ -1,0 +1,150 @@
+---
+title: 'Publicando na RSK testnet'
+description: 'Publish on RSK Testnet'
+---
+
+## Pré requisitos
+
+1. Selecione a RSK network em sua web wallet, Nifty ou Metamask.
+2. Tenha tR-BTC na sua carteira.
+3. No Remix, em `Environment`, garanta que selecionou a opção `Injected Web3`. 
+
+![publish on RSK testnet](/img/courses/dev/02/publish-on-rsk-testnet/image-23.png)
+
+Primeiro, tenha certeza que selecionou RSK network em sua web wallet, Nifty ou Metamask.
+
+Verifique se tem tR-BTC na sua carteira, 
+dado que é necessário para pagar as taxas das transações para publicar smart contracts.
+Caso não tenha, siga as instruções em: [RSK faucet](/courses/dev/01/rsk-faucet).
+
+Não se esqueça de selecionar a opção `Injected Web3` em `Environment`, localizado em `Deploy and run transactions` no Remix.
+
+## Publicar um contrato inteligente na RSK testnet
+
+No Remix, vá no 4o ícone: `Deploy and run transactions`.
+
+Como nós só temos um smart contract, ele é automaticamente selecionado na lista.
+
+![Contract Name.sol](/img/courses/dev/02/publish-on-rsk-testnet/image-24.png)
+
+Clique no botão `Deploy`.
+
+Sua web wallet abrirá uma janela do tipo "popup" para confirmar a transação configurada pelo Remix para fazer a publicação do smart contract.
+
+![Nifty popup](/img/courses/dev/02/publish-on-rsk-testnet/image-25.png)
+
+Clique em confirm / submit.
+
+Na parte abaixo, à direita, aparecerá a mensagem: `creation of Name pending...`
+
+Um bloco na rede RSK leva, em média, 30 segundos para ser minerado, 
+então devemos esperar este tempo.
+Quando a transação for confirmada na rede, sua web wallet apresentará uma notificação como esta:
+
+![transaction confirmed](/img/courses/dev/02/publish-on-rsk-testnet/image-27.png)
+
+Depois podemos verificar os detalhes da transação no terminal do Remix:
+
+![check the transaction](/img/courses/dev/02/publish-on-rsk-testnet/image-28.png)
+
+Copie o hash da transação para verificá-la no blockchain explorer
+
+![transaction hash](/img/courses/dev/02/publish-on-rsk-testnet/image-29.png)
+
+Neste exemplo, o hash da transação é:
+
+```
+0x050e216d2008a896f2e7799fee349c582f3e19bb6017e59cd8b323647624f999
+```
+
+## RSK Explorer
+
+> TODO
+blockchain explorer definition
+
+O RSK explorer é o blockchain explorer para as transações da RSK. 
+Estamos utilizando o explorer da Testnet:
+
+[explorer.testnet.rsk.co](https://explorer.testnet.rsk.co/)
+
+![explorer](/img/courses/dev/02/publish-on-rsk-testnet/image-30.png)
+
+Cole o hash da transação no campo de pesquisa, no alto da tela
+
+![explorer search](/img/courses/dev/02/publish-on-rsk-testnet/image-31.png)
+
+![explorer search transaction](/img/courses/dev/02/publish-on-rsk-testnet/image-32.png)
+
+Este é o resultado:
+
+![explorer transaction result](/img/courses/dev/02/publish-on-rsk-testnet/image-33.png)
+
+Você pode verificar meu exemplo aqui: [`0x050e216d2008a896f2e7799fee349c582f3e19bb6017e59cd8b323647624f999`](https://explorer.testnet.rsk.co/tx/0x050e216d2008a896f2e7799fee349c582f3e19bb6017e59cd8b323647624f999)
+
+## Endereço do seu smart contract
+
+Copie o endereço do seu smart contract e guarde-o. 
+Ele será utilizado em outros momentos do curso.
+
+Existem algumas maneiras de copiá-lo:
+
+1. No Remix
+
+Depois que o smart contract for publicado com o Remix, 
+podemos ver sua instância no painel à esquerda, na parte debaixo do item `deploy and run transactions`.
+
+Vá na seção `deployed contracts`, localize o smart contract e clique no ícone de cópia.
+
+![deployed contracts copy](/img/courses/dev/02/publish-on-rsk-testnet/image-34.png)
+
+2. No RSK explorer
+
+Localize a linha `Contract Address`, e clique no ícone de cópia.
+
+![transaction copy](/img/courses/dev/02/publish-on-rsk-testnet/image-35.png)
+
+Este é o endereço do meu smart contract name:
+
+```
+0x888be03Bbd234D88dBa228Ef04A53950A2006345
+```
+
+## Interagindo com o smart contract
+
+Da mesma foram que já interagimos com o smart contract publicado na JavascriptVM, 
+também podemos usar o Remix para interagir com um smart contract publicado em qualquer rede.
+
+A única alteração é o Environment, ou seja, a rede conectada, que agora é `Injected Web3`.
+
+Em `deployed contracts`, no smart contract, clique em `>` para enxergar os detalhes:
+
+Clique nos botões e veja os resultados:
+
+![Name buttons](/img/courses/dev/02/publish-on-rsk-testnet/image-36.png)
+
+Você também pode ver os detalhes das transações no terminal do Remix:
+
+![call details](/img/courses/dev/02/publish-on-rsk-testnet/image-37.png)
+
+Confira que o `owner` é a conta seleciona na sua web wallet.
+
+## Transações na web wallet
+
+Também é possível verificar a transação na web wallet:
+
+![nifty transaction](/img/courses/dev/02/publish-on-rsk-testnet/image-38.png)
+
+## At Address
+
+Interagindo com um smart contract já publicado na rede.
+
+> TODO
+Interagir com o meu smart contract Name
+
+## Considerações finais
+
+Parabéns!
+Agora você já sabe publicar um smart contract em uma rede de blockchain "de verdade", e interagir com ele.
+
+Na próxima lição você aprenderá como seu smart contract pode interagir com outros 
+:)

@@ -1,5 +1,6 @@
 export default {
   about: 'About',
+  admin: 'Admin',
   articles: 'Articles',
   home: 'Home',
   search: 'Search',
@@ -26,6 +27,7 @@ export default {
       'You must connect your wallet in order to interact with smart contract',
     notDeployed: 'Smart contract has not been deployed to detected network',
     getBalance: 'Get Balance',
+    getThisBalance: 'Get Academy Wallet total balance',
     balanceIs: 'Balance is',
   },
 }

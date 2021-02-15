@@ -38,6 +38,10 @@ const MainNavLinkGroup = props => {
       href: '/blog',
       label: 'blog',
     },
+    {
+      href: '/admin',
+      label: 'admin',
+    },    
   ]
 
   return (

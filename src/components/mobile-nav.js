@@ -126,6 +126,7 @@ export const MobileNavContent = props => {
                       {t('projects')}
                     </MobileNavLink>
                     <MobileNavLink href='/blog'>{t('blog')}</MobileNavLink>
+                    <MobileNavLink href='/admin'>{t('admin')}</MobileNavLink>
                   </HStack>
                 </VStack>
               </Box>
