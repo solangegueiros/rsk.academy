@@ -1,0 +1,96 @@
+---
+title: 'Deploy en RSK testnet'
+description: 'Publish on RSK Testnet'
+---
+
+## Requisitos
+
+1. Selecciones la red RSK en la billetera web, Nifty o Metamask.
+2. Tenga tR-BTC en su billetera.
+3. En Remix, en `Deploy and run transactions`, under `Environment`, asegúrese de haber seleccionado la opción `Injected Web3`.
+
+En primer lugar, asegúrese de haber seleccionado la red RSK seleccionada la billetera web, Nifty o Metamask ...
+
+Ademas asegúrese de tener tR-BTC en su billetera,
+ya que esto es necesario para pagar las tarifas del gas al implementar los contratos inteligentes.
+Para hacerlo, siga las instrucciones relacionadas en: [RSK faucet](/courses/dev/01/rsk-faucet).
+
+No olvide seleccionar la opción `Injected Web3` en `Environment`, que se encuentra en `Deploy and run transactions` en Remix.
+
+## Deploy de un contrato inteligente en RSK testnet
+
+En el panel lateral izquierdo, ubique el cuarto botón: `Deploy and run transactions` 
+
+Dado que solo tenemos un contrato inteligente, se selecciona automáticamente de la lista.
+
+![SimpleStorage.sol](/images/image-22.png)
+
+Haz clic en el botón `Deploy`.
+
+![Deploy and run transactions](/images/image-05.png)
+
+Su billetera web abrirá una ventana emergente para confirmar la transacción configurada por Remix para publicar el contrato inteligente.
+
+Haz clic en confirmar - confirm.
+
+En la parte inferior, a la derecha, aparecerá el mensaje: `creation of Name pending...`
+
+![creation of Name pending](/images/image-24.png)
+
+![transaction confirmed](/images/image-25.png)
+
+Una vez confirmada, podemos verificarla:
+
+![check the transaction](/images/image-26.png)
+
+Haz clic en la línea de la transacción o en el símbolo junto al botón `Debug` (en el lado derecho del botón) para ver los detalles:
+
+![transaction details](/images/image-27.png)
+
+Copie el hash de la transacción para verificarla en el blockchain explorer
+
+![transaction hash](/images/image-28.png)
+
+![transaction hash copied](/images/image-29.png)
+
+En este ejemplo, el hash de la transacción es:
+
+`0x419c4b17ec0bf59568d9b5f5c7f0e4678039f52b9c644c2914ccd0bd2bb331da`
+
+## RSK Explorer
+
+El RSK explorer es el explorador de blockchain para transacciones RSK.
+
+Vamos a usar el explorador de testnet:
+
+[https://explorer.testnet.rsk.co/](https://explorer.testnet.rsk.co/)
+
+![explorer](/images/image-32.png)
+
+Pega el hash de la transacción en el campo de búsqueda (search), en la parte superior de la pantalla
+
+![search](/images/image-33.png)
+
+![search transaction](/images/image-34.png)
+
+Este es el resultado:
+
+![explorer transaction result](/images/image-35.png)
+
+Puedes verificar mi ejemplo en este link:
+
+[https://explorer.testnet.rsk.co/tx/0x419c4b17ec0bf59568d9b5f5c7f0e4678039f52b9c644c2914ccd0bd2bb331da](https://explorer.testnet.rsk.co/tx/0x419c4b17ec0bf59568d9b5f5c7f0e4678039f52b9c644c2914ccd0bd2bb331da)
+
+
+# Interactuar con el contrato inteligente
+
+Cuando hace deploy de un contrato inteligente en Remix, 
+podemos verlo en el panel izquierdo en Deploy and run transactions.
+
+Haz clic en el botón Copiar en el lado derecho del contrato inteligente para copiar su dirección. 
+Lo necesitaremos para usarlo después.
+
+![Copy](/images/image-06.png)
+
+En mi publicación, la dirección es `0xb5a9b7dA0ffcD59fDE4987Ff361eFB981Bb819F7`.
+
