@@ -13,7 +13,7 @@ export const reducers = {
         portfolioList,
         studentActiveClassName,
         classStudentInfo,
-        name,
+        studentName,
       },
     },
   ) => {
@@ -25,7 +25,7 @@ export const reducers = {
     state.portfolioList = portfolioList
     state.studentActiveClassName = studentActiveClassName
     state.classStudentInfo = classStudentInfo
-    state.name = name
+    state.studentName = studentName
     state.isLoading = false
   },
   resetProfile: () => initialState,

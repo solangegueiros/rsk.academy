@@ -30,9 +30,7 @@ export const useRLogin = () => {
     supportedChains,
   } = useSelector(state => state.identity)
   const web3Context = useContext(Web3ProviderContext)
-  const {
-    contractActions: { loadContract },
-  } = useContext(ContractContext)
+  const { loadContract } = useContext(ContractContext)
   const web3 = useWeb3()
   const dispatch = useDispatch()
   const [isLoggedIn, setIsLoggedIn] = useState(!!web3Context?.provider)
@@ -50,10 +48,15 @@ export const useRLogin = () => {
 
   useEffect(() => {
     if (account && chainId) {
-      ;(async function load() {
+      ;(async function loadSmartContracts() {
         // Load AcademyStudentsSC
         const AcademyStudents = getContract(AcademyStudentsAbi, chainId, web3)
         loadContract(AcademyStudents)
+
+        if (!AcademyStudents.address) {
+          console.log('AcademyStudent is not deployed to detected network!')
+          return
+        }
 
         // Load MasterNameSC
         const MasterName = getContract(MasterNameAbi, chainId, web3)
@@ -134,7 +137,7 @@ export const useRLogin = () => {
               portfolioList,
               studentActiveClassName,
               classStudentInfo,
-              name: studentName,
+              studentName,
             }),
           )
         }

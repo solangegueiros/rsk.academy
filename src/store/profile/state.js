@@ -7,5 +7,5 @@ export const initialState = {
   portfolioList: null,
   studentActiveClassName: null,
   classStudentInfo: null,
-  name: null,
+  studentName: null,
 }

@@ -76,7 +76,13 @@ export const ContractProvider = ({ children }) => {
   }
 
   return (
-    <ContractContext.Provider value={{ contractState, contractActions }}>
+    <ContractContext.Provider
+      value={{
+        allContracts: Object.values(contractState),
+        ...contractState,
+        ...contractActions,
+      }}
+    >
       {children}
     </ContractContext.Provider>
   )
