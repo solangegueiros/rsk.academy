@@ -23,72 +23,132 @@ In Remix, on the left side, locate the fourth button: `Deploy and run transactio
 
 For now we have only one smart contract, so it is automatically selected in the dropdown list.
 
-![SimpleStorage.sol](/images/image-22.png)
+![Contract Name.sol](/img/courses/dev/02/publish-on-rsk-testnet/image-24.png)
 
 Click the button `Deploy`.
-
-![Deploy and run transactions](../../images/frontend-web3-injected/image-05.png)
 
 It will open a popup window on the web wallet,
 to confirm the transaction set up by Remix to publish the smart contract.
 
-Click confirm.
+![Nifty popup](/img/courses/dev/02/publish-on-rsk-testnet/image-25.png)
+
+Click confirm / submit.
 
 At bottom right, we can check the message: `creation of Name pending...`
 
-![creation of Name pending](/images/image-24.png)
+A block in the RSK network takes, on average, 30 seconds to be mined,
+so we must wait for this time.
+When the transaction is confirmed on the network, 
+your web wallet will display a notification like this:
 
-![transaction confirmed](/images/image-25.png)
+![transaction confirmed](/img/courses/dev/02/publish-on-rsk-testnet/image-27.png)
 
-Once it is confirmed, we can check it:
+Once it is confirmed, we can check the transaction's details on Remix terminal:
 
-![check the transaction](/images/image-26.png)
-
-Click on the transaction line or the symbol next to the `Debug` button (at the right side), to see more details of the transaction:
-
-![transaction details](/images/image-27.png)
+![check the transaction](/img/courses/dev/02/publish-on-rsk-testnet/image-28.png)
 
 Copy the transaction hash to verify it on the blockchain explorer
 
-![transaction hash](/images/image-28.png)
-
-![transaction hash copied](/images/image-29.png)
+![transaction hash](/img/courses/dev/02/publish-on-rsk-testnet/image-29.png)
 
 In this example, the transaction hash is:
 
-`0x419c4b17ec0bf59568d9b5f5c7f0e4678039f52b9c644c2914ccd0bd2bb331da`
+```
+0x050e216d2008a896f2e7799fee349c582f3e19bb6017e59cd8b323647624f999
+```
 
 ## RSK Explorer
+
+> TODO
+> blockchain explorer definition
 
 The RSK explorer is the blockchain explorer for RSK transactions.
 We will use the Testnet explorer:
 
 [explorer.testnet.rsk.co](https://explorer.testnet.rsk.co/)
 
-![explorer](../../images/remix-and-metamask-with-rsk-testnet/image-30.png)
+![explorer](/img/courses/dev/02/publish-on-rsk-testnet/image-30.png)
 
 Past the transaction hash at search field, at the top of the screen
 
-![search](../../images/remix-and-metamask-with-rsk-testnet/image-31.png)
+![explorer search](/img/courses/dev/02/publish-on-rsk-testnet/image-31.png)
 
-![search transaction](../../images/remix-and-metamask-with-rsk-testnet/image-32.png)
+![explorer search transaction](/img/courses/dev/02/publish-on-rsk-testnet/image-32.png)
 
 This is the result:
 
-![transaction result](../../images/remix-and-metamask-with-rsk-testnet/image-33.png)
+![explorer transaction result](/img/courses/dev/02/publish-on-rsk-testnet/image-33.png)
 
-You can verify my example at: [`0x419c4b17ec0bf59568d9b5f5c7f0e4678039f52b9c644c2914ccd0bd2bb331da`](https://explorer.testnet.rsk.co/tx/0x419c4b17ec0bf59568d9b5f5c7f0e4678039f52b9c644c2914ccd0bd2bb331da)
+You can verify my example at: 
+[`0x050e216d2008a896f2e7799fee349c582f3e19bb6017e59cd8b323647624f999`](https://explorer.testnet.rsk.co/tx/0x050e216d2008a896f2e7799fee349c582f3e19bb6017e59cd8b323647624f999)
+
+## Smart contract address
+
+Copy the address of your smart contract and save it.
+It will be used at other times during the course.
+
+There are a few ways to copy it:
+
+1. No Remix
+
+After the smart contract is published using Remix,
+we can see your instance in the left panel, at the bottom of `deploy and run transactions`.
+
+Go to the section `deployed contracts`, locate the smart contract and click the copy icon.
+
+![deployed contracts copy](/img/courses/dev/02/publish-on-rsk-testnet/image-34.png)
+
+2. No RSK explorer
+
+Locate the `Contract Address` line, and click the copy icon.
+
+![transaction copy](/img/courses/dev/02/publish-on-rsk-testnet/image-35.png)
+
+This is the address of my smart contract name:
+
+```
+0x888be03Bbd234D88dBa228Ef04A53950A2006345
+```
 
 ## Interact with the smart contract
 
-When a smart contract is deployed with Remix, we can see it in the left panel under deploy and run transactions.
+We have already interacted with the smart contract published in JavascriptVM,
+and we can also use Remix to interact with a smart contract published on any network.
 
-Click on the copy button at the right side of the smart contract to copy the address of the smart contract. We will need it for use later.
+The only change is the `Environment`, that is, the connected network, which is now `Injected Web3`.
 
-> UPDATE
+In `deployed contracts` section, in the smart contract, 
+click the symbol `>` to see the datails.
 
-![Copy](../../images/frontend-web3-injected/image-06.png)
+Clock the buttons and check it out the results:
 
-![smart contract address](../../images/frontend-web3-injected/image-07.png)
+![Name buttons](/img/courses/dev/02/publish-on-rsk-testnet/image-36.png)
 
-In my example, the contract address is `0xc864D0fef177A69aFa8E302A1b90e450910A4c3E`.
+You can also see the details of the transactions in the Remix terminal:
+
+![call details](/img/courses/dev/02/publish-on-rsk-testnet/image-37.png)
+
+Check that the `owner` is the account selected in your web wallet.
+
+## Transactions on web wallet 
+
+You can also check the transaction on the web wallet:
+
+![nifty transaction](/img/courses/dev/02/publish-on-rsk-testnet/image-38.png)
+
+## At Address
+
+Interacting with a smart contract already published on the network.
+
+> TODO
+> Interact with my smart contract Name
+
+## Final considerations
+
+Congratulations!
+
+Now you know how to publish a smart contract on a "real" blockchain network, and interact with it.
+
+In the next lesson you will learn how your smart contract can interact with others
+:)
+
