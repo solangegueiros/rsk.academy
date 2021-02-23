@@ -31,12 +31,8 @@ const MainNavLinkGroup = props => {
       label: 'courses',
     },
     {
-      href: '/projects',
-      label: 'projects',
-    },
-    {
-      href: '/blog',
-      label: 'blog',
+      href: '/portfolio',
+      label: 'portfolio',
     },
     {
       href: '/admin',

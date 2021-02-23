@@ -19,7 +19,7 @@ export const LocaleProvider = ({ children }) => {
 }
 
 LocaleProvider.propTypes = {
-  children: PropTypes.number.isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 export default LocaleProvider

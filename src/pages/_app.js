@@ -9,6 +9,7 @@ import store from '@/store/store'
 import theme from '@/theme/index'
 import siteConfig from '@/configs/site-config'
 import { Web3Provider } from '@/context/Web3Provider'
+import { ContractProvider } from '@/context/ContractProvider'
 
 const LocaleProvider = dynamic(() => import('../components/LocaleProvider'))
 
@@ -29,11 +30,13 @@ function MyApp({ Component, pageProps }) {
       <DefaultSeo {...siteConfig.seo} />
       <LocaleProvider>
         <Web3Provider>
-          <ReduxProvider store={store}>
-            <ChakraProvider theme={theme}>
-              <Component {...pageProps} />
-            </ChakraProvider>
-          </ReduxProvider>
+          <ContractProvider>
+            <ReduxProvider store={store}>
+              <ChakraProvider theme={theme}>
+                <Component {...pageProps} />
+              </ChakraProvider>
+            </ReduxProvider>
+          </ContractProvider>
         </Web3Provider>
       </LocaleProvider>
     </>
@@ -41,7 +44,7 @@ function MyApp({ Component, pageProps }) {
 }
 
 MyApp.propTypes = {
-  Component: PropTypes.node.isRequired,
+  Component: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
   pageProps: PropTypes.object,
 }
 

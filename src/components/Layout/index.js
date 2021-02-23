@@ -24,7 +24,7 @@ export const Layout = ({ children, isStretched, ...rest }) => {
 }
 
 Layout.propTypes = {
-  children: PropTypes.number.isRequired,
+  children: PropTypes.node.isRequired,
   isStretched: PropTypes.bool,
 }
 
