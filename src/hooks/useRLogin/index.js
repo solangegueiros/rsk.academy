@@ -30,6 +30,7 @@ export const useRLogin = () => {
   const {
     account,
     chainId,
+    isAdmin,
     error,
     isUnsupportedChainError,
     supportedChains,
@@ -193,6 +194,7 @@ export const useRLogin = () => {
   return {
     account,
     chainId,
+    isAdmin,
     isUnsupportedChainError,
     activate,
     deactivate,
