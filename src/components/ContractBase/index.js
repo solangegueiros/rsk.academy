@@ -23,10 +23,6 @@ export const ContractBase = ({ contract, children }) => {
   const color = useColorModeValue('primary.500', 'light.500')
   const { t } = useI18n()
 
-  console.log('chainId', chainId)
-
-  console.log('contract', contract)
-
   return (
     <Box
       bg={useColorModeValue('white', 'dark.400')}

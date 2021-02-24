@@ -74,7 +74,6 @@ export const AcademyWalletAdmin = () => {
   }
 
   const getThisBalance = async () => {
-    console.log('getThisBalance')
     try {
       const res = await academyWalletContract.methods.thisBalance().call()
       setThisBalance(res)

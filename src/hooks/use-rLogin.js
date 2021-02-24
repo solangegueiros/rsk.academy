@@ -54,7 +54,7 @@ export const useRLogin = () => {
         loadContract(AcademyStudents)
 
         if (!AcademyStudents.address) {
-          console.log('AcademyStudent is not deployed to detected network!')
+          console.warn('AcademyStudent is not deployed to detected network!')
           return
         }
 
