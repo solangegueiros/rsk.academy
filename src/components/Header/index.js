@@ -31,7 +31,10 @@ const MainNavLinkGroup = props => {
     <HStack spacing='4' {...props}>
       <NavLink href='/courses'>{t('courses')}</NavLink>
       {isLoggedIn && !isAdmin && (
-        <NavLink href='/portfolio'>{t('portfolio')}</NavLink>
+        <>
+          <NavLink href='/portfolio'>{t('portfolio')}</NavLink>
+          <NavLink href='/profile'>{t('profile')}</NavLink>
+        </>
       )}
       {isAdmin && <NavLink href='/admin'>{t('admin')}</NavLink>}
     </HStack>
