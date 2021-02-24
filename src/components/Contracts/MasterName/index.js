@@ -26,9 +26,9 @@ export const MasterName = () => {
         .once('receipt', receipt => {
           console.log('receipt', receipt)
         })
-        .catch(err => console.log('err', err))
+        .catch(err => console.error('err', err))
     } catch (error) {
-      console.log('error', error)
+      console.error('error', error)
     }
   }
   const handleDeleteName = () => {
@@ -39,13 +39,13 @@ export const MasterName = () => {
         .once('receipt', receipt => {
           console.log('transaction receipt: ', receipt)
         })
-        .catch(err => console.log('err', err))
+        .catch(err => console.error('err', err))
     } catch (err) {
-      console.log('err', err)
+      console.error('err', err)
     }
   }
 
-  return contract ? (
+  return (
     <ContractBase contract={contract}>
       <VStack spacing={4}>
         <Input
@@ -73,8 +73,6 @@ export const MasterName = () => {
         </ButtonGroup>
       </VStack>
     </ContractBase>
-  ) : (
-    <p>Loading</p>
   )
 }
 

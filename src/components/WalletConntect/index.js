@@ -13,7 +13,8 @@ import { FiLogOut } from 'react-icons/fi'
 
 import { useRLogin } from '@/hooks/use-rLogin'
 import { Web3ProviderContext } from '@/context/Web3Provider'
-import { NETWORK_LABELS } from '@/constants/supported-chains'
+import { NETWORK_LABELS } from '@/constants/constants'
+import { trimAddress } from '@/utils/trim-address'
 
 export const WalletConnect = () => {
   const {
@@ -69,9 +70,7 @@ export const WalletConnect = () => {
             leftIcon={!hasCopied && <MdContentCopy />}
             isTruncated
           >
-            {hasCopied
-              ? t('copied')
-              : `${account.slice(0, 4)}...${account.slice(account.length - 4)}`}
+            {hasCopied ? t('copied') : trimAddress(account)}
           </Button>
           <Tooltip hasArrow label={t('logout')}>
             <IconButton ml='-1px' icon={<FiLogOut />} onClick={deactivate} />

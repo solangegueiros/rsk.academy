@@ -1,22 +1,19 @@
 import { initialState } from './state'
 
 export const reducers = {
-  loadProfile: (
-    state,
-    {
-      payload: {
-        index,
-        ownerAddress,
-        portfolioAddress,
-        activeClassAddress,
-        studentClasses,
-        portfolioList,
-        studentActiveClassName,
-        classStudentInfo,
-        studentName,
-      },
-    },
-  ) => {
+  loadProfile: (state, { payload }) => {
+    const {
+      index,
+      ownerAddress,
+      portfolioAddress,
+      activeClassAddress,
+      studentClasses,
+      portfolioList,
+      studentActiveClassName,
+      classStudentInfo,
+      studentName,
+    } = payload
+
     state.index = index
     state.ownerAddress = ownerAddress
     state.portfolioAddress = portfolioAddress

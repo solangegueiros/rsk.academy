@@ -27,10 +27,19 @@ const Portfolio = () => {
           <Heading>Contracts</Heading>
           {JSON.stringify(
             allContracts.map(
-              ({ name, address, contract, deployedNetworks }) => ({
+              ({
+                name,
+                address,
+                contract,
+                deployedNetworks,
+                isDeployedOnCurrentNetwork,
+              }) => ({
                 [name]: {
                   address,
                   isContractLoaded: contract ? '✅' : '❌',
+                  isDeployedOnCurrentNetwork: isDeployedOnCurrentNetwork
+                    ? '✅'
+                    : '❌',
                   deployedNetworks,
                 },
               }),

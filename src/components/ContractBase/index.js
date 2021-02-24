@@ -15,13 +15,17 @@ import { useRLogin } from '@/hooks/use-rLogin'
 import { CopyIcon } from '@chakra-ui/icons'
 import { IoMdWallet } from 'react-icons/io'
 import { useI18n } from 'next-localization'
+import { trimAddress } from '@/utils/trim-address'
 
 export const ContractBase = ({ contract, children }) => {
   const { hasCopied, onCopy } = useClipboard(contract.address)
-  const { activate, chainId, isLoggedIn } = useRLogin()
+  const { activate, isLoggedIn } = useRLogin()
   const colorScheme = useColorModeValue('primary', 'light')
   const color = useColorModeValue('primary.500', 'light.500')
   const { t } = useI18n()
+
+  const showDeployedContract = isLoggedIn && contract.isDeployedOnCurrentNetwork
+  const showIsNotDeployed = isLoggedIn && !contract.isDeployedOnCurrentNetwork
 
   return (
     <Box
@@ -36,7 +40,7 @@ export const ContractBase = ({ contract, children }) => {
           {contract.name}
         </Heading>
         {isLoggedIn && (
-          <Tooltip label={contract.address} hasArrow>
+          <Tooltip label={trimAddress(contract.address, 8)} hasArrow>
             <Box
               color={color}
               cursor='pointer'
@@ -71,16 +75,14 @@ export const ContractBase = ({ contract, children }) => {
       )}
 
       {/* if contract is not deployed on the network */}
-      {isLoggedIn && !contract.deployedNetworks.includes(chainId?.toString()) && (
+      {showIsNotDeployed && (
         <Alert status='warning'>
           <AlertIcon />
           {t('contract.notDeployed')}
         </Alert>
       )}
 
-      {isLoggedIn &&
-        contract.deployedNetworks.includes(chainId?.toString()) &&
-        children}
+      {showDeployedContract && children}
     </Box>
   )
 }
@@ -88,8 +90,8 @@ export const ContractBase = ({ contract, children }) => {
 ContractBase.propTypes = {
   contract: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    address: PropTypes.string.isRequired,
-    deployedNetworks: PropTypes.array.isRequired,
+    address: PropTypes.string,
+    isDeployedOnCurrentNetwork: PropTypes.bool,
   }).isRequired,
   children: PropTypes.node.isRequired,
 }

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { createContext, useReducer } from 'react'
+import { createContext, useCallback, useReducer } from 'react'
 import {
   AcademyClassAbi,
   AcademyClassListAbi,
@@ -12,6 +12,7 @@ import {
   QuoteAbi,
   StudentPortfolioAbi,
 } from '@/contracts/index'
+import { useSelector } from 'react-redux'
 
 const ABIS = [
   AcademyClassAbi,
@@ -31,6 +32,7 @@ const initialContracts = ABIS.reduce((obj, { abi, contractName, networks }) => {
     abi,
     name: contractName,
     deployedNetworks: Object.keys(networks),
+    isDeployedOnCurrentNetwork: null,
     address: null,
     contract: null,
     isLoading: false,
@@ -41,7 +43,7 @@ const initialContracts = ABIS.reduce((obj, { abi, contractName, networks }) => {
 
 const contractReducer = (
   state,
-  { type, payload: { abi, contract, address } },
+  { type, payload: { abi, contract, address, chainId } },
 ) => {
   switch (type) {
     case abi.contractName:
@@ -51,12 +53,17 @@ const contractReducer = (
           abi: abi.abi,
           name: abi.contractName,
           deployedNetworks: Object.keys(abi.networks),
+          isDeployedOnCurrentNetwork: Object.keys(abi.networks).includes(
+            chainId?.toString(),
+          ),
           address,
           contract,
           isLoading: false,
           isError: false,
         },
       }
+    case 'RESET':
+      return { ...state }
     default:
       return state
   }
@@ -65,14 +72,24 @@ const contractReducer = (
 export const ContractContext = createContext()
 
 export const ContractProvider = ({ children }) => {
+  const { chainId } = useSelector(state => state.identity)
   const [contractState, dispatch] = useReducer(
     contractReducer,
     initialContracts,
   )
 
+  const loadContract = useCallback(
+    ({ abi, contract, address }) =>
+      dispatch({
+        type: abi.contractName,
+        payload: { abi, contract, address, chainId },
+      }),
+    [chainId],
+  )
+
   const contractActions = {
-    loadContract: ({ abi, contract, address }) =>
-      dispatch({ type: abi.contractName, payload: { abi, contract, address } }),
+    loadContract,
+    resetContracts: () => dispatch({ type: 'RESET' }),
   }
 
   return (
