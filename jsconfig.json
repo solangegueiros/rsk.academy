@@ -4,7 +4,6 @@
     "baseUrl": "./src",
     "paths": {
       "@/components/*": ["components/*"],
-      "@/config/*": ["config/*"],
       "@/configs/*": ["configs/*"],
       "@/context/*": ["context/*"],
       "@/connectors/*": ["connectors/*"],
@@ -13,6 +12,7 @@
       "@/helpers/*": ["helpers/*"],
       "@/hooks/*": ["hooks/*"],
       "@/layouts/*": ["layouts/*"],
+      "@/networks/*": ["networks/*"],
       "@/store/*": ["store/*"],
       "@/translations/*": ["translations/*"],
       "@/theme/*": ["theme/*"],

@@ -11,10 +11,10 @@ import {
 import { useI18n } from 'next-localization'
 import { FiLogOut } from 'react-icons/fi'
 
-import { useRLogin } from '@/hooks/use-rLogin'
+import { useRLogin } from '@/hooks/useRLogin'
 import { Web3ProviderContext } from '@/context/Web3Provider'
 import { NETWORK_LABELS } from '@/constants/constants'
-import { trimAddress } from '@/utils/trim-address'
+import { trimValue } from '@/utils/trimValue'
 
 export const WalletConnect = () => {
   const {
@@ -70,7 +70,7 @@ export const WalletConnect = () => {
             leftIcon={!hasCopied && <MdContentCopy />}
             isTruncated
           >
-            {hasCopied ? t('copied') : trimAddress(account)}
+            {hasCopied ? t('copied') : trimValue(account)}
           </Button>
           <Tooltip hasArrow label={t('logout')}>
             <IconButton ml='-1px' icon={<FiLogOut />} onClick={deactivate} />

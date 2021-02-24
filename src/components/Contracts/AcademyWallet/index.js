@@ -23,8 +23,8 @@ import { useI18n } from 'next-localization'
 import { CopyIcon } from '@chakra-ui/icons'
 
 import AcademyWalletABI from '@/contracts/AcademyWallet.json'
-import { useRLogin } from '@/hooks/use-rLogin'
-import { useWeb3 } from '@/hooks/use-web3'
+import { useRLogin } from '@/hooks/useRLogin'
+import { useWeb3 } from '@/hooks/useWeb3'
 
 export const AcademyWallet = () => {
   const { activate, chainId, isLoggedIn } = useRLogin()

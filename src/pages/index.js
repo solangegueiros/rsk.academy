@@ -14,7 +14,7 @@ import { useI18n } from 'next-localization'
 import { FaConnectdevelop } from 'react-icons/fa'
 
 import { Container, Layout, Seo } from '@/components/all'
-import { useGradient } from '@/hooks/use-gradient'
+import { useGradient } from '@/hooks/useGradient'
 
 const Home = () => {
   const gradient1 = useGradient('to-r')

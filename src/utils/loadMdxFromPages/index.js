@@ -3,10 +3,10 @@ import shell from 'shelljs'
 import { createExcerpt, parseMarkdownFile } from '@docusaurus/utils'
 
 import siteConfig from '@/configs/site-config'
-import { calcReadTime } from 'utils/calc-read-time'
+import { calcReadTime } from '@/utils/calcReadTime'
 
 export const loadMDXFromPages = async (mdxDir = 'courses') => {
-  const { processFrontmatter } = require('./mdx-utils')
+  const { processFrontmatter } = require('../mdxUtils')
 
   const dir = path.join(process.cwd(), `src/pages/${mdxDir}`)
   const filenames = shell.ls('-R', `${dir}/**/*.mdx`)

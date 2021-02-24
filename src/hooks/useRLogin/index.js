@@ -13,7 +13,7 @@ import {
 import { Web3ProviderContext } from '@/context/Web3Provider'
 import { ContractContext } from '@/context/ContractProvider'
 import { loadProfile, resetProfile } from '@/store/profile/actions'
-import { getContract } from '@/utils/get-contract'
+import { getContract } from '@/utils/getContract'
 import {
   AcademyClassAbi,
   AcademyStudentsAbi,
@@ -23,7 +23,7 @@ import {
   AcademyProjectListAbi,
   AcademyWalletAbi,
 } from '@/contracts/index'
-import { useWeb3 } from './use-web3'
+import { useWeb3 } from '@/hooks/useWeb3'
 
 export const useRLogin = () => {
   const {

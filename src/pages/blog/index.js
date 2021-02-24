@@ -3,7 +3,7 @@ import { SimpleGrid } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
 import { BlogPostCard, Layout, postType } from '@/components/all'
-import { getBlogPosts } from '@/utils/get-blog-posts'
+import { getBlogPosts } from '@/utils/getBlogPosts'
 
 const BlogIndex = ({ posts }) => {
   const { locale } = useRouter()

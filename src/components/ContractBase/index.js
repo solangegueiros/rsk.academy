@@ -11,11 +11,11 @@ import {
   useClipboard,
   useColorModeValue,
 } from '@chakra-ui/react'
-import { useRLogin } from '@/hooks/use-rLogin'
+import { useRLogin } from '@/hooks/useRLogin'
 import { CopyIcon } from '@chakra-ui/icons'
 import { IoMdWallet } from 'react-icons/io'
 import { useI18n } from 'next-localization'
-import { trimAddress } from '@/utils/trim-address'
+import { trimValue } from '@/utils/trimValue'
 
 export const ContractBase = ({ contract, children }) => {
   const { hasCopied, onCopy } = useClipboard(contract.address)
@@ -40,7 +40,7 @@ export const ContractBase = ({ contract, children }) => {
           {contract.name}
         </Heading>
         {isLoggedIn && (
-          <Tooltip label={trimAddress(contract.address, 8)} hasArrow>
+          <Tooltip label={trimValue(contract.address, 8)} hasArrow>
             <Box
               color={color}
               cursor='pointer'

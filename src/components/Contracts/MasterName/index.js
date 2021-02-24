@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { ContractBase } from '@/components/all'
-import { useRLogin } from '@/hooks/use-rLogin'
+import { useRLogin } from '@/hooks/useRLogin'
 import { ContractContext } from '@/context/ContractProvider'
 
 export const MasterName = () => {
