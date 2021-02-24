@@ -22,6 +22,7 @@ import {
   AcademyClassListAbi,
   AcademyProjectListAbi,
   AcademyWalletAbi,
+  MasterQuoteAbi,
 } from '@/contracts/index'
 import { useWeb3 } from '@/hooks/useWeb3'
 
@@ -83,6 +84,10 @@ export const useRLogin = () => {
         // Load MasterNameSC
         const MasterName = getContract(MasterNameAbi, chainId, web3)
         loadContract(MasterName)
+
+        // Load MasterNameSC
+        const MasterQuote = getContract(MasterQuoteAbi, chainId, web3)
+        loadContract(MasterQuote)
 
         if (!AcademyStudents.address) {
           console.warn(
