@@ -9,6 +9,8 @@ import {
   Pagination,
   Sidebar,
   AcademyWallet,
+  MasterName,
+  MasterQuote,
   frontMatterType,
 } from '@/components/all'
 
@@ -44,7 +46,8 @@ function MDXLayout({ frontmatter, children }) {
 
   return (
     <MDXProvider
-      components={{ ...chakraComponents, ...MdxComponents, AcademyWallet }}
+      components={{ ...chakraComponents, ...MdxComponents, 
+        AcademyWallet, MasterName, MasterQuote }}
     >
       <PageContainer
         frontmatter={frontmatter}

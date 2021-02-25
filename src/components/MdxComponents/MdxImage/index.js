@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { chakra } from '@chakra-ui/react'
 
 export const MdxImage = props => {
-  const INITIAL_WIDTH = 400
+  const INITIAL_WIDTH = 800
   const [w, setW] = useState(INITIAL_WIDTH)
 
   const toggleWidth = () => setW(w === INITIAL_WIDTH ? 'full' : INITIAL_WIDTH)

@@ -32,19 +32,6 @@ const Profile = () => {
           ) : index ? (
             <Box my={4} p={4} boxShadow='md' as='pre'>
               <Heading>{studentName}</Heading>
-              {portfolioAddress && (
-                <Box my={4}>
-                  <Box
-                    fontWeight='bold'
-                    textTransform='uppercase'
-                    color={color}
-                  >
-                    Portfolio Address:
-                  </Box>
-                  <pre>{portfolioAddress}</pre>
-                </Box>
-              )}
-
               {ownerAddress && (
                 <Box my={4}>
                   <Box
@@ -58,6 +45,19 @@ const Profile = () => {
                 </Box>
               )}
 
+              {portfolioAddress && (
+                <Box my={4}>
+                  <Box
+                    fontWeight='bold'
+                    textTransform='uppercase'
+                    color={color}
+                  >
+                    Portfolio Address:
+                  </Box>
+                  <pre>{portfolioAddress}</pre>
+                </Box>
+              )}
+
               {portfolioList && (
                 <Box my={4}>
                   <Box
@@ -65,7 +65,7 @@ const Profile = () => {
                     textTransform='uppercase'
                     color={color}
                   >
-                    Portfolios:
+                    Projects in portfolio:
                   </Box>
                   {portfolioList.map(([address, name]) => (
                     <pre key={address}>
@@ -97,7 +97,7 @@ const Profile = () => {
                     textTransform='uppercase'
                     color={color}
                   >
-                    Classes:
+                    Classes subscribed:
                   </Box>
                   {studentClasses.map(c => (
                     <pre key={c}>{c}</pre>
@@ -106,7 +106,7 @@ const Profile = () => {
               )}
             </Box>
           ) : (
-            <Box>Student is not registered</Box>
+            <Box>Student is not registered in RSK Academy.</Box>
           )
         ) : (
           <Box>You must log in</Box>
