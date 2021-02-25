@@ -21,3 +21,16 @@ export {
   QuoteAbi,
   StudentPortfolioAbi,
 }
+
+export const ABI_LIST = [
+  AcademyClassAbi,
+  AcademyClassListAbi,
+  AcademyProjectListAbi,
+  AcademyStudentsAbi,
+  AcademyWalletAbi,
+  MasterNameAbi,
+  MasterQuoteAbi,
+  NameAbi,
+  QuoteAbi,
+  StudentPortfolioAbi,
+]

@@ -39,7 +39,7 @@ export const ContractBase = ({ contract, children }) => {
         <Heading as='h3' size='md'>
           {contract.name}
         </Heading>
-        {isLoggedIn && (
+        {isLoggedIn && contract.address && (
           <Tooltip label={trimValue(contract.address, 8)} hasArrow>
             <Box
               color={color}

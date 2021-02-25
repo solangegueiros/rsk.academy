@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
 import { identitySlice } from './identity/slice'
 import { profileSlice } from './profile/slice'
+import { adminSlice } from './admin/slice'
 
 export default configureStore({
   middleware: [thunk],
@@ -9,5 +10,6 @@ export default configureStore({
   reducer: {
     identity: identitySlice.reducer,
     profile: profileSlice.reducer,
+    admin: adminSlice.reducer,
   },
 })

@@ -1,55 +1,35 @@
-import { Box, Heading } from '@chakra-ui/react'
+import { Box, SimpleGrid } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
 
-import { Container, Layout, Seo, MasterName } from '@/components/all'
-import { useContext } from 'react'
-import { ContractContext } from '@/context/ContractProvider'
+import { Container, Layout, Seo, AcademyWallet } from '@/components/all'
 import { useRLogin } from '@/hooks/useRLogin'
+import { CONTRACTS } from '@/components/Contracts'
+import { useSelector } from 'react-redux'
 
 const Portfolio = () => {
   const { t } = useI18n()
-  const { allContracts } = useContext(ContractContext)
   const { isAdmin, isLoggedIn } = useRLogin()
+  const { portfolioList } = useSelector(state => state.profile)
+
+  const PortfolioProjectComponents = Object.entries(CONTRACTS)
+    .filter(([name]) =>
+      portfolioList?.some(([_, portfolioName]) => name === portfolioName),
+    )
+    .map(([name, Component]) => <Component key={name} />)
 
   return (
     <Layout>
       <Seo title={t('portfolio')} />
-      <Heading>{t('portfolio')}</Heading>
       <Container>
         {isLoggedIn ? (
           isAdmin ? (
             <Box>Portfolio page is for students</Box>
           ) : (
-            <>
-              <Box my={4}>
-                <MasterName />
-              </Box>
-              <Box my={4} p={4} boxShadow='md' as='pre'>
-                <Heading>Contracts</Heading>
-                {JSON.stringify(
-                  allContracts.map(
-                    ({
-                      name,
-                      address,
-                      contract,
-                      deployedNetworks,
-                      isDeployedOnCurrentNetwork,
-                    }) => ({
-                      [name]: {
-                        address,
-                        isContractLoaded: contract ? '✅' : '❌',
-                        isDeployedOnCurrentNetwork: isDeployedOnCurrentNetwork
-                          ? '✅'
-                          : '❌',
-                        deployedNetworks,
-                      },
-                    }),
-                  ),
-                  null,
-                  2,
-                )}
-              </Box>
-            </>
+            <SimpleGrid columns={{ md: 2 }} gap={4}>
+              <AcademyWallet />
+
+              {PortfolioProjectComponents}
+            </SimpleGrid>
           )
         ) : (
           <Box>You must log in</Box>

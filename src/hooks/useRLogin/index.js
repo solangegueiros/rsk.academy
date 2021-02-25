@@ -13,6 +13,7 @@ import {
 import { Web3ProviderContext } from '@/context/Web3Provider'
 import { ContractContext } from '@/context/ContractProvider'
 import { loadProfile, resetProfile } from '@/store/profile/actions'
+import { loadAdmin, resetAdmin } from '@/store/admin/actions'
 import { getContract } from '@/utils/getContract'
 import {
   AcademyClassAbi,
@@ -90,6 +91,27 @@ export const useRLogin = () => {
         const MasterQuote = getContract(MasterQuoteAbi, chainId, web3)
         loadContract(MasterQuote)
 
+        // Load Admin
+        if (isAdmin && AcademyStudents.abi.networks[chainId]) {
+          const students = await AcademyStudents.contract.methods
+            ?.listStudents()
+            .call()
+
+          const studentInfos = await Promise.all(
+            students?.map(student =>
+              AcademyStudents.contract.methods
+                .getStudentByAddress(student)
+                .call(),
+            ),
+          )
+
+          const nameList = await MasterName.contract.methods
+            .listNameInfo()
+            .call()
+
+          dispatch(loadAdmin({ students: studentInfos, nameList }))
+        }
+
         if (!AcademyStudents.address) {
           console.warn(
             'AcademyStudents contract is not deployed to detected network!',
@@ -132,12 +154,9 @@ export const useRLogin = () => {
         loadContract(StudentPortfolio)
 
         // Load StudentPortfolioList
-        let portfolioList = null
-        if (StudentPortfolio.contract) {
-          portfolioList = await StudentPortfolio.contract.methods
-            .listPortfolio()
-            .call()
-        }
+        const portfolioList = await StudentPortfolio.contract?.methods
+          .listPortfolio()
+          .call()
 
         // Load AcademyClass
         const AcademyClass = getContract(
@@ -148,16 +167,12 @@ export const useRLogin = () => {
         )
         loadContract(AcademyClass)
 
-        let studentActiveClassName = null
-        let classStudentInfo = null
-        if (AcademyClass.contract) {
-          studentActiveClassName = await AcademyClass.contract.methods
-            .className()
-            .call()
-          classStudentInfo = await AcademyClass.contract.methods
-            .getStudentByAddress(account)
-            .call()
-        }
+        const studentActiveClassName = await AcademyClass.contract?.methods
+          .className()
+          .call()
+        const classStudentInfo = await AcademyClass.contract?.methods
+          .getStudentByAddress(account)
+          .call()
 
         // Load StudentName
         let studentName = null
@@ -189,7 +204,11 @@ export const useRLogin = () => {
   }, [account, chainId, isLoggedIn])
 
   const activate = () => dispatch(login(web3Context))
-  const deactivate = () => dispatch(logout(web3Context))
+  const deactivate = () => {
+    dispatch(logout(web3Context))
+    dispatch(resetProfile())
+    dispatch(resetAdmin())
+  }
 
   return {
     account,
