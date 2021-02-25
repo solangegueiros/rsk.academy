@@ -11,10 +11,10 @@ import {
   Icon,
 } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
-
-import { Container, Layout, Seo } from '@/components/index'
-import { useGradient } from '@/hooks/use-gradient'
 import { FaConnectdevelop } from 'react-icons/fa'
+
+import { Container, Layout, Seo } from '@/components/all'
+import { useGradient } from '@/hooks/useGradient'
 
 const Home = () => {
   const gradient1 = useGradient('to-r')
@@ -22,7 +22,7 @@ const Home = () => {
 
   const { t } = useI18n()
   return (
-    <Layout fluid>
+    <Layout isStretched>
       <Seo title={t('home')} description='Rsk Academy' />
       <Center
         bg={useColorModeValue('primary.500', 'light.500')}

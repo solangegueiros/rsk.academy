@@ -1,4 +1,4 @@
-import { Layout, Seo } from '@/components/index'
+import { Layout, Seo } from '@/components/all'
 
 const NotFoundPage = () => (
   <Layout>

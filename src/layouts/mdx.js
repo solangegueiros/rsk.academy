@@ -1,22 +1,25 @@
 /* eslint-disable import/extensions */
+import PropTypes from 'prop-types'
 import * as chakraComponents from '@chakra-ui/react'
 import { MDXProvider } from '@mdx-js/react'
-
-import devSidebar from '@/configs/dev-sidebar.json'
-import businessSidebar from '@/configs/business-sidebar.json'
-import blogSidebar from '@/configs/blog-sidebar.json'
-
-import { findRouteByPath, removeFromLast } from '@/utils/find-route-by-path'
-import { getRouteContext } from '@/utils/get-route-context'
 
 import {
   MdxComponents,
   PageContainer,
   Pagination,
   Sidebar,
-} from '@/components/index'
+  AcademyWallet,
+  MasterName,
+  MasterQuote,
+  frontMatterType,
+} from '@/components/all'
 
-import AcademyWallet from '@/components/contracts/AcademyWallet'
+import devSidebar from '@/configs/dev-sidebar.json'
+import businessSidebar from '@/configs/business-sidebar.json'
+import blogSidebar from '@/configs/blog-sidebar.json'
+
+import { findRouteByPath, removeFromLast } from '@/utils/findRouteByPath'
+import { getRouteContext } from '@/utils/getRouteContext'
 
 export function getRoutes(slug) {
   const configMap = {
@@ -43,7 +46,8 @@ function MDXLayout({ frontmatter, children }) {
 
   return (
     <MDXProvider
-      components={{ ...chakraComponents, ...MdxComponents, AcademyWallet }}
+      components={{ ...chakraComponents, ...MdxComponents, 
+        AcademyWallet, MasterName, MasterQuote }}
     >
       <PageContainer
         frontmatter={frontmatter}
@@ -59,6 +63,11 @@ function MDXLayout({ frontmatter, children }) {
       </PageContainer>
     </MDXProvider>
   )
+}
+
+MDXLayout.propTypes = {
+  frontmatter: PropTypes.shape(frontMatterType).isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 export default MDXLayout

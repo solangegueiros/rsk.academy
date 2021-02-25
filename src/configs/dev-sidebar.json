@@ -73,7 +73,15 @@
             "pt": "Sua primeira transferência"
           },
           "path": "/courses/dev/01/first-transfer"
-        }
+        },
+        {
+          "title": {
+            "en": "Subscribe to RSK academy",
+            "es": "Suscríbete a RSK academy",
+            "pt": "Inscreva-se na RSK academy"
+          },
+          "path": "/courses/dev/01/subscribe-to-academy"
+        }        
       ]
     },
     {
@@ -126,19 +134,19 @@
         },
         {
           "title": {
-            "en": "Subscribe to RSK academy",
-            "es": "Suscríbete a RSK academy",
-            "pt": "Inscreva-se na RSK academy"
+            "en": "Validate your name at RSK Academy",
+            "es": "Valide su nombre en RSK Academy",
+            "pt": "Valide seu nome na RSK Academy"
           },
-          "path": "/courses/dev/02/subscribe-to-academy"
+          "path": "/courses/dev/02/validate-name"
         }
       ]
     },
     {
       "title": {
-        "en": "03 - transfers Using Smart Contracts",
-        "es": "03 - transferencias Mediante Contratos Inteligentes",
-        "pt": "03 - transferências usando Contratos Inteligentes"
+        "en": "03 - Smart contracts 02",
+        "es": "03 - Smart contracts 02",
+        "pt": "03 - Smart contracts 02"
       },
       "heading": true,
       "routes": [
@@ -150,6 +158,14 @@
           },
           "path": "/courses/dev/03"
         },
+        {
+          "title": {
+            "en": "Quote dApp: phrases and quotes",
+            "es": "Quote dApp: frases y citas",
+            "pt": "Quote dApp: frases e citações"
+          },
+          "path": "/courses/dev/03/quote"
+        },        
         {
           "title": {
             "en": "Transfers Using Smart Contracts",
@@ -180,12 +196,20 @@
         },
         {
           "title": {
+            "en": "Transfers using smart contracts",
+            "es": "Transferencias usando contratos inteligentes",
+            "pt": "Transferências usando contratos inteligentes"
+          },
+          "path": "/courses/dev/03/transfers-using-sc"
+        },        
+        {
+          "title": {
             "en": "Interact with dApp",
             "es": "Interactuar con dApp",
             "pt": "Interagindo com dApp"
           },
-          "path": "/courses/dev/02/interact-with-dapp"
-        },        
+          "path": "/courses/dev/03/interact-with-dapp"
+        },
         {
           "title": {
             "en": "Interfaces",

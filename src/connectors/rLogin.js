@@ -2,8 +2,8 @@
 import RLogin from '@rsksmart/rlogin'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 
-import { getRPCUrl } from '@/config/getConfig'
-import { SUPPORTED_CHAINS } from '@/constants/supported-chains'
+import { getRPCUrl } from '@/networks/getConfig'
+import { SUPPORTED_CHAINS } from '@/constants/constants'
 
 export const rLogin =
   typeof window !== 'undefined'

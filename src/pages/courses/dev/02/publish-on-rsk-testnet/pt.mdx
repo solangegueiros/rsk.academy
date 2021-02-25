@@ -7,13 +7,13 @@ description: 'Publish on RSK Testnet'
 
 1. Selecione a RSK network em sua web wallet, Nifty ou Metamask.
 2. Tenha tR-BTC na sua carteira.
-3. No Remix, em `Environment`, garanta que selecionou a opção `Injected Web3`. 
+3. No Remix, em `Environment`, garanta que selecionou a opção `Injected Web3`.
 
 ![publish on RSK testnet](/img/courses/dev/02/publish-on-rsk-testnet/image-23.png)
 
 Primeiro, tenha certeza que selecionou RSK network em sua web wallet, Nifty ou Metamask.
 
-Verifique se tem tR-BTC na sua carteira, 
+Verifique se tem tR-BTC na sua carteira,
 dado que é necessário para pagar as taxas das transações para publicar smart contracts.
 Caso não tenha, siga as instruções em: [RSK faucet](/courses/dev/01/rsk-faucet).
 
@@ -37,7 +37,7 @@ Clique em confirm / submit.
 
 Na parte abaixo, à direita, aparecerá a mensagem: `creation of Name pending...`
 
-Um bloco na rede RSK leva, em média, 30 segundos para ser minerado, 
+Um bloco na rede RSK leva, em média, 30 segundos para ser minerado,
 então devemos esperar este tempo.
 Quando a transação for confirmada na rede, sua web wallet apresentará uma notificação como esta:
 
@@ -60,9 +60,9 @@ Neste exemplo, o hash da transação é:
 ## RSK Explorer
 
 > TODO
-blockchain explorer definition
+> blockchain explorer definition
 
-O RSK explorer é o blockchain explorer para as transações da RSK. 
+O RSK explorer é o blockchain explorer para as transações da RSK.
 Estamos utilizando o explorer da Testnet:
 
 [explorer.testnet.rsk.co](https://explorer.testnet.rsk.co/)
@@ -79,19 +79,20 @@ Este é o resultado:
 
 ![explorer transaction result](/img/courses/dev/02/publish-on-rsk-testnet/image-33.png)
 
-Você pode verificar meu exemplo aqui: [`0x050e216d2008a896f2e7799fee349c582f3e19bb6017e59cd8b323647624f999`](https://explorer.testnet.rsk.co/tx/0x050e216d2008a896f2e7799fee349c582f3e19bb6017e59cd8b323647624f999)
+Você pode verificar meu exemplo aqui:
+[`0x050e216d2008a896f2e7799fee349c582f3e19bb6017e59cd8b323647624f999`](https://explorer.testnet.rsk.co/tx/0x050e216d2008a896f2e7799fee349c582f3e19bb6017e59cd8b323647624f999)
 
 ## Endereço do seu smart contract
 
-Copie o endereço do seu smart contract e guarde-o. 
+Copie o endereço do seu smart contract e guarde-o.
 Ele será utilizado em outros momentos do curso.
 
 Existem algumas maneiras de copiá-lo:
 
 1. No Remix
 
-Depois que o smart contract for publicado com o Remix, 
-podemos ver sua instância no painel à esquerda, na parte debaixo do item `deploy and run transactions`.
+Depois que o smart contract for publicado com o Remix,
+podemos ver sua instância no painel à esquerda, na parte debaixo de `deploy and run transactions`.
 
 Vá na seção `deployed contracts`, localize o smart contract e clique no ícone de cópia.
 
@@ -111,12 +112,12 @@ Este é o endereço do meu smart contract name:
 
 ## Interagindo com o smart contract
 
-Da mesma foram que já interagimos com o smart contract publicado na JavascriptVM, 
+Da mesma foram que já interagimos com o smart contract publicado na JavascriptVM,
 também podemos usar o Remix para interagir com um smart contract publicado em qualquer rede.
 
-A única alteração é o Environment, ou seja, a rede conectada, que agora é `Injected Web3`.
+A única alteração é o `Environment`, ou seja, a rede conectada, que agora é `Injected Web3`.
 
-Em `deployed contracts`, no smart contract, clique em `>` para enxergar os detalhes:
+Em `deployed contracts`, no smart contract, clique em `>` para enxergar os detalhes.
 
 Clique nos botões e veja os resultados:
 
@@ -139,12 +140,13 @@ Também é possível verificar a transação na web wallet:
 Interagindo com um smart contract já publicado na rede.
 
 > TODO
-Interagir com o meu smart contract Name
+> Interagir com o meu smart contract Name
 
 ## Considerações finais
 
 Parabéns!
+
 Agora você já sabe publicar um smart contract em uma rede de blockchain "de verdade", e interagir com ele.
 
-Na próxima lição você aprenderá como seu smart contract pode interagir com outros 
+Na próxima lição você aprenderá como seu smart contract pode interagir com outros
 :)

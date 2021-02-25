@@ -1,9 +1,9 @@
-import * as React from 'react'
+import PropTypes from 'prop-types'
 import { SimpleGrid } from '@chakra-ui/react'
-
-import { BlogPostCard, Layout } from '@/components/index'
-import { getBlogPosts } from '@/utils/get-blog-posts'
 import { useRouter } from 'next/router'
+
+import { BlogPostCard, Layout, postType } from '@/components/all'
+import { getBlogPosts } from '@/utils/getBlogPosts'
 
 const BlogIndex = ({ posts }) => {
   const { locale } = useRouter()
@@ -26,6 +26,10 @@ export async function getStaticProps() {
       posts,
     },
   }
+}
+
+BlogIndex.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.shape(postType)),
 }
 
 export default BlogIndex

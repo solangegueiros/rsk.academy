@@ -5,32 +5,24 @@ description: 'Create your first smart contract: name'
 
 > Translate
 
-Your first smart contract will have your name.
-It will be used to you subscribe to RSK Academy and let we know your name.
-Using this 
+Your first smart contract will have your name registered on it,
+associating it to your wallet created in the last module.
 
-Let's use Remix to create your first smart contract.
+It will be used to you subscribe to RSK Academy and let we know your name.
+
+In the future, it will also be used in other projects of the course.
+
+At different points in the course, we used the "do it first and then understand what was done" approach,
+so that the student has the pleasure of programming and understanding in practice, with less exclusive theorical time.
+This lesson will happen this way.
+
+Let's use Remix to create your first smart contract!
 
 > D:\BLOCKCHAIN\SOLANGE.DEV\GITHUB\rsk.solange.dev\en\ethereum-devs\remix-and-metamask-with-rsk-testnet.md
 
+Go to [remix.ethereum.org](http://remix.ethereum.org/)
 
-Seu primeiro smart contract terá seu nome registrado nele, 
-associando-o a sua wallet criada no último módulo.
-
-Ele será utilizado para sua inscrição na RSK Academy.
-Desta forma será possível identificar os estudantes :)
-
-No futuro, também será utilizado em outros projetos do curso.
-
-Em diversos momentos do curso utilizamos a abordagem "faça primeiro e depois entenda o que foi feito", 
-para que o aluno tenha o prazer de programar e entender na prática, com menos tempo exclusivo de teoria.
-Esta lição acontecerá desta forma.
-
-Utilizaremos Remix para criar seu primeiro smart contract.
-
-Abra [remix.ethereum.org](http://remix.ethereum.org/)
-
-Na ultima lição, já foi explicado o básico do Remix, então vamos diretamente criar um arquivo.
+In the last lesson, the basics of Remix have already been explained, so let's directly create a new file.
 
 ## Create a smart contract
 
@@ -72,15 +64,18 @@ Paste it into Remix here:
 
 This smart contract has:
 
-* A private variable `name` to store your name
-* A public variable `owner` to store the smart contract owner address
-* `constructor`, which is executed only in the moment of publish the smart contract
-* A function `getName()` to return the name stored at variable `name`
+- A private variable `name` to store your name
+- A public variable `owner` to store the smart contract owner address
+- `constructor`, which is executed only in the moment of publish the smart contract
+- A function `getName()` to return the name stored at variable `name`
+
+> TODO
+> explain pragma, contract, variable types, visibility, return
 
 ## Update your name
 
-Inside the `constructor`, on line 9, change the text "Your fullname" for your fullname.
-For example, I will change to "Solange Gueiros":
+Inside the `constructor`, on line 10, change the text "Your fullname" for your fullname.
+For example, I will change it to "Solange Gueiros":
 
 ```solidity
 name = "Solange Gueiros";
@@ -92,23 +87,119 @@ This is the result:
 
 ## Compile a smart contract
 
-In the 3rd button at left side click on Solidity compiler
+If you enabled auto-compile, the smart contract is already compiled and a green light will appear next to the third button from the left - Solidity compiler.
 
-Check if it is compiled, or configure auto-compile.
+![compilation successful](/img/courses/dev/02/smart-contract-name/image-06.png)
 
-![Compile smart contract](/images/image-16.png)
+If you haven't enabled it, perform the following steps:
 
-Se você não habilitou o auto-compile, siga estes passos:
+1. Click on the 3rd button at the left side, selecting Solidity compiler
+2. Click on the button `Compile Register.sol`.
+3. Check the green signal on the 3rd button with the message `compilation successful`.
 
-Click on the button Compile Name.sol
-
-![Compile Name.sol](/images/image-19.png)
-
-Check the green sign at 3rd button with the message `compilation successful`
-
-![compilation successful](/images/image-20.png)
+![Compile Name.sol](/img/courses/dev/02/smart-contract-name/image-07.png)
 
 ## Publish on JavascriptVM
 
 > TODO
 
+First of all we will deploy the smart contract on `JavaScriptVM` environment,
+a Blockchain simulator that takes place in the browser memory.
+
+In the left side panel, go to the button `Deploy and run transactions`.
+
+![Deploy and run transactions](/img/courses/dev/02/smart-contract-name/image-08.png)
+
+For now we have only one smart contract, so it is automatically selected in the dropdown.
+
+Click the button `Deploy`.
+
+![Deploy](/img/courses/dev/02/smart-contract-name/image-09.png)
+
+At bottom right, we can check the message: `creation of Name pending...`
+
+And soon after, the transaction confirmed.
+
+![transaction confirmed](/img/courses/dev/02/smart-contract-name/image-10.png)
+
+Click on the transaction line or the debug button (at the right side) to see more details of the transaction:
+
+![transaction details](/img/courses/dev/02/smart-contract-name/image-11.png)
+
+## Interact with the smart contract
+
+When a smart contract is deployed with Remix,
+we can see it in the left panel under `deploy and run transactions`:
+
+![deployed contracts](/img/courses/dev/02/smart-contract-name/image-12.png)
+
+Click on the symbol `>` to expand the details of smart contract `Name`:
+
+![Deployed Name](/img/courses/dev/02/smart-contract-name/image-13.png)
+
+A `getName` button will appear, corresponding to the function we created in our smart contract!
+
+Also an 'owner' button.
+
+But ... we didn't create an `owner` function.
+Where did this button come from?
+
+Whenever a variable with public visibility is created,
+Solidity creates a "getter" for her,
+that is, a function that returns its value.
+
+This "getter" has its own variable name.
+So, in this case, it is the `owner` button.
+
+The blue buttons are functions which are read-only and it does not change anything stored on the blockchain.
+We do not need to expend gas when using them.
+
+### getName
+
+First of all, we will check the name stored at deploy.
+
+Click the `getName` button
+
+The result is the name defined inside the `constructor`.
+In my example:
+
+![getName](/img/courses/dev/02/smart-contract-name/image-14.png)
+
+At bottom right, we can check that it was a call to `Name.getName()` function:
+
+![call getName](/img/courses/dev/02/smart-contract-name/image-15.png)
+
+Clicking on the transaction line or the debug button (at the right side), you can see more details of the transaction:
+
+![call getName details](/img/courses/dev/02/smart-contract-name/image-16.png)
+
+### owner
+
+The owner button returns the address of the person who published the smart contract.
+It was defined inside the `constructor`, such as` msg.sender`,
+which is the address used to send the transaction to create the smart contract.
+
+Click the `owner` button
+
+![owner](/img/courses/dev/02/smart-contract-name/image-17.png)
+
+See the list of accounts.
+You can check that the returned account is first on the list.
+
+![first account](/img/courses/dev/02/smart-contract-name/image-20.png)
+
+In the message area on the right, we can see that the `Name.owner()` function has been called:
+
+![call owner](/img/courses/dev/02/smart-contract-name/image-18.png)
+
+Like we said before,
+to see more details of the transaction you can click on the transaction line or the debug button (at the right side):
+
+![call owner details](/img/courses/dev/02/smart-contract-name/image-19.png)
+
+## Final considerations
+
+Did you imagine that it was so easy to use Remix to create a smart contract?
+
+We will soon publish it on a "real" blockchain network
+:)

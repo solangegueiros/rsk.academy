@@ -8,11 +8,11 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": "warn",
-    "react/jsx-no-undef": "warn",
+    "react/jsx-no-undef": "error",
     "import/no-unresolved": "off",
     "import/extensions": "off",
-    "react/prop-types": "warn",
-    "consistent-return": "warn",
+    "react/prop-types": "error",
+    "consistent-return": "off",
     "radix": "off",
     "no-negated-condition": "off"
   }
