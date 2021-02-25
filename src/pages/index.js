@@ -28,6 +28,7 @@ const Home = () => {
         bg={useColorModeValue('primary.500', 'light.500')}
         color={useColorModeValue('white', 'dark.500')}
         h='calc(100vh - 70px)'
+        mt={-8}
       >
         <Container flex='1'>
           <Flex
