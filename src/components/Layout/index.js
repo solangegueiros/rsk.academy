@@ -13,8 +13,8 @@ export const Layout = ({ children, isStretched, ...rest }) => {
           flexDirection='column'
           flex='1'
           px={isStretched ? 0 : 4}
+          py={8}
           maxW={isStretched ? 'full' : 1200}
-          my={8}
         >
           {children}
         </Container>

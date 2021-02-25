@@ -46,8 +46,13 @@ function MDXLayout({ frontmatter, children }) {
 
   return (
     <MDXProvider
-      components={{ ...chakraComponents, ...MdxComponents, 
-        AcademyWallet, MasterName, MasterQuote }}
+      components={{
+        ...chakraComponents,
+        ...MdxComponents,
+        AcademyWallet,
+        MasterName,
+        MasterQuote,
+      }}
     >
       <PageContainer
         frontmatter={frontmatter}

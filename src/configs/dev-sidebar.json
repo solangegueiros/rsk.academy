@@ -81,7 +81,7 @@
             "pt": "Inscreva-se na RSK academy"
           },
           "path": "/courses/dev/01/subscribe-to-academy"
-        }        
+        }
       ]
     },
     {
@@ -165,7 +165,7 @@
             "pt": "Quote dApp: frases e citações"
           },
           "path": "/courses/dev/03/quote"
-        },        
+        },
         {
           "title": {
             "en": "Transfers Using Smart Contracts",
@@ -201,7 +201,7 @@
             "pt": "Transferências usando contratos inteligentes"
           },
           "path": "/courses/dev/03/transfers-using-sc"
-        },        
+        },
         {
           "title": {
             "en": "Interact with dApp",
