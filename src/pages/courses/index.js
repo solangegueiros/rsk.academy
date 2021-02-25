@@ -19,10 +19,7 @@ const Courses = () => {
   return (
     <Layout>
       <Seo title={t('courses')} />
-      <Heading my={16} as='h1' textAlign='center' textTransform='uppercase'>
-        {t('courses')}
-      </Heading>
-      <SimpleGrid columns={{ md: 2 }} gap={8}>
+      <SimpleGrid my={16} columns={{ md: 2 }} gap={8}>
         <NextLink href={`/courses/dev/${locale}`} passHref>
           <Box
             _hover={{ boxShadow: 'lg' }}

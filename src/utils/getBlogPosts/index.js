@@ -1,4 +1,4 @@
-import { loadMDXFromPages } from '@/utils/load-mdx-dir'
+import { loadMDXFromPages } from '@/utils/loadMdxFromPages'
 
 export const getBlogPosts = async () => {
   const mdxData = await loadMDXFromPages('blog')

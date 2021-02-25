@@ -16,8 +16,8 @@ import devSidebar from '@/configs/dev-sidebar.json'
 import businessSidebar from '@/configs/business-sidebar.json'
 import blogSidebar from '@/configs/blog-sidebar.json'
 
-import { findRouteByPath, removeFromLast } from '@/utils/find-route-by-path'
-import { getRouteContext } from '@/utils/get-route-context'
+import { findRouteByPath, removeFromLast } from '@/utils/findRouteByPath'
+import { getRouteContext } from '@/utils/getRouteContext'
 
 export function getRoutes(slug) {
   const configMap = {
