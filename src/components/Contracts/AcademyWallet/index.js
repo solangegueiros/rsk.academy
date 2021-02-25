@@ -28,7 +28,7 @@ export const AcademyWallet = () => {
 
   const getBalance = async data => {
     try {
-      const res = await contract.methods
+      const res = await contract.contract?.methods
         .balanceOf(data.balance.toLowerCase())
         .call()
       setBalance(res)

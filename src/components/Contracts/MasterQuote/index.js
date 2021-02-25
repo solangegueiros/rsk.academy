@@ -12,8 +12,6 @@ export const MasterQuote = () => {
   const [quote, setQuote] = useState('')
   const [address, setAddress] = useState('')
 
-  console.log('contract.contract.methods', contract.contract?.methods)
-
   const handleSetQuote = () => {
     try {
       contract.contract.methods

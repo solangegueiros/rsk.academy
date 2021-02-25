@@ -17,9 +17,7 @@ const Admin = () => {
   const { isAdmin, isLoggedIn } = useRLogin()
   const { allContracts } = useContext(ContractContext)
   const { students, nameList } = useSelector(state => state.admin)
-  console.log('students', students)
   const bg = useColorModeValue('white', 'dark.400')
-  console.log('nameList', nameList)
 
   const extractContracts = allContracts.map(contract => {
     let methods = null
