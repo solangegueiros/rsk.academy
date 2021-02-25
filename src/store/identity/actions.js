@@ -1,5 +1,5 @@
 import { clearRloginStorage, rLogin } from '@/connectors/rLogin'
-import { getAccountAndNetwork } from '@/utils/web3-rpc'
+import { getAccountAndNetwork } from '@/utils/web3Rpc'
 import { identitySlice } from './slice'
 
 export const {

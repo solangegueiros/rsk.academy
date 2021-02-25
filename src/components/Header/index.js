@@ -21,36 +21,22 @@ import {
   NavLink,
   Logo,
 } from '@/components/all'
+import { useRLogin } from '@/hooks/useRLogin'
 
 const MainNavLinkGroup = props => {
   const { t } = useI18n()
-
-  const mainNavLinks = [
-    {
-      href: `/courses`,
-      label: 'courses',
-    },
-    {
-      href: '/projects',
-      label: 'projects',
-    },
-    {
-      href: '/blog',
-      label: 'blog',
-    },
-    {
-      href: '/admin',
-      label: 'admin',
-    },
-  ]
+  const { isAdmin, isLoggedIn } = useRLogin()
 
   return (
     <HStack spacing='4' {...props}>
-      {mainNavLinks.map(item => (
-        <NavLink key={item.label} href={item.href}>
-          {t(item.label)}
-        </NavLink>
-      ))}
+      <NavLink href='/courses'>{t('courses')}</NavLink>
+      {isLoggedIn && !isAdmin && (
+        <>
+          <NavLink href='/portfolio'>{t('portfolio')}</NavLink>
+          <NavLink href='/profile'>{t('profile')}</NavLink>
+        </>
+      )}
+      {isAdmin && <NavLink href='/admin'>{t('admin')}</NavLink>}
     </HStack>
   )
 }

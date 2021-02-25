@@ -15,6 +15,7 @@ export default {
   portfolio: 'Portfolio',
   courses: 'Cursos',
   projects: 'Projetos',
+  profile: 'Profile',
   blog: 'Blog',
   editPage: 'Edite essa página',
   next: 'Próximo',
