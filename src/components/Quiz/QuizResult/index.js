@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
-import { FaCheckCircle, FaIceCream } from 'react-icons/fa'
+import { BiCheckCircle, BiXCircle } from 'react-icons/bi'
 
 import { useQuiz } from '@/hooks/useQuiz'
 import { useMemo } from 'react'
@@ -46,7 +46,7 @@ export const QuizResult = ({ course, module, title }) => {
                 </Text>
                 <Box mt={2}>
                   <HStack color={isCorrect ? color : 'red.400'}>
-                    <Icon as={isCorrect ? FaCheckCircle : FaIceCream} />
+                    <Icon as={isCorrect ? BiCheckCircle : BiXCircle} />
                     <Text color={!isCorrect && 'red.400'}>
                       {type === 'tf'
                         ? tf[userAnswers[id].answer]
@@ -55,7 +55,7 @@ export const QuizResult = ({ course, module, title }) => {
                   </HStack>
                   {!isCorrect && (
                     <HStack color={color}>
-                      <Icon as={FaCheckCircle} />
+                      <Icon as={BiCheckCircle} />
                       <Text>
                         {type === 'tf'
                           ? tf[correct_answer]

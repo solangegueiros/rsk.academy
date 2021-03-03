@@ -49,8 +49,14 @@ export const Pagination = ({ previous, next, ...rest }) => {
 }
 
 Pagination.propTypes = {
-  previous: PropTypes.string,
-  next: PropTypes.string,
+  previous: PropTypes.shape({
+    title: PropTypes.object,
+    path: PropTypes.string,
+  }),
+  next: PropTypes.shape({
+    title: PropTypes.object,
+    path: PropTypes.string,
+  }),
 }
 
 export default Pagination

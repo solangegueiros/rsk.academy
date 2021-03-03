@@ -4,8 +4,10 @@ import {
   setNextQuestion,
   setPreviousQuestion,
 } from '@/store/quiz/actions'
+import { useState } from 'react'
 
 export const useQuiz = (course, module, numberOfQuestions) => {
+  const [initialized, setInitialized] = useState(false)
   const dispatch = useDispatch()
   const { randomQuestions, answers } = useSelector(state => state.quiz)
   const { questions, currentIndex } = randomQuestions[course][module]
@@ -15,7 +17,10 @@ export const useQuiz = (course, module, numberOfQuestions) => {
   const setPrevious = () => dispatch(setPreviousQuestion({ course, module }))
 
   const start = () => {
-    if (!questions) dispatch(randomize({ course, module, numberOfQuestions }))
+    if (!initialized) setInitialized(true)
+
+    if (!questions && !initialized)
+      dispatch(randomize({ course, module, numberOfQuestions }))
   }
 
   return {

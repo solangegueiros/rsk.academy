@@ -30,5 +30,5 @@ export const Navigate = props => {
 
 Navigate.propTypes = {
   href: PropTypes.string.isRequired,
-  children: PropTypes.number.isRequired,
+  children: PropTypes.string.isRequired,
 }
