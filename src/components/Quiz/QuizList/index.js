@@ -58,3 +58,5 @@ QuizList.propTypes = {
   module: PropTypes.string.isRequired,
   numberOfQuestions: PropTypes.number,
 }
+
+export default QuizList

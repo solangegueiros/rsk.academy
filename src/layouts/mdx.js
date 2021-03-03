@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types'
 import * as chakraComponents from '@chakra-ui/react'
 import { MDXProvider } from '@mdx-js/react'
+import dynamic from 'next/dynamic'
 
 import {
   MdxComponents,
@@ -11,7 +12,6 @@ import {
   AcademyWallet,
   MasterName,
   MasterQuote,
-  QuizList,
   frontMatterType,
 } from '@/components/all'
 
@@ -21,6 +21,10 @@ import blogSidebar from '@/configs/blog-sidebar.json'
 
 import { findRouteByPath, removeFromLast } from '@/utils/findRouteByPath'
 import { getRouteContext } from '@/utils/getRouteContext'
+
+const QuizList = dynamic(() => import('../components/Quiz/QuizList'), {
+  ssr: false,
+})
 
 export function getRoutes(slug) {
   const configMap = {
