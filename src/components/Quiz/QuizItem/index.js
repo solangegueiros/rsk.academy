@@ -1,22 +1,26 @@
 import PropTypes from 'prop-types'
 import { Box, Flex, Text, useColorModeValue } from '@chakra-ui/react'
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { answerQuestion } from '@/store/quiz/actions'
+import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
-import { useQuiz } from '@/hooks/useQuiz'
+import { useDispatch } from 'react-redux'
 
-export const MultipleChoice = ({
+import { answerQuestion } from '@/store/quiz/actions'
+
+export const QuizItem = ({
+  userAnswers,
+  isCompleted,
   course,
   module,
+  question: { id, question, type, answers, correct_answer },
   order,
-  question: { id, question, answers, correct_answer },
 }) => {
-  const dispatch = useDispatch()
   const { locale } = useRouter()
-
-  const { userAnswers, isCompleted } = useQuiz(course, module)
   const color = useColorModeValue('primary.500', 'light.500')
+  const { t } = useI18n()
+
+  const questionAnswers = type === 'tf' ? [0, 1] : answers
+  const tf = [t('quiz.yes'), t('quiz.no')]
+  const dispatch = useDispatch()
 
   const setAnswer = val => {
     if (!isCompleted) {
@@ -26,12 +30,12 @@ export const MultipleChoice = ({
   }
 
   return (
-    <Box>
+    <Box mb={16}>
       <Text fontWeight='bold'>
         {order} - {question[locale]}
       </Text>
-      <Flex direction='column' align='start'>
-        {answers.map((answer, i) => {
+      <Flex direction={type !== 'tf' && 'column'} align='start'>
+        {questionAnswers.map((answer, i) => {
           return (
             <Box
               p={2}
@@ -47,7 +51,7 @@ export const MultipleChoice = ({
               color={isCompleted && correct_answer === i && color}
               fontWeight={isCompleted && correct_answer === i && 'bold'}
             >
-              {answer[locale]}
+              {type === 'tf' ? tf[i] : answer[locale]}
             </Box>
           )
         })}
@@ -56,24 +60,27 @@ export const MultipleChoice = ({
   )
 }
 
-MultipleChoice.propTypes = {
+QuizItem.propTypes = {
+  userAnswers: PropTypes.object,
+  isCompleted: PropTypes.bool,
   course: PropTypes.string.isRequired,
   module: PropTypes.string.isRequired,
   order: PropTypes.number.isRequired,
   question: PropTypes.shape({
-    correct_answer: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
     question: PropTypes.shape({
-      en: PropTypes.string.isRequired,
-      es: PropTypes.string.isRequired,
-      pt: PropTypes.string.isRequired,
-    }).isRequired,
+      en: PropTypes.string,
+      es: PropTypes.string,
+      pt: PropTypes.string,
+    }),
+    type: PropTypes.string.isRequired,
     answers: PropTypes.arrayOf(
       PropTypes.shape({
-        en: PropTypes.string.isRequired,
-        es: PropTypes.string.isRequired,
-        pt: PropTypes.string.isRequired,
-      }).isRequired,
+        en: PropTypes.string,
+        es: PropTypes.string,
+        pt: PropTypes.string,
+      }),
     ),
+    correct_answer: PropTypes.number.isRequired,
   }).isRequired,
 }

@@ -5,17 +5,17 @@ import {
   setPreviousQuestion,
 } from '@/store/quiz/actions'
 
-export const useQuiz = (course, module) => {
+export const useQuiz = (course, module, numberOfQuestions) => {
   const dispatch = useDispatch()
   const { randomQuestions, answers } = useSelector(state => state.quiz)
   const { questions, currentIndex } = randomQuestions[course][module]
-  const { result, isCompleted } = answers[course][module]
+  const userAnswers = answers[course][module]
 
   const setNext = () => dispatch(setNextQuestion({ course, module }))
   const setPrevious = () => dispatch(setPreviousQuestion({ course, module }))
 
   const start = () => {
-    if (!questions) dispatch(randomize({ course, module }))
+    if (!questions) dispatch(randomize({ course, module, numberOfQuestions }))
   }
 
   return {
@@ -24,7 +24,7 @@ export const useQuiz = (course, module) => {
     setNext,
     setPrevious,
     start,
-    userAnswers: result,
-    isCompleted,
+    userAnswers: userAnswers?.result,
+    isCompleted: userAnswers?.isCompleted,
   }
 }

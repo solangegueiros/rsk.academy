@@ -1,0 +1,178 @@
+[
+  {
+    "id": "dev-01-mc-01",
+    "type": "mc",
+    "question": {
+      "en": "01 Multiple Choice A EN",
+      "es": "01 Multiple Choice A ES",
+      "pt": "01 Multiple Choice A PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-01-mc-02",
+    "type": "mc",
+    "question": {
+      "en": "01 Multiple Choice B EN",
+      "es": "01 Multiple Choice B ES",
+      "pt": "01 Multiple Choice B PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-01-mc-03",
+    "type": "mc",
+    "question": {
+      "en": "01 Multiple Choice C EN",
+      "es": "01 Multiple Choice C ES",
+      "pt": "01 Multiple Choice C PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 2
+  },
+  {
+    "id": "dev-01-mc-04",
+    "type": "mc",
+    "question": {
+      "en": "01 Multiple Choice D EN",
+      "es": "01 Multiple Choice D ES",
+      "pt": "01 Multiple Choice D PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-01-mc-05",
+    "type": "mc",
+    "question": {
+      "en": "01 Multiple Choice E EN",
+      "es": "01 Multiple Choice E ES",
+      "pt": "01 Multiple Choice E PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 3
+  },
+  {
+    "id": "dev-01-mc-06",
+    "type": "mc",
+    "question": {
+      "en": "01 Multiple Choice F EN",
+      "es": "01 Multiple Choice F ES",
+      "pt": "01 Multiple Choice F PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-01-mc-07",
+    "type": "mc",
+    "question": {
+      "en": "When did RSK network start?",
+      "es": "01 Multiple Choice G ES",
+      "pt": "Quando a rede principal da RSK começou?"
+    },
+    "answers": [
+      { "en": "September 2001", "es": "Answer A ES", "pt": "Septembro 2014" },
+      { "en": "January 2018", "es": "Answer B ES", "pt": "Janeiro 2018" },
+      { "en": "October 2008", "es": "Answer C ES", "pt": "Outubro 2008" },
+      { "en": "January 2009", "es": "Answer D ES", "pt": "Janeiro 2009" }
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-01-mc-08",
+    "type": "mc",
+    "question": {
+      "en": "What I need to change in a Solidity smart contract to publish at RSK network?",
+      "es": "01 Multiple Choice H ES",
+      "pt": "O que eu preciso alterar em um smart contract feito em Solidity para publicá-lo na rede RSK?"
+    },
+    "answers": [
+      { "en": "Pragma version", "es": "Answer A ES", "pt": "Pragma version" },
+      { "en": "Constructur", "es": "Answer B ES", "pt": "Constructur" },
+      {
+        "en": "None of theese",
+        "es": "Answer C ES",
+        "pt": "Nenhuma das opções"
+      },
+      { "en": "All of theese", "es": "Answer D ES", "pt": "Todos as opções" }
+    ],
+    "correct_answer": 2
+  },
+  {
+    "id": "dev-01-mc-09",
+    "type": "mc",
+    "question": {
+      "en": "How can I publish I smart contract in RSK network?",
+      "es": "01 Multiple Choice I ES",
+      "pt": "Como eu posso publicar um smart contract na rede RSK?"
+    },
+    "answers": [
+      {
+        "en": "Using Truffle and HDWallet Provider",
+        "es": "Answer A ES",
+        "pt": "Usando Truffle e HDWallet"
+      },
+      {
+        "en": "Using Remix and Metamask",
+        "es": "Answer B ES",
+        "pt": "Usando Remix e Metamask"
+      },
+      {
+        "en": "Using Geth attach to a node",
+        "es": "Answer C ES",
+        "pt": "Usando Geth para fazer attach em um nó"
+      },
+      { "en": "All of theese", "es": "Answer D ES", "pt": "Todos as opções" }
+    ],
+    "correct_answer": 3
+  },
+  {
+    "id": "dev-01-mc-10",
+    "type": "mc",
+    "question": {
+      "en": "01 Multiple Choice J EN",
+      "es": "01 Multiple Choice J ES",
+      "pt": "01 Multiple Choice J PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 3
+  }
+]

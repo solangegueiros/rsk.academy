@@ -10,8 +10,15 @@ export const {
   submitQuestions,
 } = quizSlice.actions
 
-export const randomize = ({ course, module }) => dispatch => {
+export const randomize = ({
+  course,
+  module,
+  numberOfQuestions = 10,
+}) => dispatch => {
   const { questions } = initialState
-  const randomQuestions = getRandom(questions[course][module], 10)
+  const randomQuestions = getRandom(
+    questions[course][module],
+    numberOfQuestions,
+  )
   dispatch(randomizeQuestions({ course, module, questions: randomQuestions }))
 }

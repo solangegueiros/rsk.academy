@@ -1,0 +1,102 @@
+[
+  {
+    "id": "dev-03-tf-01",
+    "type": "tf",
+    "question": {
+      "en": "03 True False A EN",
+      "es": "03 True False A ES",
+      "pt": "03 True False A PT"
+    },
+    "correct_answer": 0
+  },
+  {
+    "id": "dev-03-tf-02",
+    "type": "tf",
+    "question": {
+      "en": "03 True False B EN",
+      "es": "03 True False B ES",
+      "pt": "03 True False B PT"
+    },
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-03-tf-03",
+    "type": "tf",
+    "question": {
+      "en": "03 True False C EN",
+      "es": "03 True False C ES",
+      "pt": "03 True False C PT"
+    },
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-03-tf-04",
+    "type": "tf",
+    "question": {
+      "en": "03 True False D EN",
+      "es": "03 True False D ES",
+      "pt": "03 True False D PT"
+    },
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-03-tf-05",
+    "type": "tf",
+    "question": {
+      "en": "03 True False E EN",
+      "es": "03 True False E ES",
+      "pt": "03 True False E PT"
+    },
+    "correct_answer": 0
+  },
+  {
+    "id": "dev-03-tf-06",
+    "type": "tf",
+    "question": {
+      "en": "03 True False F EN",
+      "es": "03 True False F ES",
+      "pt": "03 True False F PT"
+    },
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-03-tf-07",
+    "type": "tf",
+    "question": {
+      "en": "03 True False G EN",
+      "es": "03 True False G ES",
+      "pt": "03 True False G PT"
+    },
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-03-tf-08",
+    "type": "tf",
+    "question": {
+      "en": "03 True False H EN",
+      "es": "03 True False H ES",
+      "pt": "03 True False H PT"
+    },
+    "correct_answer": 0
+  },
+  {
+    "id": "dev-03-tf-09",
+    "type": "tf",
+    "question": {
+      "en": "03 True False I EN",
+      "es": "03 True False I ES",
+      "pt": "03 True False I PT"
+    },
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-03-tf-10",
+    "type": "tf",
+    "question": {
+      "en": "03 True False J EN",
+      "es": "03 True False J ES",
+      "pt": "03 True False J PT"
+    },
+    "correct_answer": 1
+  }
+]

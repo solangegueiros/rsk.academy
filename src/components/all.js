@@ -33,6 +33,5 @@ export * from './Seo'
 export * from './TableOfContents'
 export * from './WalletConntect'
 
-export * from './Quiz/MultipleChoice'
-export * from './Quiz/TrueFalse'
-export * from './Quiz/QuizButton'
+export * from './Quiz/QuizList'
+export * from './Quiz/QuizItem'

@@ -30,4 +30,8 @@ export default {
     getThisBalance: 'Consultar saldo total da Academy Wallet',
     balanceIs: 'O saldo é',
   },
+  quiz: {
+    yes: 'Sim',
+    no: 'Não',
+  },
 }
