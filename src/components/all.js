@@ -32,3 +32,7 @@ export * from './PropsTable'
 export * from './Seo'
 export * from './TableOfContents'
 export * from './WalletConntect'
+
+export * from './Quiz/MultipleChoice'
+export * from './Quiz/TrueFalse'
+export * from './Quiz/QuizButton'
