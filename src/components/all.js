@@ -32,3 +32,6 @@ export * from './PropsTable'
 export * from './Seo'
 export * from './TableOfContents'
 export * from './WalletConntect'
+
+export * from './Quiz/QuizList'
+export * from './Quiz/QuizItem'
