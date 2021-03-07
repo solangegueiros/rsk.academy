@@ -3,15 +3,15 @@
     "id": "dev-03-mc-03",
     "type": "mc",
     "question": {
-      "en": "03 Multiple Choice A EN",
-      "es": "03 Multiple Choice A ES",
-      "pt": "03 Multiple Choice A PT"
+      "en": "What is the initial application for which Blockchain was designed?",
+      "es": "¿Cuál es la aplicación inicial para la que se diseñó Blockchain?",
+      "pt": "Qual é o uso inicial para o qual o Blockchain foi projetado?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "Peer-to-peer finance application", "es": "Aplicación de finanzas punto a punto", "pt": "Aplicação financeira ponto-a-ponto" }, 	
+      { "en": "Research Project", "es": "Proyecto de investigación", "pt": "Projeto de pesquisa" }, 	
+      { "en": "Open source finance software to connect Banks", "es": "Software de finanzas de código abierto para conectar bancos", "pt": "Software opn source para conectar bancos" }, 	
+      { "en": "None of these", "es": "Ninguna de las opciones", "pt": "Nenhuma das opções" } 
     ],
     "correct_answer": 1
   },
@@ -19,31 +19,35 @@
     "id": "dev-03-mc-02",
     "type": "mc",
     "question": {
-      "en": "03 Multiple Choice B EN",
-      "es": "03 Multiple Choice B ES",
-      "pt": "03 Multiple Choice B PT"
+      "en": "What is the name of the first academic paper that describes bitcoin?",
+      "es": "¿Cómo se llama el primer artículo académico que describe bitcoin?",
+      "pt": "Qual o nome do primeiro artigo acadêmico que descreve o bitcoin?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "The origins of money", "es": "Los orígenes del dinero", "pt": "As origens do dinheiro" },
+      { "en": "The great unreveiling", "es": "La gran revelación", "pt": "A grande revelação" },
+      { "en": "The Bitcoin Whitepaper", "es": "The Bitcoin Whitepaper", "pt": "The Bitcoin Whitepaper" },
+      { "en": "Money peer-to-peer", "es": "Dinero punto a punto", "pt": "Dinheiro ponto a ponto" }
     ],
-    "correct_answer": 1
+    "correct_answer": 3
   },
   {
     "id": "dev-03-mc-03",
     "type": "mc",
     "question": {
-      "en": "03 Multiple Choice C EN",
-      "es": "03 Multiple Choice C ES",
-      "pt": "03 Multiple Choice C PT"
+      "en": "What does P2P stand for?",
+      "es": "¿Qué significa P2P?",
+      "pt": "O que quer dizer P2P?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "Password to Password", 
+        "es": "Contraseña a contraseña en ingles: Password to Password", 
+        "pt": "Senha a senha em inglês: Password to Password" },
+      { "en": "Peer to Peer", "es": "Punto a Punto (Peer to Peer)", "pt": "Ponto a Ponto (Peer to Peer)" },
+      { "en": "Product to Product", "es": "Producto a Producto (Product to Product)", "pt": "Produto a Produto (Product to Product)" },
+      { "en": "Private Key to Public Key", 
+        "es": "Clave privada a clave pública en ingles (Private Key to Public Key)", 
+        "pt": "Chave privada à chave pública em inglês (Private Key to Public Key)" }
     ],
     "correct_answer": 2
   },
@@ -51,47 +55,47 @@
     "id": "dev-03-mc-04",
     "type": "mc",
     "question": {
-      "en": "03 Multiple Choice D EN",
-      "es": "03 Multiple Choice D ES",
-      "pt": "03 Multiple Choice D PT"
+      "en": "What is a node?",
+      "es": "¿Qué es un nodo?",
+      "pt": "O que é um nó?"      
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "A type of cryptocurrency", "es": "Un tipo de criptomoneda", "pt": "Um tipo de criptomoeda" }, 	
+      { "en": "A Blockchain", "es": "Una cadena de bloques", "pt": "Uma cadeia de blocos" }, 	
+      { "en": "An exchange", "es": "Una exchange", "pt": "Uma exchange" }, 	
+      { "en": "A computer on a Blockchain network", "es": "Una computadora en una red Blockchain", "pt": "Um computador em uma rede Blockchain" }       
     ],
-    "correct_answer": 1
+    "correct_answer": 4
   },
   {
     "id": "dev-03-mc-05",
     "type": "mc",
     "question": {
-      "en": "03 Multiple Choice E EN",
-      "es": "03 Multiple Choice E ES",
-      "pt": "03 Multiple Choice E PT"
+      "en": "What is a miner?",
+      "es": "¿Qué es un minero?",
+      "pt": "O que é um minerador?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "A type of blockchain", "es": "Un tipo de blockchain", "pt": "Um tipo de blockchain" },
+      { "en": "An algorithm that predicts the next part of the chain", "es": "Un algoritmo que predice la siguiente parte de la cadena.", "pt": "Um algoritmo que prevê a próxima parte da cadeia." },
+      { "en": "A person doing calculations to verify a transaction", "es": "Una persona que realiza cálculos para verificar una transacción.", "pt": "Uma pessoa que realiza cálculos para validar uma transação." },
+      { "en": "Computers that validate and process blockchain transactions", "es": "Computadoras que validan y procesan transacciones de blockchain", "pt": "Computadores que validam e processam transações de blockchain" } 
     ],
-    "correct_answer": 3
+    "correct_answer": 4
   },
   {
     "id": "dev-03-mc-06",
     "type": "mc",
     "question": {
-      "en": "03 Multiple Choice F EN",
-      "es": "03 Multiple Choice F ES",
-      "pt": "03 Multiple Choice F PT"
+      "en": "What is a blockchain?",
+      "es": "¿Qué es blockchain?",
+      "pt": "O que é um blockchain?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "A distributed ledger on a peer to peer network", "es": "Un libro mayor distribuido en una red punto a punto", "pt": "Um livro-razão distribuído em uma rede ponto a ponto" },
+      { "en": "A type of cryptocurrency", "es": "Un tipo de criptomoneda", "pt": "Um tipo de criptomoeda" },
+      { "en": "An exchange", "es": "Una exchange", "pt": "Uma exchange" },
+      { "en": "A centralized ledger", "es": "Un libro mayor centralizado", "pt": "Um livro-razão centralizado" }       
     ],
     "correct_answer": 1
   },
@@ -99,64 +103,64 @@
     "id": "dev-03-mc-07",
     "type": "mc",
     "question": {
-      "en": "03 Multiple Choice G EN",
-      "es": "03 Multiple Choice G ES",
-      "pt": "03 Multiple Choice G PT"
+      "en": "What is the term used when a blockchain splits?",
+      "es": "¿Cuál es el término que se usa cuando una cadena de bloques se divide?",
+      "pt": "Qual é o termo usado quando um blockchain se divide?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "A sidechain", "es": "Una sidechain", "pt": "Uma sidechain" },
+      { "en": "A merge", "es": "Un merge (fusión)", "pt": "Um merge" },
+      { "en": "A division", "es": "Una division", "pt": "Uma divisão" },
+      { "en": "A fork", "es": "Un fork", "pt": "Um fork" }       
     ],
-    "correct_answer": 2
+    "correct_answer": 4
   },
   {
     "id": "dev-03-mc-08",
     "type": "mc",
     "question": {
-      "en": "03 Multiple Choice H EN",
-      "es": "03 Multiple Choice H ES",
-      "pt": "03 Multiple Choice H PT"
+      "en": "What incentivizes the miners to give correct validation of transactions?",
+      "es": "¿Qué anima a los mineros a validar las transacciones correctamente?",
+      "pt": "O que incentiva os mineradores a validar as transações corretamente?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "The block reward", "es": "La recompensa del bloque", "pt": "A recompensa do bloco" },
+      { "en": "The nonce", "es": "El nonce", "pt": "O nonce" },
+      { "en": "Thumbs up from the community", "es": "El reconocimiento de la comunidad", "pt": "O reconhecimento da comunidade" },
+      { "en": "More memory", "es": "Mas memoria", "pt": "Mais memória" } 
     ],
-    "correct_answer": 3
+    "correct_answer": 1
   },
   {
     "id": "dev-03-mc-09",
     "type": "mc",
     "question": {
-      "en": "03 Multiple Choice I EN",
-      "es": "03 Multiple Choice I ES",
-      "pt": "03 Multiple Choice I PT"
+      "en": "What is the genesis block?",
+      "es": "¿Qué es el bloqueo génesis?",
+      "pt": "O que é o bloco gênesis?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "The first block after each block halving", "es": "El primer bloque después de cada halving (bloque reducido a la mitad)", "pt": "O primeiro bloco após cada halving (divisão pela metade)" },
+      { "en": "A famous block that hardcoded a hash of the Book of Genesis onto the blockchain", "es": "Un bloque famoso que codificó un hash del Libro del Génesis en la cadena de bloques", "pt": "Um bloco famoso que codificou um hash do Livro Gênesis no blockchain" },
+      { "en": "The 2nd transaction of a Blockchain", "es": "La 2da transacción de una Blockchain", "pt": "A 2ª transação de um Blockchain" },
+      { "en": "The first block of a Blockchain", "es": "El primer bloque de una Blockchain", "pt": "O primeiro bloco de um blockchain" } 
     ],
-    "correct_answer": 3
+    "correct_answer": 4
   },
   {
     "id": "dev-03-mc-10",
     "type": "mc",
     "question": {
-      "en": "03 Multiple Choice J EN",
-      "es": "03 Multiple Choice J ES",
-      "pt": "03 Multiple Choice J PT"
+      "en": "When did bitcoin’s creator publish a whitepaper introducing the digital currency?",
+      "es": "¿Cuándo publicó el creador de bitcoin un documento técnico que presentaba la moneda digital?",
+      "pt": "Quando o criador do bitcoin publicou um white paper apresentando a moeda digital?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "2007", "es": "2007", "pt": "2007" },
+      { "en": "2008", "es": "2008", "pt": "2008" },
+      { "en": "2009", "es": "2009", "pt": "2009" },
+      { "en": "2010", "es": "2010", "pt": "2010" }      
     ],
-    "correct_answer": 1
+    "correct_answer": 2
   }
 ]

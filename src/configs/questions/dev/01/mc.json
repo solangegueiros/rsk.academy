@@ -3,175 +3,79 @@
     "id": "dev-01-mc-01",
     "type": "mc",
     "question": {
-      "en": "01 Multiple Choice A EN",
-      "es": "01 Multiple Choice A ES",
-      "pt": "01 Multiple Choice A PT"
+      "en": "Where do you store your cryptocurrency?",
+      "es": "¿Dónde guardas tus criptomonedas?",
+      "pt": "Onde você guarda suas criptmoedas?"      
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "Bank account", "es": "Cuenta bancaria", "pt": "Conta bancária" }, 	
+      { "en": "Floppy Disk", "es": "Disco flexible", "pt": "Disquete" }, 	
+      { "en": "Wallet", "es": "Billetera", "pt": "Carteira" }, 	
+      { "en": "In your pocket", "es": "En tu bolsillo", "pt": "No seu bolso" }       
     ],
-    "correct_answer": 1
+    "correct_answer": 3    
   },
   {
     "id": "dev-01-mc-02",
     "type": "mc",
     "question": {
-      "en": "01 Multiple Choice B EN",
-      "es": "01 Multiple Choice B ES",
-      "pt": "01 Multiple Choice B PT"
+      "en": "Where is the LEAST SAFE place to keep your cryptocurrency?",
+      "es": "¿Dónde está el lugar MENOS SEGURO para almacenar tus criptomonedas?",
+      "pt": "Onde é o lugar MENOS SEGURO para guardar suas criptomoedas?"      
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "In your pocket", "es": "En tu bolsillo", "pt": "No seu bolso" },
+      { "en": "On an exchange", "es": "En una exchange", "pt": "Em uma exchange" },
+      { "en": "On a hot wallet", "es": "En una hot wallet", "pt": "Em uma hot wallet" },
+      { "en": "On a hard wallet", "es": "En una hard wallet", "pt": "Em uma hard wallet" }       
     ],
-    "correct_answer": 1
+    "correct_answer": 2
   },
   {
     "id": "dev-01-mc-03",
     "type": "mc",
     "question": {
-      "en": "01 Multiple Choice C EN",
-      "es": "01 Multiple Choice C ES",
-      "pt": "01 Multiple Choice C PT"
+      "en": "What is cold storage?",
+      "es": "¿Qué es el almacenamiento en frío (cold storage)?",
+      "pt": "O que é cold storage?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "A place to hang your coat", "es": "Un lugar para colgar tu abrigo", "pt": "Um local para guardar seu casaco" }, 	
+      { "en": "A private key connected to the Internet", "es": "Una clave privada conectada a Internet.", "pt": "Uma chave privada conectada a Internet." }, 	
+      { "en": "A private key not connected to the Internet", "es": "Una clave privada no conectada a Internet.", "pt": "Uma chave privada não conectada a Internet." }, 	
+      { "en": "A desktop wallet", "es": "Una billetera para la computadora", "pt": "Uma wallet para o computador" }       
     ],
-    "correct_answer": 2
+    "correct_answer": 3
   },
   {
     "id": "dev-01-mc-04",
     "type": "mc",
     "question": {
-      "en": "01 Multiple Choice D EN",
-      "es": "01 Multiple Choice D ES",
-      "pt": "01 Multiple Choice D PT"
+      "en": "What is a private key?",
+      "es": "¿Qué es una clave privada?",
+      "pt": "O que é uma chave privada?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "A key on your key chain", "es": "Una llave en tu llavero", "pt": "Uma chave no seu chaveiro" },
+      { "en": "A key given to the public", "es": "Una clave entregada al público", "pt": "Uma chave para deixar pública" },
+      { "en": "A key NOT to be given to the public", "es": "Una clave que NO debe entregarse al público", "pt": "Uma chave para NÃO deixar pública" },
+      { "en": "A key that opens a secret door", "es": "Una llave que abre una puerta secreta", "pt": "Uma chave que abre uma porta secreta" } 
     ],
-    "correct_answer": 1
+    "correct_answer": 3
   },
   {
     "id": "dev-01-mc-05",
     "type": "mc",
     "question": {
-      "en": "01 Multiple Choice E EN",
-      "es": "01 Multiple Choice E ES",
-      "pt": "01 Multiple Choice E PT"
+      "en": "Which of the following is popularly used for storing crypto assets?",
+      "es": "Qual desdes é comumente usado para guardar criptoativos?",
+      "pt": "Qual das opções a seguir é comumente usada para armazenar criptomoedas?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
-    ],
-    "correct_answer": 3
-  },
-  {
-    "id": "dev-01-mc-06",
-    "type": "mc",
-    "question": {
-      "en": "01 Multiple Choice F EN",
-      "es": "01 Multiple Choice F ES",
-      "pt": "01 Multiple Choice F PT"
-    },
-    "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
-    ],
-    "correct_answer": 1
-  },
-  {
-    "id": "dev-01-mc-07",
-    "type": "mc",
-    "question": {
-      "en": "When did RSK network start?",
-      "es": "01 Multiple Choice G ES",
-      "pt": "Quando a rede principal da RSK começou?"
-    },
-    "answers": [
-      { "en": "September 2001", "es": "Answer A ES", "pt": "Septembro 2014" },
-      { "en": "January 2018", "es": "Answer B ES", "pt": "Janeiro 2018" },
-      { "en": "October 2008", "es": "Answer C ES", "pt": "Outubro 2008" },
-      { "en": "January 2009", "es": "Answer D ES", "pt": "Janeiro 2009" }
-    ],
-    "correct_answer": 1
-  },
-  {
-    "id": "dev-01-mc-08",
-    "type": "mc",
-    "question": {
-      "en": "What I need to change in a Solidity smart contract to publish at RSK network?",
-      "es": "01 Multiple Choice H ES",
-      "pt": "O que eu preciso alterar em um smart contract feito em Solidity para publicá-lo na rede RSK?"
-    },
-    "answers": [
-      { "en": "Pragma version", "es": "Answer A ES", "pt": "Pragma version" },
-      { "en": "Constructur", "es": "Answer B ES", "pt": "Constructur" },
-      {
-        "en": "None of theese",
-        "es": "Answer C ES",
-        "pt": "Nenhuma das opções"
-      },
-      { "en": "All of theese", "es": "Answer D ES", "pt": "Todos as opções" }
-    ],
-    "correct_answer": 2
-  },
-  {
-    "id": "dev-01-mc-09",
-    "type": "mc",
-    "question": {
-      "en": "How can I publish I smart contract in RSK network?",
-      "es": "01 Multiple Choice I ES",
-      "pt": "Como eu posso publicar um smart contract na rede RSK?"
-    },
-    "answers": [
-      {
-        "en": "Using Truffle and HDWallet Provider",
-        "es": "Answer A ES",
-        "pt": "Usando Truffle e HDWallet"
-      },
-      {
-        "en": "Using Remix and Metamask",
-        "es": "Answer B ES",
-        "pt": "Usando Remix e Metamask"
-      },
-      {
-        "en": "Using Geth attach to a node",
-        "es": "Answer C ES",
-        "pt": "Usando Geth para fazer attach em um nó"
-      },
-      { "en": "All of theese", "es": "Answer D ES", "pt": "Todos as opções" }
-    ],
-    "correct_answer": 3
-  },
-  {
-    "id": "dev-01-mc-10",
-    "type": "mc",
-    "question": {
-      "en": "01 Multiple Choice J EN",
-      "es": "01 Multiple Choice J ES",
-      "pt": "01 Multiple Choice J PT"
-    },
-    "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "In your pocket", "es": "En tu bolsillo", "pt": "No seu bolso" },
+      { "en": "Stack", "es": "Pila (Stack)", "pt": "Pilha (Stack)" },
+      { "en": "Box", "es": "Caja", "pt": "Caixa" },
+      { "en": "Wallet", "es": "Billetera", "pt": "Carteira" }       
     ],
     "correct_answer": 3
   }

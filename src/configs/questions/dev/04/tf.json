@@ -1,0 +1,102 @@
+[
+  {
+    "id": "dev-04-tf-01",
+    "type": "tf",
+    "question": {
+      "en": "In a two-way peg or 1:1 peg system, tokens that live in two separate blockchains are economically equivalent.",
+      "es": "04 True False A ES",
+      "pt": "Em um sistema two-way peg or 1:1 peg, tokens de diferentes blockchains são equivalentes do ponto de vista econômico."
+    },
+    "correct_answer": 0
+  },
+  {
+    "id": "dev-04-tf-02",
+    "type": "tf",
+    "question": {
+      "en": "RSK network is a sidechain two-way peg system with Ethereum.",
+      "es": "04 True False B ES",
+      "pt": "A rede RSK é uma sidechain do tipo two-way peg com Ethereum."
+    },
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-04-tf-03",
+    "type": "tf",
+    "question": {
+      "en": "04 True False C EN",
+      "es": "04 True False C ES",
+      "pt": "04 True False C PT"
+    },
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-04-tf-04",
+    "type": "tf",
+    "question": {
+      "en": "04 True False D EN",
+      "es": "04 True False D ES",
+      "pt": "04 True False D PT"
+    },
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-04-tf-05",
+    "type": "tf",
+    "question": {
+      "en": "04 True False E EN",
+      "es": "04 True False E ES",
+      "pt": "04 True False E PT"
+    },
+    "correct_answer": 0
+  },
+  {
+    "id": "dev-04-tf-06",
+    "type": "tf",
+    "question": {
+      "en": "04 True False F EN",
+      "es": "04 True False F ES",
+      "pt": "04 True False F PT"
+    },
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-04-tf-07",
+    "type": "tf",
+    "question": {
+      "en": "04 True False G EN",
+      "es": "04 True False G ES",
+      "pt": "04 True False G PT"
+    },
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-04-tf-08",
+    "type": "tf",
+    "question": {
+      "en": "04 True False H EN",
+      "es": "04 True False H ES",
+      "pt": "04 True False H PT"
+    },
+    "correct_answer": 0
+  },
+  {
+    "id": "dev-04-tf-09",
+    "type": "tf",
+    "question": {
+      "en": "04 True False I EN",
+      "es": "04 True False I ES",
+      "pt": "04 True False I PT"
+    },
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-04-tf-10",
+    "type": "tf",
+    "question": {
+      "en": "04 True False J EN",
+      "es": "04 True False J ES",
+      "pt": "04 True False J PT"
+    },
+    "correct_answer": 1
+  }
+]
