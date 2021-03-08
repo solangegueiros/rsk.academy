@@ -8,12 +8,16 @@
       "pt": "Quando a rede principal da RSK começou?"
     },
     "answers": [
-      { "en": "September 2014", "es": "Septiembre 2014", "pt": "Setembro 2014" },
+      {
+        "en": "September 2014",
+        "es": "Septiembre 2014",
+        "pt": "Setembro 2014"
+      },
       { "en": "January 2018", "es": "Enero 2018", "pt": "Janeiro 2018" },
       { "en": "October 2008", "es": "Octubre 2008", "pt": "Outubro 2008" },
       { "en": "January 2009", "es": "Enero 2009", "pt": "Janeiro 2009" }
     ],
-    "correct_answer": 2    
+    "correct_answer": 2
   },
   {
     "id": "dev-04-mc-02",

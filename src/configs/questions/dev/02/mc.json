@@ -15,7 +15,11 @@
         "es": "Ninguna de las opciones",
         "pt": "Nenhuma das opções"
       },
-      { "en": "All of theese", "es": "Todas las opciones", "pt": "Todos as opções" }
+      {
+        "en": "All of theese",
+        "es": "Todas las opciones",
+        "pt": "Todos as opções"
+      }
     ],
     "correct_answer": 3
   },
