@@ -14,7 +14,7 @@ export const Navigate = props => {
 
   if (isExternalLink) {
     return (
-      <chakra.a apply='mdx.a' target='_blank' {...props}>
+      <chakra.a apply='mdx.a' rel='noreferrer' target='_blank' {...props}>
         {props.children}{' '}
         <Icon transform='translateY(-2px)' as={FiExternalLink} />
       </chakra.a>

@@ -7,7 +7,7 @@ import { quizSlice } from './quiz/slice'
 
 export default configureStore({
   middleware: [thunk],
-  devTools: true,
+  devTools: process.env.NODE_ENV === 'development',
   reducer: {
     identity: identitySlice.reducer,
     profile: profileSlice.reducer,
