@@ -1,9 +1,5 @@
-import * as React from 'react'
-import dynamic from 'next/dynamic'
-
 import { PageContainer } from '@/components/all'
-
-const MDXLayout = dynamic(() => import('./mdx'))
+import MDXLayout from './mdx'
 
 export default function DefaultLayout({ children, frontMatter }) {
   const { slug } = frontMatter

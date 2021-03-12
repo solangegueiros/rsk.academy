@@ -30,6 +30,5 @@ export const useQuiz = (course, module, numberOfQuestions) => {
     setPrevious,
     start,
     userAnswers: userAnswers?.result,
-    isCompleted: userAnswers?.isCompleted,
   }
 }

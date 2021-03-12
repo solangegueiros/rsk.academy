@@ -27,5 +27,8 @@ export const reducers = {
     state.isLoading = false
     state.quizResults = quizResults
   },
+  loadQuizResult: (state, { payload: { quizName, result } }) => {
+    state.quizResults[quizName] = result
+  },
   resetProfile: () => initialState,
 }

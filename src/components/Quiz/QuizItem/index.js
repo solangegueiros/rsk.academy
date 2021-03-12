@@ -8,10 +8,9 @@ import { answerQuestion } from '@/store/quiz/actions'
 
 export const QuizItem = ({
   userAnswers,
-  isCompleted,
   course,
   module,
-  question: { id, question, type, answers, correct_answer },
+  question: { id, question, type, answers },
   order,
 }) => {
   const { locale } = useRouter()
@@ -23,10 +22,8 @@ export const QuizItem = ({
   const dispatch = useDispatch()
 
   const setAnswer = val => {
-    if (!isCompleted) {
-      const answer = parseInt(val)
-      dispatch(answerQuestion({ course, module, id, answer }))
-    }
+    const answer = parseInt(val)
+    dispatch(answerQuestion({ course, module, id, answer }))
   }
 
   return (
@@ -43,13 +40,11 @@ export const QuizItem = ({
               onClick={() => setAnswer(i)}
               variant='ghost'
               borderWidth={2}
-              cursor={isCompleted ? 'not-allowed' : 'pointer'}
+              cursor='pointer'
               borderRadius='lg'
               borderColor={
                 userAnswers[id]?.answer === i ? color : 'transparent'
               }
-              color={isCompleted && correct_answer === i && color}
-              fontWeight={isCompleted && correct_answer === i && 'bold'}
             >
               {type === 'tf' ? tf[i] : answer[locale]}
             </Box>
@@ -62,7 +57,6 @@ export const QuizItem = ({
 
 QuizItem.propTypes = {
   userAnswers: PropTypes.object,
-  isCompleted: PropTypes.bool,
   course: PropTypes.string.isRequired,
   module: PropTypes.string.isRequired,
   order: PropTypes.number.isRequired,

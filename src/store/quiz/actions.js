@@ -7,7 +7,9 @@ export const {
   randomizeQuestions,
   setNextQuestion,
   setPreviousQuestion,
-  submitQuestions,
+  pendingAnswers,
+  finalizeAnswers,
+  errorAnswers,
 } = quizSlice.actions
 
 export const randomize = ({

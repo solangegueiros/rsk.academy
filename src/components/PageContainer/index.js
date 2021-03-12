@@ -5,7 +5,14 @@ import { SkipNavContent, SkipNavLink } from '@chakra-ui/skip-nav'
 import { useRouter } from 'next/router'
 import { FaGithub } from 'react-icons/fa'
 
-import { Container, Header, Seo, PageTransition } from '@/components/all'
+import {
+  Container,
+  Header,
+  Seo,
+  PageTransition,
+  Footer,
+} from '@/components/all'
+import { Transactions } from '../Transactions'
 import { EditPageButton } from './EditPageButton'
 
 function useHeadingFocusOnRouteChange() {
@@ -40,12 +47,19 @@ export const PageContainer = props => {
       <Seo title={title} description={description} />
       <SkipNavLink zIndex={20}>Skip to Content</SkipNavLink>
       <Header />
-      <Container as='main' maxW='full'>
-        <Flex>
+      <Container d='flex' as='main' maxW='full' minH='calc(100vh - 4.5rem)'>
+        <Flex flex='1'>
           {sidebar || null}
           <Box flex='1' w='full'>
             <SkipNavContent />
-            <Box id='content' px={5} mx='auto' maxW='64rem' minH='76vh'>
+            <Flex
+              h='full'
+              flexDir='column'
+              id='content'
+              px={5}
+              mx='auto'
+              maxW='64rem'
+            >
               <PageTransition>
                 <chakra.h1 tabIndex={-1} outline={0} apply='mdx.h1' mb={8}>
                   {title}
@@ -62,16 +76,18 @@ export const PageContainer = props => {
                   </HStack>
                 )}
 
-                {children}
+                <Box h='full'>{children}</Box>
               </PageTransition>
               <Box mt='40px'>
                 {editUrl && <EditPageButton href={editUrl} />}
               </Box>
               {pagination || null}
-            </Box>
+            </Flex>
           </Box>
         </Flex>
       </Container>
+      <Footer />
+      <Transactions />
     </>
   )
 }
