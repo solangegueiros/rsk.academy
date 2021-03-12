@@ -26,15 +26,18 @@ export const initialState = {
   answers: {
     dev: {
       '01': {
-        isCompleted: false,
+        isError: false,
+        isLoading: false,
         result: {},
       },
       '03': {
-        isCompleted: false,
+        isError: false,
+        isLoading: false,
         result: {},
       },
       '02': {
-        isCompleted: false,
+        isError: false,
+        isLoading: false,
         result: {},
       },
     },

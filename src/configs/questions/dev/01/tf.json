@@ -3,19 +3,19 @@
     "id": "dev-01-tf-01",
     "type": "tf",
     "question": {
-      "en": "In a two-way peg or 1:1 peg system, tokens that live in two separate blockchains are economically equivalent.",
-      "es": "01 True False A ES",
-      "pt": "Em um sistema two-way peg or 1:1 peg, tokens de diferentes blockchains são equivalentes do ponto de vista econômico."
+      "en": "It is possible to send R-BTC for an Ethereum address",
+      "es": "Es posible enviar R-BTC para una dirección Ethereum",
+      "pt": "É possível enviar R-BTC para endereço Ethereum"
     },
-    "correct_answer": 0
+    "correct_answer": 1
   },
   {
     "id": "dev-01-tf-02",
     "type": "tf",
     "question": {
-      "en": "RSK network is a sidechain two-way peg system with Ethereum.",
-      "es": "01 True False B ES",
-      "pt": "A rede RSK é uma sidechain do tipo two-way peg com Ethereum."
+      "en": "A faucet is a place that gives cryptocurrencies or tokens, generally used in test networks",
+      "es": "Un faucet es un lugar que da criptomonedas o tokens, generalmente utilizado en redes de pruebas.",
+      "pt": "Um faucet é um lugar que dá criptomoedas ou tokens, geralmente usado em redes de testes"
     },
     "correct_answer": 1
   },
@@ -23,19 +23,19 @@
     "id": "dev-01-tf-03",
     "type": "tf",
     "question": {
-      "en": "01 True False C EN",
-      "es": "01 True False C ES",
-      "pt": "01 True False C PT"
+      "en": "The DPath (Derivation Path) is used to calculate an address checksum",
+      "es": "El DPath (Derivation Path = ruta de derivación) se utiliza para calcular el checksum de una dirección",
+      "pt": "DPath, que é o caminho de derivação (Derivation Path), é utilizado no checksum de um endereço"
     },
-    "correct_answer": 1
+    "correct_answer": 0
   },
   {
     "id": "dev-01-tf-04",
     "type": "tf",
     "question": {
-      "en": "01 True False D EN",
-      "es": "01 True False D ES",
-      "pt": "01 True False D PT"
+      "en": "The ChainId of a network is used to calculate an address checksum",
+      "es": "El ChainId de una red se utiliza para calcular el checksum de una dirección",
+      "pt": "O chainId é utilizado no checksum de um endereço"
     },
     "correct_answer": 1
   },
@@ -43,60 +43,10 @@
     "id": "dev-01-tf-05",
     "type": "tf",
     "question": {
-      "en": "01 True False E EN",
-      "es": "01 True False E ES",
-      "pt": "01 True False E PT"
+      "en": "The mnemonic (or seed) of a wallet is the set of words used to generate all the addresses in that wallet.",
+      "es": "El mnemónico (o seed, semilla) de una billetera es el conjunto de palabras que se utilizan para generar todas las direcciones en esta billetera.",
+      "pt": "O mnemônico (ou seed, semente) de uma carteira é o conjunto de palavras utilizado para gerar todos os endereços desta carteira."
     },
     "correct_answer": 0
-  },
-  {
-    "id": "dev-01-tf-06",
-    "type": "tf",
-    "question": {
-      "en": "01 True False F EN",
-      "es": "01 True False F ES",
-      "pt": "01 True False F PT"
-    },
-    "correct_answer": 1
-  },
-  {
-    "id": "dev-01-tf-07",
-    "type": "tf",
-    "question": {
-      "en": "01 True False G EN",
-      "es": "01 True False G ES",
-      "pt": "01 True False G PT"
-    },
-    "correct_answer": 1
-  },
-  {
-    "id": "dev-01-tf-08",
-    "type": "tf",
-    "question": {
-      "en": "01 True False H EN",
-      "es": "01 True False H ES",
-      "pt": "01 True False H PT"
-    },
-    "correct_answer": 0
-  },
-  {
-    "id": "dev-01-tf-09",
-    "type": "tf",
-    "question": {
-      "en": "01 True False I EN",
-      "es": "01 True False I ES",
-      "pt": "01 True False I PT"
-    },
-    "correct_answer": 1
-  },
-  {
-    "id": "dev-01-tf-10",
-    "type": "tf",
-    "question": {
-      "en": "01 True False J EN",
-      "es": "01 True False J ES",
-      "pt": "01 True False J PT"
-    },
-    "correct_answer": 1
   }
 ]

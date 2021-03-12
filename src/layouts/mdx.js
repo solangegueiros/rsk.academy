@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import * as chakraComponents from '@chakra-ui/react'
 import { MDXProvider } from '@mdx-js/react'
 import dynamic from 'next/dynamic'
+import * as Spinners from 'react-spinners'
 
 import {
   MdxComponents,
@@ -54,6 +55,7 @@ function MDXLayout({ frontmatter, children }) {
       components={{
         ...chakraComponents,
         ...MdxComponents,
+        ...Spinners,
         AcademyWallet,
         MasterName,
         MasterQuote,

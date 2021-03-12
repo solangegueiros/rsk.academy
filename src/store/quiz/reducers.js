@@ -11,6 +11,18 @@ export const reducers = {
       isCorrect,
     }
   },
+  pendingAnswers: (state, { payload: { course, module } }) => {
+    state.answers[course][module].isLoading = true
+  },
+  finalizeAnswers: (state, { payload: { course, module } }) => {
+    state.answers[course][module].isLoading = false
+    state.answers[course][module].isError = false
+    state.answers[course][module].result = {}
+  },
+  errorAnswers: (state, { payload: { course, module } }) => {
+    state.answers[course][module].isLoading = false
+    state.answers[course][module].isError = true
+  },
   randomizeQuestions: (state, { payload: { course, module, questions } }) => {
     state.randomQuestions[course][module].questions = questions
   },
@@ -25,8 +37,5 @@ export const reducers = {
       state.randomQuestions[course][module].currentIndex =
         state.randomQuestions[course][module].currentIndex - 1
     }
-  },
-  submitQuestions: (state, { payload: { course, module } }) => {
-    state.answers[course][module].isCompleted = true
   },
 }

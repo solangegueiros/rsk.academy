@@ -22,7 +22,6 @@ export const QuizResult = ({ course, module, title }) => {
   const tf = [t('quiz.yes'), t('quiz.no')]
   const color = useColorModeValue('primary.500', 'light.500')
 
-  console.log('userAnswers', userAnswers)
   const numberOfCorrectAnswers = useMemo(() => {
     return Object.entries(userAnswers).filter(([_, { isCorrect }]) => isCorrect)
       .length

@@ -1,35 +1,59 @@
 [
   {
-    "id": "dev-02-mc-01",
+    "id": "dev-04-mc-01",
     "type": "mc",
     "question": {
-      "en": "What I need to change in a Solidity smart contract to publish at RSK network?",
-      "es": "¿Qué necesito cambiar en un contrato inteligente de Solidity para publicar en la red RSK?",
-      "pt": "O que eu preciso alterar em um smart contract feito em Solidity para publicá-lo na rede RSK?"
+      "en": "When did RSK main network start?",
+      "es": "¿Cuándo comenzó la red principal de RSK?",
+      "pt": "Quando a rede principal da RSK começou?"
     },
     "answers": [
-      { "en": "Pragma version", "es": "Answer A ES", "pt": "Pragma version" },
-      { "en": "Constructor", "es": "Constructor", "pt": "Constructor" },
       {
-        "en": "None of theese",
-        "es": "Ninguna de las opciones",
-        "pt": "Nenhuma das opções"
+        "en": "September 2014",
+        "es": "Septiembre 2014",
+        "pt": "Setembro 2014"
+      },
+      { "en": "January 2018", "es": "Enero 2018", "pt": "Janeiro 2018" },
+      { "en": "October 2008", "es": "Octubre 2008", "pt": "Outubro 2008" },
+      { "en": "January 2009", "es": "Enero 2009", "pt": "Janeiro 2009" }
+    ],
+    "correct_answer": 2
+  },
+  {
+    "id": "dev-04-mc-02",
+    "type": "mc",
+    "question": {
+      "en": "How can I publish I smart contract in RSK network?",
+      "es": "¿Cómo puedo publicar un contrato inteligente en la red RSK?",
+      "pt": "Como eu posso publicar um smart contract na rede RSK?"
+    },
+    "answers": [
+      {
+        "en": "Using Truffle and HDWallet Provider",
+        "es": "Usando Truffle y HDWallet Provider",
+        "pt": "Usando Truffle e HDWallet Provider"
       },
       {
-        "en": "All of theese",
-        "es": "Todas las opciones",
-        "pt": "Todos as opções"
-      }
+        "en": "Using Remix and Metamask",
+        "es": "Usando Remix y Metamask",
+        "pt": "Usando Remix e Metamask"
+      },
+      {
+        "en": "Using Geth attach to a RSK node",
+        "es": "Usando Geth conectado a un nodo RSK",
+        "pt": "Usando Geth conectado em um nó RSK"
+      },
+      { "en": "All of theese", "es": "Answer D ES", "pt": "Todos as opções" }
     ],
-    "correct_answer": 3
+    "correct_answer": 4
   },
   {
-    "id": "dev-02-mc-02",
+    "id": "dev-04-mc-03",
     "type": "mc",
     "question": {
-      "en": "02 Multiple Choice B EN",
-      "es": "02 Multiple Choice B ES",
-      "pt": "02 Multiple Choice B PT"
+      "en": "04 Multiple Choice C EN",
+      "es": "04 Multiple Choice C ES",
+      "pt": "04 Multiple Choice C PT"
     },
     "answers": [
       { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
@@ -40,12 +64,12 @@
     "correct_answer": 1
   },
   {
-    "id": "dev-02-mc-03",
+    "id": "dev-04-mc-04",
     "type": "mc",
     "question": {
-      "en": "02 Multiple Choice C EN",
-      "es": "02 Multiple Choice C ES",
-      "pt": "02 Multiple Choice C PT"
+      "en": "04 Multiple Choice D EN",
+      "es": "04 Multiple Choice D ES",
+      "pt": "04 Multiple Choice D PT"
     },
     "answers": [
       { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
@@ -56,12 +80,12 @@
     "correct_answer": 1
   },
   {
-    "id": "dev-02-mc-04",
+    "id": "dev-04-mc-05",
     "type": "mc",
     "question": {
-      "en": "02 Multiple Choice D EN",
-      "es": "02 Multiple Choice D ES",
-      "pt": "02 Multiple Choice D PT"
+      "en": "04 Multiple Choice E EN",
+      "es": "04 Multiple Choice E ES",
+      "pt": "04 Multiple Choice E PT"
     },
     "answers": [
       { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
@@ -72,12 +96,12 @@
     "correct_answer": 1
   },
   {
-    "id": "dev-02-mc-05",
+    "id": "dev-04-mc-06",
     "type": "mc",
     "question": {
-      "en": "02 Multiple Choice E EN",
-      "es": "02 Multiple Choice E ES",
-      "pt": "02 Multiple Choice E PT"
+      "en": "04 Multiple Choice F EN",
+      "es": "04 Multiple Choice F ES",
+      "pt": "04 Multiple Choice F PT"
     },
     "answers": [
       { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
@@ -88,12 +112,12 @@
     "correct_answer": 1
   },
   {
-    "id": "dev-02-mc-06",
+    "id": "dev-04-mc-07",
     "type": "mc",
     "question": {
-      "en": "02 Multiple Choice F EN",
-      "es": "02 Multiple Choice F ES",
-      "pt": "02 Multiple Choice F PT"
+      "en": "04 Multiple Choice G EN",
+      "es": "04 Multiple Choice G ES",
+      "pt": "04 Multiple Choice G PT"
     },
     "answers": [
       { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
@@ -104,12 +128,12 @@
     "correct_answer": 1
   },
   {
-    "id": "dev-02-mc-07",
+    "id": "dev-04-mc-08",
     "type": "mc",
     "question": {
-      "en": "02 Multiple Choice G EN",
-      "es": "02 Multiple Choice G ES",
-      "pt": "02 Multiple Choice G PT"
+      "en": "04 Multiple Choice H EN",
+      "es": "04 Multiple Choice H ES",
+      "pt": "04 Multiple Choice H PT"
     },
     "answers": [
       { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
@@ -120,12 +144,12 @@
     "correct_answer": 1
   },
   {
-    "id": "dev-02-mc-08",
+    "id": "dev-04-mc-09",
     "type": "mc",
     "question": {
-      "en": "02 Multiple Choice H EN",
-      "es": "02 Multiple Choice H ES",
-      "pt": "02 Multiple Choice H PT"
+      "en": "04 Multiple Choice I EN",
+      "es": "04 Multiple Choice I ES",
+      "pt": "04 Multiple Choice I PT"
     },
     "answers": [
       { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
@@ -136,28 +160,12 @@
     "correct_answer": 1
   },
   {
-    "id": "dev-02-mc-09",
+    "id": "dev-04-mc-10",
     "type": "mc",
     "question": {
-      "en": "02 Multiple Choice I EN",
-      "es": "02 Multiple Choice I ES",
-      "pt": "02 Multiple Choice I PT"
-    },
-    "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
-    ],
-    "correct_answer": 1
-  },
-  {
-    "id": "dev-02-mc-10",
-    "type": "mc",
-    "question": {
-      "en": "02 Multiple Choice J EN",
-      "es": "02 Multiple Choice J ES",
-      "pt": "02 Multiple Choice J PT"
+      "en": "04 Multiple Choice J EN",
+      "es": "04 Multiple Choice J ES",
+      "pt": "04 Multiple Choice J PT"
     },
     "answers": [
       { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
