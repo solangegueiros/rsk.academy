@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { useDispatch } from 'react-redux'
+import { useToast } from '@chakra-ui/react'
 
 import { useQuiz } from '@/hooks/useQuiz'
 import { useWeb3 } from '@/hooks/useWeb3'
@@ -16,6 +17,7 @@ export const useSubmitAnswers = (course, module, numberOfQuestions) => {
   const { account } = useRLogin()
   const web3 = useWeb3()
   const quizName = `${course}-${module}`
+  const toast = useToast()
 
   const submitAnswers = () => {
     const numberOfCorrectAnswers = Object.entries(userAnswers).filter(
@@ -43,6 +45,11 @@ export const useSubmitAnswers = (course, module, numberOfQuestions) => {
             name: 'Send Answers',
             hash: receipt.transactionHash,
             type: 'confirmed',
+          }),
+          toast({
+            status: 'success',
+            title: 'Transaction confirmed!',
+            position: 'top-right',
           }),
         )
         const result = await AcademyStudentQuiz.contract.methods
