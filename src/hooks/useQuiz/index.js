@@ -1,10 +1,10 @@
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   randomize,
   setNextQuestion,
   setPreviousQuestion,
 } from '@/store/quiz/actions'
-import { useState } from 'react'
 
 export const useQuiz = (course, module, numberOfQuestions) => {
   const [initialized, setInitialized] = useState(false)

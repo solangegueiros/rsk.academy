@@ -1,7 +1,9 @@
+/* eslint-disable max-lines-per-function */
 /* eslint-disable max-statements */
 import { useCallback, useContext } from 'react'
 import {
   AcademyClassAbi,
+  AcademyStudentQuizAbi,
   AcademyStudentsAbi,
   MasterNameAbi,
   StudentPortfolioAbi,
@@ -47,6 +49,37 @@ export function useLoadSmartContracts() {
     // Load MasterNameSC
     const MasterQuote = getContract(MasterQuoteAbi, chainId, web3)
     loadContract(MasterQuote)
+
+    // Load StudentQuizSC
+    const StudentQuiz = getContract(AcademyStudentQuizAbi, chainId, web3)
+    loadContract(StudentQuiz)
+
+    let quizResults = null
+    if (account && StudentQuiz.address) {
+      const quizNames = await StudentQuiz.contract.methods
+        .listQuizByStudent(account)
+        .call()
+      if (quizNames.length > 0) {
+        const results = await Promise.all(
+          quizNames.map(name =>
+            StudentQuiz.contract.methods.getStudentQuiz(account, name).call(),
+          ),
+        )
+
+        if (results) {
+          quizResults = results.reduce((obj, result) => {
+            const { total, grade, attempt, quiz, answer } = result
+            obj[quiz] = {
+              total,
+              grade,
+              attempt,
+              answer,
+            }
+            return obj
+          }, {})
+        }
+      }
+    }
 
     // Load Admin
     if (isAdmin && AcademyStudents.abi.networks[chainId]) {
@@ -150,6 +183,7 @@ export function useLoadSmartContracts() {
         studentActiveClassName,
         classStudentInfo,
         studentName,
+        quizResults,
       }),
     )
   }, [chainId, account, isAdmin])

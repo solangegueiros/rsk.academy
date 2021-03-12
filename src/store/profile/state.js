@@ -8,4 +8,5 @@ export const initialState = {
   studentActiveClassName: null,
   classStudentInfo: null,
   studentName: null,
+  quizResults: null,
 }
