@@ -70,13 +70,10 @@ SidebarCategory.propTypes = {
   title: PropTypes.string,
   selected: PropTypes.bool,
   opened: PropTypes.bool,
-  children: PropTypes.number.isRequired,
-  contentRef: PropTypes.oneOf([
-    PropTypes.object,
-    PropTypes.shape({
-      current: PropTypes.any,
-    }),
-  ]),
+  children: PropTypes.node.isRequired,
+  contentRef: PropTypes.shape({
+    current: PropTypes.any,
+  }),
 }
 
 export default SidebarCategory

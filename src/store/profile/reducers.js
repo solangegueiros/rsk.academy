@@ -12,6 +12,7 @@ export const reducers = {
       studentActiveClassName,
       classStudentInfo,
       studentName,
+      quizResults,
     } = payload
 
     state.index = index
@@ -24,6 +25,10 @@ export const reducers = {
     state.classStudentInfo = classStudentInfo
     state.studentName = studentName
     state.isLoading = false
+    state.quizResults = quizResults
+  },
+  loadQuizResult: (state, { payload: { quizName, result } }) => {
+    state.quizResults[quizName] = result
   },
   resetProfile: () => initialState,
 }

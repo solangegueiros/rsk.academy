@@ -21,7 +21,7 @@ export const login = context => async dispatch => {
     dispatch(changeChainId({ chainId: parseInt(chainId) }))
   } catch (err) {
     console.error('rLogin Error', err)
-    dispatch(setError({ error: err || null }))
+    dispatch(setError({ error: err }))
   }
 }
 

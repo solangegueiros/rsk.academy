@@ -1,0 +1,52 @@
+[
+  {
+    "id": "dev-01-tf-01",
+    "type": "tf",
+    "question": {
+      "en": "It is possible to send R-BTC for an Ethereum address",
+      "es": "Es posible enviar R-BTC para una dirección Ethereum",
+      "pt": "É possível enviar R-BTC para endereço Ethereum"
+    },
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-01-tf-02",
+    "type": "tf",
+    "question": {
+      "en": "A faucet is a place that gives cryptocurrencies or tokens, generally used in test networks",
+      "es": "Un faucet es un lugar que da criptomonedas o tokens, generalmente utilizado en redes de pruebas.",
+      "pt": "Um faucet é um lugar que dá criptomoedas ou tokens, geralmente usado em redes de testes"
+    },
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-01-tf-03",
+    "type": "tf",
+    "question": {
+      "en": "The DPath (Derivation Path) is used to calculate an address checksum",
+      "es": "El DPath (Derivation Path = ruta de derivación) se utiliza para calcular el checksum de una dirección",
+      "pt": "DPath, que é o caminho de derivação (Derivation Path), é utilizado no checksum de um endereço"
+    },
+    "correct_answer": 0
+  },
+  {
+    "id": "dev-01-tf-04",
+    "type": "tf",
+    "question": {
+      "en": "The ChainId of a network is used to calculate an address checksum",
+      "es": "El ChainId de una red se utiliza para calcular el checksum de una dirección",
+      "pt": "O chainId é utilizado no checksum de um endereço"
+    },
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-01-tf-05",
+    "type": "tf",
+    "question": {
+      "en": "The mnemonic (or seed) of a wallet is the set of words used to generate all the addresses in that wallet.",
+      "es": "El mnemónico (o seed, semilla) de una billetera es el conjunto de palabras que se utilizan para generar todas las direcciones en esta billetera.",
+      "pt": "O mnemônico (ou seed, semente) de uma carteira é o conjunto de palavras utilizado para gerar todos os endereços desta carteira."
+    },
+    "correct_answer": 0
+  }
+]

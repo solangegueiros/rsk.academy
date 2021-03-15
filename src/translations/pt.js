@@ -22,12 +22,16 @@ export default {
   previous: 'Anterior',
   logout: 'Sair',
   developer: 'Desenvolvedor',
-  business: 'O Negócio',
+  business: 'Business',
   contract: {
     mustConnect: 'Conectar sua wallet para interagir com o smart contract',
     notDeployed: 'O smart contract não foi publicado nesta rede',
     getBalance: 'Consultar saldo',
     getThisBalance: 'Consultar saldo total da Academy Wallet',
     balanceIs: 'O saldo é',
+  },
+  quiz: {
+    yes: 'Sim',
+    no: 'Não',
   },
 }

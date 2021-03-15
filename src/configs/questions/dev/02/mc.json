@@ -1,0 +1,170 @@
+[
+  {
+    "id": "dev-02-mc-01",
+    "type": "mc",
+    "question": {
+      "en": "What I need to change in a Solidity smart contract to publish at RSK network?",
+      "es": "¿Qué necesito cambiar en un contrato inteligente de Solidity para publicar en la red RSK?",
+      "pt": "O que eu preciso alterar em um smart contract feito em Solidity para publicá-lo na rede RSK?"
+    },
+    "answers": [
+      { "en": "Pragma version", "es": "Answer A ES", "pt": "Pragma version" },
+      { "en": "Constructor", "es": "Constructor", "pt": "Constructor" },
+      {
+        "en": "None of theese",
+        "es": "Ninguna de las opciones",
+        "pt": "Nenhuma das opções"
+      },
+      {
+        "en": "All of theese",
+        "es": "Todas las opciones",
+        "pt": "Todos as opções"
+      }
+    ],
+    "correct_answer": 3
+  },
+  {
+    "id": "dev-02-mc-02",
+    "type": "mc",
+    "question": {
+      "en": "02 Multiple Choice B EN",
+      "es": "02 Multiple Choice B ES",
+      "pt": "02 Multiple Choice B PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-02-mc-03",
+    "type": "mc",
+    "question": {
+      "en": "02 Multiple Choice C EN",
+      "es": "02 Multiple Choice C ES",
+      "pt": "02 Multiple Choice C PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-02-mc-04",
+    "type": "mc",
+    "question": {
+      "en": "02 Multiple Choice D EN",
+      "es": "02 Multiple Choice D ES",
+      "pt": "02 Multiple Choice D PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-02-mc-05",
+    "type": "mc",
+    "question": {
+      "en": "02 Multiple Choice E EN",
+      "es": "02 Multiple Choice E ES",
+      "pt": "02 Multiple Choice E PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-02-mc-06",
+    "type": "mc",
+    "question": {
+      "en": "02 Multiple Choice F EN",
+      "es": "02 Multiple Choice F ES",
+      "pt": "02 Multiple Choice F PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-02-mc-07",
+    "type": "mc",
+    "question": {
+      "en": "02 Multiple Choice G EN",
+      "es": "02 Multiple Choice G ES",
+      "pt": "02 Multiple Choice G PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-02-mc-08",
+    "type": "mc",
+    "question": {
+      "en": "02 Multiple Choice H EN",
+      "es": "02 Multiple Choice H ES",
+      "pt": "02 Multiple Choice H PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-02-mc-09",
+    "type": "mc",
+    "question": {
+      "en": "02 Multiple Choice I EN",
+      "es": "02 Multiple Choice I ES",
+      "pt": "02 Multiple Choice I PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 1
+  },
+  {
+    "id": "dev-02-mc-10",
+    "type": "mc",
+    "question": {
+      "en": "02 Multiple Choice J EN",
+      "es": "02 Multiple Choice J ES",
+      "pt": "02 Multiple Choice J PT"
+    },
+    "answers": [
+      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
+      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
+      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
+      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+    ],
+    "correct_answer": 1
+  }
+]

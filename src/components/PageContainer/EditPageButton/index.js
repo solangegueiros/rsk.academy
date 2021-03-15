@@ -6,7 +6,7 @@ import { MdEdit } from 'react-icons/md'
 export const EditPageButton = ({ href }) => {
   const { t } = useI18n()
   return (
-    <Link href={href} isExternal>
+    <Link href={href} rel='noreferrer' isExternal>
       <Stack
         display='inline-flex'
         direction='row'

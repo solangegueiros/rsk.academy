@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { Container, Flex } from '@chakra-ui/react'
 
 import { Header, Footer } from '@/components/all'
+import { Transactions } from '../Transactions'
 
 export const Layout = ({ children, isStretched, ...rest }) => {
   return (
@@ -13,13 +14,14 @@ export const Layout = ({ children, isStretched, ...rest }) => {
           flexDirection='column'
           flex='1'
           px={isStretched ? 0 : 4}
+          py={8}
           maxW={isStretched ? 'full' : 1200}
-          my={8}
         >
           {children}
         </Container>
       </Flex>
       <Footer />
+      <Transactions />
     </>
   )
 }

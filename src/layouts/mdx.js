@@ -2,6 +2,8 @@
 import PropTypes from 'prop-types'
 import * as chakraComponents from '@chakra-ui/react'
 import { MDXProvider } from '@mdx-js/react'
+import dynamic from 'next/dynamic'
+import * as Spinners from 'react-spinners'
 
 import {
   MdxComponents,
@@ -20,6 +22,10 @@ import blogSidebar from '@/configs/blog-sidebar.json'
 
 import { findRouteByPath, removeFromLast } from '@/utils/findRouteByPath'
 import { getRouteContext } from '@/utils/getRouteContext'
+
+const QuizList = dynamic(() => import('../components/Quiz/QuizList'), {
+  ssr: false,
+})
 
 export function getRoutes(slug) {
   const configMap = {
@@ -46,8 +52,15 @@ function MDXLayout({ frontmatter, children }) {
 
   return (
     <MDXProvider
-      components={{ ...chakraComponents, ...MdxComponents, 
-        AcademyWallet, MasterName, MasterQuote }}
+      components={{
+        ...chakraComponents,
+        ...MdxComponents,
+        ...Spinners,
+        AcademyWallet,
+        MasterName,
+        MasterQuote,
+        QuizList,
+      }}
     >
       <PageContainer
         frontmatter={frontmatter}

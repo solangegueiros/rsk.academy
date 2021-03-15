@@ -20,4 +20,4 @@ export const NETWORK_LABELS = {
   [ChainId.RSK_TESTNET]: 'Testnet',
 }
 
-export const adminAccount = '0x039B182d2a86F7d05172f602Bf8CC5924750f26E'.toLowerCase()
+export const adminAccount = '0xD046b0b7DD1d15C84eE0733E085045B040db0b03'.toLowerCase()

@@ -22,7 +22,7 @@ export default {
   previous: 'Anterior',
   logout: 'Cierre de Sesión',
   developer: 'Desarrollador',
-  business: 'Negocio',
+  business: 'Negocios',
   contract: {
     mustConnect:
       'Debe conectar su billetera para interactuar con el contrato inteligente',
@@ -31,5 +31,9 @@ export default {
     getBalance: 'Obtener saldo',
     getThisBalance: 'Obtener saldo total de Academy Wallet',
     balanceIs: 'El saldo es',
+  },
+  quiz: {
+    yes: 'Sí',
+    no: 'No',
   },
 }
