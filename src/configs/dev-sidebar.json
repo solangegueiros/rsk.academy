@@ -3,7 +3,7 @@
     {
       "title": {
         "en": "Developers",
-        "es": "Desarrolladoras",
+        "es": "Desarrolladores",
         "pt": "Desenvolvedores"
       },
       "heading": true,
@@ -11,12 +11,66 @@
         {
           "title": {
             "en": "Welcome",
-            "es": "¡Bienvenido!",
+            "es": "¡Bienvenido(a)!",
             "pt": "Bem-vindo(a)"
           },
           "path": "/courses/dev"
         }
       ]
-    }
+    },
+    {
+      "title": {
+        "en": "01 - wallets",
+        "es": "01 - billeteras",
+        "pt": "01 - Wallets"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Launch",
+            "es": "Lanzamiento",
+            "pt": "Lançamento"
+          },
+          "path": "/courses/dev/01"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "02 - smart contracts intro",
+        "es": "02 - smart contracts intro",
+        "pt": "02 - smart contracts intro"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Launch",
+            "es": "Lanzamiento",
+            "pt": "Lançamento"
+          },
+          "path": "/courses/dev/02"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "03 - Blockchain",
+        "es": "03 - Blockchain",
+        "pt": "03 - Blockchain"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Launch",
+            "es": "Lanzamiento",
+            "pt": "Lançamento"
+          },
+          "path": "/courses/dev/03"
+        }
+      ]
+    }    
   ]
 }
