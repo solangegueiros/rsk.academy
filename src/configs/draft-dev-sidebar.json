@@ -3,7 +3,7 @@
     {
       "title": {
         "en": "Developers",
-        "es": "Desarrolladoras",
+        "es": "Desarrolladores",
         "pt": "Desenvolvedores"
       },
       "heading": true,
@@ -11,7 +11,7 @@
         {
           "title": {
             "en": "Welcome",
-            "es": "¡Bienvenido!",
+            "es": "¡Bienvenido(a)!",
             "pt": "Bem-vindo(a)"
           },
           "path": "/courses/dev"
@@ -168,9 +168,35 @@
     },
     {
       "title": {
-        "en": "03 - Smart contracts 02",
-        "es": "03 - Smart contracts 02",
-        "pt": "03 - Smart contracts 02"
+        "en": "03 - Blockchain",
+        "es": "03 - Blockchain",
+        "pt": "03 - Blockchain"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Overview",
+            "es": "Overview",
+            "pt": "Overview"
+          },
+          "path": "/courses/dev/03"
+        },
+        {
+          "title": {
+            "en": "Module 3 Quiz",
+            "es": "Module 3 Quiz",
+            "pt": "Module 3 Quiz"
+          },
+          "path": "/courses/dev/03/quiz"
+        }
+      ]
+    },    
+    {
+      "title": {
+        "en": "04 - Smart contracts 02",
+        "es": "04 - Smart contracts 02",
+        "pt": "04 - Smart contracts 02"
       },
       "heading": true,
       "routes": [
@@ -180,7 +206,7 @@
             "es": "Fundamentos",
             "pt": "Fundamentos"
           },
-          "path": "/courses/dev/03"
+          "path": "/courses/dev/04"
         },
         {
           "title": {
@@ -188,7 +214,7 @@
             "es": "Quote dApp: frases y citas",
             "pt": "Quote dApp: frases e citações"
           },
-          "path": "/courses/dev/03/quote"
+          "path": "/courses/dev/04/quote"
         },
         {
           "title": {
@@ -196,7 +222,7 @@
             "es": "Transferencias Mediante Contratos Inteligentes",
             "pt": "Transferências usando Contratos Inteligentes"
           },
-          "path": "/courses/dev/03/transfers-using-smart-contracts",
+          "path": "/courses/dev/04/transfers-using-smart-contracts",
           "open": true,
           "routes": [
             {
@@ -205,7 +231,7 @@
                 "es": "Pagadero",
                 "pt": "Pagável"
               },
-              "path": "/courses/dev/03/transfers-using-smart-contracts/payable",
+              "path": "/courses/dev/04/transfers-using-smart-contracts/payable",
               "new": true
             },
             {
@@ -214,7 +240,7 @@
                 "es": "Contrato a Contrato ABI",
                 "pt": "Contrato para Contratar ABI"
               },
-              "path": "/courses/dev/03/transfers-using-smart-contracts/contract-to-contract-abi"
+              "path": "/courses/dev/04/transfers-using-smart-contracts/contract-to-contract-abi"
             }
           ]
         },
@@ -224,7 +250,7 @@
             "es": "Transferencias usando contratos inteligentes",
             "pt": "Transferências usando contratos inteligentes"
           },
-          "path": "/courses/dev/03/transfers-using-sc"
+          "path": "/courses/dev/04/transfers-using-sc"
         },
         {
           "title": {
@@ -232,7 +258,7 @@
             "es": "Interactuar con dApp",
             "pt": "Interagindo com dApp"
           },
-          "path": "/courses/dev/03/interact-with-dapp"
+          "path": "/courses/dev/04/interact-with-dapp"
         },
         {
           "title": {
@@ -240,7 +266,7 @@
             "es": "Interfaces",
             "pt": "Interfaces"
           },
-          "path": "/courses/dev/03/interfaces",
+          "path": "/courses/dev/04/interfaces",
           "open": true,
           "sort": true,
           "routes": [
@@ -250,17 +276,17 @@
                 "es": "Interactuar con Otros contratos",
                 "pt": "Interaja com Outros Contratos"
               },
-              "path": "/courses/dev/03/interfaces/interact-with-other-contracts"
+              "path": "/courses/dev/04/interfaces/interact-with-other-contracts"
             }
           ]
         },
         {
           "title": {
-            "en": "Module 3 Quiz",
-            "es": "Module 3 Quiz",
-            "pt": "Module 3 Quiz"
+            "en": "Module 4 Quiz",
+            "es": "Module 4 Quiz",
+            "pt": "Module 4 Quiz"
           },
-          "path": "/courses/dev/03/quiz"
+          "path": "/courses/dev/04/quiz"
         }
       ]
     }
