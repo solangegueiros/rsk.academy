@@ -64,8 +64,9 @@ export const QuizList = ({ course, module, numberOfQuestions }) => {
     )
   }
 
-  return (
+  return (    
     <Box>
+      <br/>
       {quizResults && quizResults[QUIZ_NAME] && (
         <Box
           mx='auto'
