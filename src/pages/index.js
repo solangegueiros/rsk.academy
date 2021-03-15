@@ -21,6 +21,7 @@ const Home = () => {
   const gradient2 = useGradient('to-l')
 
   const { t } = useI18n()
+
   return (
     <Layout isStretched>
       <Seo title={t('home')} description='Rsk Academy' />
@@ -96,6 +97,28 @@ const Home = () => {
         </Container>
       </Center>
 
+
+
+      <Container py={32} mb={16}>
+        <VStack textAlign='center' spacing={4}>
+          <Heading mb={8}>Partnerships - white label courses</Heading>
+          <Text fontSize='1.4em'>
+            White label: The partner can use its own trademark in the courses
+            <br/>
+            while IOV provides the content and examination tools.
+          </Text>
+          <Text fontSize='1.4em'>
+            Training mentors: IOV offers training for in-house mentors 
+            <br/>
+            who can help students during the courses.
+          </Text>
+        </VStack>
+      </Container>
+    </Layout>
+  )
+}
+
+  /*
       <Container>
         <SimpleGrid columns={{ base: 1, lg: 3 }} gap={16} py={24}>
           <VStack textAlign='center' spacing={4}>
@@ -131,21 +154,6 @@ const Home = () => {
         </SimpleGrid>
       </Container>
 
-      <Container py={32} mb={16}>
-        <VStack textAlign='center' spacing={4}>
-          <Heading mb={8}>Partnerships - white label courses</Heading>
-          <Text fontSize='1.4em'>
-            White label: The partner can use its own trademark in the courses
-            while IOV provides the content and examination tools.
-          </Text>
-          <Text fontSize='1.4em'>
-            Training mentors: IOV offers training for in-house mentors who can
-            help students during the courses.
-          </Text>
-        </VStack>
-      </Container>
-    </Layout>
-  )
-}
+  */
 
 export default Home
