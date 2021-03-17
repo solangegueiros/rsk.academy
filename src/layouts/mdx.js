@@ -13,6 +13,7 @@ import {
   AcademyWallet,
   MasterName,
   MasterQuote,
+  SubscribeAcademy,
   frontMatterType,
 } from '@/components/all'
 
@@ -60,6 +61,7 @@ function MDXLayout({ frontmatter, children }) {
         MasterName,
         MasterQuote,
         QuizList,
+        SubscribeAcademy,
       }}
     >
       <PageContainer

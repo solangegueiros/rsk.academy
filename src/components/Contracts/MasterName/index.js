@@ -1,52 +1,60 @@
 import { Button, ButtonGroup, Input, VStack } from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { ContractBase } from '@/components/all'
 import { useRLogin } from '@/hooks/useRLogin'
 import { ContractContext } from '@/context/ContractProvider'
+import { useTransactionCallback } from '@/hooks/transactions/useTransactionCallback'
+import { setStudentName } from '@/store/profile/actions'
 
 export const MasterName = () => {
-  const { MasterName: contract } = useContext(ContractContext)
+  const { MasterName: MasterNameContract } = useContext(ContractContext)
   const { account } = useRLogin()
 
   const { studentName } = useSelector(state => state.profile)
   const [name, setName] = useState(studentName || '')
   const [address, setAddress] = useState('')
+  const dispatch = useDispatch()
+
+  const onSetCompleted = () => {
+    dispatch(setStudentName(name))
+    setName('')
+  }
+
+  const onDeleteCompleted = () => {
+    dispatch(setStudentName(null))
+    setName('')
+  }
+
+  const {
+    exec: handleSetName,
+    isLoading: isLoadingSet,
+  } = useTransactionCallback({
+    name: 'Set Name',
+    from: account,
+    method: MasterNameContract.contract?.methods.addName,
+    args: [address, name],
+    onCompleted: onSetCompleted,
+  })
+
+  const {
+    exec: handleDeleteName,
+    isLoading: isLoadingDelete,
+  } = useTransactionCallback({
+    name: 'Delete Name',
+    from: account,
+    method: MasterNameContract.contract?.methods.deleteName,
+    onCompleted: onDeleteCompleted,
+  })
 
   useEffect(() => {
     if (studentName) setName(studentName)
-  }, [studentName])
-
-  const handleSetName = () => {
-    try {
-      contract.contract.methods
-        .addName(address, name)
-        .send({ from: account })
-        .once('receipt', receipt => {
-          console.log('receipt', receipt)
-        })
-        .catch(err => console.error('err', err))
-    } catch (error) {
-      console.error('error', error)
-    }
-  }
-  const handleDeleteName = () => {
-    try {
-      contract.contract.methods
-        .deleteName()
-        .send({ from: account })
-        .once('receipt', receipt => {
-          console.log('transaction receipt: ', receipt)
-        })
-        .catch(err => console.error('err', err))
-    } catch (err) {
-      console.error('err', err)
-    }
-  }
+    if (!account) setName(null)
+  }, [studentName, account])
 
   return (
-    <ContractBase contract={contract}>
+    <ContractBase contract={MasterNameContract}>
       <VStack spacing={4}>
         <Input
           value={name}
@@ -59,14 +67,21 @@ export const MasterName = () => {
           onChange={e => setAddress(e.target.value)}
         />
         <ButtonGroup w='full'>
-          <Button isFullWidth variant='normal' onClick={handleSetName}>
+          <Button
+            isLoading={isLoadingSet}
+            isFullWidth
+            variant='normal'
+            onClick={handleSetName}
+            isDisabled={studentName}
+          >
             Set Name
           </Button>
           <Button
             isFullWidth
+            isLoading={isLoadingDelete}
             colorScheme='red'
-            isDisabled={!studentName}
             onClick={handleDeleteName}
+            isDisabled={!studentName}
           >
             Delete
           </Button>
