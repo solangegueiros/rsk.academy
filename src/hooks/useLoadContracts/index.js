@@ -1,6 +1,7 @@
 /* eslint-disable max-lines-per-function */
 /* eslint-disable max-statements */
 import { useCallback, useContext } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   AcademyClassAbi,
   AcademyStudentQuizAbi,
@@ -16,9 +17,8 @@ import { loadProfile, resetProfile } from '@/store/profile/actions'
 import { loadAdmin } from '@/store/admin/actions'
 import { getContract } from '@/utils/getContract'
 import { ContractContext } from '@/context/ContractProvider'
-import { useDispatch, useSelector } from 'react-redux'
-import { useWeb3 } from '../useWeb3'
 import { COURSES } from '@/constants/constants'
+import { useWeb3 } from '../useWeb3'
 
 export function useLoadSmartContracts() {
   const web3 = useWeb3()
