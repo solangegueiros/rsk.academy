@@ -16,7 +16,6 @@ export default {
   courses: 'Cursos',
   projects: 'Proyectos',
   profile: 'Profile',
-  blog: 'Blog',
   editPage: 'Edita esta página',
   next: 'Siguiente',
   previous: 'Anterior',
