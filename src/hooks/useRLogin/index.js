@@ -3,13 +3,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import {
-  login,
-  logout,
-  changeAccount,
-  changeChainId,
-  setChainError,
-} from '@/store/identity/actions'
+import { login, logout, setChainError } from '@/store/identity/actions'
 import { Web3ProviderContext } from '@/context/Web3Provider'
 import { resetProfile } from '@/store/profile/actions'
 import { resetAdmin } from '@/store/admin/actions'
@@ -34,18 +28,6 @@ export const useRLogin = () => {
   }, [web3Context])
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.ethereum) {
-      window.ethereum.autoRefreshOnNetworkChange = false
-      window.ethereum.on('accountsChanged', accounts => {
-        if (isLoggedIn) {
-          dispatch(changeAccount({ account: accounts[0] }))
-        }
-      })
-      window.ethereum.on('chainChanged', networkId => {
-        dispatch(changeChainId({ chainId: networkId }))
-      })
-    }
-
     if (account && chainId) {
       const isSupportedChain = !supportedChains.includes(chainId)
       dispatch(setChainError(isSupportedChain))

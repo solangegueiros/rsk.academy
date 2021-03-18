@@ -15,7 +15,7 @@ const siteConfig = {
     title: 'RSK Academy',
     titleTemplate: '%s - RSK Academy',
     description: 'RSK Academy Description',
-    siteUrl: 'https://academy.rsk.co',
+    siteUrl: 'https://rsk.academy',
     twitter: {
       handle: '@rsk-academy',
       site: '@rsk-academy',
@@ -24,7 +24,7 @@ const siteConfig = {
     openGraph: {
       type: 'website',
       locale: 'en_US',
-      url: 'https://academy.rsk.co',
+      url: 'https://rsk.academy',
       title: 'RSK Academy',
       description: 'RSK Academy Description',
       siteName: 'RSK Academy',

@@ -1,7 +1,7 @@
 import { Box, SimpleGrid } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
 
-import { Container, Layout, Seo, AcademyWallet } from '@/components/all'
+import { Layout, Seo, AcademyWallet } from '@/components/all'
 import { useRLogin } from '@/hooks/useRLogin'
 import { CONTRACTS } from '@/components/Contracts'
 import { useSelector } from 'react-redux'
@@ -20,21 +20,19 @@ const Portfolio = () => {
   return (
     <Layout>
       <Seo title={t('portfolio')} />
-      <Container>
-        {isLoggedIn ? (
-          isAdmin ? (
-            <Box>Portfolio page is for students</Box>
-          ) : (
-            <SimpleGrid columns={{ md: 2 }} gap={4}>
-              <AcademyWallet />
-
-              {PortfolioProjectComponents}
-            </SimpleGrid>
-          )
+      {isLoggedIn ? (
+        isAdmin ? (
+          <Box>Portfolio page is for students</Box>
         ) : (
-          <Box>You must log in</Box>
-        )}
-      </Container>
+          <SimpleGrid columns={{ md: 2 }} gap={4}>
+            <AcademyWallet />
+
+            {PortfolioProjectComponents}
+          </SimpleGrid>
+        )
+      ) : (
+        <Box>You must log in</Box>
+      )}
     </Layout>
   )
 }
