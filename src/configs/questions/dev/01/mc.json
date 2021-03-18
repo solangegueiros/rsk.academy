@@ -1,0 +1,126 @@
+[
+  {
+    "id": "dev-01-mc-01",
+    "type": "mc",
+    "question": {
+      "en": "Where do you store your cryptocurrency?",
+      "es": "¿Dónde guardas tus criptomonedas?",
+      "pt": "Onde você guarda suas criptmoedas?"
+    },
+    "answers": [
+      { "en": "Bank account", "es": "Cuenta bancaria", "pt": "Conta bancária" },
+      { "en": "Floppy Disk", "es": "Disco flexible", "pt": "Disquete" },
+      { "en": "Wallet", "es": "Billetera", "pt": "Carteira" },
+      { "en": "In your pocket", "es": "En tu bolsillo", "pt": "No seu bolso" }
+    ],
+    "correct_answer": 3
+  },
+  {
+    "id": "dev-01-mc-02",
+    "type": "mc",
+    "question": {
+      "en": "Where is the LEAST SAFE place to keep your cryptocurrency?",
+      "es": "¿Dónde está el lugar MENOS SEGURO para almacenar tus criptomonedas?",
+      "pt": "Onde é o lugar MENOS SEGURO para guardar suas criptomoedas?"
+    },
+    "answers": [
+      { "en": "In your pocket", "es": "En tu bolsillo", "pt": "No seu bolso" },
+      {
+        "en": "On an exchange",
+        "es": "En una exchange",
+        "pt": "Em uma exchange"
+      },
+      {
+        "en": "On a hot wallet",
+        "es": "En una hot wallet",
+        "pt": "Em uma hot wallet"
+      },
+      {
+        "en": "On a hard wallet",
+        "es": "En una hard wallet",
+        "pt": "Em uma hard wallet"
+      }
+    ],
+    "correct_answer": 2
+  },
+  {
+    "id": "dev-01-mc-03",
+    "type": "mc",
+    "question": {
+      "en": "What is cold storage?",
+      "es": "¿Qué es el almacenamiento en frío (cold storage)?",
+      "pt": "O que é cold storage?"
+    },
+    "answers": [
+      {
+        "en": "A place to hang your coat",
+        "es": "Un lugar para colgar tu abrigo",
+        "pt": "Um local para guardar seu casaco"
+      },
+      {
+        "en": "A private key connected to the Internet",
+        "es": "Una clave privada conectada a Internet.",
+        "pt": "Uma chave privada conectada a Internet."
+      },
+      {
+        "en": "A private key not connected to the Internet",
+        "es": "Una clave privada no conectada a Internet.",
+        "pt": "Uma chave privada não conectada a Internet."
+      },
+      {
+        "en": "A desktop wallet",
+        "es": "Una billetera para la computadora",
+        "pt": "Uma wallet para o computador"
+      }
+    ],
+    "correct_answer": 3
+  },
+  {
+    "id": "dev-01-mc-04",
+    "type": "mc",
+    "question": {
+      "en": "What is a private key?",
+      "es": "¿Qué es una clave privada?",
+      "pt": "O que é uma chave privada?"
+    },
+    "answers": [
+      {
+        "en": "A key on your key chain",
+        "es": "Una llave en tu llavero",
+        "pt": "Uma chave no seu chaveiro"
+      },
+      {
+        "en": "A key given to the public",
+        "es": "Una clave entregada al público",
+        "pt": "Uma chave para deixar pública"
+      },
+      {
+        "en": "A key NOT to be given to the public",
+        "es": "Una clave que NO debe entregarse al público",
+        "pt": "Uma chave para NÃO deixar pública"
+      },
+      {
+        "en": "A key that opens a secret door",
+        "es": "Una llave que abre una puerta secreta",
+        "pt": "Uma chave que abre uma porta secreta"
+      }
+    ],
+    "correct_answer": 3
+  },
+  {
+    "id": "dev-01-mc-05",
+    "type": "mc",
+    "question": {
+      "en": "Which of the following is popularly used for storing crypto assets?",
+      "es": "Qual desdes é comumente usado para guardar criptoativos?",
+      "pt": "Qual das opções a seguir é comumente usada para armazenar criptomoedas?"
+    },
+    "answers": [
+      { "en": "In your pocket", "es": "En tu bolsillo", "pt": "No seu bolso" },
+      { "en": "Stack", "es": "Pila (Stack)", "pt": "Pilha (Stack)" },
+      { "en": "Box", "es": "Caja", "pt": "Caixa" },
+      { "en": "Wallet", "es": "Billetera", "pt": "Carteira" }
+    ],
+    "correct_answer": 3
+  }
+]

@@ -1,26 +1,121 @@
 ---
-title: 'First transfer EN'
+title: 'First transfer'
 description: 'Send first cryptos using your wallet'
 ---
 
-## Transfer
+You will learn how to do your first cryptocurrency transfer.
 
-> TODO
+You will transfer **0.01 tR-BTC** to the RSK Academy wallet, a smart contract
+which works like a bank, managing the balance of each person.
 
-Instructions to transfer some tR-BTCs from your wallet to `Academy Wallet`.
+In the future, you will learn how to withdraw your cryptocurrencies back to your account.
 
-Copy the address of `Academy Wallet`:
+## Copy the address
+
+Copy the address of **RSK Academy Wallet**:
 
 ```
-0x91976be9cAFCd18BE7b29580fa783Db92548b79d
+0x91976be9cafcd18be7b29580fa783db92548b79d
 ```
 
-The student will transfer 0.02 RBTC to AcademyWallet using Nifty or Metamask, 
-which will be withdrawn by the student in the future.
+## Send / transfer button
+
+Click on button **send** in Nifty wallet.
+
+![Nifty send](/img/courses/dev/01/first-transfer/image-01.png)
+
+Fill in the fields:
+
+- Recipient address
+- Amount
+
+![Nifty send parameters](/img/courses/dev/01/first-transfer/image-02.png)
+
+Check it this example:
+
+![Nifty send next](/img/courses/dev/01/first-transfer/image-03.png)
+
+Click on button **next**
+
+![Nifty send submit](/img/courses/dev/01/first-transfer/image-05.png)
+
+Then click on the button **submit**
+
+Congratulations! You sent your first transaction to Blockchain!
+
+## Transaction pending
+
+When we send a transaction, it goes to the node's mempool, which in this case is the Nifty node.
+
+Then the node broadcasts (propagates) the transaction to the other nodes on the network.
+
+It will wait for a miner to verify that it is a valid transaction and include it in a block.
+
+Only after the transaction is in a block, is it considered a confirmed transaction on the network.
+
+![Nifty transaction pending](/img/courses/dev/01/first-transfer/image-06.png)
+
+## Transaction confirmed
+
+Nifty wallet will show a popup window warning you that the transaction has been confirmed.
+
+![Nifty transaction confirmed popup](/img/courses/dev/01/first-transfer/image-07.png)
+
+You can also see in the wallet
+
+![Nifty transaction confirmed](/img/courses/dev/01/first-transfer/image-08.png)
+
+By clicking on the transaction, you can see in the [explorer](https://explorer.testnet.rsk.co/)
+
+![Nifty transaction explorer](/img/courses/dev/01/first-transfer/image-09.png)
+
+Take a look on my transfer:
+
+[0xb9ab39a6e62e62f8b3ab30f61cc84c9b47e04e58988d01d78be6fca4c374c16a](https://explorer.testnet.rsk.co/tx/0xb9ab39a6e62e62f8b3ab30f61cc84c9b47e04e58988d01d78be6fca4c374c16a)
+
+## Error: Recipient address checksum is invalid
+
+![Recipient address checksum is invalid](/img/courses/dev/01/first-transfer/image-04.png)
+
+In another lesson you will learn what checksum is,
+but if you see this error now,
+you must convert the address to lowercase.
+
+For example,
+
+`0x91976be9cAFCd18BE7b29580fa783Db92548b79d`
+
+will be converted to:
+
+`0x91976be9cafcd18be7b29580fa783db92548b79d`
 
 ## Check your balance
 
-After complete the transfer to `Academy Wallet`, 
-you can check the balance your balance in the wallet:
+After complete the transfer to **Academy Wallet**,
+you can check your balance.
+
+In order to check your balance on the RSK Academy wallet, you need to signed in.
+
+If you are not signed in, you will see the message **Connect your wallet**
+
+If necessary, review
+[Conecte sua wallet](/courses/dev/01/connecting-to-academy)
 
 <AcademyWallet />
+
+To check your balance:
+
+1. fill in the **Address** field with your wallet address
+2. click the **Get balance** button
+
+Take a look in my balance:
+
+![Academy wallet filled](/img/courses/dev/01/first-transfer/image-12.png)
+
+![Academy wallet balance](/img/courses/dev/01/first-transfer/image-13.png)
+
+## Conclusion
+
+You learned how to do a cryptocurrency transfer using your wallet!
+
+In the next lesson, you will use your wallet to register in the RSK Academy course :)

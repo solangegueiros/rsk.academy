@@ -1,12 +1,121 @@
 ---
-title: 'First transfer ES'
-description: 'Send first cryptos using your wallet'
+title: 'Primera transferencia'
+description: 'Envía criptomonedas usando tu billetera'
 ---
 
-## Transfer
+Aprenderá a realizar tu primera transferencia de criptomonedas.
 
-> TODO
+Transferirá **0.01 tR-BTC** a la billetera de RSK Academy, un contrato inteligente
+que funciona como un banco, gestionando el saldo de cada persona.
 
-## Check your balance
+En el futuro, aprenderá a retirar tus criptomonedas a tu cuenta.
+
+## Copia la dirección
+
+Copia la dirección de **RSK Academy Wallet**:
+
+```
+0x91976be9cafcd18be7b29580fa783db92548b79d
+```
+
+## Botón send / transfer
+
+Haz clic en el botón **send** en Nifty wallet.
+
+![Nifty send](/img/courses/dev/01/first-transfer/image-01.png)
+
+Complete los campos:
+
+- Recipient address
+- Amount
+
+![Nifty send parameters](/img/courses/dev/01/first-transfer/image-02.png)
+
+Ve este ejemplo:
+
+![Nifty send next](/img/courses/dev/01/first-transfer/image-03.png)
+
+Haz clic en el botón **next**
+
+![Nifty send submit](/img/courses/dev/01/first-transfer/image-05.png)
+
+Luego haz clic en el botón **submit**
+
+¡Felicidades! ¡Has enviado tu primera transacción a Blockchain!
+
+## Transacción pendiente
+
+Cuando enviamos una transacción, va al mempool del nodo, que en este caso es el nodo Nifty.
+
+Luego, el nodo hace el broadcast (transmite) de la transacción a los otros nodos de la red.
+
+Esperará a que un minero verifique que se trata de una transacción válida y la incluya en un bloque.
+
+Solo después de que la transacción está en un bloque, se considera una transacción confirmada en la red.
+
+![Nifty transaction pending](/img/courses/dev/01/first-transfer/image-06.png)
+
+## Transacción confirmada
+
+La billetera Nifty mostrará una ventana emergente que le advierte que la transacción ha sido confirmada.
+
+![Nifty transaction confirmed popup](/img/courses/dev/01/first-transfer/image-07.png)
+
+También puedes ver en la billetera
+
+![Nifty transaction confirmed](/img/courses/dev/01/first-transfer/image-08.png)
+
+Al hacer clic en la transacción, puedes ver en el [explorer](https://explorer.testnet.rsk.co/)
+
+![Nifty transaction explorer](/img/courses/dev/01/first-transfer/image-09.png)
+
+Ve mi transferencia:
+
+[0xb9ab39a6e62e62f8b3ab30f61cc84c9b47e04e58988d01d78be6fca4c374c16a](https://explorer.testnet.rsk.co/tx/0xb9ab39a6e62e62f8b3ab30f61cc84c9b47e04e58988d01d78be6fca4c374c16a)
+
+## Error: Recipient address checksum is invalid
+
+![Recipient address checksum is invalid](/img/courses/dev/01/first-transfer/image-04.png)
+
+En otra lección, aprenderá qué es checksum,
+pero si ve este error ahora,
+necesita convertir la dirección a letras minúsculas.
+
+Por ejemplo,
+
+`0x91976be9cAFCd18BE7b29580fa783Db92548b79d`
+
+se convertirá a:
+
+`0x91976be9cafcd18be7b29580fa783db92548b79d`
+
+## Verifica tu saldo
+
+Después de completar la transferencia a **RSK Academy Wallet**,
+puedes consultar tu saldo.
+
+Para verificar tu saldo en la billetera de RSK Academy, debe iniciar sesión.
+
+Si no ha iniciado sesión, verá el mensaje **Conecta tu billetera**
+
+Si es necesario, repasa
+[Conecte sua wallet](/courses/dev/01/connecting-to-academy)
 
 <AcademyWallet />
+
+Para consultar tu saldo:
+
+1. completa el campo **Address** con la dirección de tu billetera
+2. haz clic en el botón **Get balance**
+
+Ve mi saldo:
+
+![Academy wallet filled](/img/courses/dev/01/first-transfer/image-12.png)
+
+![Academy wallet balance](/img/courses/dev/01/first-transfer/image-13.png)
+
+## Conclusión
+
+¡Aprendió cómo hacer una transferencia de criptomonedas usando tu billetera!
+
+En la próxima lección, usará su billetera para registrarse en el curso de RSK Academy :)

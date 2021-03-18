@@ -7,11 +7,8 @@ import {
   Text,
   useColorModeValue,
   VStack,
-  SimpleGrid,
-  Icon,
 } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
-import { FaConnectdevelop } from 'react-icons/fa'
 
 import { Container, Layout, Seo } from '@/components/all'
 import { useGradient } from '@/hooks/useGradient'
@@ -21,6 +18,7 @@ const Home = () => {
   const gradient2 = useGradient('to-l')
 
   const { t } = useI18n()
+
   return (
     <Layout isStretched>
       <Seo title={t('home')} description='Rsk Academy' />
@@ -28,6 +26,7 @@ const Home = () => {
         bg={useColorModeValue('primary.500', 'light.500')}
         color={useColorModeValue('white', 'dark.500')}
         h='calc(100vh - 70px)'
+        mt={-8}
       >
         <Container flex='1'>
           <Flex
@@ -95,6 +94,26 @@ const Home = () => {
         </Container>
       </Center>
 
+      <Container py={32} mb={16}>
+        <VStack textAlign='center' spacing={4}>
+          <Heading mb={8}>Partnerships - white label courses</Heading>
+          <Text fontSize='1.4em'>
+            White label: The partner can use its own trademark in the courses
+            <br />
+            while IOV provides the content and examination tools.
+          </Text>
+          <Text fontSize='1.4em'>
+            Training mentors: IOV offers training for in-house mentors
+            <br />
+            who can help students during the courses.
+          </Text>
+        </VStack>
+      </Container>
+    </Layout>
+  )
+}
+
+/*
       <Container>
         <SimpleGrid columns={{ base: 1, lg: 3 }} gap={16} py={24}>
           <VStack textAlign='center' spacing={4}>
@@ -130,21 +149,6 @@ const Home = () => {
         </SimpleGrid>
       </Container>
 
-      <Container py={32} mb={16}>
-        <VStack textAlign='center' spacing={4}>
-          <Heading mb={8}>Partnerships - white label courses</Heading>
-          <Text fontSize='1.4em'>
-            White label: The partner can use its own trademark in the courses
-            while IOV provides the content and examination tools.
-          </Text>
-          <Text fontSize='1.4em'>
-            Training mentors: IOV offers training for in-house mentors who can
-            help students during the courses.
-          </Text>
-        </VStack>
-      </Container>
-    </Layout>
-  )
-}
+  */
 
 export default Home
