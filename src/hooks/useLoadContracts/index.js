@@ -19,47 +19,51 @@ import { loadAdmin } from '@/store/admin/actions'
 import { getContract } from '@/utils/getContract'
 import { ContractContext } from '@/context/ContractProvider'
 import { COURSES } from '@/constants/constants'
-import { useWeb3 } from '../useWeb3'
+import { Web3ProviderContext } from '@/context/Web3Provider'
 
 export function useLoadSmartContracts() {
-  const web3 = useWeb3()
+  const { provider } = useContext(Web3ProviderContext)
   const dispatch = useDispatch()
   const { account, chainId, isAdmin } = useSelector(state => state.identity)
   const { loadContract, resetContracts } = useContext(ContractContext)
 
   const loadContracts = useCallback(async () => {
     // Load AcademyStudentsSC
-    const AcademyStudents = getContract(AcademyStudentsAbi, chainId, web3)
+    const AcademyStudents = getContract(AcademyStudentsAbi, chainId, provider)
     loadContract(AcademyStudents)
 
     // Load AcademyWalletSC
-    const AcademyWallet = getContract(AcademyWalletAbi, chainId, web3)
+    const AcademyWallet = getContract(AcademyWalletAbi, chainId, provider)
     loadContract(AcademyWallet)
 
     // Load AcademyClassListSC
-    const AcademyClassList = getContract(AcademyClassListAbi, chainId, web3)
+    const AcademyClassList = getContract(AcademyClassListAbi, chainId, provider)
     loadContract(AcademyClassList)
 
     // Load AcademyProjectListSC
-    const AcademyProjectList = getContract(AcademyProjectListAbi, chainId, web3)
+    const AcademyProjectList = getContract(
+      AcademyProjectListAbi,
+      chainId,
+      provider,
+    )
     loadContract(AcademyProjectList)
 
     // Load MasterNameSC
-    const MasterName = getContract(MasterNameAbi, chainId, web3)
+    const MasterName = getContract(MasterNameAbi, chainId, provider)
     loadContract(MasterName)
 
     // Load MasterNameSC
-    const MasterQuote = getContract(MasterQuoteAbi, chainId, web3)
+    const MasterQuote = getContract(MasterQuoteAbi, chainId, provider)
     loadContract(MasterQuote)
 
     // Load StudentQuizSC
-    const StudentQuiz = getContract(AcademyStudentQuizAbi, chainId, web3)
+    const StudentQuiz = getContract(AcademyStudentQuizAbi, chainId, provider)
     loadContract(StudentQuiz)
 
     // Load Courses
     Object.entries(COURSES).map(([contractName, courseAddress]) => {
       const Abi = { ...AcademyClassAbi, contractName }
-      const contract = getContract(Abi, chainId, web3, courseAddress)
+      const contract = getContract(Abi, chainId, provider, courseAddress)
       console.log(`contract`, contract)
       return loadContract(contract)
     })
@@ -140,7 +144,7 @@ export function useLoadSmartContracts() {
       const StudentPortfolio = getContract(
         StudentPortfolioAbi,
         chainId,
-        web3,
+        provider,
         portfolioAddress,
       )
       loadContract(StudentPortfolio)
@@ -166,7 +170,7 @@ export function useLoadSmartContracts() {
       const AcademyClass = getContract(
         AcademyClassAbi,
         chainId,
-        web3,
+        provider,
         activeClassAddress,
       )
       loadContract(AcademyClass)

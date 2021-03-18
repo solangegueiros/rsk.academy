@@ -1,8 +1,10 @@
 export default {
   about: 'Sobre',
   admin: 'Admin',
+  events: 'Eventos',
   articles: 'Artículos',
   home: 'Comienzo',
+  register: 'Regístrate!',
   search: 'Buscar',
   topBanner: 'Bienvenido a RSK Academy',
   connect: 'Conectarse a una billetera',

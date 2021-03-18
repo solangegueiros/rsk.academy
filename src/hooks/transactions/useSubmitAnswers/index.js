@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { useQuiz } from '@/hooks/useQuiz'
-import { useWeb3 } from '@/hooks/useWeb3'
+import { toBN } from 'web3-utils'
 import { useRLogin } from '@/hooks/useRLogin'
 import { ContractContext } from '@/context/ContractProvider'
 import { loadQuizResult } from '@/store/profile/actions'
@@ -14,15 +14,14 @@ export const useSubmitAnswers = (course, module, numberOfQuestions) => {
   const dispatch = useDispatch()
   const { userAnswers = {} } = useQuiz(course, module, numberOfQuestions)
   const { account } = useRLogin()
-  const web3 = useWeb3()
   const quizName = `${course}-${module}`
 
   const numberOfCorrectAnswers = Object.entries(userAnswers).filter(
     ([_, { isCorrect }]) => isCorrect,
   ).length
 
-  const totalQuestions = web3.utils.toBN(numberOfQuestions)
-  const correctAnswers = web3.utils.toBN(numberOfCorrectAnswers)
+  const totalQuestions = toBN(numberOfQuestions)
+  const correctAnswers = toBN(numberOfCorrectAnswers)
 
   const { exec, isError, isLoading } = useTransactionCallback({
     name: `Submit Answers ${quizName}`,
