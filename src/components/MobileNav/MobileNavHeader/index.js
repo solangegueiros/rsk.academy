@@ -50,8 +50,7 @@ export const MobileNavHeader = ({ shadow, onClose }) => {
           <MobileNavLink href={`/courses/dev/01/${locale}`}>
             {t('courses')}
           </MobileNavLink>
-          <MobileNavLink href='/projects'>{t('projects')}</MobileNavLink>
-          <MobileNavLink href='/blog'>{t('blog')}</MobileNavLink>
+          <MobileNavLink href='/events'>{t('events')}</MobileNavLink>
           <MobileNavLink href='/admin'>{t('admin')}</MobileNavLink>
         </HStack>
       </VStack>
