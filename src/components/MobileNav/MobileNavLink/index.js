@@ -23,6 +23,7 @@ export const MobileNavLink = ({ href, children }) => {
         rounded='md'
         transition='0.2s all'
         fontWeight={isActive ? '600' : '400'}
+        fontSize='0.9em'
         bg={isActive ? bg : undefined}
         borderWidth={isActive ? undefined : '1px'}
         color={isActive ? color : undefined}
@@ -37,6 +38,6 @@ export const MobileNavLink = ({ href, children }) => {
 }
 
 MobileNavLink.propTypes = {
-  children: PropTypes.number.isRequired,
+  children: PropTypes.node.isRequired,
   href: PropTypes.string.isRequired,
 }
