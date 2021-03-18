@@ -22,7 +22,10 @@ import NextLink from 'next/link'
 
 import { getEvents } from '../../lib/api'
 
-const TimeZone = dynamic(() => import('../../components/TimeZone'))
+const TimeZone = dynamic(() => import('../../components/TimeZone'), {
+  ssr: false,
+})
+
 const LANGUAGES = {
   en: 'English',
   es: 'Español',

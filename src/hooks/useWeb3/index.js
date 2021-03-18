@@ -1,14 +1,14 @@
 import { useContext, useEffect, useRef } from 'react'
-import Web3 from 'web3'
+import Eth from 'web3-eth'
 
 import { Web3ProviderContext } from '@/context/Web3Provider'
 
 export const useWeb3 = () => {
   const { provider } = useContext(Web3ProviderContext)
-  const web3Ref = useRef(new Web3(provider))
+  const web3Ref = useRef(new Eth(provider))
 
   useEffect(() => {
-    web3Ref.current = new Web3(provider)
+    web3Ref.current = new Eth(provider)
   }, [provider])
 
   return web3Ref.current

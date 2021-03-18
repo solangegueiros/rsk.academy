@@ -25,7 +25,9 @@ import { Layout } from '@/components/all'
 import Seo from '@/components/Seo'
 import { getEvents } from '../../lib/api'
 
-const TimeZone = dynamic(() => import('../../components/TimeZone'))
+const TimeZone = dynamic(() => import('../../components/TimeZone'), {
+  ssr: false,
+})
 
 const LANGUAGES = {
   en: 'English',
@@ -182,7 +184,7 @@ Event.propTypes = {
     image: PropTypes.string,
     video_link: PropTypes.string,
     resources: PropTypes.string,
-  }).isRequired,
+  }),
 }
 
 export default Event

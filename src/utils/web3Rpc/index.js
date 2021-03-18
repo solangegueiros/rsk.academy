@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
-import Web3 from 'web3'
+import Eth from 'web3-eth'
 
 export const getNetwork = async provider => {
-  const web3 = new Web3(provider)
-  const chainId = await web3.eth.getChainId()
+  const eth = new Eth(provider)
+  const chainId = await eth.getChainId()
   return chainId
 }
 
 export const getAccounts = async provider => {
-  const web3 = new Web3(provider)
-  const accounts = await web3.eth.getAccounts()
+  const eth = new Eth(provider)
+  const accounts = await eth.getAccounts()
   return accounts
 }
 
@@ -21,11 +21,11 @@ export const getAccountAndNetwork = async provider => {
 }
 
 export const transactionListener = (provider, tx, userCallback) => {
-  const web3 = new Web3(provider)
+  const eth = new Eth(provider)
 
   const checkInterval = setInterval(async () => {
     try {
-      const response = await web3.eth.getTransactionReceipt(tx)
+      const response = await eth.getTransactionReceipt(tx)
 
       if (!response) return
 
