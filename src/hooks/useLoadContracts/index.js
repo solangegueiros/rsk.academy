@@ -1,6 +1,8 @@
 /* eslint-disable max-lines-per-function */
 /* eslint-disable max-statements */
 import { useCallback, useContext } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import {
   AcademyClassAbi,
   AcademyStudentQuizAbi,
@@ -16,9 +18,8 @@ import { loadProfile, resetProfile } from '@/store/profile/actions'
 import { loadAdmin } from '@/store/admin/actions'
 import { getContract } from '@/utils/getContract'
 import { ContractContext } from '@/context/ContractProvider'
-import { useDispatch, useSelector } from 'react-redux'
-import { useWeb3 } from '../useWeb3'
 import { COURSES } from '@/constants/constants'
+import { useWeb3 } from '../useWeb3'
 
 export function useLoadSmartContracts() {
   const web3 = useWeb3()
@@ -54,6 +55,14 @@ export function useLoadSmartContracts() {
     // Load StudentQuizSC
     const StudentQuiz = getContract(AcademyStudentQuizAbi, chainId, web3)
     loadContract(StudentQuiz)
+
+    // Load Courses
+    Object.entries(COURSES).map(([contractName, courseAddress]) => {
+      const Abi = { ...AcademyClassAbi, contractName }
+      const contract = getContract(Abi, chainId, web3, courseAddress)
+      console.log(`contract`, contract)
+      return loadContract(contract)
+    })
 
     let quizResults = null
     if (account && StudentQuiz.address) {
@@ -126,74 +135,64 @@ export function useLoadSmartContracts() {
       studentClasses,
     ] = studentInfo
 
-    if (ownerAddress === '0x0000000000000000000000000000000000000000') {
-      dispatch(resetProfile())
-      return
-    }
-
-    // Load StudentPortfolio
-    const StudentPortfolio = getContract(
-      StudentPortfolioAbi,
-      chainId,
-      web3,
-      portfolioAddress,
-    )
-    loadContract(StudentPortfolio)
-
-    // Load StudentPortfolioList
-    const portfolioList = await StudentPortfolio.contract?.methods
-      .listPortfolio()
-      .call()
-
-    // Load AcademyClass
-    const AcademyClass = getContract(
-      AcademyClassAbi,
-      chainId,
-      web3,
-      activeClassAddress,
-    )
-    loadContract(AcademyClass)
-
-    // Load Courses
-    Object.entries(COURSES).map(([contractName, courseAddress]) => {
-      const Abi = { ...AcademyClassAbi, contractName }
-      const contract = getContract(Abi, chainId, web3, courseAddress)
-      return loadContract(contract)
-    })
-
-    const studentActiveClassName = await AcademyClass.contract?.methods
-      .className()
-      .call()
-    const classStudentInfo = await AcademyClass.contract?.methods
-      .getStudentByAddress(account)
-      .call()
-
-    // Load StudentName
-    let studentName = null
-    if (portfolioList?.length > 0) {
-      const nameProject = portfolioList.find(({ name }) => name === 'Name')
-      if (nameProject) {
-        const nameProjectAddress = nameProject.projectAddress
-        studentName = await MasterName.contract.methods
-          .getName(nameProjectAddress)
-          .call()
-      }
-    }
-
-    dispatch(
-      loadProfile({
-        index,
-        ownerAddress,
+    if (portfolioAddress !== '0x0000000000000000000000000000000000000000') {
+      // Load StudentPortfolio
+      const StudentPortfolio = getContract(
+        StudentPortfolioAbi,
+        chainId,
+        web3,
         portfolioAddress,
+      )
+      loadContract(StudentPortfolio)
+
+      // Load StudentPortfolioList
+      const portfolioList = await StudentPortfolio.contract?.methods
+        .listPortfolio()
+        .call()
+
+      let studentName = null
+      // Load StudentName
+      if (portfolioList?.length > 0) {
+        const nameProject = portfolioList.find(({ name }) => name === 'Name')
+        if (nameProject) {
+          const nameProjectAddress = nameProject.projectAddress
+          studentName = await MasterName.contract.methods
+            .getName(nameProjectAddress)
+            .call()
+        }
+      }
+
+      // Load AcademyClass
+      const AcademyClass = getContract(
+        AcademyClassAbi,
+        chainId,
+        web3,
         activeClassAddress,
-        studentClasses,
-        portfolioList,
-        studentActiveClassName,
-        classStudentInfo,
-        studentName,
-        quizResults,
-      }),
-    )
+      )
+      loadContract(AcademyClass)
+
+      const studentActiveClassName = await AcademyClass.contract?.methods
+        .className()
+        .call()
+      const classStudentInfo = await AcademyClass.contract?.methods
+        .getStudentByAddress(account)
+        .call()
+
+      dispatch(
+        loadProfile({
+          index,
+          ownerAddress,
+          portfolioAddress,
+          activeClassAddress,
+          studentClasses,
+          portfolioList,
+          studentActiveClassName,
+          classStudentInfo,
+          studentName,
+          quizResults,
+        }),
+      )
+    }
   }, [chainId, account, isAdmin])
 
   return { loadContracts }
