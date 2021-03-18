@@ -6,7 +6,6 @@ export * from './Sidebar/SidebarCategory'
 export * from './Sidebar/SidebarContent'
 export * from './Sidebar/SidebarLink'
 
-export * from './BlogPostCard'
 export * from './Container'
 export * from './ContractBase'
 export * from './Contracts/AcademyWallet'
