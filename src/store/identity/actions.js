@@ -15,6 +15,14 @@ export const login = context => async dispatch => {
     const provider = await rLogin.connect()
     context.setProvider(provider)
 
+    provider.on('accountsChanged', accounts => {
+      dispatch(changeAccount({ account: accounts[0] }))
+    })
+    provider.on('chainChanged', id => {
+      dispatch(changeChainId({ chainId: id }))
+    })
+    provider.on('disconnect', () => console.log(`disconnect`))
+
     const [account, chainId] = await getAccountAndNetwork(provider)
 
     dispatch(changeAccount({ account: account.toLowerCase() }))
