@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types'
 import { useEffect } from 'react'
-import { Avatar, Box, chakra, Flex, HStack, Icon, Text } from '@chakra-ui/react'
+import { Box, chakra, Flex } from '@chakra-ui/react'
 import { SkipNavContent, SkipNavLink } from '@chakra-ui/skip-nav'
 import { useRouter } from 'next/router'
-import { FaGithub } from 'react-icons/fa'
 
 import {
   Container,
@@ -40,7 +39,7 @@ export const PageContainer = props => {
   const { frontmatter, children, sidebar, pagination } = props
   useHeadingFocusOnRouteChange()
 
-  const { title, description, editUrl, author } = frontmatter
+  const { title, description, editUrl } = frontmatter
 
   return (
     <>
@@ -64,17 +63,6 @@ export const PageContainer = props => {
                 <chakra.h1 tabIndex={-1} outline={0} apply='mdx.h1' mb={8}>
                   {title}
                 </chakra.h1>
-                {author && (
-                  <HStack>
-                    <Avatar size='sm' src={author.avatarUrl} />
-                    <HStack align='stat'>
-                      <Text>{author.name}</Text>
-                      <chakra.a href={author.githubUrl}>
-                        <Icon as={FaGithub} />
-                      </chakra.a>
-                    </HStack>
-                  </HStack>
-                )}
 
                 <Box h='full'>{children}</Box>
               </PageTransition>
@@ -96,11 +84,6 @@ export const frontMatterType = {
   title: PropTypes.string,
   description: PropTypes.string,
   editUrl: PropTypes.string,
-  author: PropTypes.shape({
-    avatarUrl: PropTypes.string,
-    name: PropTypes.string,
-    githubUrl: PropTypes.string,
-  }),
 }
 
 PageContainer.propTypes = {

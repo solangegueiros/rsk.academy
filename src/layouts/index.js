@@ -6,7 +6,6 @@ export default function DefaultLayout({ children, frontMatter }) {
   const layoutMap = {
     '/projects': <MDXLayout frontmatter={frontMatter}>{children}</MDXLayout>,
     '/courses': <MDXLayout frontmatter={frontMatter}>{children}</MDXLayout>,
-    '/blog': <MDXLayout frontmatter={frontMatter}>{children}</MDXLayout>,
     default: (
       <PageContainer frontmatter={frontMatter}>{children}</PageContainer>
     ),
