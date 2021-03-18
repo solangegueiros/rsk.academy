@@ -10,14 +10,11 @@ import {
   Td,
   Heading,
   Center,
-  Text,
-  VStack,
   useColorModeValue,
 } from '@chakra-ui/react'
-import { DotLoader } from 'react-spinners'
 
 import { useQuiz } from '@/hooks/useQuiz'
-import { useSubmitAnswers } from '@/store/quiz/hooks'
+import { useSubmitAnswers } from '@/hooks/transactions/useSubmitAnswers'
 import { useRLogin } from '@/hooks/useRLogin'
 import { Locked } from '@/components/all'
 import { QuizItem } from '../QuizItem'
@@ -33,10 +30,13 @@ export const QuizList = ({ course, module, numberOfQuestions }) => {
   const numberOfAnswers = Object.keys(userAnswers)?.length || 0
   const color = useColorModeValue('primary.500', 'light.500')
 
-  const { submitAnswers } = useSubmitAnswers(course, module, numberOfQuestions)
+  const { submitAnswers, isLoading } = useSubmitAnswers(
+    course,
+    module,
+    numberOfQuestions,
+  )
 
   const { quizResults } = useSelector(state => state.profile)
-  const { answers } = useSelector(state => state.quiz)
   const { isLoggedIn } = useRLogin()
 
   useEffect(() => {
@@ -47,15 +47,6 @@ export const QuizList = ({ course, module, numberOfQuestions }) => {
     await submitAnswers()
   }
 
-  if (answers[course][module].isLoading) {
-    return (
-      <VStack h='full' justify='center'>
-        <Text textAlign='center'>Sending answers</Text>
-        <Box as={DotLoader} mt={4} />
-      </VStack>
-    )
-  }
-
   if (!isLoggedIn) {
     return (
       <Center h='full'>
@@ -64,9 +55,8 @@ export const QuizList = ({ course, module, numberOfQuestions }) => {
     )
   }
 
-  return (    
+  return (
     <Box>
-      <br/>
       {quizResults && quizResults[QUIZ_NAME] && (
         <Box
           mx='auto'
@@ -109,6 +99,7 @@ export const QuizList = ({ course, module, numberOfQuestions }) => {
         leftIcon={`${numberOfAnswers}/${numberOfQuestions}`}
         isDisabled={numberOfAnswers !== numberOfQuestions}
         onClick={handleSubmit}
+        isLoading={isLoading}
       >
         Submit
       </Button>

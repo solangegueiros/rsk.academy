@@ -18,6 +18,7 @@ import { getContract } from '@/utils/getContract'
 import { ContractContext } from '@/context/ContractProvider'
 import { useDispatch, useSelector } from 'react-redux'
 import { useWeb3 } from '../useWeb3'
+import { COURSES } from '@/constants/constants'
 
 export function useLoadSmartContracts() {
   const web3 = useWeb3()
@@ -152,6 +153,13 @@ export function useLoadSmartContracts() {
       activeClassAddress,
     )
     loadContract(AcademyClass)
+
+    // Load Courses
+    Object.entries(COURSES).map(([contractName, courseAddress]) => {
+      const Abi = { ...AcademyClassAbi, contractName }
+      const contract = getContract(Abi, chainId, web3, courseAddress)
+      return loadContract(contract)
+    })
 
     const studentActiveClassName = await AcademyClass.contract?.methods
       .className()
