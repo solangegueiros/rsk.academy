@@ -61,7 +61,10 @@ export const MobileNavHeader = ({ shadow, onClose }) => {
           )}
           {isAdmin && <MobileNavLink href='/admin'>{t('admin')}</MobileNavLink>}
         </HStack>
-        <HStack onClick={onClose} align='center'>
+        <HStack
+          onClick={() => setTimeout(() => onClose(), 1000)}
+          align='center'
+        >
           <WalletConnect />
         </HStack>
       </VStack>

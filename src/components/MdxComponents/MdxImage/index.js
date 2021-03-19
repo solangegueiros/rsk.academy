@@ -1,5 +1,9 @@
-import { chakra } from '@chakra-ui/react'
+import { Box, Image } from '@chakra-ui/react'
 
 export const MdxImage = props => {
-  return <chakra.img apply='mdx.img' w='auto' maxW='full' my={2} {...props} />
+  return (
+    <Box pos='relative' overflowX='auto' maxW={{ base: '90vw', md: 'full' }}>
+      <Image apply='mdx.img' maxW='none' my={2} {...props} />
+    </Box>
+  )
 }
