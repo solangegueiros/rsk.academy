@@ -2,7 +2,7 @@ export default {
   about: 'Sobre',
   admin: 'Admin',
   articles: 'Artigos',
-  events: 'Eventos',
+  events: 'Cursos ao vivo',
   home: 'Início',
   register: 'Registrar!',
   search: 'Pesquisa',

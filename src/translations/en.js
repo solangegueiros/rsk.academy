@@ -2,7 +2,7 @@ export default {
   about: 'About',
   admin: 'Admin',
   articles: 'Articles',
-  events: 'Events',
+  events: 'Live Courses',
   home: 'Home',
   register: 'Register',
   search: 'Search',

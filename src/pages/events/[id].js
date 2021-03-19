@@ -11,13 +11,14 @@ import {
   VStack,
   Spinner,
   Flex,
+  SimpleGrid,
+  useColorModeValue,
 } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import React from 'react'
 import { FaTwitter } from 'react-icons/fa'
-import { IoCalendarOutline, IoLanguage } from 'react-icons/io5'
-import { RiVideoChatFill, RiVideoFill } from 'react-icons/ri'
-import { GrLocation } from 'react-icons/gr'
+import { IoLanguage } from 'react-icons/io5'
+import { RiVideoChatFill, RiVideoFill, RiMapPin2Line } from 'react-icons/ri'
 import { GoRepo } from 'react-icons/go'
 import { useI18n } from 'next-localization'
 
@@ -37,6 +38,7 @@ const LANGUAGES = {
 
 const Event = ({ event }) => {
   const { t } = useI18n()
+  const bg = useColorModeValue('white', 'dark.400')
 
   if (!event)
     return (
@@ -64,40 +66,44 @@ const Event = ({ event }) => {
   return (
     <Layout>
       <Seo title={title} />
-      <Heading mt={8} as='h1'>
+      <Heading my={8} as='h1'>
         {title}
       </Heading>
-      <Box my={8} maxW='700px' mx='auto'>
+      <Text fontSize='1.2em'>{description}</Text>
+      <Box my={8} mx='auto' bg={bg}>
         <Image w='full' src={image} />
       </Box>
-      <Box align='flex-start' p={4} fontSize='1.2em'>
-        <HStack>
-          <Icon as={IoCalendarOutline} />
-          <Text>
-            <TimeZone timeStr={datetime} />
-          </Text>
-        </HStack>
-        <HStack>
-          <Icon as={IoLanguage} />
-          <Text>{LANGUAGES[language]}</Text>
-        </HStack>
-        <HStack>
-          <Icon as={GrLocation} />
-          <Text>{city}</Text>
-        </HStack>
-        <HStack
-          as={Link}
-          rel='noopener noreferrer'
-          target='_blank'
-          href={`https://twitter.com/${twitter}`}
-        >
-          <Icon as={FaTwitter} />
-          <Text>
-            {speaker} | {role}
-          </Text>
-        </HStack>
-        <Text my={8}>{description}</Text>
-        <VStack align='flex-start' spacing={4}>
+
+      <SimpleGrid
+        p={8}
+        bg={bg}
+        alignItems='center'
+        columns={{ base: 1, md: 2 }}
+        gap={8}
+      >
+        <VStack spacing={4} align='flex-start' fontSize='1.2em'>
+          <TimeZone timeStr={datetime} spacing={4} />
+          <HStack>
+            <Icon as={IoLanguage} />
+            <Text>{LANGUAGES[language]}</Text>
+          </HStack>
+          <HStack>
+            <Icon as={RiMapPin2Line} />
+            <Text>{city}</Text>
+          </HStack>
+          <HStack
+            as={Link}
+            rel='noopener noreferrer'
+            target='_blank'
+            href={`https://twitter.com/${twitter}`}
+          >
+            <Icon as={FaTwitter} />
+            <Text>
+              {speaker} | {role}
+            </Text>
+          </HStack>
+        </VStack>
+        <VStack align={{ base: 'center', md: 'flex-end' }} spacing={4}>
           <Button
             size='lg'
             target='_blank'
@@ -137,8 +143,8 @@ const Event = ({ event }) => {
             Resources
           </Button>
         </VStack>
-      </Box>
-      <Box p={8} mt={8} boxShadow='md'>
+      </SimpleGrid>
+      <Box p={8} mt={8} boxShadow='md' bg={bg}>
         <Heading textAlign='center' as='h3' size='md' mb={8}>
           {t('register')}
         </Heading>
