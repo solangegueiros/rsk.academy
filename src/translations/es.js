@@ -1,7 +1,7 @@
 export default {
   about: 'Sobre',
   admin: 'Admin',
-  events: 'Eventos',
+  events: 'Cursos en vivo',
   articles: 'Artículos',
   home: 'Comienzo',
   register: 'Regístrate!',
