@@ -105,7 +105,7 @@ ContractBase.propTypes = {
     name: PropTypes.string.isRequired,
     address: PropTypes.string,
     isDeployedOnCurrentNetwork: PropTypes.bool,
-  }).isRequired,
+  }),
   children: PropTypes.node.isRequired,
 }
 
