@@ -4,7 +4,7 @@ import { initialState } from './state'
 export const reducers = {
   changeAccount: (state, { payload: { account } }) => {
     state.account = account.toLowerCase()
-    state.isAdmin = account === adminAccount
+    state.isAdmin = account === adminAccount?.toLowerCase()
     state.error = null
   },
   changeChainId: (state, { payload: { chainId } }) => {
