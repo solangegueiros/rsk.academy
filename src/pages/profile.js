@@ -33,7 +33,7 @@ const Profile = () => {
             <Heading>{studentName}</Heading>
             {ownerAddress && (
               <Box my={4}>
-                <Box fontWeight='bold' textTransform='uppercase' color={color}>
+                <Box fontWeight='bold' color={color}>
                   Owner Address:
                 </Box>
                 <pre>{ownerAddress}</pre>
@@ -42,7 +42,7 @@ const Profile = () => {
 
             {portfolioAddress && (
               <Box my={4}>
-                <Box fontWeight='bold' textTransform='uppercase' color={color}>
+                <Box fontWeight='bold' color={color}>
                   Portfolio Address:
                 </Box>
                 <pre>{portfolioAddress}</pre>
@@ -51,7 +51,7 @@ const Profile = () => {
 
             {portfolioList && (
               <Box my={4}>
-                <Box fontWeight='bold' textTransform='uppercase' color={color}>
+                <Box fontWeight='bold' color={color}>
                   Projects in portfolio:
                 </Box>
                 {portfolioList.map(([address, name]) => (
@@ -62,9 +62,20 @@ const Profile = () => {
               </Box>
             )}
 
+            {studentClasses && (
+              <Box my={4}>
+                <Box fontWeight='bold' color={color}>
+                  Classes subscribed:
+                </Box>
+                {studentClasses.map(c => (
+                  <pre key={c}>{c}</pre>
+                ))}
+              </Box>
+            )}
+
             {studentActiveClassName && (
               <Box my={4}>
-                <Box fontWeight='bold' textTransform='uppercase' color={color}>
+                <Box fontWeight='bold' color={color}>
                   Active Class:
                 </Box>
                 <pre>
@@ -73,16 +84,6 @@ const Profile = () => {
               </Box>
             )}
 
-            {studentClasses && (
-              <Box my={4}>
-                <Box fontWeight='bold' textTransform='uppercase' color={color}>
-                  Classes subscribed:
-                </Box>
-                {studentClasses.map(c => (
-                  <pre key={c}>{c}</pre>
-                ))}
-              </Box>
-            )}
           </Box>
         ) : (
           <Box>Student is not registered in RSK Academy.</Box>

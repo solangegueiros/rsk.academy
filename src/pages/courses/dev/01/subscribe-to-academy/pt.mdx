@@ -6,7 +6,7 @@ description: 'Aprenda como efetuar sua inscrição na RSK Academy e conheça sua
 Nesta lição você vai interagir com outro smart contract já publicado na rede: **RSK Academy**
 
 Quando fizer sua inscrição,
-a RSK Academy criará um smart contract chamado portfolio,
+a RSK Academy criará um smart contract para cada aluno, chamado portfolio,
 para registrar todos os projetos que você fizer durante o curso.
 
 No próprio smart contract da RSK Academy também haverá o acompanhamento do seu desempenho,
@@ -29,14 +29,14 @@ Depois que você estiver inscrito,
 quando você conecta sua wallet à RSK Academy,
 automaticamente será carregado seu perfil de estudante.
 
-## Efetua a inscrição na **RSK Academy**
+## Efetue a inscrição na **RSK Academy**
 
 Para fazer sua inscrição na RSK Academy,
 você vai enviar uma transação executando uma função no smart contract da RSK Academy.
 
-Para fazer sua inscrição, clique no botão **Subscribe**
+Clique no botão **Subscribe**
 
-<SubscribeAcademy contractName='DeveloperA' />
+<SubscribeAcademy contractName='Developer' />
 
 Sua web wallet abrirá uma janela do tipo "popup" para confirmar a transação.
 
@@ -44,7 +44,32 @@ Sua web wallet abrirá uma janela do tipo "popup" para confirmar a transação.
 
 Clique em confirm / submit.
 
-## Inscrição confirmada
+Aguarde a confirmação da transação ...
+
+![Wait the transaction confirmation](/img/courses/dev/01/subscribe-to-academy/image-02.png)
+
+## RSK Academy: histórico de transações
+
+Você pode verificar os detalhes de sua transação no histórico de transações da RSK Academy.
+
+Ele está localizado no canto inferior direito:
+
+![RSK Academy transaction history](/img/courses/dev/01/subscribe-to-academy/image-03.png)
+
+Cliquei que após a transação ser confirmada, este é o resultado:
+
+![History - transaction confirmed](/img/courses/dev/01/subscribe-to-academy/image-04.png)
+
+E clicando na transação,
+é possível ver no [explorer](https://explorer.testnet.rsk.co/)
+
+![Subscription on explorer](/img/courses/dev/01/subscribe-to-academy/image-05.png)
+
+Veja minha inscrição:
+
+[0xb359542dae0bb9155fbc8a5d3343c7b575a57acd722efedf79f018bc5a9f2852](https://explorer.testnet.rsk.co/tx/0xb359542dae0bb9155fbc8a5d3343c7b575a57acd722efedf79f018bc5a9f2852)
+
+## Transactions on the wallet
 
 Da mesma forma que você acompanhou a transação para transferir criptomoedas,
 você pode verificar a transação de inscrição na RSK Academy.
@@ -53,8 +78,8 @@ Por exemplo, aqui está a transação confirmada na Nifty
 
 ![Nifty subscription confirmed](/img/courses/dev/01/subscribe-to-academy/image-02.png)
 
-E clicando na transação,
-é possível ver no [explorer](https://explorer.testnet.rsk.co/)
+E clicando na transação, 
+também é possível ver no [explorer](https://explorer.testnet.rsk.co/)
 
 ![Nifty subscription explorer](/img/courses/dev/01/subscribe-to-academy/image-03.png)
 
@@ -62,7 +87,7 @@ Veja minha inscrição:
 
 [XXX](https://explorer.testnet.rsk.co/tx/XXX)
 
-## Profile
+## Página de perfil
 
 Depois que a transação da sua inscrição estiver confirmada,
 você pode ver seu perfil.
@@ -72,8 +97,42 @@ e veja suas informações de estudante.
 
 Por exemplo, aqui está minha inscrição:
 
-![Nifty subscription explorer](/img/courses/dev/01/subscribe-to-academy/image-04.png)
+![My profile](/img/courses/dev/01/subscribe-to-academy/image-07.png)
+
+#### Owner address
+
+É o endereço da sua carteira.
+
+Lembre-se de que seu progresso no curso estará sempre vinculado à sua carteira.
+
+#### Portfolio address
+
+É um contrato inteligente criado para você, para armazenar seus projetos durante o curso.
+
+####  Projects in portfolio
+
+A lista de seus projetos.
+
+Agora está vazia porque você acabou de se inscrever, ainda não fez nenhum projeto :)
+
+####  Classes subscribed
+
+A lista de turmas que você já se inscreveu.
+
+No futuro, você poderá se inscrever em mais de um curso / turma.
+
+####  Active class
+
+Mostra o nome e endereço da aula que você está fazendo neste momento.
+
+> A turma tem seu próprio contrato inteligente para gerenciar os alunos :)
+
+Quando tivermos a possibilidade de se inscrever em mais de um curso, 
+você deve ter apenas um ativo.
+Então, aqui está sua classe ativa.
 
 ## Parabéns!
 
 Você já está inscrito no curso!
+
+Na próxima lição, você aprofundará seu conhecimento sobre carteiras.

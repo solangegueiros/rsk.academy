@@ -1,40 +1,238 @@
 ---
 title: 'Detalhes das carteiras crypto'
-description: 'Aprenda sobre Ethereum and RSK Accounts, checksum, Metamask vs Nifty wallet, account vs UTXO, wallet types: hot, cold, web, paper, hard'
+description: 'Aprenda sobre Ethereum and RSK Accounts, checksum, Metamask vs Nifty wallet e account vs UTXO'
 ---
 
-## Derivation Path
+Antes de nos aprofundarmos em alguns conceitos de carteiras crypto, faremos uma pequena revisão.
 
-O Derivation Path
+> Resumindo, uma crypto wallet é uma ferramenta que você pode usar para interagir com uma rede blockchain.
 
-> TODO
+Ao contrário da crença popular, as carteiras crypto não armazenam verdadeiramente criptomoedas.
 
-## Ethereum and RSK Accounts
+Em vez disso, elas fornecem as ferramentas para enviar e receber criptomoedas por meio de transações blockchain.
+Entre outras coisas,
+eles gerenciam um ou mais pares de chaves públicas e privadas.
 
-> TODO
+## Mais sobre mnemônicos
+
+As carteiras baseadas em um mnemônico são uma carteira HD.
+HD é um acrônimo para **H**ierarchical **D**eterministic.
+
+Essencialmente, uma frase-semente, ou mnemônico,
+funciona como uma chave raiz que gera e dá acesso a todas as chaves e endereços em uma carteira de criptografia.
+
+Um mnemônico é gerado a partir do padrão definido em
+[BIP-39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)
+
+- BIP = Bitcoin Improvement Proposal
+
+Mnemônicos geralmente são palavras mais fáceis de escrever do que uma chave privada.
+
+Se a carteira for roubada, por exemplo, basta usar a palavra combinação para ter acesso a ela novamente.
+Portanto, as palavras devem ser mantidas em absoluto sigilo e segurança.
+
+### Ian Coleman app
+
+Este aplicativo web:
+
+[iancoleman.io/bip39](https://iancoleman.io/bip39/)
+
+é muito útil para compreender mnemônicos e chaves derivadas.
+
+Recomendo fazer alguns testes.
+
+Por outro lado, não é tão seguro gerar chaves mnemônicas e privadas em um site,
+portanto, NÃO armazene cryptos "de verdade" em endereços gerados a partir daqui.
+
+## Derivation Path, ou dPath
+
+Se você usar uma frase mnemônica ou carteira hardware,
+você pode encontrar o termo "derivation path (caminho de derivação)".
+
+O mesmo mnemônico pode gerar endereços para diferentes blockchains usando o dPath.
+Portanto, cada moeda tem seu próprio derivation path de base, 
+para garantir que você obtenha endereços diferentes para cada moeda.
+
+Resumindo, o derivation path especifica de que forma será gerada a chave privada a partir desta carteira.
+O endereço vem de chaves públicas que também são geradas usando o caminho de derivação.
+
+Um caminho de derivação se parece com isto:
+
+```
+m/44'/60'/0'/0/0
+```
+
+Observe o "/0" extra no final do caminho de derivação.
+Este número é o índice do endereço,
+e é usado por carteiras para mostrar endereços diferentes da mesma origem
+
+Dê uma olhada em alguns dPaths:
+
+| Blockchain  |        dPath        |
+| :---------- | :-----------------: |
+| Bitcoin     | m/44'/0'/0'/0       |
+| Ethereum    | m/44'/60'/0'/0/0    |
+| RSK Mainnet | m/44'/137'/0'/0/0   |
+| RSK Testnet | m/44'/37310'/0'/0/0 |
+
+O mnemônico gera as chaves públicas e privadas "mestras",
+e usando o índice de endereços são criados vários endereços da mesma base.
+
+Existem algumas especificações para isso:
+
+- [BIP-32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)
+- [BIP-44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki)
+
+Por exemplo, este mnemônico:
+
+```
+shoot gate legend member sniff asthma smart slot famous call marriage math
+```
+
+Pode gerar endereços diferentes:
+
+
+| Blockchain  |                  Address                   |
+| :---------- | :----------------------------------------: |
+| Bitcoin     |     1DgNhyMRzko5rJ5qZ91ZvGkw1B91kpJp2j     |
+| Ethereum    | 0x0eDbe1BbdA93b333640E1E32866C474ca2Fb5756 |
+| RSK Mainnet | 0x1aB23F5e15CfAE441F43e3a9b1FD9767C054432e |
+| RSK Testnet | 0xa63375173fFA44725b5CDe4dCfdE7D6Ccf5FFFaa |
+
+Você pode experimentar em [iancoleman.io/bip39](https://iancoleman.io/bip39/).
+
+## Ethereum e RSK Accounts
+
+RSK é compatível com endereço Ethereum e dPath, mas, possui seus próprios dPaths.
+
+Outra diferença sobre Ethereum e RSK é que, 
+no Ethereum, os endereços da Mainnet e de todos os Testnets são os mesmos.
+RSK usa dPaths diferentes para Mainnet e Testnet.
+Isso evita que você use fundos incorretamente de um blockchain testnet em outro em que o dinheiro é "real".
+
+Isso é uma grande flexibilidade, mas também pode criar confusão entre as wallets.
+
+RSK reconhece endereços Ethereum e, em alguns casos,
+como quando você está usando uma token bridge, em que os fundos serão enviados de um blockchain para outro,
+eles serão enviados para o mesmo endereço.
+Portanto, você precisa usar o Ethereum dPath neste caso.
 
 ## Checksum
 
-> TODO
+Outro ponto que pode criar confusão em endereços em carteiras diferentes é o conceito de checksum.
 
-## Metamask vs Nifty wallet
+A soma de verificação é o uso do chainID no processo de geração de um endereço.
 
-> > TODO
+Isso mudará algumas letras maiúsculas e minúsculas.
 
-## Account vs UTXO
+Algumas carteiras usam, outras não, e o endereço pode parecer diferente, mas na verdade são todos iguais.
 
-TODO
+Aqui está a lista de chain IDs para EVMs,
+blockchains que são compatíveis com a **E**thereum **V**irtual **M**achine.
 
-## Types: hot, cold, web, paper, hard
+- [ChainIds list](https://chainid.network/)
 
-> TODO
+Este é um exemplo, mostrando o índice 0 do mnemônico apreesentado anteriormente:
 
-## Parabéns!
+- 0xA63375173FFa44725B5cDE4DcFDe7d6ccf5Fffaa - RSK Testnet, without checksum
+- 0xa63375173fFA44725b5CDe4dCfdE7D6Ccf5FFFaa - RSK Testnet, with checksum
+- 0xa63375173ffa44725b5cde4dcfde7d6ccf5fffaa - RSK Testnet, lowercase
 
-Você já tem sua carteira e já sabe utilizá-la para fazer transferências e interagir com smart contracts.
+> Se você tiver problemas com carteiras dizendo que o endereço é inválido,
+tente converter o endereço em minúsculas.
+Isso funcionará na maioria dos casos.
 
-O próximo passo é fazer um teste para avaliar se você aprendeu tudo.
+São boas intenções, foram criados para evitar que as pessoas enviem fundos de uma rede para outra de forma não intencional.
 
-O resultado do seu teste será registrado na sua inscrição no curso.
+Mas **checksum** e **dPath** podem causar muita confusão!
 
-No próximo módulo você vai aprender sobre smart contracts.
+Portanto, preste atenção, este é o tópico mais técnico deste módulo,
+mas é muito importante que você entenda bem para não ter problemas com endereços e carteiras.
+
+## Metamask vs carteira Nifty
+
+Nifty wallet tem originalmente as configurações para redes RSK,
+portanto, os endereços gerados pelo Nifty usam o dPath e o checksum da RSK.
+
+Por outro lado, Metamask não tem redes RSK já configuradas,
+mas permite que você adicione redes personalizadas também.
+Desta forma, é possível adicionar as redes RSK.
+
+Dê uma olhada nestes endereços na RSK testnet:
+
+- 0x0eDbe1BbdA93b333640E1E32866C474ca2Fb5756 - Metamask
+- 0xa63375173fFA44725b5CDe4dCfdE7D6Ccf5FFFaa - Nifty
+
+Uau, eles são completamente diferentes!
+
+- Metamask usa dPath **m/44'/60'/0'/0/0** (do Ethereum), sem checksum
+- Nifty usa dPath **m/44'/37310'/0'/0/0**, com checksum
+
+Mas o Metamask, até este momento, só usa o dPath do Ethereum .
+Então você terá um endereço gerado para o RSK Blockchain,
+que você pode enviar e receber fundos e transações normalmente,
+mas outras carteiras podem dizer que este endereço NÃO é válido na rede RSK, mas é!
+
+Você também pode configurar uma rede personalizada na Nifty, adicionando as redes RSK, mas usando Ethereum dPaths.
+Esta é uma ótima funcionalidade do Nifty!
+
+## Account (conta) vs UTXO
+
+Um conceito importante sobre blockchains Bitcoin e RSK / Ethereum são a maneira como gerenciam o saldo de um endereço.
+
+Esta é a diferença entre account e UTXO.
+
+#### Accounts
+
+RSK e Ethereum usam o conceito de account, isso significa que tem uma "fotografia" de todas as contas no último bloco,
+e o saldo de um endereço é o valor armazenado neste momento.
+
+#### UTXO
+
+UTXO significa unspent transaction output = saída de transação não gasta.
+
+Bitcoin usa o modelo UTXO.
+
+Um UTXO é uma saída de uma transação blockchain que não foi gasta,
+ou seja, que pode ser usado como uma entrada em uma nova transação.
+
+Quando uma parte de um Bitcoin é transferida,
+no endereço atual, será uma transação gasta,
+e no novo endereço será uma transação não gasta.
+
+Eu gosto de dizer que é o "estacionamento" dos Bitcoins,
+são os endereços pelos quais um pedaço de Bitcoin passou.
+
+O objetivo aqui é ter apenas uma visão geral.
+Para aprofundar esses conceitos,
+sugiro alguns livros de referência no final desta lição.
+
+## A importância dos backups
+
+Se você perder o acesso em a carteira e não tiver nenhum backup,
+você provavelmente perdeu sua criptomoeda para sempre!
+
+É importante fazer backup delas regularmente.
+Em muitos casos, isso é realizado simplesmente fazendo backup de arquivos wallet.dat ou frase-semente.
+
+Além disso, se você optou por adicionar uma senha para criptografar sua wallet, 
+lembre-se de fazer backup de sua senha também.
+
+> É muito importante que você tenha um backup de sua frase mnemônica / seed!
+
+## Referências
+
+- [Mastering Bitcoin - Andreas Antonopoulos](https://github.com/bitcoinbook/bitcoinbook)
+- [Bitcoin book](https://programmingblockchain.gitbook.io/programmingblockchain/)
+- [bitcoin.org developer guide](https://bitcoin.org/en/developer-guide)
+- [Mycrypto: The journey from mnemonic phrase to address](https://medium.com/mycrypto/the-journey-from-mnemonic-phrase-to-address-6c5e86e11e14)
+
+## Pensamentos finais
+
+Crypto wallets - Carteiras cripto, são parte integrante do uso de criptomoedas.
+
+Agora você conhece conceitos importantes relacionados às carteiras!
+
+São uma das peças básicas de infraestrutura que possibilitam o envio e recebimento de fundos através de redes blockchain.
+
+O próximo passo é conhecer alguns tipos de carteiras.

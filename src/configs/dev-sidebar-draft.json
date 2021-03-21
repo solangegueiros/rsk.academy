@@ -54,7 +54,7 @@
           "title": {
             "en": "Connecting to Academy",
             "es": "Conectando a Academy",
-            "pt": "Conectando-se à Academia"
+            "pt": "Conectando-se à Academy"
           },
           "path": "/courses/dev/01/connecting-to-academy"
         },
@@ -76,9 +76,9 @@
         },
         {
           "title": {
-            "en": "Subscribe to RSK academy",
-            "es": "Suscríbete a RSK academy",
-            "pt": "Inscreva-se na RSK academy"
+            "en": "Subscribe to RSK Academy",
+            "es": "Suscríbete a RSK Academy",
+            "pt": "Inscreva-se na RSK Academy"
           },
           "path": "/courses/dev/01/subscribe-to-academy"
         },
@@ -90,6 +90,14 @@
           },
           "path": "/courses/dev/01/wallets-details"
         },
+        {
+          "title": {
+            "en": "Crypto wallets types",
+            "es": "Tipos de billeteras crypto",
+            "pt": "Tipos de wallets"
+          },
+          "path": "/courses/dev/01/wallets-types"
+        },        
         {
           "title": {
             "en": "Module 1 Exam",

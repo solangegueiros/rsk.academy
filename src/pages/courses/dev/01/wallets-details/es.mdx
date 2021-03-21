@@ -1,39 +1,238 @@
 ---
 title: 'Detalles de billeteras crypto'
-description: 'Más información sobre Ethereum y and RSK Accounts, checksum, Metamask vs Nifty wallet, account vs UTXO, wallet types: hot, cold, web, paper, hard'
+description: 'Más información sobre Ethereum y and RSK Accounts, checksum, Metamask vs Nifty wallet y account vs UTXO'
 ---
 
-## Derivation Path
+Antes de profundizar en algunos conceptos de una billetera crypto, 
+presentaremos una pequeña reseña.
 
-> TODO
+> En resumen, una billetera crypto es una herramienta que puede utilizar para interactuar con una red blockchain.
 
-## Ethereum and RSK Accounts
+Contrariamente a la creencia popular, las billetera crypto no almacenan realmente criptomonedas.
 
-> TODO
+En cambio, brindan las herramientas para enviar y recibir criptomonedas a través de transacciones de blockchain.
+Entre otras cosas,
+administran uno o más pares de claves públicas y privadas.
 
-## Checksum
+## Más sobre mnemónicos
 
-> TODO
+Las billeteras que se basan en un mnemotécnico son carteras HD.
+HD es un acrónimo de **H**ierarchical **D**eterministic.
 
-## Metamask vs Nifty wallet
+Esencialmente, una frase semilla, o mnemotécnica,
+funciona como una clave raíz que genera y da acceso a todas las claves y direcciones en una billetera criptográfica.
 
-> > TODO
+Un mnemónico se genera a partir del patrón definido en
+[BIP-39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)
 
-## Account vs UTXO
+- BIP = Bitcoin Improvement Proposal
 
-TODO
+Los mnemónicos suelen ser palabras más fáciles de escribir que una clave privada.
 
-## Types: hot, cold, web, paper, hard
+Si le roban la billetera, por ejemplo, simplemente use la combinación de palabras para obtener acceso a ella nuevamente.
+Por lo tanto, las palabras deben mantenerse en absoluto secreto y seguridad.
 
-> TODO
+### Ian Coleman app
 
-## Conclusión
+Esta aplicación web:
 
-Ya tienes tu billetera y sabes cómo usarla para realizar transferencias
-e interactuar con contratos inteligentes.
+[iancoleman.io/bip39](https://iancoleman.io/bip39/)
 
-El siguiente paso es realizar una prueba para evaluar si ha aprendido todo.
+es muy útil para comprender los mnemónicos y las claves derivadas.
 
-El resultado de tu prueba se registrará en el registro de tu curso.
+Recomiendo hacer algunas pruebas.
 
-En el siguiente módulo, aprenderá sobre contratos inteligentes.
+Por otro lado, no es tan seguro generar un mnemónico y claves privadas en un sitio web,
+así que NO almacene criptos reales en direcciones generadas desde aquí.
+
+## Derivation Path (ruta de derivación) o dPath
+
+Si usa una frase mnemotécnica o una billetera hardware,
+puede encontrarse con el término "derivation path (ruta de derivación)".
+
+El mismo mnemónico puede generar direcciones para diferentes blockchains utilizando dPath.
+Por lo tanto, cada moneda tiene su propio derivation path de base, 
+para garantizar que obtenga diferentes direcciones para cada moneda.
+
+En resumen, el derivation path especifica cuál es la forma en que se generará la clave privada de esta billetera.
+La dirección proviene de claves públicas que también se generan utilizando la ruta de derivación.
+
+Una ruta de derivación se parece a esto:
+
+```
+m/44'/60'/0'/0/0
+```
+
+Tenga en cuenta el "/0" adicional al final de la ruta de derivación.
+Este número se llama índice de direcciones,
+y es utilizado por billeteras para mostrarle direcciones diferentes de la misma fuente
+
+Eche un vistazo a algunos dPaths:
+
+| Blockchain  |        dPath        |
+| :---------- | :-----------------: |
+| Bitcoin     | m/44'/0'/0'/0       |
+| Ethereum    | m/44'/60'/0'/0/0    |
+| RSK Mainnet | m/44'/137'/0'/0/0   |
+| RSK Testnet | m/44'/37310'/0'/0/0 |
+
+El mnemónico genera claves públicas y privadas del "master",
+y utilizando el índice de direcciones se crean muchas direcciones a partir de la misma base.
+
+Hay algunas especificaciones para esto:
+
+- [BIP-32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)
+- [BIP-44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki)
+
+Por ejemplo, este mnemónico:
+
+```
+shoot gate legend member sniff asthma smart slot famous call marriage math
+```
+
+Puede generar diferentes direcciones:
+
+| Blockchain  |                  Address                   |
+| :---------- | :----------------------------------------: |
+| Bitcoin     |     1DgNhyMRzko5rJ5qZ91ZvGkw1B91kpJp2j     |
+| Ethereum    | 0x0eDbe1BbdA93b333640E1E32866C474ca2Fb5756 |
+| RSK Mainnet | 0x1aB23F5e15CfAE441F43e3a9b1FD9767C054432e |
+| RSK Testnet | 0xa63375173fFA44725b5CDe4dCfdE7D6Ccf5FFFaa |
+
+Puedes probarlo en [iancoleman.io/bip39](https://iancoleman.io/bip39/).
+
+## Ethereum y RSK Accounts
+
+RSK es compatible con la dirección Ethereum y dPath, pero, de hecho, tiene sus propios dPaths.
+
+Otra diferencia entre Ethereum y RSK es que en Ethereum, 
+las direcciones de Mainnet y todas las Testnets son las mismas.
+RSK usa diferentes dPaths para Mainnet y Testnet.
+Esto evita que usted use fondos de manera incorrecta de una cadena de bloques de testnet en otra que el dinero es "real".
+
+Esta es una gran flexibilidad, pero también puede crear confusión entre billeteras.
+
+RSK reconoce las direcciones de Ethereum y, en algunos casos,
+como cuando está utilizando una token bridge, que los fondos se enviarán de una cadena de bloques a otra,
+se enviarán a la misma dirección.
+Por lo tanto, debe usar Ethereum dPath en este caso.
+
+## Checksum (suma de comprobación)
+
+Otro punto que puede crear confusión en las direcciones de diferentes billeteras es el concepto de checksum.
+
+El checksum es el uso de chainID en el proceso de generar una dirección.
+
+Esto cambiará algunas letras mayúsculas y minúsculas.
+
+Algunas billeteras lo usan, otras no, y la dirección puede verse diferente, pero en realidad son todas iguales.
+
+Aquí está la lista de chain IDs para EVMs,
+blockchains que son compatibles con la **E**thereum **V**irtual **M**achine.
+
+- [ChainIds list](https://chainid.network/)
+
+Este es un ejemplo, que muestra el índice 0 del mnemónico presentado anteriormente:
+
+- 0xA63375173FFa44725B5cDE4DcFDe7d6ccf5Fffaa - RSK Testnet, without checksum
+- 0xa63375173fFA44725b5CDe4dCfdE7D6Ccf5FFFaa - RSK Testnet, with checksum
+- 0xa63375173ffa44725b5cde4dcfde7d6ccf5fffaa - RSK Testnet, lowercase
+
+> Si tiene problemas con billeteras que dicen que la dirección no es válida,
+intente convertir la dirección a minúsculas.
+Esto funcionará en la mayoría de los casos.
+
+Tienen buenas intenciones,
+fueron creados para evitar que las personas envíen fondos de una red a otra sin querer.
+
+¡Pero **checksum** y **dPath** pueden causar mucha confusión!
+
+Así que preste atención, este es el tema más técnico de este módulo,
+pero es muy importante que lo entiendas bien para no tener problemas con direcciones y billeteras.
+
+## Billetera Metamask vs Nifty
+
+Nifty wallet tiene de forma nativa las configuraciones para las redes RSK,
+por lo que las direcciones generadas por Nifty utilizan el dPath y el checksum de RSK.
+
+Por otro lado, Metamask no tiene redes RSK ya configuradas,
+pero también le permite agregar redes personalizadas.
+De esta forma, es posible agregar las redes RSK.
+
+Eche un vistazo a estas direcciones en RSK testnet:
+
+- 0x0eDbe1BbdA93b333640E1E32866C474ca2Fb5756 - Metamask
+- 0xa63375173fFA44725b5CDe4dCfdE7D6Ccf5FFFaa - Nifty
+
+¡Oye, son completamente diferentes!
+
+- Metamask usa dPath **m/44'/60'/0'/0/0** (de Ethereum), sin checksum
+- Nifty usa dPath **m/44'/37310'/0'/0/0**, con checksum
+
+Pero Metamask, hasta ahora, solo usa Ethereum dPath.
+Entonces tendrás una dirección generada para RSK Blockchain,
+que puede enviar y recibir fondos y transacciones normalmente,
+pero otras billeteras pueden decirte que esta dirección NO es válida en la red RSK, ¡pero lo es!
+
+También puedes configurar una red personalizada en Nifty agregando las redes RSK, pero usando Ethereum dPaths.
+¡Esta es una gran funcionalidad de Nifty!
+
+## Account (cuenta) vs UTXO
+
+Un concepto importante sobre las cadenas de bloques Bitcoin y RSK / Ethereum es la forma en que administran el saldo de una dirección.
+
+Esta es la diferencia entre Account y UTXO.
+
+#### Accounts
+
+RSK y Ethereum usan el concepto de account, significa que tiene una captura de pantalla o fotografía de todas las cuentas en el último bloque,
+y el saldo de una dirección es el valor almacenado allí.
+
+#### UTXO
+
+UTXO significa unspent transaction output = salida de transacciones no gastadas.
+
+Bitcoin usa el modelo UTXO.
+
+Un UTXO es una salida de una transacción de blockchain que no se ha gastado,
+es decir, se puede utilizar como entrada en una nueva transacción.
+
+Cuando se transfiere una parte de un Bitcoin,
+en la dirección actual será una transacción gastada,
+y en la nueva dirección será una transacción sin gastar.
+
+Me gusta decir que es el "estacionamiento" de Bitcoins,
+son las direcciones por las que ha pasado una parte de Bitcoin.
+
+El objetivo aquí es tener solo una descripción general.
+Para profundizar en estos conceptos,
+Sugiero algunos libros de referencia al final de esta lección.
+
+## La importancia de las copias de seguridad
+
+Si pierde el acceso en tu billetera y no tiene ninguna copia de seguridad,
+¡probablemente perdiste tu criptomoneda para siempre!
+
+Es importante hacer copias de seguridad de ellos con regularidad.
+En muchos casos, esto se logra simplemente haciendo una copia de seguridad de los archivos wallet.dat o de las frases iniciales.
+
+Además, si optó por el cifrado de contraseña, recuerdes hacer una copia de seguridad de tu contraseña también.
+
+> ¡Es muy importante que tenga una copia de seguridad de su fase mnemotécnica / semilla!
+
+## Referencias
+
+- [Mastering Bitcoin - Andreas Antonopoulos](https://github.com/bitcoinbook/bitcoinbook)
+- [Bitcoin book](https://programmingblockchain.gitbook.io/programmingblockchain/)
+- [bitcoin.org developer guide](https://bitcoin.org/en/developer-guide)
+- [Mycrypto: The journey from mnemonic phrase to address](https://medium.com/mycrypto/the-journey-from-mnemonic-phrase-to-address-6c5e86e11e14)
+
+## Pensamientos finales
+
+Las billeteras son una parte integral del uso de criptomonedas.
+
+¡Ahora conoces conceptos importantes relacionados con las billeteras!
+
+Son una de las piezas básicas de infraestructura que permiten enviar y recibir fondos a través de redes blockchain.
+
+El siguiente paso es conocer algunos tipos de billeteras.
