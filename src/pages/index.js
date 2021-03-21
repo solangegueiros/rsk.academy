@@ -35,14 +35,12 @@ const Home = () => {
             py={8}
             justifyContent='center'
             h='full'
-          >
+          >         
             <Heading color={useColorModeValue('white', 'dark.500')} mb={4}>
-              Because Knowledge is Freedom
+              {t('homePage.slogan')}
             </Heading>
             <Text fontSize='1.4em' maxW='container.md'>
-              Educating the new generations about Bitcoin, blockchain and open
-              source technologies are the best way to empower them with the
-              tools to build a better world.
+              {t('homePage.slogan2')}
             </Text>
           </Flex>
         </Container>
@@ -58,10 +56,9 @@ const Home = () => {
             align='center'
           >
             <VStack mr={8} align='start' justify='center'>
-              <Heading color='inherit'>Blockchain for developers</Heading>
+              <Heading color='inherit'>{t('homePage.developerTitle')}</Heading>
               <Text fontSize='1.4em'>
-                Developers with technical background willing to become general
-                blockchain developers.
+                {t('homePage.developerDescription')}
               </Text>
             </VStack>
             <Box maxW={400}>
@@ -84,10 +81,9 @@ const Home = () => {
               <Image maxH={400} src='/img/business.svg' alt='business' />
             </Box>
             <VStack align='start' justify='center'>
-              <Heading color='inherit'>Blockchain for business</Heading>
+              <Heading color='inherit'>{t('homePage.businessTitle')}</Heading>
               <Text fontSize='1.4em'>
-                Non-technical professionals willing to work on the blockchain
-                industry and/or use blockchain applications.
+                {t('homePage.businessDescription')}
               </Text>
             </VStack>
           </Flex>
@@ -96,16 +92,12 @@ const Home = () => {
 
       <Container py={32} mb={16}>
         <VStack textAlign='center' spacing={4}>
-          <Heading mb={8}>Partnerships - white label courses</Heading>
+          <Heading mb={8}>{t('homePage.partnerships')}</Heading>
           <Text fontSize='1.4em'>
-            White label: The partner can use its own trademark in the courses
-            <br />
-            while IOV provides the content and examination tools.
+            {t('homePage.whiteLabel')}
           </Text>
           <Text fontSize='1.4em'>
-            Training mentors: IOV offers training for in-house mentors
-            <br />
-            who can help students during the courses.
+            {t('homePage.trainingMentors')}
           </Text>
         </VStack>
       </Container>
