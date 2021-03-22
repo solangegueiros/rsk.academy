@@ -61,7 +61,6 @@ const Profile = () => {
                 ))}
               </Box>
             )}
-
             {studentClasses && (
               <Box my={4}>
                 <Box fontWeight='bold' color={color}>
