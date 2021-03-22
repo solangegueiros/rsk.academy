@@ -8,10 +8,13 @@ import {
   useDisclosure,
   chakra,
   useBreakpointValue,
+  Text,
+  Tag,
 } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
 import NextLink from 'next/link'
 
+import { NETWORK_LABELS } from '@/constants/constants'
 import {
   DarkModeSwitch,
   LocaleSwitch,
@@ -45,6 +48,11 @@ const MainNavLinkGroup = props => {
 export const Header = props => {
   const mobileNavBtnRef = useRef()
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const bg = useColorModeValue('primary.50', 'dark.500')
+  const colorScheme = useColorModeValue('primary', 'light')
+  const { t } = useI18n()
+
+  const { isLoggedIn, chainId } = useRLogin()
 
   useUpdateEffect(() => {
     mobileNavBtnRef.current?.focus()
@@ -52,6 +60,32 @@ export const Header = props => {
 
   return (
     <>
+      <Box d={useBreakpointValue({ base: 'none', md: 'block' })} bg={bg}>
+        <Container maxW={1200}>
+          <HStack justify='space-between' py={1}>
+            <Box>
+              <Text
+                userSelect='none'
+                color={useColorModeValue('primary.500', 'light.500')}
+                fontSize='sm'
+                fontWeight='bold'
+              >
+                <span aria-label='student' role='img'>
+                  👨🏻‍🎓
+                </span>{' '}
+                {t('topBanner')}
+              </Text>
+            </Box>
+            <HStack>
+              {isLoggedIn && NETWORK_LABELS[chainId] && (
+                <Tag colorScheme={colorScheme}>{NETWORK_LABELS[chainId]}</Tag>
+              )}
+              <LocaleSwitch />
+              <DarkModeSwitch />
+            </HStack>
+          </HStack>
+        </Container>
+      </Box>
       <Box
         pos='sticky'
         top='0'
@@ -80,14 +114,10 @@ export const Header = props => {
               </chakra.a>
             </NextLink>
             {useBreakpointValue({ base: false, md: true }) && (
-              <>
+              <HStack spacing={4}>
                 <MainNavLinkGroup />
-                <HStack>
-                  <WalletConnect />
-                  <LocaleSwitch />
-                  <DarkModeSwitch />
-                </HStack>
-              </>
+                <WalletConnect />
+              </HStack>
             )}
             <MobileNavButton
               ref={mobileNavBtnRef}

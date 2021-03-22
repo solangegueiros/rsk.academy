@@ -16,6 +16,9 @@ export const styles = {
         color: mode('primary.700', 'light.900')(props),
       },
     },
+    '.chakra-switch__track': {
+      bg: 'rgba(0, 0, 0, 0.1) !important',
+    },
     '.rlogin-modal-container': {
       '.rlogin-modal-card': {
         bg: mode('white', 'dark.500')(props),
