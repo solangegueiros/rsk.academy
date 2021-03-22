@@ -133,9 +133,9 @@
     },
     "answers": [
       {
-        "en": "A type of blockchain",
-        "es": "Un tipo de blockchain",
-        "pt": "Um tipo de blockchain"
+        "en": "A type of Blockchain",
+        "es": "Un tipo de Blockchain",
+        "pt": "Um tipo de Blockchain"
       },
       {
         "en": "An algorithm that predicts the next part of the chain",
@@ -148,9 +148,9 @@
         "pt": "Uma pessoa que realiza cálculos para validar uma transação."
       },
       {
-        "en": "Computers that validate and process blockchain transactions",
-        "es": "Computadoras que validan y procesan transacciones de blockchain",
-        "pt": "Computadores que validam e processam transações de blockchain"
+        "en": "Computers that validate and process Blockchain transactions",
+        "es": "Computadoras que validan y procesan transacciones de Blockchain",
+        "pt": "Computadores que validam e processam transações de Blockchain"
       }
     ],
     "correct_answer": 3
@@ -159,9 +159,9 @@
     "id": "dev-03-mc-06",
     "type": "mc",
     "question": {
-      "en": "What is a blockchain?",
-      "es": "¿Qué es blockchain?",
-      "pt": "O que é um blockchain?"
+      "en": "What is a Blockchain?",
+      "es": "¿Qué es Blockchain?",
+      "pt": "O que é um Blockchain?"
     },
     "answers": [
       {
@@ -187,9 +187,9 @@
     "id": "dev-03-mc-07",
     "type": "mc",
     "question": {
-      "en": "What is the term used when a blockchain splits?",
+      "en": "What is the term used when a Blockchain splits?",
       "es": "¿Cuál es el término que se usa cuando una cadena de bloques se divide?",
-      "pt": "Qual é o termo usado quando um blockchain se divide?"
+      "pt": "Qual é o termo usado quando um Blockchain se divide?"
     },
     "answers": [
       { "en": "A sidechain", "es": "Una sidechain", "pt": "Uma sidechain" },
@@ -238,9 +238,9 @@
         "pt": "O primeiro bloco após cada halving (divisão pela metade)"
       },
       {
-        "en": "A famous block that hardcoded a hash of the Book of Genesis onto the blockchain",
+        "en": "A famous block that hardcoded a hash of the Book of Genesis onto the Blockchain",
         "es": "Un bloque famoso que codificó un hash del Libro del Génesis en la cadena de bloques",
-        "pt": "Um bloco famoso que codificou um hash do Livro Gênesis no blockchain"
+        "pt": "Um bloco famoso que codificou um hash do Livro Gênesis no Blockchain"
       },
       {
         "en": "The 2nd transaction of a Blockchain",
@@ -250,7 +250,7 @@
       {
         "en": "The first block of a Blockchain",
         "es": "El primer bloque de una Blockchain",
-        "pt": "O primeiro bloco de um blockchain"
+        "pt": "O primeiro bloco de um Blockchain"
       }
     ],
     "correct_answer": 3

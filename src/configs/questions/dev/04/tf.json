@@ -3,9 +3,9 @@
     "id": "dev-04-tf-01",
     "type": "tf",
     "question": {
-      "en": "In a two-way peg or 1:1 peg system, tokens that live in two separate blockchains are economically equivalent.",
+      "en": "In a two-way peg or 1:1 peg system, tokens that live in two separate Blockchains are economically equivalent.",
       "es": "04 True False A ES",
-      "pt": "Em um sistema two-way peg or 1:1 peg, tokens de diferentes blockchains são equivalentes do ponto de vista econômico."
+      "pt": "Em um sistema two-way peg or 1:1 peg, tokens de diferentes Blockchains são equivalentes do ponto de vista econômico."
     },
     "correct_answer": 0
   },
