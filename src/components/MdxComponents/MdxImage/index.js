@@ -1,21 +1,17 @@
-import { useState } from 'react'
-import { chakra } from '@chakra-ui/react'
+import { Box, Image } from '@chakra-ui/react'
 
 export const MdxImage = props => {
-  const INITIAL_WIDTH = 800
-  const [w, setW] = useState(INITIAL_WIDTH)
-
-  const toggleWidth = () => setW(w === INITIAL_WIDTH ? 'full' : INITIAL_WIDTH)
-
   return (
-    <chakra.img
-      apply='mdx.img'
-      w={w}
-      maxW='full'
-      my={2}
-      onClick={toggleWidth}
-      cursor={w === INITIAL_WIDTH ? 'zoom-in' : 'zoom-out'}
-      {...props}
-    />
+    <Box
+      d='inline-flex'
+      borderWidth={1}
+      borderColor='dark.200'
+      borderRadius='lg'
+      overflow='hidden'
+      my={6}
+      boxShadow='lg'
+    >
+      <Image apply='mdx.img' maxW='full' {...props} />
+    </Box>
   )
 }

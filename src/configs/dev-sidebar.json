@@ -28,11 +28,75 @@
       "routes": [
         {
           "title": {
-            "en": "Launch",
-            "es": "Lanzamiento",
-            "pt": "Lançamento"
+            "en": "Overview",
+            "es": "Overview",
+            "pt": "Overview"
           },
           "path": "/courses/dev/01"
+        },
+        {
+          "title": {
+            "en": "Crypto wallets basics",
+            "es": "Conceptos básicos",
+            "pt": "Básico das wallets"
+          },
+          "path": "/courses/dev/01/wallets-intro"
+        },
+        {
+          "title": {
+            "en": "Install Web Wallet",
+            "es": "Instalar Web Wallet",
+            "pt": "Instalando uma web wallet"
+          },
+          "path": "/courses/dev/01/install-web-wallet"
+        },
+        {
+          "title": {
+            "en": "Connecting to Academy",
+            "es": "Conectando a Academy",
+            "pt": "Conectando-se à Academy"
+          },
+          "path": "/courses/dev/01/connecting-to-academy"
+        },
+        {
+          "title": {
+            "en": "RSK faucet",
+            "es": "RSK faucet",
+            "pt": "RSK faucet"
+          },
+          "path": "/courses/dev/01/rsk-faucet"
+        },
+        {
+          "title": {
+            "en": "First transfer",
+            "es": "Primera transferencia",
+            "pt": "Primeira transferência"
+          },
+          "path": "/courses/dev/01/first-transfer"
+        },
+        {
+          "title": {
+            "en": "Subscribe to RSK Academy",
+            "es": "Suscríbete a RSK Academy",
+            "pt": "Inscreva-se na RSK Academy"
+          },
+          "path": "/courses/dev/01/subscribe-to-academy"
+        },
+        {
+          "title": {
+            "en": "Crypto wallets details",
+            "es": "Detalles de billeteras crypto",
+            "pt": "Detalhes das wallets"
+          },
+          "path": "/courses/dev/01/wallets-details"
+        },
+        {
+          "title": {
+            "en": "Crypto wallets types",
+            "es": "Tipos de billeteras crypto",
+            "pt": "Tipos de wallets"
+          },
+          "path": "/courses/dev/01/wallets-types"
         }
       ]
     },
@@ -71,6 +135,6 @@
           "path": "/courses/dev/03"
         }
       ]
-    }    
+    }
   ]
 }

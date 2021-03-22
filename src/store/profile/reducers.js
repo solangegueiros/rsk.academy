@@ -31,4 +31,7 @@ export const reducers = {
     state.quizResults[quizName] = result
   },
   resetProfile: () => initialState,
+  setStudentName: (state, { payload }) => {
+    state.studentName = payload
+  },
 }

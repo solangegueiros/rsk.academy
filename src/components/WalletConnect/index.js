@@ -4,7 +4,6 @@ import {
   Button,
   ButtonGroup,
   IconButton,
-  Tag,
   Tooltip,
   useClipboard,
 } from '@chakra-ui/react'
@@ -13,7 +12,6 @@ import { FiLogOut } from 'react-icons/fi'
 
 import { useRLogin } from '@/hooks/useRLogin'
 import { Web3ProviderContext } from '@/context/Web3Provider'
-import { NETWORK_LABELS } from '@/constants/constants'
 import { trimValue } from '@/utils/trimValue'
 
 export const WalletConnect = () => {
@@ -21,7 +19,6 @@ export const WalletConnect = () => {
     activate,
     deactivate,
     account,
-    chainId,
     isLoggedIn,
     error,
     isUnsupportedChainError,
@@ -35,7 +32,7 @@ export const WalletConnect = () => {
     if (isLoggedIn) {
       if (isUnsupportedChainError) {
         return (
-          <ButtonGroup isAttached colorScheme='red'>
+          <ButtonGroup w='200px' isAttached colorScheme='red'>
             <Button leftIcon={<MdErrorOutline />}>{t('error.network')}</Button>
             <Tooltip hasArrow label={t('logout')}>
               <IconButton ml='-1px' icon={<FiLogOut />} onClick={deactivate} />
@@ -47,7 +44,7 @@ export const WalletConnect = () => {
       if (error) {
         if (error === 'Modal closed by user') {
           return (
-            <ButtonGroup isAttached colorScheme='yellow'>
+            <ButtonGroup w='200px' isAttached colorScheme='yellow'>
               <Button leftIcon={<MdErrorOutline />}>
                 {t('error.network')}
               </Button>
@@ -64,8 +61,9 @@ export const WalletConnect = () => {
       }
 
       return (
-        <ButtonGroup variant='inversed' role='group' isAttached>
+        <ButtonGroup w='200px' variant='inversed' role='group' isAttached>
           <Button
+            w='200px'
             onClick={onCopy}
             leftIcon={!hasCopied && <MdContentCopy />}
             isTruncated
@@ -86,14 +84,7 @@ export const WalletConnect = () => {
     )
   }
 
-  return (
-    <>
-      {isLoggedIn && NETWORK_LABELS[chainId] && (
-        <Tag colorScheme='orange'>{NETWORK_LABELS[chainId]}</Tag>
-      )}
-      {getWalletStatus()}
-    </>
-  )
+  return getWalletStatus()
 }
 
 export default WalletConnect

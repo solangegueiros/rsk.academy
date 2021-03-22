@@ -8,10 +8,8 @@ import {
   useColorModeValue,
   VStack,
   SimpleGrid,
-  Icon,
 } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
-import { FaConnectdevelop } from 'react-icons/fa'
 
 import { Container, Layout, Seo } from '@/components/all'
 import { useGradient } from '@/hooks/useGradient'
@@ -25,31 +23,35 @@ const Home = () => {
   return (
     <Layout isStretched>
       <Seo title={t('home')} description='Rsk Academy' />
-      <Center
-        bg={useColorModeValue('primary.500', 'light.500')}
-        color={useColorModeValue('white', 'dark.500')}
-        h='calc(100vh - 70px)'
+      <Box
+        bgGradient={useColorModeValue(
+          'linear(to-br,primary.500,primary.300,light.500)',
+          'linear(to-t,light.900,dark.600)',
+        )}
         mt={-8}
       >
-        <Container flex='1'>
-          <Flex
-            direction='column'
-            px={{ base: 2, md: 8 }}
-            py={8}
-            justifyContent='center'
-            h='full'
+        <Container>
+          <SimpleGrid
+            alignItems='center'
+            h='calc(100vh - 70px)'
+            columns={{ base: 1, lg: 2 }}
           >
-            <Heading color={useColorModeValue('white', 'dark.500')} mb={4}>
-              Because Knowledge is Freedom
-            </Heading>
-            <Text fontSize='1.4em' maxW='container.md'>
-              Educating the new generations about Bitcoin, blockchain and open
-              source technologies are the best way to empower them with the
-              tools to build a better world.
-            </Text>
-          </Flex>
+            <Center color='white'>
+              <Box px={{ base: 2, lg: 8 }} py={8} h='full'>
+                <Heading mb={4} color='white'>
+                  {t('homePage.slogan')}
+                </Heading>
+                <Text fontSize='1.4em' maxW='container.md'>
+                  {t('homePage.slogan2')}
+                </Text>
+              </Box>
+            </Center>
+            <Center p={8}>
+              <Image w='full' objectFit='cover' src='/img/home.png' />
+            </Center>
+          </SimpleGrid>
         </Container>
-      </Center>
+      </Box>
 
       <Center bgGradient={gradient1}>
         <Container>
@@ -61,13 +63,10 @@ const Home = () => {
             align='center'
           >
             <VStack mr={8} align='start' justify='center'>
-              <Heading color='inherit'>Blockchain for developers</Heading>
-              <Text fontSize='1.4em'>
-                Developers with technical background willing to become general
-                blockchain developers.
-              </Text>
+              <Heading color='inherit'>{t('homePage.developerTitle')}</Heading>
+              <Text fontSize='1.4em'>{t('homePage.developerDescription')}</Text>
             </VStack>
-            <Box maxW={400}>
+            <Box d={{ base: 'none', lg: 'block' }} maxW={400}>
               <Image maxH={400} src='/img/developers.svg' alt='developers' />
             </Box>
           </Flex>
@@ -87,38 +86,25 @@ const Home = () => {
               <Image maxH={400} src='/img/business.svg' alt='business' />
             </Box>
             <VStack align='start' justify='center'>
-              <Heading color='inherit'>Blockchain for business</Heading>
-              <Text fontSize='1.4em'>
-                Non-technical professionals willing to work on the blockchain
-                industry and/or use blockchain applications.
-              </Text>
+              <Heading color='inherit'>{t('homePage.businessTitle')}</Heading>
+              <Text fontSize='1.4em'>{t('homePage.businessDescription')}</Text>
             </VStack>
           </Flex>
         </Container>
       </Center>
 
-
-
       <Container py={32} mb={16}>
         <VStack textAlign='center' spacing={4}>
-          <Heading mb={8}>Partnerships - white label courses</Heading>
-          <Text fontSize='1.4em'>
-            White label: The partner can use its own trademark in the courses
-            <br/>
-            while IOV provides the content and examination tools.
-          </Text>
-          <Text fontSize='1.4em'>
-            Training mentors: IOV offers training for in-house mentors 
-            <br/>
-            who can help students during the courses.
-          </Text>
+          <Heading mb={8}>{t('homePage.partnerships')}</Heading>
+          <Text fontSize='1.4em'>{t('homePage.whiteLabel')}</Text>
+          <Text fontSize='1.4em'>{t('homePage.trainingMentors')}</Text>
         </VStack>
       </Container>
     </Layout>
   )
 }
 
-  /*
+/*
       <Container>
         <SimpleGrid columns={{ base: 1, lg: 3 }} gap={16} py={24}>
           <VStack textAlign='center' spacing={4}>

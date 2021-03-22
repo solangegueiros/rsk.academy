@@ -13,12 +13,13 @@ import {
   AcademyWallet,
   MasterName,
   MasterQuote,
+  SubscribeAcademy,
   frontMatterType,
+  WalletAddress,
 } from '@/components/all'
 
 import devSidebar from '@/configs/dev-sidebar.json'
 import businessSidebar from '@/configs/business-sidebar.json'
-import blogSidebar from '@/configs/blog-sidebar.json'
 
 import { findRouteByPath, removeFromLast } from '@/utils/findRouteByPath'
 import { getRouteContext } from '@/utils/getRouteContext'
@@ -29,7 +30,6 @@ const QuizList = dynamic(() => import('../components/Quiz/QuizList'), {
 
 export function getRoutes(slug) {
   const configMap = {
-    '/blog': blogSidebar,
     '/courses/dev': devSidebar,
     '/courses/business': businessSidebar,
   }
@@ -60,6 +60,8 @@ function MDXLayout({ frontmatter, children }) {
         MasterName,
         MasterQuote,
         QuizList,
+        SubscribeAcademy,
+        WalletAddress,
       }}
     >
       <PageContainer

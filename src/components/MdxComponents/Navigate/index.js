@@ -6,7 +6,7 @@ import NextLink from 'next/link'
 
 export const Navigate = props => {
   const { locale } = useRouter()
-  const MDX_PATHS = ['/courses/', '/blog/']
+  const MDX_PATHS = ['/courses/']
 
   const isExternalLink = props.href?.[0] !== '/'
   const isMarkdownPage = MDX_PATHS.some(path => props.href?.includes(path))

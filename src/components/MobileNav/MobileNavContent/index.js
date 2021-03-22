@@ -44,7 +44,7 @@ export const MobileNavContent = ({ isOpen, onClose }) => {
               bg={bg}
               h='100vh'
               overflow='auto'
-              pos='absolute'
+              pos='fixed'
               top='0'
               left='0'
               zIndex='modal'

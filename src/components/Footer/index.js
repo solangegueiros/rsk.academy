@@ -9,9 +9,12 @@ import {
   Link,
   Button,
 } from '@chakra-ui/react'
+import { useI18n } from 'next-localization'
 import { Container } from '@/components/all'
 
 export const Footer = () => {
+  const { t } = useI18n()
+
   return (
     <Box bg='dark.600' color='dark.50' py={16}>
       <Container>
@@ -21,11 +24,7 @@ export const Footer = () => {
         >
           <VStack spacing={4}>
             <Image maxW='300px' src='/img/powered_by_iov.svg' />
-            <Text>
-              Rsk is the most secure smart contract network in the world and
-              enables decentralized applications secured by the Bitcoin Network
-              to empower people and improve the quality of life of millions.
-            </Text>
+            <Text>{t('footer.rskDescription')}</Text>
           </VStack>
 
           <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} gap={8}>
@@ -52,13 +51,13 @@ export const Footer = () => {
                     Roadmap
                   </Link>
                 </ListItem>
-                <ListItem>
-                  <Link href='https://explorer.rsk.co/'>Explorer</Link>
-                </ListItem>
               </List>
             </Box>
             <Box>
               <List spacing={2}>
+                <ListItem>
+                  <Link href='https://explorer.rsk.co/'>Explorer</Link>
+                </ListItem>
                 <ListItem>
                   <Link href='https://mining.rsk.co/'>Merged Mining</Link>
                 </ListItem>
@@ -71,10 +70,9 @@ export const Footer = () => {
                   <Link href='https://grants.rsk.co/'>Grants Program</Link>
                 </ListItem>
                 <ListItem>
-                  <Link href='https://fund.rsk.co/'>Ecosystem Fund</Link>
-                </ListItem>
-                <ListItem>
-                  <Link href='https://studio.rsk.co/'>Innovation Studio</Link>
+                  <Link href='https://rsk.co/Brand_Guidelines/RSK_BrandManual_V6.pdf'>
+                    Brand Guidelines
+                  </Link>
                 </ListItem>
               </List>
             </Box>
@@ -91,11 +89,6 @@ export const Footer = () => {
                 </ListItem>
                 <ListItem>
                   <Link href='https://blog.rsk.co/'>Blog</Link>
-                </ListItem>
-                <ListItem>
-                  <Link href='https://rsk.co/Brand_Guidelines/RSK_BrandManual_V6.pdf'>
-                    Brand Guidelines
-                  </Link>
                 </ListItem>
               </List>
             </Box>

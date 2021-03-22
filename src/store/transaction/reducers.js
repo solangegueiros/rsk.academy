@@ -6,7 +6,7 @@ export const reducers = {
   resetTransactions: () => initialState,
   addTransaction: (state, { payload: { name, hash, type } }) => {
     state.transactions.unshift({ name, hash, type, time: now() })
-    if (type === 'confirmed') {
+    if (type === 'confirmed' || type === 'failed') {
       state.transactions = state.transactions.filter(
         tsx => !(tsx.type === 'pending' && tsx.hash === hash),
       )

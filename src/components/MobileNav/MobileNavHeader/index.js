@@ -11,13 +11,15 @@ import {
 import { useRouter } from 'next/router'
 import { useI18n } from 'next-localization'
 
-import { DarkModeSwitch } from '@/components/all'
+import { DarkModeSwitch, WalletConnect } from '@/components/all'
+import { useRLogin } from '@/hooks/useRLogin'
 import { MobileNavLink } from '../MobileNavLink'
 
 export const MobileNavHeader = ({ shadow, onClose }) => {
   const router = useRouter()
   const closeBtnRef = useRef()
   const { t } = useI18n()
+  const { isAdmin, isLoggedIn } = useRLogin()
 
   const { locale, locales } = router
 
@@ -50,9 +52,20 @@ export const MobileNavHeader = ({ shadow, onClose }) => {
           <MobileNavLink href={`/courses/dev/01/${locale}`}>
             {t('courses')}
           </MobileNavLink>
-          <MobileNavLink href='/projects'>{t('projects')}</MobileNavLink>
-          <MobileNavLink href='/blog'>{t('blog')}</MobileNavLink>
-          <MobileNavLink href='/admin'>{t('admin')}</MobileNavLink>
+          <MobileNavLink href='/events'>{t('events')}</MobileNavLink>
+          {isLoggedIn && !isAdmin && (
+            <>
+              <MobileNavLink href='/portfolio'>{t('portfolio')}</MobileNavLink>
+              <MobileNavLink href='/profile'>{t('profile')}</MobileNavLink>
+            </>
+          )}
+          {isAdmin && <MobileNavLink href='/admin'>{t('admin')}</MobileNavLink>}
+        </HStack>
+        <HStack
+          onClick={() => setTimeout(() => onClose(), 1000)}
+          align='center'
+        >
+          <WalletConnect />
         </HStack>
       </VStack>
     </Box>

@@ -1,7 +1,7 @@
 import { Box, Heading, useColorModeValue } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
 
-import { Container, Layout, Seo } from '@/components/all'
+import { Layout, Seo } from '@/components/all'
 import { useSelector } from 'react-redux'
 import { useRLogin } from '@/hooks/useRLogin'
 
@@ -25,93 +25,70 @@ const Profile = () => {
   return (
     <Layout>
       <Seo title={t('profile')} />
-      <Container>
-        {isLoggedIn ? (
-          isAdmin ? (
-            <Box>Portfolio page is for students</Box>
-          ) : index ? (
-            <Box my={4} p={4} boxShadow='md' as='pre'>
-              <Heading>{studentName}</Heading>
-              {ownerAddress && (
-                <Box my={4}>
-                  <Box
-                    fontWeight='bold'
-                    textTransform='uppercase'
-                    color={color}
-                  >
-                    Owner Address:
-                  </Box>
-                  <pre>{ownerAddress}</pre>
+      {isLoggedIn ? (
+        isAdmin ? (
+          <Box>Portfolio page is for students</Box>
+        ) : index ? (
+          <Box my={4} p={4} boxShadow='md' as='pre'>
+            <Heading>{studentName}</Heading>
+            {ownerAddress && (
+              <Box my={4}>
+                <Box fontWeight='bold' color={color}>
+                  Owner Address:
                 </Box>
-              )}
+                <pre>{ownerAddress}</pre>
+              </Box>
+            )}
 
-              {portfolioAddress && (
-                <Box my={4}>
-                  <Box
-                    fontWeight='bold'
-                    textTransform='uppercase'
-                    color={color}
-                  >
-                    Portfolio Address:
-                  </Box>
-                  <pre>{portfolioAddress}</pre>
+            {portfolioAddress && (
+              <Box my={4}>
+                <Box fontWeight='bold' color={color}>
+                  Portfolio Address:
                 </Box>
-              )}
+                <pre>{portfolioAddress}</pre>
+              </Box>
+            )}
 
-              {portfolioList && (
-                <Box my={4}>
-                  <Box
-                    fontWeight='bold'
-                    textTransform='uppercase'
-                    color={color}
-                  >
-                    Projects in portfolio:
-                  </Box>
-                  {portfolioList.map(([address, name]) => (
-                    <pre key={address}>
-                      {name} - {address}
-                    </pre>
-                  ))}
+            {portfolioList && (
+              <Box my={4}>
+                <Box fontWeight='bold' color={color}>
+                  Projects in portfolio:
                 </Box>
-              )}
-
-              {studentActiveClassName && (
-                <Box my={4}>
-                  <Box
-                    fontWeight='bold'
-                    textTransform='uppercase'
-                    color={color}
-                  >
-                    Active Class:
-                  </Box>
-                  <pre>
-                    {studentActiveClassName} - {activeClassAddress}
+                {portfolioList.map(([address, name]) => (
+                  <pre key={address}>
+                    {name} - {address}
                   </pre>
+                ))}
+              </Box>
+            )}
+            {studentClasses && (
+              <Box my={4}>
+                <Box fontWeight='bold' color={color}>
+                  Classes subscribed:
                 </Box>
-              )}
+                {studentClasses.map(c => (
+                  <pre key={c}>{c}</pre>
+                ))}
+              </Box>
+            )}
 
-              {studentClasses && (
-                <Box my={4}>
-                  <Box
-                    fontWeight='bold'
-                    textTransform='uppercase'
-                    color={color}
-                  >
-                    Classes subscribed:
-                  </Box>
-                  {studentClasses.map(c => (
-                    <pre key={c}>{c}</pre>
-                  ))}
+            {studentActiveClassName && (
+              <Box my={4}>
+                <Box fontWeight='bold' color={color}>
+                  Active Class:
                 </Box>
-              )}
-            </Box>
-          ) : (
-            <Box>Student is not registered in RSK Academy.</Box>
-          )
+                <pre>
+                  {studentActiveClassName} - {activeClassAddress}
+                </pre>
+              </Box>
+            )}
+          </Box>
         ) : (
-          <Box>You must log in</Box>
-        )}
-      </Container>
+          <Box>Student is not registered in RSK Academy.</Box>
+        )
+      ) : (
+        <Box>You must log in</Box>
+      )}
     </Layout>
   )
 }
