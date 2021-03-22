@@ -7,6 +7,7 @@ import {
   Text,
   useColorModeValue,
   VStack,
+  SimpleGrid,
 } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
 
@@ -22,29 +23,35 @@ const Home = () => {
   return (
     <Layout isStretched>
       <Seo title={t('home')} description='Rsk Academy' />
-      <Center
-        bg={useColorModeValue('primary.500', 'light.500')}
-        color={useColorModeValue('white', 'dark.500')}
-        h='calc(100vh - 70px)'
+      <Box
+        bgGradient={useColorModeValue(
+          'linear(to-br,primary.500,primary.300,light.500)',
+          'linear(to-t,light.900,dark.600)',
+        )}
         mt={-8}
       >
-        <Container flex='1'>
-          <Flex
-            direction='column'
-            px={{ base: 2, md: 8 }}
-            py={8}
-            justifyContent='center'
-            h='full'
-          >         
-            <Heading color={useColorModeValue('white', 'dark.500')} mb={4}>
-              {t('homePage.slogan')}
-            </Heading>
-            <Text fontSize='1.4em' maxW='container.md'>
-              {t('homePage.slogan2')}
-            </Text>
-          </Flex>
+        <Container>
+          <SimpleGrid
+            alignItems='center'
+            h='calc(100vh - 70px)'
+            columns={{ base: 1, lg: 2 }}
+          >
+            <Center color='white'>
+              <Box px={{ base: 2, lg: 8 }} py={8} h='full'>
+                <Heading mb={4} color='white'>
+                  {t('homePage.slogan')}
+                </Heading>
+                <Text fontSize='1.4em' maxW='container.md'>
+                  {t('homePage.slogan2')}
+                </Text>
+              </Box>
+            </Center>
+            <Center p={8}>
+              <Image w='full' objectFit='cover' src='/img/home.png' />
+            </Center>
+          </SimpleGrid>
         </Container>
-      </Center>
+      </Box>
 
       <Center bgGradient={gradient1}>
         <Container>
@@ -57,11 +64,9 @@ const Home = () => {
           >
             <VStack mr={8} align='start' justify='center'>
               <Heading color='inherit'>{t('homePage.developerTitle')}</Heading>
-              <Text fontSize='1.4em'>
-                {t('homePage.developerDescription')}
-              </Text>
+              <Text fontSize='1.4em'>{t('homePage.developerDescription')}</Text>
             </VStack>
-            <Box maxW={400}>
+            <Box d={{ base: 'none', lg: 'block' }} maxW={400}>
               <Image maxH={400} src='/img/developers.svg' alt='developers' />
             </Box>
           </Flex>
@@ -82,9 +87,7 @@ const Home = () => {
             </Box>
             <VStack align='start' justify='center'>
               <Heading color='inherit'>{t('homePage.businessTitle')}</Heading>
-              <Text fontSize='1.4em'>
-                {t('homePage.businessDescription')}
-              </Text>
+              <Text fontSize='1.4em'>{t('homePage.businessDescription')}</Text>
             </VStack>
           </Flex>
         </Container>
@@ -93,12 +96,8 @@ const Home = () => {
       <Container py={32} mb={16}>
         <VStack textAlign='center' spacing={4}>
           <Heading mb={8}>{t('homePage.partnerships')}</Heading>
-          <Text fontSize='1.4em'>
-            {t('homePage.whiteLabel')}
-          </Text>
-          <Text fontSize='1.4em'>
-            {t('homePage.trainingMentors')}
-          </Text>
+          <Text fontSize='1.4em'>{t('homePage.whiteLabel')}</Text>
+          <Text fontSize='1.4em'>{t('homePage.trainingMentors')}</Text>
         </VStack>
       </Container>
     </Layout>

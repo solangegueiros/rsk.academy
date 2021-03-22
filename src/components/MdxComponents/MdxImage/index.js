@@ -2,8 +2,16 @@ import { Box, Image } from '@chakra-ui/react'
 
 export const MdxImage = props => {
   return (
-    <Box pos='relative' overflowX='auto' maxW={{ base: '90vw', md: 'full' }}>
-      <Image apply='mdx.img' maxW='none' my={2} {...props} />
+    <Box
+      d='inline-flex'
+      borderWidth={1}
+      borderColor='dark.200'
+      borderRadius='lg'
+      overflow='hidden'
+      my={6}
+      boxShadow='lg'
+    >
+      <Image apply='mdx.img' maxW='full' {...props} />
     </Box>
   )
 }

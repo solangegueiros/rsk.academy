@@ -1,18 +1,30 @@
-import { useColorMode, IconButton, useColorModeValue } from '@chakra-ui/react'
-import { FiSun, FiMoon } from 'react-icons/fi'
+import {
+  useColorMode,
+  Switch,
+  HStack,
+  useBreakpointValue,
+  Icon,
+} from '@chakra-ui/react'
+import { FaMoon, FaSun } from 'react-icons/fa'
 
 export const DarkModeSwitch = props => {
-  const { toggleColorMode } = useColorMode()
-  const ColorModeIcon = useColorModeValue(FiMoon, FiSun)
+  const { toggleColorMode, colorMode } = useColorMode()
+
+  const isDark = colorMode === 'dark'
 
   return (
-    <IconButton
-      isRound
-      variant='inversed'
-      icon={<ColorModeIcon />}
-      onClick={toggleColorMode}
-      {...props}
-    />
+    <HStack align='center'>
+      <Switch
+        size={useBreakpointValue({ base: 'md', md: 'sm' })}
+        onChange={toggleColorMode}
+        {...props}
+      />
+      <Icon
+        color={isDark ? 'yellow.400' : 'dark.400'}
+        fontSize='sm'
+        as={isDark ? FaSun : FaMoon}
+      />
+    </HStack>
   )
 }
 
