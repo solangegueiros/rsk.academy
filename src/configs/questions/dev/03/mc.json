@@ -3,7 +3,7 @@
     "id": "dev-03-mc-01",
     "type": "mc",
     "question": {
-      "en": "What is the initial application for which Blockchain was designed?",
+      "en": "What is the initial use-case for which Blockchain was designed?",
       "es": "¿Cuál es la aplicación inicial para la que se diseñó Blockchain?",
       "pt": "Qual é o uso inicial para o qual o Blockchain foi projetado?"
     },
@@ -46,7 +46,7 @@
         "pt": "As origens do dinheiro"
       },
       {
-        "en": "The great unreveiling",
+        "en": "The great unraveling",
         "es": "La gran revelación",
         "pt": "A grande revelação"
       },
@@ -56,7 +56,7 @@
         "pt": "The Bitcoin Whitepaper"
       },
       {
-        "en": "Money peer-to-peer",
+        "en": "Money: peer-to-peer",
         "es": "Dinero punto a punto",
         "pt": "Dinheiro ponto a ponto"
       }
@@ -99,7 +99,7 @@
     "id": "dev-03-mc-04",
     "type": "mc",
     "question": {
-      "en": "What is a node?",
+      "en": "What is a Node?",
       "es": "¿Qué es un nodo?",
       "pt": "O que é um nó?"
     },
@@ -127,7 +127,7 @@
     "id": "dev-03-mc-05",
     "type": "mc",
     "question": {
-      "en": "What is a miner?",
+      "en": "Who is a miner?",
       "es": "¿Qué es un minero?",
       "pt": "O que é um minerador?"
     },
@@ -238,7 +238,7 @@
         "pt": "O primeiro bloco após cada halving (divisão pela metade)"
       },
       {
-        "en": "A famous block that hardcoded a hash of the Book of Genesis onto the blockchain",
+        "en": "A famous block that hardcoded a hash of the block of Genesis onto the blockchain",
         "es": "Un bloque famoso que codificó un hash del Libro del Génesis en la cadena de bloques",
         "pt": "Um bloco famoso que codificou um hash do Livro Gênesis no blockchain"
       },

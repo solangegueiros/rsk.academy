@@ -3,7 +3,7 @@
     "id": "dev-02-mc-01",
     "type": "mc",
     "question": {
-      "en": "What I need to change in a Solidity smart contract to publish at RSK network?",
+      "en": "What do I need to change in a Solidity smart contract to publish on the RSK network?",
       "es": "¿Qué necesito cambiar en un contrato inteligente de Solidity para publicar en la red RSK?",
       "pt": "O que eu preciso alterar em um smart contract feito em Solidity para publicá-lo na rede RSK?"
     },

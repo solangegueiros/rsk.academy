@@ -3,7 +3,7 @@
     "id": "dev-04-mc-01",
     "type": "mc",
     "question": {
-      "en": "When did RSK main network start?",
+      "en": "When was the RSK main network (Mainnet) launched?",
       "es": "¿Cuándo comenzó la red principal de RSK?",
       "pt": "Quando a rede principal da RSK começou?"
     },
@@ -23,7 +23,7 @@
     "id": "dev-04-mc-02",
     "type": "mc",
     "question": {
-      "en": "How can I publish I smart contract in RSK network?",
+      "en": "How can I deploy a smart contract on the RSK network?",
       "es": "¿Cómo puedo publicar un contrato inteligente en la red RSK?",
       "pt": "Como eu posso publicar um smart contract na rede RSK?"
     },
@@ -43,7 +43,7 @@
         "es": "Usando Geth conectado a un nodo RSK",
         "pt": "Usando Geth conectado em um nó RSK"
       },
-      { "en": "All of theese", "es": "Answer D ES", "pt": "Todos as opções" }
+      { "en": "All of these", "es": "Answer D ES", "pt": "Todos as opções" }
     ],
     "correct_answer": 4
   },

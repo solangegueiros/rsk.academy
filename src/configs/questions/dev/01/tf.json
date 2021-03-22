@@ -3,7 +3,7 @@
     "id": "dev-01-tf-01",
     "type": "tf",
     "question": {
-      "en": "It is possible to send R-BTC for an Ethereum address",
+      "en": "Is it possible to send RBTC to an Ethereum address?",
       "es": "Es posible enviar R-BTC para una dirección Ethereum",
       "pt": "É possível enviar R-BTC para endereço Ethereum"
     },
@@ -13,7 +13,7 @@
     "id": "dev-01-tf-02",
     "type": "tf",
     "question": {
-      "en": "A faucet is a place that gives cryptocurrencies or tokens, generally used in test networks",
+      "en": "A faucet is an app or website that distributes cryptocurrencies or tokens, generally used in test networks",
       "es": "Un faucet es un lugar que da criptomonedas o tokens, generalmente utilizado en redes de pruebas.",
       "pt": "Um faucet é um lugar que dá criptomoedas ou tokens, geralmente usado em redes de testes"
     },
@@ -23,7 +23,7 @@
     "id": "dev-01-tf-03",
     "type": "tf",
     "question": {
-      "en": "The DPath (Derivation Path) is used to calculate an address checksum",
+      "en": "Is the DPath (Derivation Path) used to calculate an address checksum?",
       "es": "El DPath (Derivation Path = ruta de derivación) se utiliza para calcular el checksum de una dirección",
       "pt": "DPath, que é o caminho de derivação (Derivation Path), é utilizado no checksum de um endereço"
     },
@@ -33,7 +33,7 @@
     "id": "dev-01-tf-04",
     "type": "tf",
     "question": {
-      "en": "The ChainId of a network is used to calculate an address checksum",
+      "en": "Is the ChainId of a network used to calculate an address checksum?",
       "es": "El ChainId de una red se utiliza para calcular el checksum de una dirección",
       "pt": "O chainId é utilizado no checksum de um endereço"
     },

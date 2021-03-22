@@ -13,7 +13,7 @@
     "id": "dev-04-tf-02",
     "type": "tf",
     "question": {
-      "en": "RSK network is a sidechain two-way peg system with Ethereum.",
+      "en": "RSK network is a sidechain, that is pegged with Ethereum using a 2-way peg system.",
       "es": "04 True False B ES",
       "pt": "A rede RSK é uma sidechain do tipo two-way peg com Ethereum."
     },

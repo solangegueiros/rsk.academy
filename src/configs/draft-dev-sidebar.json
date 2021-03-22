@@ -44,7 +44,7 @@
         },
         {
           "title": {
-            "en": "Install Web Wallet",
+            "en": "Install a Web Wallet",
             "es": "Instalar Web Wallet",
             "pt": "Instalando uma web wallet"
           },
@@ -52,7 +52,7 @@
         },
         {
           "title": {
-            "en": "Connecting to Academy",
+            "en": "Connecting to the Academy",
             "es": "Conectando a Academy",
             "pt": "Conectando-se à Academia"
           },
@@ -76,7 +76,7 @@
         },
         {
           "title": {
-            "en": "Subscribe to RSK academy",
+            "en": "Subscribe to the RSK academy",
             "es": "Suscríbete a RSK academy",
             "pt": "Inscreva-se na RSK academy"
           },
@@ -150,7 +150,7 @@
         },
         {
           "title": {
-            "en": "Validate your name at RSK Academy",
+            "en": "Validate your name on RSK Academy",
             "es": "Valide su nombre en RSK Academy",
             "pt": "Valide seu nome na RSK Academy"
           },

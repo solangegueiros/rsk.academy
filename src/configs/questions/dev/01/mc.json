@@ -3,8 +3,8 @@
     "id": "dev-01-mc-01",
     "type": "mc",
     "question": {
-      "en": "Where do you store your cryptocurrency?",
-      "es": "¿Dónde guardas tus criptomonedas?",
+      "en": "Where can you store cryptocurrencies?",
+      "es": "¿Dónde guardar tus criptomonedas?",
       "pt": "Onde você guarda suas criptmoedas?"
     },
     "answers": [
@@ -19,7 +19,7 @@
     "id": "dev-01-mc-02",
     "type": "mc",
     "question": {
-      "en": "Where is the LEAST SAFE place to keep your cryptocurrency?",
+      "en": "Where is the LEAST SAFE place to store cryptocurrencies?",
       "es": "¿Dónde está el lugar MENOS SEGURO para almacenar tus criptomonedas?",
       "pt": "Onde é o lugar MENOS SEGURO para guardar suas criptomoedas?"
     },
@@ -47,7 +47,7 @@
     "id": "dev-01-mc-03",
     "type": "mc",
     "question": {
-      "en": "What is cold storage?",
+      "en": "What is a cold storage?",
       "es": "¿Qué es el almacenamiento en frío (cold storage)?",
       "pt": "O que é cold storage?"
     },
@@ -85,7 +85,7 @@
     },
     "answers": [
       {
-        "en": "A key on your key chain",
+        "en": "A key on your keychain",
         "es": "Una llave en tu llavero",
         "pt": "Uma chave no seu chaveiro"
       },
