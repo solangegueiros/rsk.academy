@@ -97,14 +97,6 @@
             "pt": "Tipos de wallets"
           },
           "path": "/courses/dev/01/wallets-types"
-        },
-        {
-          "title": {
-            "en": "Module 1 Exam",
-            "es": "Módulo 1 Examen",
-            "pt": "Módulo 1 Exame"
-          },
-          "path": "/courses/dev/01/quiz"
         }
       ]
     },
