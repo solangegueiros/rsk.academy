@@ -5,7 +5,7 @@ export const MdxImage = props => {
     <Box
       d='inline-flex'
       borderWidth={1}
-      borderColor='gray.200'
+      borderColor='dark.200'
       borderRadius='lg'
       overflow='hidden'
       my={6}

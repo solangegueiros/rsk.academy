@@ -62,7 +62,7 @@ export const Header = props => {
     <>
       <Box d={useBreakpointValue({ base: 'none', md: 'block' })} bg={bg}>
         <Container maxW={1200}>
-          <HStack justify='space-between' py={1}>
+          <HStack w='full' py={1} justify='center' pos='relative'>
             <Box>
               <Text
                 userSelect='none'
@@ -76,7 +76,7 @@ export const Header = props => {
                 {t('topBanner')}
               </Text>
             </Box>
-            <HStack>
+            <HStack pos='absolute' right={0}>
               {isLoggedIn && NETWORK_LABELS[chainId] && (
                 <Tag colorScheme={colorScheme}>{NETWORK_LABELS[chainId]}</Tag>
               )}
@@ -99,26 +99,26 @@ export const Header = props => {
       >
         <Container maxW={1200} h='4.5rem'>
           <HStack justify='space-between' align='center' h='full' w='full'>
-            <NextLink href='/' passHref>
-              <chakra.a
-                fontWeight='bold'
-                fontSize='5em'
-                lineHeight='1'
-                mr={4}
-                d='flex'
-                justifyContent='center'
-                alignItems='center'
-                color={useColorModeValue('black', 'dark.50')}
-              >
-                <Logo h='full' />
-              </chakra.a>
-            </NextLink>
-            {useBreakpointValue({ base: false, md: true }) && (
-              <HStack spacing={4}>
+            <HStack spacing={16}>
+              <NextLink href='/' passHref>
+                <chakra.a
+                  fontWeight='bold'
+                  fontSize='5em'
+                  lineHeight='1'
+                  mr={4}
+                  d='flex'
+                  justifyContent='center'
+                  alignItems='center'
+                  color={useColorModeValue('black', 'dark.50')}
+                >
+                  <Logo h='full' />
+                </chakra.a>
+              </NextLink>
+              {useBreakpointValue({ base: false, md: true }) && (
                 <MainNavLinkGroup />
-                <WalletConnect />
-              </HStack>
-            )}
+              )}
+            </HStack>
+            {useBreakpointValue({ base: false, md: true }) && <WalletConnect />}
             <MobileNavButton
               ref={mobileNavBtnRef}
               aria-label='Open Menu'
