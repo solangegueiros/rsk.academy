@@ -25,7 +25,7 @@ const Home = () => {
       <Seo title={t('home')} description='Rsk Academy' />
       <SimpleGrid
         bgGradient={useColorModeValue(
-          'linear(to-r,primary.500,light.500)',
+          'linear(to-r,primary.500,light.600)',
           'linear(to-t,light.900,dark.600)',
         )}
         mt={-8}
