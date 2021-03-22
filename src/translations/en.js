@@ -13,7 +13,7 @@ export default {
     developerTitle: 'Blockchain for developers',
     developerDescription: 'Developers with technical background willing to become Blockchain developers.',
     businessTitle: 'Blockchain for business',
-    businessDescription: 'Non-technical professionals willing to work on the blockchain industry and/or use blockchain applications.',
+    businessDescription: 'Non-technical professionals willing to work on the Blockchain industry and/or use Blockchain applications.',
     partnerships: 'Partnerships - white label courses',
     whiteLabel: 'White label: the partner can use its own trademark in the courses while IOV Labs provides the content and examination tools.',
     trainingMentors: 'Training mentors: IOV Labs offers training for in-house mentors who can help students during the courses.',
