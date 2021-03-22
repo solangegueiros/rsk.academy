@@ -3,7 +3,7 @@ title: 'Detalles de billeteras crypto'
 description: 'Más información sobre Ethereum y and RSK Accounts, checksum, Metamask vs Nifty wallet y account vs UTXO'
 ---
 
-Antes de profundizar en algunos conceptos de una billetera crypto, 
+Antes de profundizar en algunos conceptos de una billetera crypto,
 presentaremos una pequeña reseña.
 
 > En resumen, una billetera crypto es una herramienta que puede utilizar para interactuar con una red Blockchain.
@@ -51,7 +51,7 @@ Si usa una frase mnemotécnica o una billetera hardware,
 puede encontrarse con el término "derivation path (ruta de derivación)".
 
 El mismo mnemónico puede generar direcciones para diferentes Blockchains utilizando dPath.
-Por lo tanto, cada moneda tiene su propio derivation path de base, 
+Por lo tanto, cada moneda tiene su propio derivation path de base,
 para garantizar que obtenga diferentes direcciones para cada moneda.
 
 En resumen, el derivation path especifica cuál es la forma en que se generará la clave privada de esta billetera.
@@ -71,9 +71,9 @@ Eche un vistazo a algunos dPaths:
 
 | Blockchain  |        dPath        |
 | :---------- | :-----------------: |
-| Bitcoin     | m/44'/0'/0'/0       |
-| Ethereum    | m/44'/60'/0'/0/0    |
-| RSK Mainnet | m/44'/137'/0'/0/0   |
+| Bitcoin     |    m/44'/0'/0'/0    |
+| Ethereum    |  m/44'/60'/0'/0/0   |
+| RSK Mainnet |  m/44'/137'/0'/0/0  |
 | RSK Testnet | m/44'/37310'/0'/0/0 |
 
 El mnemónico genera claves públicas y privadas del "master",
@@ -105,7 +105,7 @@ Puedes probarlo en [iancoleman.io/bip39](https://iancoleman.io/bip39/).
 
 RSK es compatible con la dirección Ethereum y dPath, pero, de hecho, tiene sus propios dPaths.
 
-Otra diferencia entre Ethereum y RSK es que en Ethereum, 
+Otra diferencia entre Ethereum y RSK es que en Ethereum,
 las direcciones de Mainnet y todas las Testnets son las mismas.
 RSK usa diferentes dPaths para Mainnet y Testnet.
 Esto evita que usted use fondos de manera incorrecta de una cadena de bloques de testnet en otra que el dinero es "real".
@@ -139,8 +139,8 @@ Este es un ejemplo, que muestra el índice 0 del mnemónico presentado anteriorm
 - 0xa63375173ffa44725b5cde4dcfde7d6ccf5fffaa - RSK Testnet, lowercase
 
 > Si tiene problemas con billeteras que dicen que la dirección no es válida,
-intente convertir la dirección a minúsculas.
-Esto funcionará en la mayoría de los casos.
+> intente convertir la dirección a minúsculas.
+> Esto funcionará en la mayoría de los casos.
 
 Tienen buenas intenciones,
 fueron creados para evitar que las personas envíen fondos de una red a otra sin querer.

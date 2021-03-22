@@ -9,17 +9,23 @@ export default {
   topBanner: 'Registre-se nas aulas ao vivo',
   homePage: {
     slogan: 'Porque conhecimento é liberdade',
-    slogan2: 'Educar as novas gerações sobre Bitcoin, Blockchain e tecnologias de código aberto é a melhor maneira de capacitá-las com as ferramentas para construir um mundo melhor.',
+    slogan2:
+      'Educar as novas gerações sobre Bitcoin, Blockchain e tecnologias de código aberto é a melhor maneira de capacitá-las com as ferramentas para construir um mundo melhor.',
     developerTitle: 'Blockchain para desenvolvedores(as)',
-    developerDescription: 'Desenvolvedores(as) com formação técnica que desejam se tornar desenvolvedores de Blockchain.',
+    developerDescription:
+      'Desenvolvedores(as) com formação técnica que desejam se tornar desenvolvedores de Blockchain.',
     businessTitle: 'Blockchain para negócios',
-    businessDescription: 'Profissionais não técnicos interessados em trabalhar na indústria de Blockchain e/ou usar aplicativos Blockchain.',
+    businessDescription:
+      'Profissionais não técnicos interessados em trabalhar na indústria de Blockchain e/ou usar aplicativos Blockchain.',
     partnerships: 'Parcerias - cursos white label',
-    whiteLabel: 'White label: o parceiro pode usar sua própria marca nos cursos enquanto a IOV Labs fornece o conteúdo e as ferramentas de exame.',
-    trainingMentors: 'Training mentors: IOV Labs oferece treinamento para mentores locais que podem auxiliar os alunos durante os cursos.',
+    whiteLabel:
+      'White label: o parceiro pode usar sua própria marca nos cursos enquanto a IOV Labs fornece o conteúdo e as ferramentas de exame.',
+    trainingMentors:
+      'Training mentors: IOV Labs oferece treinamento para mentores locais que podem auxiliar os alunos durante os cursos.',
   },
   footer: {
-    rskDescription: 'A RSK é uma das redes de contratos inteligentes mais seguras no mundo que possibilita aplicativos descentralizados garantidos pela rede Bitcoin para capacitar os usuários e melhorar a qualidade de vida de milhões de pessoas.'
+    rskDescription:
+      'A RSK é uma das redes de contratos inteligentes mais seguras no mundo que possibilita aplicativos descentralizados garantidos pela rede Bitcoin para capacitar os usuários e melhorar a qualidade de vida de milhões de pessoas.',
   },
   connect: 'Conecte uma wallet',
   copied: 'Copiado',

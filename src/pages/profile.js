@@ -83,7 +83,6 @@ const Profile = () => {
                 </pre>
               </Box>
             )}
-
           </Box>
         ) : (
           <Box>Student is not registered in RSK Academy.</Box>

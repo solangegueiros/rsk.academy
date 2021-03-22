@@ -50,7 +50,7 @@ Se você usar uma frase mnemônica ou carteira hardware,
 você pode encontrar o termo "derivation path (caminho de derivação)".
 
 O mesmo mnemônico pode gerar endereços para diferentes Blockchains usando o dPath.
-Portanto, cada moeda tem seu próprio derivation path de base, 
+Portanto, cada moeda tem seu próprio derivation path de base,
 para garantir que você obtenha endereços diferentes para cada moeda.
 
 Resumindo, o derivation path especifica de que forma será gerada a chave privada a partir desta carteira.
@@ -70,9 +70,9 @@ Dê uma olhada em alguns dPaths:
 
 | Blockchain  |        dPath        |
 | :---------- | :-----------------: |
-| Bitcoin     | m/44'/0'/0'/0       |
-| Ethereum    | m/44'/60'/0'/0/0    |
-| RSK Mainnet | m/44'/137'/0'/0/0   |
+| Bitcoin     |    m/44'/0'/0'/0    |
+| Ethereum    |  m/44'/60'/0'/0/0   |
+| RSK Mainnet |  m/44'/137'/0'/0/0  |
 | RSK Testnet | m/44'/37310'/0'/0/0 |
 
 O mnemônico gera as chaves públicas e privadas "mestras",
@@ -91,7 +91,6 @@ shoot gate legend member sniff asthma smart slot famous call marriage math
 
 Pode gerar endereços diferentes:
 
-
 | Blockchain  |                  Address                   |
 | :---------- | :----------------------------------------: |
 | Bitcoin     |     1DgNhyMRzko5rJ5qZ91ZvGkw1B91kpJp2j     |
@@ -105,7 +104,7 @@ Você pode experimentar em [iancoleman.io/bip39](https://iancoleman.io/bip39/).
 
 RSK é compatível com endereço Ethereum e dPath, mas, possui seus próprios dPaths.
 
-Outra diferença sobre Ethereum e RSK é que, 
+Outra diferença sobre Ethereum e RSK é que,
 no Ethereum, os endereços da Mainnet e de todos os Testnets são os mesmos.
 RSK usa dPaths diferentes para Mainnet e Testnet.
 Isso evita que você use fundos incorretamente de um Blockchain testnet em outro em que o dinheiro é "real".
@@ -139,8 +138,8 @@ Este é um exemplo, mostrando o índice 0 do mnemônico apreesentado anteriormen
 - 0xa63375173ffa44725b5cde4dcfde7d6ccf5fffaa - RSK Testnet, lowercase
 
 > Se você tiver problemas com carteiras dizendo que o endereço é inválido,
-tente converter o endereço em minúsculas.
-Isso funcionará na maioria dos casos.
+> tente converter o endereço em minúsculas.
+> Isso funcionará na maioria dos casos.
 
 São boas intenções, foram criados para evitar que as pessoas enviem fundos de uma rede para outra de forma não intencional.
 
@@ -178,7 +177,7 @@ Esta é uma ótima funcionalidade do Nifty!
 
 ## Account (conta) vs UTXO
 
-Um conceito importante sobre Blockchains Bitcoin e RSK / Ethereum 
+Um conceito importante sobre Blockchains Bitcoin e RSK / Ethereum
 é a maneira como gerenciam o saldo de um endereço.
 
 Esta é a diferença entre account e UTXO.
@@ -216,7 +215,7 @@ você provavelmente perdeu sua criptomoeda para sempre!
 É importante fazer backup delas regularmente.
 Em muitos casos, isso é realizado simplesmente fazendo backup de arquivos wallet.dat ou frase-semente.
 
-Além disso, se você optou por adicionar uma senha para criptografar sua wallet, 
+Além disso, se você optou por adicionar uma senha para criptografar sua wallet,
 lembre-se de fazer backup de sua senha também.
 
 > É muito importante que você tenha um backup de sua frase mnemônica / seed!
