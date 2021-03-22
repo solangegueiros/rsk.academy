@@ -23,31 +23,35 @@ const Home = () => {
   return (
     <Layout isStretched>
       <Seo title={t('home')} description='Rsk Academy' />
-      <SimpleGrid
+      <Box
         bgGradient={useColorModeValue(
-          'linear(to-r,primary.500,light.600)',
+          'linear(to-br,primary.500,primary.300,light.500)',
           'linear(to-t,light.900,dark.600)',
         )}
         mt={-8}
-        columns={{ base: 1, md: 2 }}
-        h='calc(100vh - 70px)'
       >
-        <Center color='white'>
-          <Container flex='1'>
-            <Box px={{ base: 2, md: 8 }} py={8} h='full'>
-              <Heading mb={4} color='white'>
-                {t('homePage.slogan')}
-              </Heading>
-              <Text fontSize='1.4em' maxW='container.md'>
-                {t('homePage.slogan2')}
-              </Text>
-            </Box>
-          </Container>
-        </Center>
-        <Center p={8}>
-          <Image w='full' objectFit='cover' src='/img/home.png' />
-        </Center>
-      </SimpleGrid>
+        <Container>
+          <SimpleGrid
+            alignItems='center'
+            h='calc(100vh - 70px)'
+            columns={{ base: 1, lg: 2 }}
+          >
+            <Center color='white'>
+              <Box px={{ base: 2, lg: 8 }} py={8} h='full'>
+                <Heading mb={4} color='white'>
+                  {t('homePage.slogan')}
+                </Heading>
+                <Text fontSize='1.4em' maxW='container.md'>
+                  {t('homePage.slogan2')}
+                </Text>
+              </Box>
+            </Center>
+            <Center p={8}>
+              <Image w='full' objectFit='cover' src='/img/home.png' />
+            </Center>
+          </SimpleGrid>
+        </Container>
+      </Box>
 
       <Center bgGradient={gradient1}>
         <Container>
