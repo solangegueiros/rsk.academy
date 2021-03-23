@@ -22,9 +22,9 @@ export const NETWORK_LABELS = {
 
 export const adminAccount =
   process.env.NEXT_PUBLIC_ADMIN_ACCOUNT ||
-  '0xD046b0b7DD1d15C84eE0733E085045B040db0b03'
+  '0x2cf88b0D4b5C441941a743C5E8D184615b4DC075'
 
 export const COURSES = {
-  Developer: '0x2dD6Ce85e5d9A92CBCA9a5d2A306dEbe52496E76',
-  Business: '0xe9b9a72b3fea9fa30c8881f4dbdf95ca9e73160f',
+  Developer: '0xe9c79c9226e2cD36C09b1404825B7381240311bA',
+  Business: '0x406657dC292E080f4c919b573f4A774773860adb',
 }
