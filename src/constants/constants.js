@@ -47,5 +47,6 @@ const contracts = {
     AcademyWallet: '0x9DADdE7DDF79BF2e69A7Ed35DBC74141144d6B1C',
     MasterName: '0x794247ADa39C572f6756118B9c1Df88860b96cFE',
   },
+  production: {},
 }
 export const CONTRACTS = contracts[process.env.NODE_ENV]
