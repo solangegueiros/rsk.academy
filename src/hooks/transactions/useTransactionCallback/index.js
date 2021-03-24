@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 
 import { addTransaction } from '@/store/transaction/actions'
 import { useState } from 'react'
+import { useLoadSmartContracts } from '@/hooks/useLoadContracts'
 
 export const useTransactionCallback = ({
   name,
@@ -19,61 +20,74 @@ export const useTransactionCallback = ({
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
   const [result, setResult] = useState(null)
+  const { loadContracts } = useLoadSmartContracts()
 
   const exec = async () => {
     setIsLoading(true)
     setIsError(false)
 
-    const response = await fn
-      .send({ from })
-      .on('transactionHash', hash => {
-        dispatch(
-          addTransaction({
-            name,
-            hash,
-            type: 'pending',
-          }),
-        )
-      })
-      .on('receipt', receipt => {
-        setIsLoading(false)
-        dispatch(
-          addTransaction({
-            name,
-            hash: receipt.transactionHash,
-            type: 'confirmed',
-          }),
-          toast({
-            status: 'success',
-            title: 'Transaction confirmed!',
-            position: 'top-right',
-          }),
-        )
-        if (typeof onComplete === 'function') {
-          onComplete()
-        }
-      })
-      .on('error', (error, receipt) => {
-        setIsLoading(false)
-        setIsError(true)
-        console.error('Send answer error', error)
-
-        if (error.code !== 4001) {
+    try {
+      const response = await fn
+        .send({ from })
+        .on('transactionHash', hash => {
           dispatch(
             addTransaction({
               name,
-              type: 'failed',
-              hash: receipt.transactionHash,
+              hash,
+              type: 'pending',
             }),
           )
-        }
+        })
+        .on('receipt', receipt => {
+          setIsLoading(false)
+          dispatch(
+            addTransaction({
+              name,
+              hash: receipt.transactionHash,
+              type: 'confirmed',
+            }),
+            toast({
+              status: 'success',
+              title: 'Transaction confirmed!',
+              position: 'top-right',
+            }),
+          )
 
-        if (typeof onFailed === 'function') {
-          onFailed()
-        }
+          loadContracts()
+
+          if (typeof onComplete === 'function') {
+            onComplete()
+          }
+        })
+        .on('error', (error, receipt) => {
+          console.error('Send answer error', error)
+
+          if (error.code !== 4001 && receipt) {
+            dispatch(
+              addTransaction({
+                name,
+                type: 'failed',
+                hash: receipt.transactionHash,
+              }),
+            )
+          }
+
+          if (typeof onFailed === 'function') {
+            onFailed()
+          }
+        })
+
+      setResult(response)
+    } catch (error) {
+      setIsLoading(false)
+      setIsError(true)
+
+      toast({
+        status: 'error',
+        title: 'Transaction failed!',
+        position: 'top-right',
       })
-
-    setResult(response)
+    }
   }
 
   return { exec, isError, isLoading, result }
