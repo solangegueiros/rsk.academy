@@ -2,6 +2,7 @@
 /* eslint-disable max-lines-per-function */
 import { useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { usePrevious } from '@chakra-ui/react'
 
 import { login, logout, setChainError } from '@/store/identity/actions'
 import { Web3ProviderContext } from '@/context/Web3Provider'
@@ -22,6 +23,8 @@ export const useRLogin = () => {
   const dispatch = useDispatch()
   const [isLoggedIn, setIsLoggedIn] = useState(!!web3Context?.provider)
   const { loadContracts } = useLoadSmartContracts()
+  const prevAccount = usePrevious(account)
+  const prevChainId = usePrevious(chainId)
 
   useEffect(() => {
     setIsLoggedIn(!!web3Context?.provider)
@@ -32,9 +35,17 @@ export const useRLogin = () => {
       const isSupportedChain = !supportedChains.includes(chainId)
       dispatch(setChainError(isSupportedChain))
     }
-
-    loadContracts()
   }, [account, chainId, isLoggedIn])
+
+  useEffect(() => {
+    if (
+      (web3Context.provider && chainId && account !== '') ||
+      prevAccount !== account ||
+      prevChainId !== chainId
+    ) {
+      loadContracts()
+    }
+  }, [account, chainId, web3Context.provider])
 
   const activate = () => dispatch(login(web3Context))
 
