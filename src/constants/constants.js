@@ -21,7 +21,7 @@ export const NETWORK_LABELS = {
 }
 
 const adminAccount = {
-  development: '0xc2725B31Bc77146EDb07b34DAD734A38D2A68277',
+  development: '0x2cf88b0D4b5C441941a743C5E8D184615b4DC075',
   production: '0xC2725b31bc77146eDb07b34DaD734a38D2A68277',
 }
 export const ADMIN = adminAccount[process.env.NODE_ENV]
