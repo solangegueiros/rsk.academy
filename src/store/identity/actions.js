@@ -21,7 +21,7 @@ export const login = context => async dispatch => {
     provider.on('chainChanged', id => {
       dispatch(changeChainId({ chainId: id }))
     })
-    provider.on('disconnect', () => console.log(`disconnect`))
+    provider.on('disconnect', () => console.warn(`disconnect`))
 
     const [account, chainId] = await getAccountAndNetwork(provider)
 
