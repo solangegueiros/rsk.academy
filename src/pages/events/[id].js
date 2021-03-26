@@ -13,6 +13,7 @@ import {
   Flex,
   SimpleGrid,
   useColorModeValue,
+  AspectRatio,
 } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import React from 'react'
@@ -62,6 +63,8 @@ const Event = ({ event }) => {
     video_link,
     resources,
   } = event
+
+  const videoId = video_link?.split('/').slice(-1)[0]
 
   return (
     <Layout>
@@ -144,12 +147,25 @@ const Event = ({ event }) => {
           </Button>
         </VStack>
       </SimpleGrid>
-      <Box p={8} mt={8} boxShadow='md' bg={bg}>
-        <Heading textAlign='center' as='h3' size='md' mb={8}>
-          {t('register')}
-        </Heading>
-        <Box w='full' minH='450px' as='iframe' src={rsvp_embed} />
-      </Box>
+      {!video_link && (
+        <Box p={8} mt={8} boxShadow='md' bg={bg}>
+          <Heading textAlign='center' as='h3' size='md' mb={8}>
+            {t('register')}
+          </Heading>
+          <Box w='full' minH='450px' as='iframe' src={rsvp_embed} />
+        </Box>
+      )}
+      {video_link && (
+        <AspectRatio ratio={16 / 9}>
+          <Box
+            title={title}
+            allowFullScreen={true}
+            as='iframe'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media;'
+            src={`https://youtube.com/embed/${videoId}`}
+          />
+        </AspectRatio>
+      )}
     </Layout>
   )
 }
