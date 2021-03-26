@@ -19,9 +19,10 @@ import dynamic from 'next/dynamic'
 import React from 'react'
 import { FaTwitter } from 'react-icons/fa'
 import { IoLanguage } from 'react-icons/io5'
-import { RiVideoChatFill, RiVideoFill, RiMapPin2Line } from 'react-icons/ri'
+import { RiVideoChatFill, RiMapPin2Line } from 'react-icons/ri'
 import { GoRepo } from 'react-icons/go'
 import { useI18n } from 'next-localization'
+import { isPast } from 'date-fns'
 
 import { Layout } from '@/components/all'
 import Seo from '@/components/Seo'
@@ -64,6 +65,7 @@ const Event = ({ event }) => {
     resources,
   } = event
 
+  const isExpired = isPast(new Date(datetime))
   const videoId = video_link?.split('/').slice(-1)[0]
 
   return (
@@ -107,31 +109,20 @@ const Event = ({ event }) => {
           </HStack>
         </VStack>
         <VStack align={{ base: 'center', md: 'flex-end' }} spacing={4}>
-          <Button
-            size='lg'
-            target='_blank'
-            rel='noopener noreferrer'
-            variant='normal'
-            as='a'
-            leftIcon={<RiVideoChatFill />}
-            href={webinar_link}
-            isDisabled={!webinar_link}
-          >
-            Go to webinar
-          </Button>
-
-          <Button
-            size='lg'
-            target='_blank'
-            rel='noopener noreferrer'
-            variant='normal'
-            as='a'
-            leftIcon={<RiVideoFill />}
-            href={video_link}
-            isDisabled={!video_link}
-          >
-            View Recorded Video
-          </Button>
+          {!isExpired && (
+            <Button
+              size='lg'
+              target='_blank'
+              rel='noopener noreferrer'
+              variant='normal'
+              as='a'
+              leftIcon={<RiVideoChatFill />}
+              href={webinar_link}
+              isDisabled={!webinar_link}
+            >
+              Go to webinar
+            </Button>
+          )}
 
           <Button
             size='lg'
