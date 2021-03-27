@@ -13,14 +13,16 @@ import {
   Flex,
   SimpleGrid,
   useColorModeValue,
+  AspectRatio,
 } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import React from 'react'
 import { FaTwitter } from 'react-icons/fa'
 import { IoLanguage } from 'react-icons/io5'
-import { RiVideoChatFill, RiVideoFill, RiMapPin2Line } from 'react-icons/ri'
+import { RiVideoChatFill, RiMapPin2Line } from 'react-icons/ri'
 import { GoRepo } from 'react-icons/go'
 import { useI18n } from 'next-localization'
+import { isPast } from 'date-fns'
 
 import { Layout } from '@/components/all'
 import Seo from '@/components/Seo'
@@ -63,6 +65,9 @@ const Event = ({ event }) => {
     resources,
   } = event
 
+  const isExpired = isPast(new Date(datetime))
+  const videoId = video_link?.split('/').slice(-1)[0]
+
   return (
     <Layout>
       <Seo title={title} />
@@ -104,31 +109,20 @@ const Event = ({ event }) => {
           </HStack>
         </VStack>
         <VStack align={{ base: 'center', md: 'flex-end' }} spacing={4}>
-          <Button
-            size='lg'
-            target='_blank'
-            rel='noopener noreferrer'
-            variant='normal'
-            as='a'
-            leftIcon={<RiVideoChatFill />}
-            href={webinar_link}
-            isDisabled={!webinar_link}
-          >
-            Go to webinar
-          </Button>
-
-          <Button
-            size='lg'
-            target='_blank'
-            rel='noopener noreferrer'
-            variant='normal'
-            as='a'
-            leftIcon={<RiVideoFill />}
-            href={video_link}
-            isDisabled={!video_link}
-          >
-            View Recorded Video
-          </Button>
+          {!isExpired && (
+            <Button
+              size='lg'
+              target='_blank'
+              rel='noopener noreferrer'
+              variant='normal'
+              as='a'
+              leftIcon={<RiVideoChatFill />}
+              href={webinar_link}
+              isDisabled={!webinar_link}
+            >
+              Go to webinar
+            </Button>
+          )}
 
           <Button
             size='lg'
@@ -144,12 +138,25 @@ const Event = ({ event }) => {
           </Button>
         </VStack>
       </SimpleGrid>
-      <Box p={8} mt={8} boxShadow='md' bg={bg}>
-        <Heading textAlign='center' as='h3' size='md' mb={8}>
-          {t('register')}
-        </Heading>
-        <Box w='full' minH='450px' as='iframe' src={rsvp_embed} />
-      </Box>
+      {!video_link && (
+        <Box p={8} mt={8} boxShadow='md' bg={bg}>
+          <Heading textAlign='center' as='h3' size='md' mb={8}>
+            {t('register')}
+          </Heading>
+          <Box w='full' minH='450px' as='iframe' src={rsvp_embed} />
+        </Box>
+      )}
+      {video_link && (
+        <AspectRatio ratio={16 / 9}>
+          <Box
+            title={title}
+            allowFullScreen={true}
+            as='iframe'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media;'
+            src={`https://youtube.com/embed/${videoId}`}
+          />
+        </AspectRatio>
+      )}
     </Layout>
   )
 }
