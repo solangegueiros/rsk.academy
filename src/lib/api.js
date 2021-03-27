@@ -70,7 +70,7 @@ export async function getEvents() {
       return parseRows(rows.slice(1))
     }
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
 
   return []

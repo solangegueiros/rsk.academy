@@ -1,10 +1,10 @@
-import { adminAccount } from '@/constants/constants'
+import { ADMIN } from '@/constants/constants'
 import { initialState } from './state'
 
 export const reducers = {
   changeAccount: (state, { payload: { account } }) => {
     state.account = account.toLowerCase()
-    state.isAdmin = account === adminAccount?.toLowerCase()
+    state.isAdmin = account === ADMIN?.toLowerCase()
     state.error = null
   },
   changeChainId: (state, { payload: { chainId } }) => {
