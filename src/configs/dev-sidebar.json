@@ -97,6 +97,14 @@
             "pt": "Tipos de wallets"
           },
           "path": "/courses/dev/01/wallets-types"
+        },
+        {
+          "title": {
+            "en": "Module 1 Exam",
+            "es": "Módulo 1 Examen",
+            "pt": "Módulo 1 Exame"
+          },
+          "path": "/courses/dev/01/quiz"
         }
       ]
     },
@@ -110,11 +118,59 @@
       "routes": [
         {
           "title": {
-            "en": "Launch",
-            "es": "Lanzamiento",
-            "pt": "Lançamento"
+            "en": "Overview",
+            "es": "Overview",
+            "pt": "Overview"
           },
           "path": "/courses/dev/02"
+        },
+        {
+          "title": {
+            "en": "Introduction to Smart Contracts",
+            "es": "Introducción a los Contratos Inteligentes",
+            "pt": "Introdução aos Smart Contracts"
+          },
+          "path": "/courses/dev/02/introduction"
+        },
+        {
+          "title": {
+            "en": "Remix",
+            "es": "Remix",
+            "pt": "Remix"
+          },
+          "path": "/courses/dev/02/remix"
+        },
+        {
+          "title": {
+            "en": "Your first smart contract: name",
+            "es": "Tu primer contrato inteligente: name",
+            "pt": "Seu primeiro contrato inteligente: name"
+          },
+          "path": "/courses/dev/02/smart-contract-name"
+        },
+        {
+          "title": {
+            "en": "Deploy on RSK testnet",
+            "es": "Deploy en RSK testnet",
+            "pt": "Publicando na RSK testnet"
+          },
+          "path": "/courses/dev/02/publish-on-rsk-testnet"
+        },
+        {
+          "title": {
+            "en": "Validate your name at RSK Academy",
+            "es": "Valide su nombre en RSK Academy",
+            "pt": "Valide seu nome na RSK Academy"
+          },
+          "path": "/courses/dev/02/validate-name"
+        },
+        {
+          "title": {
+            "en": "Module 2 Exam",
+            "es": "Module 2 Examen",
+            "pt": "Module 2 Exame"
+          },
+          "path": "/courses/dev/02/quiz"
         }
       ]
     },

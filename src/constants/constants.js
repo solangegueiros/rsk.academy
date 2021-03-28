@@ -1,4 +1,4 @@
-export const SUPPORTED_CHAINS = [1, 30, 31, 5777]
+export const SUPPORTED_CHAINS = [30, 31]
 
 export const ChainId = {
   MAINNET: 1,
@@ -8,6 +8,7 @@ export const ChainId = {
   KOVAN: 42,
   RSK_MAINNET: 30,
   RSK_TESTNET: 31,
+  TRUFFLE_DEVELOP: 5777,
 }
 
 export const NETWORK_LABELS = {
@@ -16,8 +17,9 @@ export const NETWORK_LABELS = {
   [ChainId.ROPSTEN]: 'Ropsten',
   [ChainId.GOERLI]: 'Görli',
   [ChainId.KOVAN]: 'Kovan',
-  [ChainId.RSK_MAINNET]: null,
-  [ChainId.RSK_TESTNET]: 'Testnet',
+  [ChainId.RSK_MAINNET]: 'RSK',
+  [ChainId.RSK_TESTNET]: 'RSK Testnet',
+  [ChainId.TRUFFLE_DEVELOP]: 'Truffle Develop',
 }
 
 export const adminAccount =
