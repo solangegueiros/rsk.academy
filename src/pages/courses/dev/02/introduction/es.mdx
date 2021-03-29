@@ -3,14 +3,101 @@ title: 'Contratos Inteligentes'
 description: 'Introducción a los Contratos Inteligentes'
 ---
 
+Los contratos inteligentes pueden seren considerados un tipo de programa informático,
+con algunas características diferentes que se presentarán aquí.
+Pero, antes que nada, entendamos su origen.
+
+## Historia
+
+El término *smart contract* se acuñó alrededor de 1993,
+por Nick Szabo, un hombre brillante con múltiples estudios:
+informática, criptografía y abogacía.
+
+Inspirándonos en sus artículos, podemos decir que la "vending machine", o "máquina expendedora",
+esa máquina automática que vende refrescos y dulces,
+fue el antepasado del contrato inteligente, porque podemos elegir un producto,
+pagar y retirar nuestro producto de forma automatizada, sin intervención humana.
+
+Asimismo, un contrato inteligente es una herramienta para estructurar reglas y acuerdos en códigos de programación,
+idealmente registrado en un entorno donde no hay posibilidad de cambiar el programa.
+Pero esto no existía en los 90, ¡Nick Szabo idealizó algo que solo se hizo realidad con Blockchain!
+
+## Contratos inteligentes en Ethereum
+
+El primer Blockchain que inició su red en enero de 2009,
+el Bitcoin, definido por Satoshi Nakamoto,
+no estaba preparado para la implementación de contratos inteligentes.
+
+Entra Vitalik Buterin,
+que se dio cuenta de que una Blockchain podía ir mucho más allá de las transferencias de criptomonedas,
+luego creando Ethereum.
+
+Vitalik vio Blockchain como una computadora global descentralizada,
+un entorno en el que se puedan ejecutar los contratos inteligentes.
+
+### ¿Los smart contracts son... **contracts**?
+
+Pensando en el sentido legal de los contratos, ¡los contratos inteligentes **NO** son contratos!
+
+Puedes decir que implementan contratos legales,
+pero todas las cláusulas, reglas, obligaciones, beneficios o sanciones han sido previamente definidas.
+
+### ¿Los smart contracts son... **smart**?
+
+Smart es la traducción de inteligente,
+lo que nos lleva al concepto de inteligencia artificial y al aprendizaje del análisis de datos.
+
+¡Los contratos inteligentes **NO** son inteligentes!
+
+Realizan exactamente lo que se ha definido, son inmutables y no se pueden cambiar.
+
 ## ¿Qué son los contratos inteligentes?
 
-> TODO
+Los contratos inteligentes son programas informáticos publicados y ejecutados en un entorno Blockchain,
+capaces de llevarse a cabo o hacerse cumplir por su cuenta, sin intermediarios.
+
+Un contrato inteligente puede obtener información, procesarla y actuar de acuerdo con las reglas del contrato,
+de forma autónoma, pero necesita un agente externo para iniciar su ejecución.
+Por ejemplo, está programado en un contrato inteligente que el enviará una cierta cantidad el próximo año,
+pero solo, no tiene forma de saber si ha llegado la fecha.
+Alguien u otro sistema externo debe ejecutar el contrato inteligente para que pueda verificar si es el momento de realizar la transferencia.
+
+Cuando pensamos en la inmutabilidad de Blockchain, 
+otro punto importante sobre un contrato inteligente es que, 
+una vez publicado, ¡no es posible corregir el código! 
+Sin embargo, el contrato inteligente puede haber sido programado con funciones para cambiar datos. 
+La información se puede registrar en un bloque, eliminar en otro, 
+pero el historial permanece y es posible auditar.
 
 ## Lenguaje de programación Solidity
 
-> TODO
+Solidity es un lenguaje de alto nivel, orientado a objetos, para implementar contratos inteligentes.
+Los contratos inteligentes rigen el comportamiento de las cuentas y sus cambios de estado en Ethereum.
+
+Es un [curly-bracket](https://en.wikipedia.org/wiki/List_of_programming_languages_by_type#Curly-bracket_languages)
+lenguaje, lo que significa que los caracteres **{** y **}** son los delimitadores de los bloques de código del lenguaje.
+
+Su sintaxis está influenciada por C++, Python y JavaScript, 
+y fue creado para ejecutarse en la EVM - Ethereum Virtual Machine (Máquina Virtual Ethereum).
+
+Solidity es un lenguaje *fuertemente tipado*, o *tipado estáticamente*, admite herencia, bibliotecas y
+tipos complejos definidos por el usuario, entre otras características.
+
+Esta definición de Solidity fue traducida de [Solidity docs](https://docs.soliditylang.org/).
 
 ## RSK
 
-La implementación de la máquina virtual de RSK es compatible con Ethereum EVM, entonces podemos usar muchas de las herramientas de desarrollo de Ethereum.
+La red RSK usa los mismos contratos inteligentes que Ethereum, es decir, también están escritos en Solidity.
+
+La implementación de la máquina virtual RSK es compatible con Ethereum EVM,
+entonces podemos usar muchas de las herramientas de desarrollo de Ethereum.
+
+## Consideraciones finales
+
+El propósito de esta lección fue presentar una introducción a los contratos inteligentes y
+porque también usamos el lenguaje Solidity en RSK.
+En el módulo 3 aprenderá más sobre la red RSK.
+
+Por ahora, lo que te presentamos es suficiente para que crees tu primer contrato inteligente.
+
+En la siguiente lección, conocerá Remix, un entorno de desarrollo muy fácil de usar.
