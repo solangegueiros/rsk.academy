@@ -147,14 +147,6 @@
             "pt": "Publicando na RSK testnet"
           },
           "path": "/courses/dev/02/publish-on-rsk-testnet"
-        },
-        {
-          "title": {
-            "en": "Validate your name at RSK Academy",
-            "es": "Valide su nombre en RSK Academy",
-            "pt": "Valide seu nome na RSK Academy"
-          },
-          "path": "/courses/dev/02/validate-name"
         }
       ]
     },

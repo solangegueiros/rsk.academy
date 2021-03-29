@@ -20950,7 +20950,153 @@
       "links": {},
       "address": "0xa173600B31E31b3B6Ab636b24e7e136613B88E66",
       "transactionHash": "0x98d9633200f9aaaa9ac2766ad16a8d83b32e398f4822434be3e38531e58c9237"
-    }
+    },
+    "1337": {
+      "events": {
+        "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        },
+        "0x32ae1e15433e98cb8f7822b8d5647884e8776c0a7cccbedc03ad096b37a47cf5": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "classAddress",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "studentAddress",
+              "type": "address"
+            }
+          ],
+          "name": "StudentClassSelected",
+          "type": "event"
+        },
+        "0xa2da132766d374e1a5a81ba24686b4d3c079d9e5441a8e25e2258f8a55e21805": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "studentAddress",
+              "type": "address"
+            }
+          ],
+          "name": "StudentCreated",
+          "type": "event"
+        },
+        "0x090f8580c9984c072634e9bba0570c10e0478d3a652adb16d8c73528a2ab513c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "studentAddress",
+              "type": "address"
+            }
+          ],
+          "name": "StudentRemoved",
+          "type": "event"
+        },
+        "0xa83a836cb37b2e19a8bda8040e2b8e18046612e65f0d12a31978e46aa832f655": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "classAddress",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "studentAddress",
+              "type": "address"
+            }
+          ],
+          "name": "StudentSubscribed",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x82c7E2534A6d69165fCc0552535907f11D6ed0a9",
+      "transactionHash": "0x5f2bd695fb774694ce765ea875e7c6c6ab7582d51f85207082609c588953fbaa"
+    }    
   },
   "schemaVersion": "3.3.4",
   "updatedAt": "2021-03-24T03:49:02.541Z",
