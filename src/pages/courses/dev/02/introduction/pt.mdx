@@ -3,8 +3,9 @@ title: '02 - smart contracts intro'
 description: 'Introdução aos Smart Contracts'
 ---
 
-Smart contracts são um tipo de programa de computador, 
-com algumas características diferenciadas que serão apresentadas aqui. Mas, antes de tudo, vamos entender sua origem.
+Smart contracts podem ser considerados um tipo de programa de computador, 
+com algumas características diferenciadas que serão apresentadas aqui. 
+Mas, antes de tudo, vamos entender sua origem.
 
 ## História
 
@@ -24,15 +25,14 @@ Mas isto não existia nos anos 90, Nick Szabo idealizou algo que só virou reali
 ## Smart contracts no Ethereum
 
 O primeiro Blockchain que iniciou sua rede em janeiro de 2009, 
-foi o Bitcoin definido por Satoshi Nakamoto, 
-não estava preparado para a implementação dos smart contracts. 
-
+o Bitcoin, definido por Satoshi Nakamoto, 
+não estava preparado para a implementação de smart contracts. 
 
 Entra em cena Vitalik Buterin, 
-que percebeu que um blockchain poderia ir muito além de transferências de criptomoedas,
-e então criou o Ethereum. 
+que percebeu que um Blockchain poderia ir muito além de transferências de criptomoedas,
+criando então o Ethereum. 
 
-Vitalik enxergava o blockchain como um computador mundial descentralizado, 
+Vitalik enxergava o Blockchain como um computador mundial descentralizado, 
 um ambiente onde os smart contracts pudessem ser executados.
 
 ### Smart contracts são **contracts**?
@@ -51,7 +51,6 @@ Smart contracts **NÃO** são smart!
 
 Eles executam exatamente o que foi definido, são imutáveis e não podem ser alterados.
 
-
 ## O que são smart contracts?
 
 Smart contracts são programas de computador publicados e executados em um ambiente Blockchain, 
@@ -63,16 +62,44 @@ Por exemplo, está programado em um smart contract que ele enviará um determina
 Sozinho, ele não tem como saber se a data chegou. 
 Alguém ou outro sistema externo deve executar o smart contract para que ele verifique se é o momento de fazer a transferência.
 
-Quando pensamos na imutabilidade do Blockchain, outro ponto importante sobre um smart contract é que, depois de publicado, não é possível corrigir o código! Porém o smart contract pode ter sido programado com funções para alterar dados. A informação pode ser registrada em um bloco, apagada em outro, mas o histórico permanece, sendo possível fazer auditoria.
+Quando pensamos na imutabilidade do Blockchain, 
+outro ponto importante sobre um smart contract é que, 
+depois de publicado, não é possível corrigir o código! 
+Porém o smart contract pode ter sido programado com funções para alterar dados. 
+A informação pode ser registrada em um bloco, apagada em outro, 
+mas o histórico permanece, sendo possível fazer auditoria.
 
 ## Linguagem de programação Solidity
 
-> TODO
+Solidity é uma linguagem de programação orientada a objetos, de alto nível, 
+usada para publicação de smart contracts.
+Os contractos inteligentes governam o comportamento das contas e suas mudanças de estado no Ethereum.
+
+Solidity é uma linguagem 
+[curly-bracket](https://en.wikipedia.org/wiki/List_of_programming_languages_by_type#Curly-bracket_languages), 
+isto é, os caracteres **{** e **}** são os delimitadores dos blocos de código da linguagem.
+
+Sua sintaxe tem influência de C++, Python e JavaScript e 
+foi criada para ser executada na EVM - Ethereum Virtual Machine (Máquina Virtual Ethereum).
+
+Solidity é uma linguagem *fortemente tipada*, suporta herança, bibliotecas e 
+tipos complexos definidos pelo usuário, entre outros recursos.
+
+Esta definição de Solidity foi traduzida de [Solidity docs](https://docs.soliditylang.org/).
 
 ## RSK
 
-A implementação da máquina virtual da RSK é compatível com o Ethereum EVM, então podemos usar muitas das ferramentas para desenvolvedores Ethereum.
+A rede RSK usa os mesmos smart contracts do Ethereum, ou seja, também são escritos em Solidity.
+
+A implementação da máquina virtual da RSK é compatível com o Ethereum EVM, 
+então podemos usar muitas das ferramentas para desenvolvedores Ethereum.
 
 ## Considerações finais
 
-> TODO
+O objetivo desta lição foi apresentar uma introdução aos smart contracts e 
+porque também utilizamos a linguagem Solidity na RSK.
+No módulo 3 você vai aprender mais sobre a rede RSK.
+
+Para agora, o que apresentamos é o suficiente para você criar seu primeiro smart contract.
+
+Na próxima lição você vai conhecer o Remix, um ambiente de desenvolvimento muito fácil de utilizar.
