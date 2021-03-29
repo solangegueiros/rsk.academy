@@ -24,16 +24,29 @@ export const NETWORK_LABELS = {
   [ChainId.GANACHE_CLI]: 'Ganache-Cli', //ganache-cli -i 1337 -m "your mnemonic"
 }
 
+/*
 const adminAccount = {
   development: '0x2cf88b0D4b5C441941a743C5E8D184615b4DC075',
   production: '0xC2725b31bc77146eDb07b34DaD734a38D2A68277',
 }
+*/
+const adminAccount = {
+  development: '0xC2725b31bc77146eDb07b34DaD734a38D2A68277',
+  production: '0xC2725b31bc77146eDb07b34DaD734a38D2A68277',
+}
+
 export const ADMIN = adminAccount[process.env.NODE_ENV]
 
-const courses = {
+/*  
   development: {
     Developer: '0xe9c79c9226e2cD36C09b1404825B7381240311bA',
     Business: '0x406657dC292E080f4c919b573f4A774773860adb',
+  },
+*/
+const courses = {
+  development: {
+    Developer: '0x770a1B1eC8523F98Fe32229b3011cb7A520886bC',
+    Business: '0xD2a26e354c3109FAF8F01542362ce5E25C778ad7',
   },
   production: {
     Developer: '0x770a1B1eC8523F98Fe32229b3011cb7A520886bC',
@@ -42,14 +55,15 @@ const courses = {
 }
 export const COURSES = courses[process.env.NODE_ENV]
 
+//Updated everything to production!
 const contracts = {
   development: {
-    AcademyClassList: '0xB2510CC85f359BAA45B4af24442E339B80450B64',
-    AcademyProjectList: '0x93B6D036e593f3c31C4c8b123c581F776524233b',
-    AcademyStudentQuiz: '0x9C092457403Ce334cCDd14dC136A046F434f7EaC',
-    AcademyStudents: '0x8B61659F5166B7E290cEbB1c9ae61b8C81D4850E',
-    AcademyWallet: '0x9DADdE7DDF79BF2e69A7Ed35DBC74141144d6B1C',
-    MasterName: '0x794247ADa39C572f6756118B9c1Df88860b96cFE',
+    AcademyClassList: '0x6800597b6fF5a423002Ff57e58727902BDDE13A6',
+    AcademyProjectList: '0x0D3f8b4d2C659B6402F35cd1a73BB8a4B0864C20',
+    AcademyStudentQuiz: '0x7eEA02aBFD8cFaF0c6386970A91936471211f5E0',
+    AcademyStudents: '0xc24d44eD3CA8d75342f2135B4F1713b9B9589239',
+    AcademyWallet: '0xDA3C24d714f008d0580AE280242381f87E981599',
+    MasterName: '0x98A7BeE32B1532F8a8F1ECD72942375C60bc06FF',
   },
   production: {},
 }
