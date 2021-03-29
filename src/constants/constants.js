@@ -1,4 +1,4 @@
-export const SUPPORTED_CHAINS = [30, 31]
+export const SUPPORTED_CHAINS = [30, 31, 5777, 1337]
 
 export const ChainId = {
   MAINNET: 1,
@@ -9,6 +9,7 @@ export const ChainId = {
   RSK_MAINNET: 30,
   RSK_TESTNET: 31,
   TRUFFLE_DEVELOP: 5777,
+  GANACHE_CLI: 1337,
 }
 
 export const NETWORK_LABELS = {
@@ -20,6 +21,7 @@ export const NETWORK_LABELS = {
   [ChainId.RSK_MAINNET]: 'RSK',
   [ChainId.RSK_TESTNET]: 'RSK Testnet',
   [ChainId.TRUFFLE_DEVELOP]: 'Truffle Develop',
+  [ChainId.GANACHE_CLI]: 'Ganache-Cli', //ganache-cli -i 1337 -m "your mnemonic"
 }
 
 export const adminAccount =
