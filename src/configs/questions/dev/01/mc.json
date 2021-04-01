@@ -24,10 +24,10 @@
       "pt": "Mesmo sabendo o mnemonico da minha carteira, onde NÃO posso utilizá-lo para acessar minhas cryptos?"
     },
     "answers": [
-      { "en": "Web wallet", "es": "Web wallet", "pt": "Web wallet" }, 	
-      { "en": "Exchange", "es": "Exchange", "pt": "Exchange" }, 	
-      { "en": "Mobile wallet", "es": "Mobile wallet", "pt": "Mobile wallet" }, 	
-      { "en": "Desktop wallet", "es": "Desktop wallet", "pt": "Desktop wallet" } 
+      { "en": "Web wallet", "es": "Web wallet", "pt": "Web wallet" },
+      { "en": "Exchange", "es": "Exchange", "pt": "Exchange" },
+      { "en": "Mobile wallet", "es": "Mobile wallet", "pt": "Mobile wallet" },
+      { "en": "Desktop wallet", "es": "Desktop wallet", "pt": "Desktop wallet" }
     ],
     "correct_answer": 1
   },
@@ -117,11 +117,19 @@
     "question": {
       "en": "What do I need to show in order for someone to send me cryptocurrencies?",
       "es": "¿Qué necesito revelar para que alguien me envíe criptomonedas?",
-      "pt": "O que eu preciso divulgar para que uma pessoa me envie  criptomoedas?" 
+      "pt": "O que eu preciso divulgar para que uma pessoa me envie  criptomoedas?"
     },
     "answers": [
-      { "en": "Wallet address", "es": "Dirección de billetera", "pt": "Endereço da carteira" },
-      { "en": "Bank, branch and account", "es": "Banco, sucursal y cuenta", "pt": "Banco, agência e conta" },
+      {
+        "en": "Wallet address",
+        "es": "Dirección de billetera",
+        "pt": "Endereço da carteira"
+      },
+      {
+        "en": "Bank, branch and account",
+        "es": "Banco, sucursal y cuenta",
+        "pt": "Banco, agência e conta"
+      },
       { "en": "Mnemonic", "es": "Mnemónico", "pt": "Mnemônico" },
       { "en": "Private key", "es": "Llave privada", "pt": "Chave privada" }
     ],
@@ -137,9 +145,21 @@
     },
     "answers": [
       { "en": "In your pocket", "es": "En tu bolsillo", "pt": "No seu bolso" },
-      { "en": "On an exchange", "es": "En una exchange", "pt": "Em uma exchange" },
-      { "en": "On a hot wallet", "es": "En una hot wallet", "pt": "Em uma hot wallet" },
-      { "en": "On a hard wallet", "es": "En una hard wallet", "pt": "Em uma hard wallet" }
+      {
+        "en": "On an exchange",
+        "es": "En una exchange",
+        "pt": "Em uma exchange"
+      },
+      {
+        "en": "On a hot wallet",
+        "es": "En una hot wallet",
+        "pt": "Em uma hot wallet"
+      },
+      {
+        "en": "On a hard wallet",
+        "es": "En una hard wallet",
+        "pt": "Em uma hard wallet"
+      }
     ],
     "correct_answer": 3
   },
@@ -153,10 +173,14 @@
     },
     "answers": [
       { "en": "Mnemonic", "es": "Mnemónico", "pt": "Mnemônico" },
-      { "en": "Derivation Path", "es": "Derivation Path", "pt": "Derivation Path" },
+      {
+        "en": "Derivation Path",
+        "es": "Derivation Path",
+        "pt": "Derivation Path"
+      },
       { "en": "Checksum", "es": "Checksum", "pt": "Checksum" },
       { "en": "ChainID", "es": "ChainID", "pt": "ChainID" }
     ],
     "correct_answer": 1
-  } 
+  }
 ]
