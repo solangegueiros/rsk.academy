@@ -3,86 +3,86 @@ title: '02 - smart contracts intro'
 description: 'Introdução aos Smart Contracts'
 ---
 
-Smart contracts podem ser considerados um tipo de programa de computador, 
-com algumas características diferenciadas que serão apresentadas aqui. 
+Smart contracts podem ser considerados um tipo de programa de computador,
+com algumas características diferenciadas que serão apresentadas aqui.
 Mas, antes de tudo, vamos entender sua origem.
 
 ## História
 
-O termo *smart contract* foi criado por volta de 1993, 
-por Nick Szabo, um brilhante homem com múltipla formação: 
+O termo _smart contract_ foi criado por volta de 1993,
+por Nick Szabo, um brilhante homem com múltipla formação:
 ciência da computação, criptografia e advocacia.
 
-Inspirando-se em seus artigos, podemos dizer que a "vending machine", 
-aquela máquina automática que vende refrigerantes e guloseimas, 
-foi a ancestral do smart contract, porque podemos escolher um produto, 
+Inspirando-se em seus artigos, podemos dizer que a "vending machine",
+aquela máquina automática que vende refrigerantes e guloseimas,
+foi a ancestral do smart contract, porque podemos escolher um produto,
 pagar e retirar nosso produto de maneira automatizada, sem intervenção humana.
 
-Da mesma forma, um smart contract é uma ferramenta para se estruturar regras e acordos em códigos de programação, 
-idealmente registrado em um ambiente onde não tenha possibilidade de alteração do programa. 
+Da mesma forma, um smart contract é uma ferramenta para se estruturar regras e acordos em códigos de programação,
+idealmente registrado em um ambiente onde não tenha possibilidade de alteração do programa.
 Mas isto não existia nos anos 90, Nick Szabo idealizou algo que só virou realidade com Blockchain!
 
 ## Smart contracts no Ethereum
 
-O primeiro Blockchain que iniciou sua rede em janeiro de 2009, 
-o Bitcoin, definido por Satoshi Nakamoto, 
-não estava preparado para a implementação de smart contracts. 
+O primeiro Blockchain que iniciou sua rede em janeiro de 2009,
+o Bitcoin, definido por Satoshi Nakamoto,
+não estava preparado para a implementação de smart contracts.
 
-Entra em cena Vitalik Buterin, 
+Entra em cena Vitalik Buterin,
 que percebeu que um Blockchain poderia ir muito além de transferências de criptomoedas,
-criando então o Ethereum. 
+criando então o Ethereum.
 
-Vitalik enxergava o Blockchain como um computador mundial descentralizado, 
+Vitalik enxergava o Blockchain como um computador mundial descentralizado,
 um ambiente onde os smart contracts pudessem ser executados.
 
 ### Smart contracts são **contracts**?
 
 Pensando no sentido jurídico de contratos, smart contracts **NÃO** são contratos!
 
-É possível dizer que eles implementam contratos jurídicos, 
+É possível dizer que eles implementam contratos jurídicos,
 mas todas as cláusulas, regras, obrigações, benefícios ou penalidades foram definidas previamente.
 
 ### Smart contracts são **smart**?
 
-Smart é a tradução de inteligente, 
+Smart é a tradução de inteligente,
 o que nos leva ao conceito de inteligência artificial e aprendizagem com a análise de dados.
 
-Smart contracts **NÃO** são smart! 
+Smart contracts **NÃO** são smart!
 
 Eles executam exatamente o que foi definido, são imutáveis e não podem ser alterados.
 
 ## O que são smart contracts?
 
-Smart contracts são programas de computador publicados e executados em um ambiente Blockchain, 
+Smart contracts são programas de computador publicados e executados em um ambiente Blockchain,
 capazes de serem executados ou de se fazerem cumprir por si só, sem intermediários.
 
-Um smart contract pode obter informações, processá-las e agir de acordo com as regras do contrato, 
-de forma autônoma, porém ele precisa de um agente externo para iniciar sua execução. 
-Por exemplo, está programado em um smart contract que ele enviará um determinado valor no próximo ano. 
-Sozinho, ele não tem como saber se a data chegou. 
+Um smart contract pode obter informações, processá-las e agir de acordo com as regras do contrato,
+de forma autônoma, porém ele precisa de um agente externo para iniciar sua execução.
+Por exemplo, está programado em um smart contract que ele enviará um determinado valor no próximo ano.
+Sozinho, ele não tem como saber se a data chegou.
 Alguém ou outro sistema externo deve executar o smart contract para que ele verifique se é o momento de fazer a transferência.
 
-Quando pensamos na imutabilidade do Blockchain, 
-outro ponto importante sobre um smart contract é que, 
-depois de publicado, não é possível corrigir o código! 
-Porém o smart contract pode ter sido programado com funções para alterar dados. 
-A informação pode ser registrada em um bloco, apagada em outro, 
+Quando pensamos na imutabilidade do Blockchain,
+outro ponto importante sobre um smart contract é que,
+depois de publicado, não é possível corrigir o código!
+Porém o smart contract pode ter sido programado com funções para alterar dados.
+A informação pode ser registrada em um bloco, apagada em outro,
 mas o histórico permanece, sendo possível fazer auditoria.
 
 ## Linguagem de programação Solidity
 
-Solidity é uma linguagem de programação orientada a objetos, de alto nível, 
+Solidity é uma linguagem de programação orientada a objetos, de alto nível,
 usada para publicação de smart contracts.
 Os contractos inteligentes governam o comportamento das contas e suas mudanças de estado no Ethereum.
 
-Solidity é uma linguagem 
-[curly-bracket](https://en.wikipedia.org/wiki/List_of_programming_languages_by_type#Curly-bracket_languages), 
+Solidity é uma linguagem
+[curly-bracket](https://en.wikipedia.org/wiki/List_of_programming_languages_by_type#Curly-bracket_languages),
 isto é, os caracteres **{** e **}** são os delimitadores dos blocos de código da linguagem.
 
-Sua sintaxe tem influência de C++, Python e JavaScript e 
+Sua sintaxe tem influência de C++, Python e JavaScript e
 foi criada para ser executada na EVM - Ethereum Virtual Machine (Máquina Virtual Ethereum).
 
-Solidity é uma linguagem *fortemente tipada*, suporta herança, bibliotecas e 
+Solidity é uma linguagem _fortemente tipada_, suporta herança, bibliotecas e
 tipos complexos definidos pelo usuário, entre outros recursos.
 
 Esta definição de Solidity foi traduzida de [Solidity docs](https://docs.soliditylang.org/).
@@ -91,12 +91,12 @@ Esta definição de Solidity foi traduzida de [Solidity docs](https://docs.solid
 
 A rede RSK usa os mesmos smart contracts do Ethereum, ou seja, também são escritos em Solidity.
 
-A implementação da máquina virtual da RSK é compatível com o Ethereum EVM, 
+A implementação da máquina virtual da RSK é compatível com o Ethereum EVM,
 então podemos usar muitas das ferramentas para desenvolvedores Ethereum.
 
 ## Considerações finais
 
-O objetivo desta lição foi apresentar uma introdução aos smart contracts e 
+O objetivo desta lição foi apresentar uma introdução aos smart contracts e
 porque também utilizamos a linguagem Solidity na RSK.
 No módulo 3 você vai aprender mais sobre a rede RSK.
 

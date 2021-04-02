@@ -16,17 +16,18 @@ import {
   AspectRatio,
 } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaTwitter } from 'react-icons/fa'
 import { IoLanguage } from 'react-icons/io5'
 import { RiVideoChatFill, RiMapPin2Line } from 'react-icons/ri'
 import { GoRepo } from 'react-icons/go'
 import { useI18n } from 'next-localization'
 import { isPast } from 'date-fns'
+import { useRouter } from 'next/router'
 
 import { Layout } from '@/components/all'
 import Seo from '@/components/Seo'
-import { getEvents } from '../../lib/api'
+import { getEvents } from 'lib/api'
 
 const TimeZone = dynamic(() => import('../../components/TimeZone'), {
   ssr: false,
@@ -41,6 +42,17 @@ const LANGUAGES = {
 const Event = ({ event }) => {
   const { t } = useI18n()
   const bg = useColorModeValue('white', 'dark.400')
+  const { query } = useRouter()
+  const [eventItem, setEventItem] = useState(event)
+
+  useEffect(() => {
+    const fetchEvent = async () => {
+      const response = await fetch(`/api/event/${query.id}`)
+      const result = await response.json()
+      setEventItem(result)
+    }
+    fetchEvent()
+  }, [])
 
   if (!event)
     return (
@@ -63,7 +75,7 @@ const Event = ({ event }) => {
     image,
     video_link,
     resources,
-  } = event
+  } = eventItem
 
   const isExpired = isPast(new Date(datetime))
   const videoId = video_link?.split('/').slice(-1)[0]
@@ -174,7 +186,6 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { id } }) {
   const response = await getEvents()
   const event = response.find(e => e.id === id)
-
   return {
     props: {
       event,

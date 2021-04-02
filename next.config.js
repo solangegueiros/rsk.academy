@@ -16,10 +16,6 @@ const defaultConfig = {
     ...config,
     externals: [...config.externals, 'sharp'],
   }),
-  experimental: {
-    optimizeFonts: true,
-    modern: true,
-  },
   i18n: {
     locales: ['en', 'es', 'pt'],
     defaultLocale: 'en',
