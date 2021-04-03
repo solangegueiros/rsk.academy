@@ -24,33 +24,35 @@ export const NETWORK_LABELS = {
   [ChainId.GANACHE_CLI]: 'Ganache-Cli', //ganache-cli -i 1337 -m "your mnemonic"
 }
 
-const adminAccount = {
-  development: '0x2cf88b0D4b5C441941a743C5E8D184615b4DC075',
-  production: '0xC2725b31bc77146eDb07b34DaD734a38D2A68277',
-}
-export const ADMIN = adminAccount[process.env.NODE_ENV]
+export const DEPLOYED_NETWORKS = { ganache: 1337, testnet: 31 }
 
-const courses = {
-  development: {
-    Developer: '0xe9c79c9226e2cD36C09b1404825B7381240311bA',
-    Business: '0x406657dC292E080f4c919b573f4A774773860adb',
-  },
-  production: {
-    Developer: '0x770a1B1eC8523F98Fe32229b3011cb7A520886bC',
-    Business: '0xD2a26e354c3109FAF8F01542362ce5E25C778ad7',
-  },
+export const ADMIN_ACCOUNTS = {
+  1337: process.env.NEXT_PUBLIC_LOCAL_ADMIN_ACCOUNT,
+  31: process.env.NEXT_PUBLIC_ADMIN_ACCOUNT,
 }
-export const COURSES = courses[process.env.NODE_ENV]
 
-const contracts = {
-  development: {
-    AcademyClassList: '0xB2510CC85f359BAA45B4af24442E339B80450B64',
-    AcademyProjectList: '0x93B6D036e593f3c31C4c8b123c581F776524233b',
-    AcademyStudentQuiz: '0x9C092457403Ce334cCDd14dC136A046F434f7EaC',
-    AcademyStudents: '0x8B61659F5166B7E290cEbB1c9ae61b8C81D4850E',
-    AcademyWallet: '0x9DADdE7DDF79BF2e69A7Ed35DBC74141144d6B1C',
-    MasterName: '0x794247ADa39C572f6756118B9c1Df88860b96cFE',
+export const COURSE_ADDRESSES = {
+  1337: {
+    DeveloperA: process.env.NEXT_PUBLIC_LOCAL_DEV_CLASS_01,
+    BusinessA: process.env.NEXT_PUBLIC_LOCAL_BUSINESS_CLASS_01,
   },
-  production: {},
+  31: {
+    DeveloperA: process.env.NEXT_PUBLIC_DEV_CLASS_01,
+    BusinessA: process.env.NEXT_PUBLIC_BUSINESS_CLASS_01,
+  },
 }
-export const CONTRACTS = contracts[process.env.NODE_ENV]
+
+export const CONTRACT_ADDRESSES = {
+  31: {
+    AcademyClassList: process.env.NEXT_PUBLIC_ACADEMY_CLASS_LIST,
+    AcademyProjectList: process.env.NEXT_PUBLIC_ACADEMY_PROJECT_LIST,
+    AcademyStudentQuiz: process.env.NEXT_PUBLIC_ACADEMY_STUDENT_QUIZ,
+    AcademyStudents: process.env.NEXT_PUBLIC_ACADEMY_STUDENTS,
+    AcademyWallet: process.env.NEXT_PUBLIC_ACADEMY_WALLET,
+    MasterName: process.env.NEXT_PUBLIC_MASTER_NAME,
+    ...COURSE_ADDRESSES[31],
+  },
+  1337: {
+    ...COURSE_ADDRESSES[1337],
+  },
+}

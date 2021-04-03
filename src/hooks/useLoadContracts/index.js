@@ -19,7 +19,7 @@ import { loadProfile, resetProfile } from '@/store/profile/actions'
 import { loadAdmin } from '@/store/admin/actions'
 import { getContract } from '@/utils/getContract'
 import { ContractContext } from '@/context/ContractProvider'
-import { COURSES } from '@/constants/constants'
+import { COURSE_ADDRESSES } from '@/constants/constants'
 import { Web3ProviderContext } from '@/context/Web3Provider'
 
 export function useLoadSmartContracts() {
@@ -66,11 +66,13 @@ export function useLoadSmartContracts() {
       loadContract(StudentQuiz)
 
       // Load Courses
-      Object.entries(COURSES).map(([contractName, courseAddress]) => {
-        const Abi = { ...AcademyClassAbi, contractName }
-        const contract = getContract(Abi, chainId, provider, courseAddress)
-        return loadContract(contract)
-      })
+      Object.entries(COURSE_ADDRESSES[chainId]).map(
+        ([contractName, courseAddress]) => {
+          const Abi = { ...AcademyClassAbi, contractName }
+          const contract = getContract(Abi, chainId, provider, courseAddress)
+          return loadContract(contract)
+        },
+      )
 
       let quizResults = null
       if (account && StudentQuiz.address) {
