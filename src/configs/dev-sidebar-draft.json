@@ -192,6 +192,54 @@
         },
         {
           "title": {
+            "en": "What is Blockchain?",
+            "es": "¿Qué es Blockchain?",
+            "pt": "O que é Blockchain?"
+          },
+          "path": "/courses/dev/03/blockchain"
+        },
+        {
+          "title": {
+            "en": "Fundamentals",
+            "es": "Fundamentos",
+            "pt": "Fundamentos"
+          },
+          "path": "/courses/dev/03/fundamentals"
+        },
+        {
+          "title": {
+            "en": "Consensus algorithms",
+            "es": "Algoritmos de consenso",
+            "pt": "Algoritmos de consenso"
+          },
+          "path": "/courses/dev/03/consensus-algorithms"
+        },         
+        {
+          "title": {
+            "en": "Bitcoin",
+            "es": "Bitcoin",
+            "pt": "Bitcoin"
+          },
+          "path": "/courses/dev/03/bitcoin"
+        },
+        {
+          "title": {
+            "en": "Ethereum",
+            "es": "Ethereum",
+            "pt": "Ethereum"
+          },
+          "path": "/courses/dev/03/ethereum"
+        },
+        {
+          "title": {
+            "en": "RSK",
+            "es": "RSK",
+            "pt": "RSK"
+          },
+          "path": "/courses/dev/03/rsk"
+        },
+        {
+          "title": {
             "en": "Module 3 Quiz",
             "es": "Module 3 Quiz",
             "pt": "Module 3 Quiz"

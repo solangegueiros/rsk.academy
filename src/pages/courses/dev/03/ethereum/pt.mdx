@@ -1,0 +1,96 @@
+---
+title: 'Ethereum'
+description: 'Fundamentos de Ethereum'
+---
+
+## Ethereum
+
+Vitalik Buterin fazia parte da comunidade do Bitcoin, 
+inclusive sendo um dos co-fundadores da revista [Bitcoin Magazine](https://bitcoinmagazine.com/).
+
+Mas ele vislumbrava que o Blockchain poderia ir muito além de transações para transferências de criptomoedas.
+Dado que não houve consenso para implementar as ideias de Vitalik no Blockchain do Bitcoin,
+ele criou o Blockchain Ethereum.
+
+Vitalik enxergava o Blockchain como um computador mundial descentralizado,
+um ambiente onde pudessem ser executados smart contracts.
+
+Ethereum é uma plataforma global open source para aplicativos descentralizados.
+
+Tambem podemos definir como uma rede de mineração descentralizada 
+que incorpora uma plataforma de desenvolvimento de software capaz de executar contratos inteligentes (smart contracts) 
+e aplicações descentralizadas usando a tecnologia blockchain.
+
+Estas aplicações funcionam exatamente como programadas, sem qualquer possibilidade de censura, fraude ou interferência de terceiros, dado que o código fonte do smart contract é imutável. 
+
+## gWei
+
+A menor unidade do Ethereum é chamada **wei**.
+
+Ela é a 18a casa decimal do Ethereum, ou seja:
+
+> 1 ETH = 1000000000000000000 wei
+
+## Gas x Fee
+
+No Bitcoin, para que um minerador tenha interesse em validar nossa transação,
+deixamos uma "sobra", ou troco, na transação, que é chamada de fee.
+Os mineradores validam primeiro as transações com as maiores fees.
+
+No Ethereum, cada comando, ou *opcode*, tem um custo, chamado **gas**.
+
+O gas geralmente é medido em **gWei** 
+
+> 1 gWei = 1000000000 wei = 0.000000001 ETH
+
+Recomendo este site para fazer conversões: 
+[eth-converter.com](https://eth-converter.com/)
+
+Um cálculo muito comum é a quantidade de gas que um smart contract vai gastar.
+
+Para entender gas, gas price e gas limit, o melhor é fazer uma comparação ao mundo real.
+
+Imagine que você quer ir de São Paulo ao Rio de Janeiro.
+Gas é a quantidade de litros de gasolina que você precisa para fazer este percurso.
+Gas price é o preço que você vai pagar pelo litro de gasolina.
+Cabem 50 litros no tanque de gasolina do seu carro, este é o Gas limit.
+Então, mesmo se você quiser passar por outras cidades antes de chegar no Rio de Janeiro, 
+terá que limitar seu percurso pela capacidade do tanque de gasolina.
+Este também é o limite máximo que você vai gastar.
+
+### Gas - amount
+
+Quantidade de gas que será utilizada de acordo com o bytecode do seu smart contract.
+
+### Gas Price
+
+O gas price é, literalmente, o preço do gas.
+
+Você define o preço que aceita pagar.
+Se você definir um preço muito baixo, sua transação pode ficar na Mempool infinitamente 
+e isto bloqueia todas as transações posteriores, ou seja, 
+você não consegue validar outras transações.
+
+Eu já deixei contas bloqueadas por quase 3 meses, com uma transação na rede Ethereum.
+Dia 1/1/2021 eu tentei publicar um smart contract usando o gas price de 30 gwei 
+Até o dia 29/3/2021 a transação ainda estava no Mempool...
+Isto significa que o preço do gas esteve acima de 30 gwei durante todo este período!
+
+### Gas utilizado
+
+Para saber o valor final de gas gasto em gWei 
+é preciso multiplicar a quantidade de gas que um smart contract vai gastar
+pelo gas price.
+
+### Gas limit
+
+Gas limit é o limite máximo que você vai gastar.
+O Gas limit existe porque algumas transações podem variar na quantidade de gas gasto 
+de acordo com parâmetros de entrada, oracles, valores de outras variáveis que podem gerar um loop.
+Enfim, tem que ter um limite para não travar a rede e acabar com o seu saldo.
+
+## Referências
+
+- [Vitalik Buterin](https://en.wikipedia.org/wiki/Vitalik_Buterin)
+- [ethereum.org](https://ethereum.org/pt-br/) em português
+- [ethereum.org](https://ethereum.org/en/) em inglês

@@ -1,0 +1,191 @@
+---
+title: 'Blockchain - fundamentos'
+description: 'Fundamentos do Blockchain: criptografia, redes distribuídas e teoria dos jogos'
+---
+
+O Blockchain utiliza fundamentos de outras áreas já consolidadas:
+
+- criptografia
+- redes distribuídas
+- teoria dos jogos
+
+Vamos entender melhor cada uma delas.
+
+## Criptografia
+
+Vamos entender:
+
+- Função Hash
+- Chaves criptográficas
+- Chave pública e chave privada
+- Merkle tree
+
+### Origem
+
+Em grego: *kryptós*, "escondido", e *gráphein*, "escrita"
+
+É o estudo dos princípios e técnicas pelas quais a informação pode ser transformada da sua forma original para outra ilegível, 
+de forma que possa ser conhecida apenas por seu destinatário (detentor da "chave secreta"), 
+o que a torna difícil de ser lida por alguém não autorizado.
+Só o receptor da mensagem pode ler a informação com facilidade. 
+
+É um ramo da Matemática, parte da Criptologia.
+
+A criptografia moderna é fundamental para aspectos de segurança da informação:
+- confidencialidade
+- integridade de dados
+- autenticação
+- não-repúdio
+
+Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/Criptografia)
+
+
+### Sugestão
+
+Filme que conta a história de Alan Turing e a a máquina Enigma que encriptava mensagens. 
+
+[O Jogo da Imitação](https://pt.wikipedia.org/wiki/O_Jogo_da_Imita%C3%A7%C3%A3o)
+
+### Leitura
+
+- [Enigma (máquina)](https://pt.wikipedia.org/wiki/Enigma_(m%C3%A1quina))
+
+
+## Função Hash
+
+Algoritmo que mapeia dados de comprimento variável para dados de comprimento fixo. 
+
+Características:
+
+- Determinístico: a mesma entrada resultará sempre na mesma saída
+- Rápido
+- Mão única: a partir do hash não é possível voltar ao original
+- Pequena alteração na entrada gera um hash completamente diferente (parece randômico)
+- Resistente à colisão: dois documentos não geram o mesmo hash
+
+### SHA-256
+
+Existem diversos tipos de função hash. 
+O mais importante para o Blockchain é o SHA-256 (Secure Hash Algorithm 256).
+
+Essa função recebe uma entrada de tamanho aleatório e a converte em uma saída de tamanho fixo de 256 bits = 64 caracteres.
+
+Experimente:
+
+[Hash em Blockchain - Anders](https://andersbrownworth.com/blockchain/hash)
+
+
+The SHA-256 hash function is utilised within the Bitcoin network in two main ways:
+
+- Mining
+- Creation of Bitcoin addressess
+
+## Chaves criptográficas
+
+Há dois tipos de chaves criptográficas: 
+
+- chaves simétricas (criptografia de chave única) 
+- chaves assimétricas (criptografia de chave pública)
+
+Em Blockchain utiliza-se chaves assimétricas.
+
+### Chave pública e chave privada
+
+Criptografia: 
+- qualquer pessoa pode criptografar uma mensagem usando a chave pública do destinatário. 
+- somente o dono da chave privada consegue descriptografar a mensagem criptografada com a chave pública correspondente.
+
+Autenticação: 
+- somente o dono da chave privada pode assinar / autorizar uma transação a partir da chave pública correspondente.
+- a chave pública verifica que o portador da chave privada enviou a mensagem.
+
+Os algoritmos de chave pública são baseados em problemas matemáticos 
+usando fatoração inteira, número primos, logaritmo discreto, e curva elíptica.  
+
+É praticamente impossível (computacionalmente impraticável) determinar uma chave privada 
+a partir da sua chave pública correspondente.
+
+Alguns algoritmos de chave pública:
+
+- RSA (Ron Rivest, Adi Shamir e Leonard Adleman)
+- El Gamal
+- Curvas elípticas
+
+[Wikipedia: criptografia de chave pública](https://pt.wikipedia.org/wiki/Criptografia_de_chave_p%C3%BAblica)
+
+## Merkle tree
+
+Parte fundamental do Blockchain, 
+permite eficiência e segurança na verificação de uma massa grande de dados, 
+para validar a integridade do conteúdo dos dados.
+
+- Árvore binária de hashes
+- Tipo de estrutura de dados: árvore binária de dispersão.
+- Mecanismo anti-fraude
+
+É uma estrutura de dados para armazenar informações em grandes conjuntos de dados (dataset) de maneira que a verificação deste dataset seja eficiente.
+
+Contém uma árvore de informações resumidas sobre um pedaço maior de dados.
+Usado para verificar seu conteúdo.
+
+[Wikipedia: árvores de Merkle](https://pt.wikipedia.org/wiki/%C3%81rvores_de_Merkle)
+
+![Merkle tree](/img/courses/dev/03/blockchain/image-02.png)
+
+Imagem: [merkle-root-and-merkle-proofs](https://bitcoin.stackexchange.com/questions/69018/merkle-root-and-merkle-proofs)
+
+- cada folha da árvore é um hash do dado transacional
+- cada nó é um "hash do hash" até a raiz da árvore
+- a raiz da árvore é chamada Merkle Root
+
+De acordo com Andreas M. Antonopoulos, em "the Bitcoin protocol":
+Merkle trees são utilizadas para compactar todas as transações de um bloco, 
+produzindo uma impressão digital do conjunto de transações, 
+em um processo muito eficiente para verificar quando uma transação está em um bloco.
+
+![Merkle tree](/img/courses/dev/03/blockchain/image-03.png)
+
+Imagem: [Wikipedia](https://commons.wikimedia.org/wiki/File:Bitcoin_Block_Data.png), 
+licença Creative Commons Attribution-Share-Alike 3.0 Unported
+
+## Redes distribuídas
+
+Os diagramas de Paul Baran, publicados no texto *On distributed communications* (BARAN, Paul - 1964)
+são uma das melhores formas para apresentar redes distribuídas:
+
+![On distributed communications](/img/courses/dev/03/blockchain/image-04.png)
+
+Este é o conceito básico do Blockchain: redes p2p, peer to peer ou ponto a ponto, 
+onde a comunicação pode ser realizada entre qualquer par de computadores.
+
+[Wikipedia: Paul Baran](https://pt.wikipedia.org/wiki/Paul_Baran)
+
+## Teoria dos jogos
+
+Quando estamos falando de teoria dos jogos,
+não estamos falando de videogames ou jogos de tabuleiro.
+
+É o estudo das tomadas de decisões entre indivíduos 
+quando o resultado de cada um depende das decisões dos outros
+em uma interdependência similar a um jogo.
+
+Ou seja, é o estudo das probabilidades em tomadas de decisões.
+
+### O problema dos generais bizantinos
+
+Foi proposto em 1982 por Marshall Pease, Robert Shostak e Leslie Lamport.
+
+O problema dos generais bizantinos descreve as armadilhas e desafios que existem 
+ao tentar coordenar ações de comunicação dentro de uma rede cujos pares não são totalmente confiáveis. 
+
+Este problema foi explicado e resolvido por Barbara Liskov e Miguel Castro, do MIT, em 1999: 
+[Practical Byzantine Fault Tolerance](http://pmg.csail.mit.edu/papers/osdi99.pdf) (em inglês).
+
+Estamos falando sobre consenso, como entrar em acordo sobre um determinado assunto.
+
+## Conclusão
+
+O objetivo desta lição foi apresentar os fundamentos do Blockchain: criptografia, redes distribuídas e teoria dos jogos. 
+
+Na próxima lição você entenderá o Bitcoin, a primeira rede Blockchain capaz de transferir valores eletronicamente.
+
