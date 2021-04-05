@@ -1,0 +1,60 @@
+---
+title: 'RSK'
+description: 'La red RSK'
+---
+
+## Sidechains = cadenas laterais
+
+Una cadena lateral, como dice su nombre,
+es una cadena lateral, o más bien, paralela a otra,
+y que tiene alguna forma de conexión con la cadena principal.
+
+Una cadena lateral es una cadena de bloques independiente cuya moneda nativa está vinculada al valor de otra moneda de la cadena de bloques.
+La vinculación puede hacerse cumplir mediante un protocolo o puede ser sintética.
+
+Un 2-way peg, o vinculación bidireccional, es un sistema de protocolo que permite intercambiar dos monedas de forma libre, automática y sin una negociación de precios.
+
+## RSK
+
+RSK es una cadena lateral de Bitcoin con la capacidad de ejecutar contratos inteligentes de Ethereum.
+
+¡En particular, considero que esto es lo mejor de ambos mundos!
+
+La criptomoneda de RSK es RBTC, que tiene su valor vinculado a Bitcoin,
+vinculado a Bitcoin, es decir, 1: 1, 1 RBTC vale 1 Bitcoin.
+
+Más de la mitad de los mineros de Bitcoin también validan los bloques RSK.
+Usan el mismo equipo y software especial que identifica cuando una transacción es Bitcoin o RSK
+
+Los mineros de RSK no reciben nuevas criptomonedas creadas.
+La recompensa en la red RSK es el gas para la ejecución de contratos inteligentes.
+
+La red RSK MainNet se lanzó a principios de enero de 2018. 
+
+Las estadísticas en vivo sobre toda la red RSK están disponibles en [RSK Stats](https://stats.rsk.co/). 
+
+Todo el código fuente necesario se puede encontrar en nuestro repositorio de GitHub: 
+[RSKSmart](https://github.com/rsksmart).
+
+Toda la información del proyecto, incluida una guía de introducción, se puede encontrar en el 
+[Portal para desarrolladores de RSK & RIF](https://developers.rsk.co/).
+
+Para conocer las últimas noticias y actualizaciones, consulte el [Blog](https://blog.rsk.co/) de RSK.
+
+## 2 way peg - PowPeg
+
+La conversión entre Bitcoin (BTC) y Smart Bitcoin (R-BTC) se logra a través de un mecanismo de conector bidireccional - 2-way peg. 
+
+El 2-way peg se arrancó mediante una federación de nodos que administran una firma múltiple de Bitcoin. 
+Sin embargo, RSK ha hecho la transición de su federación a PowPeg.
+
+Un PowPeg es un sistema de gestión de múltiples firmas en el cual los nodos de los participantes no tienen acceso directo o control sobre las claves privadas. 
+Las claves se controlan mediante HSM a prueba de manipulaciones. 
+Estos HSM ejecutan internamente nodos RSK livianos que obedecen los comandos que se originan en un smart contract de RSK llamado Bridge, que organiza los conectores salientes. 
+Solo cuando dichos comandos son confirmados por miles de bloques producidos por la red de minería, el HSM procede a firmar solicitudes de conectores salientes. 
+
+PowPeg es una nueva protección de seguridad superpuesta a la federación anterior. 
+Es único en el ecosistema criptográfico y reduce radicalmente la superficie de ataque a las brechas de seguridad más frecuentes. 
+La comunidad de RSK ha decidido colectivamente una estrategia para aumentar la seguridad del conector basada en la defensa en profundidad: 
+añadiendo más capas de seguridad a las existentes y protegiendo el sistema de la falla de cualquiera de ellas. 
+El objetivo final es la descentralización completa del conector. 
