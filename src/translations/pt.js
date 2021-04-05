@@ -54,5 +54,6 @@ export default {
   quiz: {
     yes: 'Sim',
     no: 'Não',
+    subscribers: 'Apenas os estudantes inscritos no curso podem fazer o teste.',
   },
 }

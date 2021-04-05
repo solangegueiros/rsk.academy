@@ -11,12 +11,18 @@ import {
   Heading,
   Center,
   useColorModeValue,
+  Text,
+  Alert,
+  AlertDescription,
+  AlertIcon,
 } from '@chakra-ui/react'
+import { useI18n } from 'next-localization'
 
 import { useQuiz } from '@/hooks/useQuiz'
 import { useSubmitAnswers } from '@/hooks/transactions/useSubmitAnswers'
 import { useRLogin } from '@/hooks/useRLogin'
 import { Locked } from '@/components/all'
+import { CONTRACT_ADDRESSES } from '@/constants/constants'
 import { QuizItem } from '../QuizItem'
 
 export const QuizList = ({ course, module, numberOfQuestions }) => {
@@ -24,6 +30,15 @@ export const QuizList = ({ course, module, numberOfQuestions }) => {
     course,
     module,
     numberOfQuestions,
+  )
+  const { studentClasses } = useSelector(state => state.profile)
+  const { chainId } = useRLogin()
+
+  const contractName =
+    course === 'dev' ? 'DeveloperA' : course === 'business' ? 'BusinessA' : ''
+
+  const hasSubscribed = studentClasses?.includes(
+    CONTRACT_ADDRESSES[chainId][contractName],
   )
 
   const QUIZ_NAME = `${course}-${module}`
@@ -38,6 +53,7 @@ export const QuizList = ({ course, module, numberOfQuestions }) => {
 
   const { quizResults } = useSelector(state => state.profile)
   const { isLoggedIn } = useRLogin()
+  const { t } = useI18n()
 
   useEffect(() => {
     start()
@@ -55,8 +71,19 @@ export const QuizList = ({ course, module, numberOfQuestions }) => {
     )
   }
 
+  if (!hasSubscribed) {
+    return (
+      <Alert my={8} status='warning'>
+        <AlertIcon />
+        <AlertDescription>
+          <Text>{t('quiz.subscribers')}</Text>
+        </AlertDescription>
+      </Alert>
+    )
+  }
+
   return (
-    <Box>
+    <Box my={4} p={4}>
       {quizResults && quizResults[QUIZ_NAME] && (
         <Box
           mx='auto'
