@@ -5,7 +5,7 @@ import { useContext } from 'react'
 import { ContractBase } from '@/components/all'
 import { ContractContext } from '@/context/ContractProvider'
 import { useSelector } from 'react-redux'
-import { COURSES } from '@/constants/constants'
+import { CONTRACT_ADDRESSES } from '@/constants/constants'
 import { useRLogin } from '@/hooks/useRLogin'
 import { useTransactionCallback } from '@/hooks/transactions/useTransactionCallback'
 
@@ -13,9 +13,11 @@ export const SubscribeAcademy = ({ contractName, buttonText }) => {
   const context = useContext(ContractContext)
   const contract = context[contractName]
   const { studentClasses } = useSelector(state => state.profile)
-  const { account } = useRLogin()
+  const { account, chainId } = useRLogin()
 
-  const hasSubscribed = studentClasses?.includes(COURSES[contractName])
+  const hasSubscribed = studentClasses?.includes(
+    CONTRACT_ADDRESSES[chainId][contractName],
+  )
 
   const { exec, isLoading } = useTransactionCallback({
     name: `Subscribe course ${contractName}`,
