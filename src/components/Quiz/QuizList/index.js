@@ -35,7 +35,7 @@ export const QuizList = ({ course, module, numberOfQuestions }) => {
   const { chainId } = useRLogin()
 
   const contractName =
-    course === 'dev' ? 'DeveloperA' : course === 'business' ? 'BusinessA' : ''
+    course === 'dev' ? 'Developer' : course === 'business' ? 'Business' : ''
 
   const hasSubscribed = studentClasses?.includes(
     CONTRACT_ADDRESSES[chainId][contractName],
