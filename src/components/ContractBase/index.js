@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
+import { useContext } from 'react'
 import {
   Alert,
   AlertDescription,
   AlertIcon,
   Box,
-  Button,
   chakra,
   Heading,
   HStack,
@@ -12,15 +12,15 @@ import {
   useClipboard,
   useColorModeValue,
 } from '@chakra-ui/react'
-import { useRLogin } from '@/hooks/useRLogin'
 import { CopyIcon } from '@chakra-ui/icons'
 import { IoMdWallet } from 'react-icons/io'
 import { useI18n } from 'next-localization'
+
 import { trimValue } from '@/utils/trimValue'
+import { RLoginResponseContext } from '@/context/RLoginProvider'
 
 const NotLoggedIn = () => {
   const { t } = useI18n()
-  const { activate } = useRLogin()
 
   return (
     <Alert
@@ -36,24 +36,23 @@ const NotLoggedIn = () => {
       <AlertDescription my={4} maxWidth='sm'>
         {t('contract.mustConnect')}
       </AlertDescription>
-      <Button variant='normal' onClick={activate}>
-        {t('connect')}
-      </Button>
     </Alert>
   )
 }
 
 export const ContractBase = ({ contract, children }) => {
   const { hasCopied, onCopy } = useClipboard(contract?.address)
-  const { isLoggedIn } = useRLogin()
+  const { rLoginResponse } = useContext(RLoginResponseContext)
   const color = useColorModeValue('primary.500', 'light.500')
   const { t } = useI18n()
   const bg = useColorModeValue('white', 'dark.400')
 
   if (!contract) return <NotLoggedIn />
 
-  const showDeployedContract = isLoggedIn && contract.isDeployedOnCurrentNetwork
-  const showIsNotDeployed = isLoggedIn && !contract.isDeployedOnCurrentNetwork
+  const showDeployedContract =
+    rLoginResponse && contract.isDeployedOnCurrentNetwork
+  const showIsNotDeployed =
+    rLoginResponse && !contract.isDeployedOnCurrentNetwork
 
   return (
     <Box bg={bg} p={8} boxShadow='md' borderRadius={10} mt={4}>
@@ -70,7 +69,7 @@ export const ContractBase = ({ contract, children }) => {
             </chakra.a>
           </Heading>
         </Tooltip>
-        {isLoggedIn && contract.address && (
+        {rLoginResponse && contract.address && (
           <Tooltip label={trimValue(contract.address, 8)} hasArrow>
             <Box
               color={color}
@@ -85,7 +84,7 @@ export const ContractBase = ({ contract, children }) => {
       </HStack>
 
       {/* If it's not logged in */}
-      {!isLoggedIn && <NotLoggedIn />}
+      {!rLoginResponse && <NotLoggedIn />}
 
       {/* if contract is not deployed on the network */}
       {showIsNotDeployed && (

@@ -55,5 +55,6 @@ export default {
   quiz: {
     yes: 'Yes',
     no: 'No',
+    subscribers: 'Only course subscribers can take the quiz.',
   },
 }

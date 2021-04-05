@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useContext, useRef } from 'react'
 import {
   Box,
   useColorModeValue,
@@ -11,24 +11,31 @@ import {
   Text,
   Tag,
 } from '@chakra-ui/react'
+import { useSelector } from 'react-redux'
 import { useI18n } from 'next-localization'
 import NextLink from 'next/link'
+import dynamic from 'next/dynamic'
 
 import { NETWORK_LABELS } from '@/constants/constants'
 import {
   DarkModeSwitch,
   LocaleSwitch,
-  WalletConnect,
   MobileNavButton,
   MobileNavContent,
   NavLink,
   Logo,
 } from '@/components/all'
-import { useRLogin } from '@/hooks/useRLogin'
+import { RLoginResponseContext } from '@/context/RLoginProvider'
+
+const WalletConnect = dynamic(() => import('../WalletConnect/index'), {
+  ssr: false,
+})
+
+console.log(`WalletConnect`, WalletConnect)
 
 const MainNavLinkGroup = props => {
   const { t } = useI18n()
-  const { isAdmin, isLoggedIn } = useRLogin()
+  const { isAdmin, isLoggedIn } = useSelector(state => state.identity)
 
   return (
     <HStack spacing='4' {...props}>
@@ -51,8 +58,9 @@ export const Header = props => {
   const bg = useColorModeValue('primary.50', 'dark.500')
   const colorScheme = useColorModeValue('primary', 'light')
   const { t } = useI18n()
+  const { rLoginResponse } = useContext(RLoginResponseContext)
 
-  const { isLoggedIn, chainId } = useRLogin()
+  const { chainId } = useSelector(state => state.identity)
 
   useUpdateEffect(() => {
     mobileNavBtnRef.current?.focus()
@@ -77,7 +85,7 @@ export const Header = props => {
               </Text>
             </Box>
             <HStack pos='absolute' right={0}>
-              {isLoggedIn && NETWORK_LABELS[chainId] && (
+              {rLoginResponse && NETWORK_LABELS[chainId] && (
                 <Tag colorScheme={colorScheme}>{NETWORK_LABELS[chainId]}</Tag>
               )}
               <LocaleSwitch />

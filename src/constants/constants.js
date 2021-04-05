@@ -33,12 +33,12 @@ export const ADMIN_ACCOUNTS = {
 
 export const COURSE_ADDRESSES = {
   1337: {
-    DeveloperA: process.env.NEXT_PUBLIC_LOCAL_DEV_CLASS_01,
-    BusinessA: process.env.NEXT_PUBLIC_LOCAL_BUSINESS_CLASS_01,
+    Developer: process.env.NEXT_PUBLIC_LOCAL_DEV_CLASS_01,
+    Business: process.env.NEXT_PUBLIC_LOCAL_BUSINESS_CLASS_01,
   },
   31: {
-    DeveloperA: process.env.NEXT_PUBLIC_DEV_CLASS_01,
-    BusinessA: process.env.NEXT_PUBLIC_BUSINESS_CLASS_01,
+    Developer: process.env.NEXT_PUBLIC_DEV_CLASS_01,
+    Business: process.env.NEXT_PUBLIC_BUSINESS_CLASS_01,
   },
 }
 

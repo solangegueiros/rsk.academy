@@ -1,9 +1,8 @@
 import { useContext } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { toBN } from 'web3-utils'
 
 import { useQuiz } from '@/hooks/useQuiz'
-import { toBN } from 'web3-utils'
-import { useRLogin } from '@/hooks/useRLogin'
 import { ContractContext } from '@/context/ContractProvider'
 import { loadQuizResult } from '@/store/profile/actions'
 import { finalizeAnswers, pendingAnswers } from '@/store/quiz/actions'
@@ -13,7 +12,7 @@ export const useSubmitAnswers = (course, module, numberOfQuestions) => {
   const { AcademyClass, AcademyStudentQuiz } = useContext(ContractContext)
   const dispatch = useDispatch()
   const { userAnswers = {} } = useQuiz(course, module, numberOfQuestions)
-  const { account } = useRLogin()
+  const { account } = useSelector(state => state.identity)
   const quizName = `${course}-${module}`
 
   const numberOfCorrectAnswers = Object.entries(userAnswers).filter(

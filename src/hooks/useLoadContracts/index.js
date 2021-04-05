@@ -20,13 +20,14 @@ import { loadAdmin } from '@/store/admin/actions'
 import { getContract } from '@/utils/getContract'
 import { ContractContext } from '@/context/ContractProvider'
 import { COURSE_ADDRESSES } from '@/constants/constants'
-import { Web3ProviderContext } from '@/context/Web3Provider'
+import { RLoginResponseContext } from '@/context/RLoginProvider'
 
 export function useLoadSmartContracts() {
-  const { provider } = useContext(Web3ProviderContext)
+  const { rLoginResponse } = useContext(RLoginResponseContext)
   const dispatch = useDispatch()
   const { account, chainId, isAdmin } = useSelector(state => state.identity)
   const { loadContract, resetContracts } = useContext(ContractContext)
+  const provider = rLoginResponse?.provider
 
   const loadContracts = async () => {
     if (provider && chainId) {
