@@ -1,5 +1,5 @@
 import Contract from 'web3-eth-contract'
-import { CONTRACTS } from '@/constants/constants'
+import { CONTRACT_ADDRESSES } from '@/constants/constants'
 
 export const getContract = (
   contractAbi,
@@ -12,7 +12,8 @@ export const getContract = (
   // If contract address depends on an external address
   const address =
     dependedAddress?.toLowerCase() ||
-    CONTRACTS[abi.contractName]?.toLowerCase() ||
+    (CONTRACT_ADDRESSES[chainId] &&
+      CONTRACT_ADDRESSES[chainId][abi.contractName]?.toLowerCase()) ||
     abi.networks[chainId]?.address.toLowerCase()
 
   if (address) {

@@ -1,30 +1,28 @@
 import { Button, ButtonGroup, Input, VStack } from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { ContractBase } from '@/components/all'
 import { useRLogin } from '@/hooks/useRLogin'
 import { ContractContext } from '@/context/ContractProvider'
 import { useTransactionCallback } from '@/hooks/transactions/useTransactionCallback'
-import { setStudentName } from '@/store/profile/actions'
+import { useLoadSmartContracts } from '@/hooks/useLoadContracts'
 
 export const MasterName = () => {
   const { MasterName: MasterNameContract } = useContext(ContractContext)
   const { account } = useRLogin()
+  const { loadContracts } = useLoadSmartContracts()
 
   const { studentName } = useSelector(state => state.profile)
-  const [name, setName] = useState(studentName || '')
-  const [address, setAddress] = useState('')
-  const dispatch = useDispatch()
+  const [name, setName] = useState(studentName)
+  const [address, setAddress] = useState()
 
   const onSetCompleted = () => {
-    dispatch(setStudentName(name))
-    setName('')
+    loadContracts()
   }
 
   const onDeleteCompleted = () => {
-    dispatch(setStudentName(null))
-    setName('')
+    loadContracts()
   }
 
   const {

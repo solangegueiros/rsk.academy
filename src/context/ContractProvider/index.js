@@ -8,8 +8,6 @@ import {
   AcademyWalletAbi,
   MasterNameAbi,
   MasterQuoteAbi,
-  NameAbi,
-  QuoteAbi,
   StudentPortfolioAbi,
 } from '@/contracts/index'
 import { useSelector } from 'react-redux'
@@ -22,8 +20,6 @@ const ABIS = [
   AcademyWalletAbi,
   MasterNameAbi,
   MasterQuoteAbi,
-  NameAbi,
-  QuoteAbi,
   StudentPortfolioAbi,
 ]
 
