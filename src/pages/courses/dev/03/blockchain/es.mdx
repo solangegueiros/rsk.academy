@@ -54,6 +54,35 @@ para que el bloque sea válido según las reglas de la red.
 Esta es la garantía de que se harán los esfuerzos para hacer todo correctamente,
 y no perder tiempo y energía, lo que sería una gran pérdida.
 
+## Mempool
+
+Cuando enviamos una transacción a Blockchain,
+no va inmediatamente a un bloque,
+está en una cola de espera llamada mempool.
+
+Para Bitcoin, por ejemplo,
+si una transacción no se extrae / valida en 2 semanas, se elimina del mempool.
+
+Para Ethereum, una transacción puede permanecer en el mempool para siempre.
+Cómo Ethereum controla el orden de las transacciones de una cuenta
+por un contador de transacciones, llamado nonce,
+por lo que no puede validar una transacción nonce superior si hay una transacción nonce anterior pendiente.
+
+## Timestamp
+
+El timestamp, o marca de tiempo, es información almacenada en cada bloque,
+para determinar el momento exacto en que el bloque fue creado y validado por la red Blockchain.
+
+De esta forma, toda transacción incluida en un bloque tiene un registro del momento de su inclusión.
+
+Esto puede ser útil para determinar una secuencia de transferencias desde una criptomoneda,
+es un mecanismo para evitar el doble gasto.
+
+También se puede utilizar para registrar que un hash particular que representa un documento u otro archivo se ha escrito en un bloque.
+en esa marca de tiempo, probando el momento de su existencia.
+
+## Anders Blockchain Demo
+
 Anders Brownworth creó una excelente demostración visual e interactiva de Blockchain:
 
 - [Anders Brownworth](https://andersbrownworth.com/)
