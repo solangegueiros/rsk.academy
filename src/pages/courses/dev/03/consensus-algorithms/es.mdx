@@ -1,4 +1,82 @@
 ---
-title: 'Web3 Providers'
-description: 'Web3 Providers'
+title: 'Algoritmos de consenso'
+description: 'Algoritmos de consenso'
 ---
+
+### PoW - Proof-of-Work: origens
+
+Conceituado por Cynthia Dwork e Moni Naor em 1992 no paper “Pricing via Processing, Or, Combatting Junk Mail, Advances in Cryptology”;
+nomeado por Markus Jakobsson e Ari Juels em 1999 no paper: “Proofs of Work and Bread Pudding Protocols”;
+
+Assimetria:
+
+- Muito difícil (mas possível) de calcular;
+- Fácil de verificar;
+
+## Consenso
+
+El consenso es un mecanismo para asegurar que las partes acuerden que cierto estado del sistema es correcto, que es la verdad.
+
+### PoW - Prueba de trabajo: orígenes
+
+Concebido por Cynthia Dwork y Moni Naor en 1992 en el documento "Pricing via Processing, Or, Combatting Junk Mail, Advances in Cryptology";
+Nombrado por Markus Jakobsson y Ari Juels en 1999 en el documento: "Proofs of Work and Bread Pudding Protocols";
+
+Asimetría:
+
+- Muy difícil (pero posible) de calcular;
+- Fácil de comprobar;
+
+### Hashcash
+
+Propuesto en 1997 por Adam Back, utiliza el concepto inicial de PoW
+para disminuir el spam en los correos electrónicos a través de cálculos de hash SHA-1
+
+Ejemplo:
+
+```
+X-Hashcash: 1:20:1303030600:adam@cypherspace.org::McMybZIhxKXu57jd:ckvi
+SHA-1 = 00000b7c65ac70650eb8d4f034e86d7d5cd1852f
+```
+
+### PoW - Proof-of-Work
+
+Cuando hablamos de Blockchain, PoW es una prueba de trabajo computacional, con gasto de procesamiento y energía.
+Tiene como objetivo garantizar la descentralización y la seguridad de las transacciones distribuidas.
+
+Estos son cálculos matemáticos que los mineros hacen en sus computadoras para verificar que las transacciones son válidas.
+
+La minería proviene del "descubrimiento" de nonce,
+que es el proceso de prueba y error para encontrar el número que satisfaga el grado de dificultad de la red.
+
+El timestamp en la minería PoW se usa para ajustar el nivel de dificultad de la red,
+manteniendo la minería de bloques en el promedio definido en el documento técnico de una Blockchain.
+Por ejemplo, para Bitcoin este promedio es de 10 minutos, mientras que para Ethereum es de 15 segundos.
+
+### PoS - Proof-of-Stake
+
+Conocido como prueba de participación.
+
+Para participar en la validación se utiliza la cantidad de monedas que tiene el minero, en lugar de la potencia computacional.
+
+El validador debe colocar sus monedas depositadas en una especie de caja fuerte para "probar" su participación, sin mover las monedas.
+
+Cuantas más monedas tenga, mayor será la posibilidad de validar las transacciones y ganar con ellas.
+
+En términos de energía, es más económico que PoW.
+
+Debería brindar más seguridad y descentralización, pero hace que los tenedores de monedas más grandes sean más propensos a obtener más monedas.
+
+### PoA - Proof-of-Authority
+
+Es la prueba de autoridad utilizada en Blockchains autorizadas.
+
+Es un grupo de *autoridades*, nodos definidos y autorizados para crear nuevos bloques en una cadena.
+
+Necesita la aprobación de la mayoría de los nodos para que se cree el bloque.
+
+## Conclusión
+
+El propósito de esta lección fue presentar algunos algoritmos de consenso de uso común.
+
+En la próxima lección comprenderá Bitcoin, la primera red Blockchain capaz de transferir valores electrónicamente.

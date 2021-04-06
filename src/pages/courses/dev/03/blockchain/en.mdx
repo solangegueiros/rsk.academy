@@ -54,6 +54,35 @@ so that the block is valid according to the network rules.
 This is the guarantee that efforts will be made to do everything correctly,
 and not to waste time and energy, which would be a huge loss.
 
+## Mempool
+
+When we send a transaction to the Blockchain,
+it doesn’t immediately go to a block,
+she sits in a queue, or "waiting room", called mempool.
+
+For Bitcoin, for example,
+if a transaction is not mined / validated in 2 weeks, it is deleted from the mempool.
+
+For Ethereum, a transaction can stay in the mempool forever.
+How Ethereum controls the order of an account's transactions
+by a transaction counter, called nonce,
+so you are unable to validate a higher nonce transaction if there is a previous nonce transaction pending.
+
+## Timestamp
+
+The timestamp is information stored in each block,
+to determine the exact moment when the block was created and validated by the Blockchain network.
+
+In this way, every transaction included in a block has proof of the moment of its inclusion.
+
+This can be useful to determine a sequence of transfers from a cryptocurrency,
+it is a mechanism to avoid double spending.
+
+It can also be used to record that a particular hash representing a document or other file has been written to a block
+in that timestamp, proving the moment of its existence.
+
+## Anders Blockchain Demo
+
 Anders Brownworth created an excellent visual and interactive Blockchain demo:
 
 - [Anders Brownworth](https://andersbrownworth.com/)
