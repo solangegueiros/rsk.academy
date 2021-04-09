@@ -158,6 +158,14 @@
         },
         {
           "title": {
+            "en": "Using Remix to interact with a smart contract",
+            "es": "Usando Remix para interactuar con un contrato inteligente",
+            "pt": "Usando Remix para interagir com um smart contract"
+          },
+          "path": "/courses/dev/02/interact-with-a-smart-contract"
+        },
+        {
+          "title": {
             "en": "Validate your name at RSK Academy",
             "es": "Valide su nombre en RSK Academy",
             "pt": "Valide seu nome na RSK Academy"
