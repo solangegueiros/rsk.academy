@@ -33,6 +33,12 @@ const TimeZone = dynamic(() => import('../../components/TimeZone'), {
   ssr: false,
 })
 
+function extractVideoIdFromUrl(url) {
+  const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
+  const match = url.match(regExp)
+  return match && match[7].length == 11 ? match[7] : false
+}
+
 const LANGUAGES = {
   en: 'English',
   es: 'Español',
@@ -47,17 +53,19 @@ const Event = ({ event }) => {
 
   useEffect(() => {
     const fetchEvent = async () => {
-      const response = await fetch(`/api/event/${query.id}`)
-      const result = await response.json()
-      setEventItem(result)
+      if (query.id) {
+        const response = await fetch(`/api/event/${query.id}`)
+        const result = await response.json()
+        setEventItem(result)
+      }
     }
     fetchEvent()
-  }, [])
+  }, [query.id])
 
-  if (!event)
+  if (!event || !eventItem)
     return (
       <Flex h='100vh' align='center' justify='center'>
-        <Spinner size='lg'>No Event</Spinner>
+        <Spinner size='lg' />
       </Flex>
     )
 
@@ -78,7 +86,7 @@ const Event = ({ event }) => {
   } = eventItem
 
   const isExpired = isPast(new Date(datetime))
-  const videoId = video_link?.split('/').slice(-1)[0]
+  const videoId = extractVideoIdFromUrl(video_link)
 
   return (
     <Layout>
@@ -90,7 +98,6 @@ const Event = ({ event }) => {
       <Box my={8} mx='auto' bg={bg}>
         <Image w='full' src={image} />
       </Box>
-
       <SimpleGrid
         p={8}
         bg={bg}

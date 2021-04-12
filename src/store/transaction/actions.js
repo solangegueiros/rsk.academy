@@ -1,3 +1,3 @@
 import { transactionSlice } from './slice'
 
-export const { resetTransactions, addTransaction } = transactionSlice.actions
+export const { resetTransaction, addTransaction } = transactionSlice.actions

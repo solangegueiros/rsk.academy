@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import {
   Box,
   CloseButton,
@@ -7,19 +7,31 @@ import {
   Tag,
   useColorModeValue,
   VStack,
+  Button,
 } from '@chakra-ui/react'
+import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { useI18n } from 'next-localization'
+import dynamic from 'next/dynamic'
 
-import { DarkModeSwitch, WalletConnect } from '@/components/all'
-import { useRLogin } from '@/hooks/useRLogin'
+import { DarkModeSwitch, Transactions } from '@/components/all'
+import { RLoginResponseContext } from '@/context/RLoginProvider'
 import { MobileNavLink } from '../MobileNavLink'
+
+const LoadingButton = () => <Button variant='inversed' isLoading={true} />
+
+const WalletConnect = dynamic(() => import('../../WalletConnect/index'), {
+  ssr: false,
+  // eslint-disable-next-line react/display-name
+  loading: () => <LoadingButton />,
+})
 
 export const MobileNavHeader = ({ shadow, onClose }) => {
   const router = useRouter()
   const closeBtnRef = useRef()
   const { t } = useI18n()
-  const { isAdmin, isLoggedIn } = useRLogin()
+  const { isAdmin } = useSelector(state => state.identity)
+  const { rLoginResponse } = useContext(RLoginResponseContext)
 
   const { locale, locales } = router
 
@@ -53,7 +65,7 @@ export const MobileNavHeader = ({ shadow, onClose }) => {
             {t('courses')}
           </MobileNavLink>
           <MobileNavLink href='/events'>{t('events')}</MobileNavLink>
-          {isLoggedIn && !isAdmin && (
+          {rLoginResponse && !isAdmin && (
             <>
               <MobileNavLink href='/portfolio'>{t('portfolio')}</MobileNavLink>
               <MobileNavLink href='/profile'>{t('profile')}</MobileNavLink>
@@ -61,11 +73,9 @@ export const MobileNavHeader = ({ shadow, onClose }) => {
           )}
           {isAdmin && <MobileNavLink href='/admin'>{t('admin')}</MobileNavLink>}
         </HStack>
-        <HStack
-          onClick={() => setTimeout(() => onClose(), 1000)}
-          align='center'
-        >
-          <WalletConnect />
+        <HStack align='center'>
+          <Transactions />
+          <WalletConnect onClick={() => setTimeout(() => onClose(), 1000)} />
         </HStack>
       </VStack>
     </Box>

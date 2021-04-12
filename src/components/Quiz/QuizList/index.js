@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import {
   Box,
@@ -11,12 +11,17 @@ import {
   Heading,
   Center,
   useColorModeValue,
+  Text,
+  Alert,
+  AlertDescription,
+  AlertIcon,
 } from '@chakra-ui/react'
+import { useI18n } from 'next-localization'
 
 import { useQuiz } from '@/hooks/useQuiz'
 import { useSubmitAnswers } from '@/hooks/transactions/useSubmitAnswers'
-import { useRLogin } from '@/hooks/useRLogin'
-import { Locked } from '@/components/all'
+import { CONTRACT_ADDRESSES } from '@/constants/constants'
+import { RLoginResponseContext } from '@/context/RLoginProvider'
 import { QuizItem } from '../QuizItem'
 
 export const QuizList = ({ course, module, numberOfQuestions }) => {
@@ -24,6 +29,15 @@ export const QuizList = ({ course, module, numberOfQuestions }) => {
     course,
     module,
     numberOfQuestions,
+  )
+  const { studentClasses } = useSelector(state => state.profile)
+  const { chainId } = useSelector(state => state.identity)
+
+  const contractName =
+    course === 'dev' ? 'Developer' : course === 'business' ? 'Business' : ''
+
+  const hasSubscribed = studentClasses?.includes(
+    CONTRACT_ADDRESSES[chainId] && CONTRACT_ADDRESSES[chainId][contractName],
   )
 
   const QUIZ_NAME = `${course}-${module}`
@@ -37,7 +51,8 @@ export const QuizList = ({ course, module, numberOfQuestions }) => {
   )
 
   const { quizResults } = useSelector(state => state.profile)
-  const { isLoggedIn } = useRLogin()
+  const { rLoginResponse } = useContext(RLoginResponseContext)
+  const { t } = useI18n()
 
   useEffect(() => {
     start()
@@ -47,16 +62,27 @@ export const QuizList = ({ course, module, numberOfQuestions }) => {
     await submitAnswers()
   }
 
-  if (!isLoggedIn) {
+  if (!rLoginResponse) {
     return (
       <Center h='full'>
-        <Locked />
+        <Text>You must be logged in</Text>
       </Center>
     )
   }
 
+  if (!hasSubscribed) {
+    return (
+      <Alert my={8} status='warning'>
+        <AlertIcon />
+        <AlertDescription>
+          <Text>{t('quiz.subscribers')}</Text>
+        </AlertDescription>
+      </Alert>
+    )
+  }
+
   return (
-    <Box>
+    <Box my={4} p={4}>
       {quizResults && quizResults[QUIZ_NAME] && (
         <Box
           mx='auto'

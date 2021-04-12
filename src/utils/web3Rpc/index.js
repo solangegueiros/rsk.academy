@@ -47,19 +47,3 @@ export const PROVIDERS = {
   NIFTY: 'NIFTY',
   WALLET_CONNECT: 'WALLET_CONNECT',
 }
-
-/**
- * Return the Provider Name. Used to detect DataVault features
- * @param provider web3Provider
- */
-export const getProviderName = provider => {
-  if (provider.isNiftyWallet) {
-    return PROVIDERS.NIFTY
-  }
-  if (provider.isMetaMask) {
-    return PROVIDERS.METAMASK
-  }
-  if (provider.wc) {
-    return PROVIDERS.WALLET_CONNECT
-  }
-}

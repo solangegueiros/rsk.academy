@@ -1,14 +1,16 @@
+import { useContext } from 'react'
+import { useSelector } from 'react-redux'
 import { Box, Heading, useColorModeValue } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
 
 import { Layout, Seo } from '@/components/all'
-import { useSelector } from 'react-redux'
-import { useRLogin } from '@/hooks/useRLogin'
+import { RLoginResponseContext } from '@/context/RLoginProvider'
 
 const Profile = () => {
   const { t } = useI18n()
   const profile = useSelector(state => state.profile)
-  const { isAdmin, isLoggedIn } = useRLogin()
+  const { rLoginResponse } = useContext(RLoginResponseContext)
+  const { isAdmin } = useSelector(state => state.identity)
   const {
     index,
     ownerAddress,
@@ -25,7 +27,7 @@ const Profile = () => {
   return (
     <Layout>
       <Seo title={t('profile')} />
-      {isLoggedIn ? (
+      {rLoginResponse ? (
         isAdmin ? (
           <Box>Portfolio page is for students</Box>
         ) : index ? (

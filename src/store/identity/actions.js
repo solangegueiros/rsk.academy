@@ -1,5 +1,3 @@
-import { clearRloginStorage, rLogin } from '@/connectors/rLogin'
-import { getAccountAndNetwork } from '@/utils/web3Rpc'
 import { identitySlice } from './slice'
 
 export const {
@@ -7,24 +5,10 @@ export const {
   changeChainId,
   reset,
   setError,
-  setChainError,
 } = identitySlice.actions
 
-export const login = context => async dispatch => {
+export const login = (account, chainId) => dispatch => {
   try {
-    const provider = await rLogin.connect()
-    context.setProvider(provider)
-
-    provider.on('accountsChanged', accounts => {
-      dispatch(changeAccount({ account: accounts[0] }))
-    })
-    provider.on('chainChanged', id => {
-      dispatch(changeChainId({ chainId: id }))
-    })
-    provider.on('disconnect', () => console.warn(`disconnect`))
-
-    const [account, chainId] = await getAccountAndNetwork(provider)
-
     dispatch(changeAccount({ account: account.toLowerCase() }))
     dispatch(changeChainId({ chainId: parseInt(chainId) }))
   } catch (err) {
@@ -33,8 +17,6 @@ export const login = context => async dispatch => {
   }
 }
 
-export const logout = context => dispatch => {
-  clearRloginStorage()
-  context?.reset()
+export const logout = () => dispatch => {
   dispatch(reset())
 }

@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useContext, useRef } from 'react'
 import {
   Box,
   useColorModeValue,
@@ -10,31 +10,42 @@ import {
   useBreakpointValue,
   Text,
   Tag,
+  Button,
 } from '@chakra-ui/react'
+import { useSelector } from 'react-redux'
 import { useI18n } from 'next-localization'
 import NextLink from 'next/link'
+import dynamic from 'next/dynamic'
 
 import { NETWORK_LABELS } from '@/constants/constants'
 import {
   DarkModeSwitch,
   LocaleSwitch,
-  WalletConnect,
   MobileNavButton,
   MobileNavContent,
   NavLink,
   Logo,
+  Transactions,
 } from '@/components/all'
-import { useRLogin } from '@/hooks/useRLogin'
+import { RLoginResponseContext } from '@/context/RLoginProvider'
+
+const LoadingButton = () => <Button variant='inversed' isLoading={true} />
+
+const WalletConnect = dynamic(() => import('../WalletConnect/index'), {
+  ssr: false,
+  // eslint-disable-next-line react/display-name
+  loading: () => <LoadingButton />,
+})
 
 const MainNavLinkGroup = props => {
   const { t } = useI18n()
-  const { isAdmin, isLoggedIn } = useRLogin()
+  const { isAdmin, account } = useSelector(state => state.identity)
 
   return (
     <HStack spacing='4' {...props}>
       <NavLink href='/courses'>{t('courses')}</NavLink>
       <NavLink href='/events'>{t('events')}</NavLink>
-      {isLoggedIn && !isAdmin && (
+      {account && !isAdmin && (
         <>
           <NavLink href='/portfolio'>{t('portfolio')}</NavLink>
           <NavLink href='/profile'>{t('profile')}</NavLink>
@@ -51,8 +62,9 @@ export const Header = props => {
   const bg = useColorModeValue('primary.50', 'dark.500')
   const colorScheme = useColorModeValue('primary', 'light')
   const { t } = useI18n()
+  const { rLoginResponse } = useContext(RLoginResponseContext)
 
-  const { isLoggedIn, chainId } = useRLogin()
+  const { chainId } = useSelector(state => state.identity)
 
   useUpdateEffect(() => {
     mobileNavBtnRef.current?.focus()
@@ -77,7 +89,7 @@ export const Header = props => {
               </Text>
             </Box>
             <HStack pos='absolute' right={0}>
-              {isLoggedIn && NETWORK_LABELS[chainId] && (
+              {rLoginResponse && NETWORK_LABELS[chainId] && (
                 <Tag colorScheme={colorScheme}>{NETWORK_LABELS[chainId]}</Tag>
               )}
               <LocaleSwitch />
@@ -118,7 +130,13 @@ export const Header = props => {
                 <MainNavLinkGroup />
               )}
             </HStack>
-            {useBreakpointValue({ base: false, md: true }) && <WalletConnect />}
+
+            {useBreakpointValue({ base: false, md: true }) && (
+              <HStack>
+                <Transactions />
+                <WalletConnect />
+              </HStack>
+            )}
             <MobileNavButton
               ref={mobileNavBtnRef}
               aria-label='Open Menu'

@@ -1,13 +1,13 @@
-import { Button, ButtonGroup, Input, VStack } from '@chakra-ui/react'
 import { useContext, useState } from 'react'
+import { Button, ButtonGroup, Input, VStack } from '@chakra-ui/react'
+import { useSelector } from 'react-redux'
 
 import { ContractBase } from '@/components/all'
-import { useRLogin } from '@/hooks/useRLogin'
 import { ContractContext } from '@/context/ContractProvider'
 
 export const MasterQuote = () => {
   const { MasterQuote: contract } = useContext(ContractContext)
-  const { account } = useRLogin()
+  const { account } = useSelector(state => state.identity)
 
   const [quote, setQuote] = useState('')
   const [address, setAddress] = useState('')
