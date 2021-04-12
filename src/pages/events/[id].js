@@ -33,6 +33,12 @@ const TimeZone = dynamic(() => import('../../components/TimeZone'), {
   ssr: false,
 })
 
+function extractVideoIdFromUrl(url) {
+  const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
+  const match = url.match(regExp)
+  return match && match[7].length == 11 ? match[7] : false
+}
+
 const LANGUAGES = {
   en: 'English',
   es: 'Español',
@@ -61,6 +67,8 @@ const Event = ({ event }) => {
       </Flex>
     )
 
+  console.log(`event`, event)
+
   const {
     datetime,
     title,
@@ -78,7 +86,7 @@ const Event = ({ event }) => {
   } = eventItem
 
   const isExpired = isPast(new Date(datetime))
-  const videoId = video_link?.split('/').slice(-1)[0]
+  const videoId = extractVideoIdFromUrl(video_link)
 
   return (
     <Layout>
