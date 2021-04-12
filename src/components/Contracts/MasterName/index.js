@@ -1,16 +1,15 @@
-import { Button, ButtonGroup, Input, VStack } from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
+import { Button, ButtonGroup, Input, VStack } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 
 import { ContractBase } from '@/components/all'
-import { useRLogin } from '@/hooks/useRLogin'
 import { ContractContext } from '@/context/ContractProvider'
 import { useTransactionCallback } from '@/hooks/transactions/useTransactionCallback'
 import { useLoadSmartContracts } from '@/hooks/useLoadContracts'
 
 export const MasterName = () => {
   const { MasterName: MasterNameContract } = useContext(ContractContext)
-  const { account } = useRLogin()
+  const { account } = useSelector(state => state.identity)
   const { loadContracts } = useLoadSmartContracts()
 
   const { studentName } = useSelector(state => state.profile)

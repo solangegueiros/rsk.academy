@@ -28,7 +28,7 @@ export const reducers = {
     state.quizResults = quizResults
   },
   loadQuizResult: (state, { payload: { quizName, result } }) => {
-    state.quizResults[quizName] = result
+    if (state.quizResults) state.quizResults[quizName] = result
   },
   resetProfile: () => initialState,
   setStudentName: (state, { payload }) => {

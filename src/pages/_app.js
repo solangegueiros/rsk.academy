@@ -8,7 +8,7 @@ import dynamic from 'next/dynamic'
 import store from '@/store/store'
 import theme from '@/theme/index'
 import siteConfig from '@/configs/site-config'
-import { Web3Provider } from '@/context/Web3Provider'
+import { RLoginProvider } from '@/context/RLoginProvider'
 import { ContractProvider } from '@/context/ContractProvider'
 
 const LocaleProvider = dynamic(() => import('../components/LocaleProvider'))
@@ -50,13 +50,13 @@ function MyApp({ Component, pageProps }) {
       <DefaultSeo {...siteConfig.seo} />
       <LocaleProvider>
         <ReduxProvider store={store}>
-          <Web3Provider>
+          <RLoginProvider>
             <ContractProvider>
               <ChakraProvider theme={theme}>
                 <Component {...pageProps} />
               </ChakraProvider>
             </ContractProvider>
-          </Web3Provider>
+          </RLoginProvider>
         </ReduxProvider>
       </LocaleProvider>
     </>

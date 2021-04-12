@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+import { useSelector } from 'react-redux'
 import {
   Box,
   Heading,
@@ -7,14 +9,13 @@ import {
 } from '@chakra-ui/react'
 
 import { Layout } from '@/components/all'
-import { useRLogin } from '@/hooks/useRLogin'
-import { useContext } from 'react'
 import { ContractContext } from '@/context/ContractProvider'
 import ContractCard from '@/components/ContractCard'
-import { useSelector } from 'react-redux'
+import { RLoginResponseContext } from '@/context/RLoginProvider'
 
 const Admin = () => {
-  const { isAdmin, isLoggedIn } = useRLogin()
+  const { rLoginResponse } = useContext(RLoginResponseContext)
+  const { isAdmin } = useSelector(state => state.identity)
   const { allContracts } = useContext(ContractContext)
   const { students, nameList } = useSelector(state => state.admin)
   const bg = useColorModeValue('white', 'dark.400')
@@ -32,7 +33,7 @@ const Admin = () => {
 
   return (
     <Layout>
-      {isLoggedIn ? (
+      {rLoginResponse ? (
         isAdmin ? (
           <Box>
             <Heading my={8} textAlign='center'>

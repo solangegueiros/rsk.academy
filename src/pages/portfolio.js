@@ -1,14 +1,16 @@
+import { useContext } from 'react'
+import { useSelector } from 'react-redux'
 import { Box, SimpleGrid } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
 
 import { Layout, Seo, AcademyWallet } from '@/components/all'
-import { useRLogin } from '@/hooks/useRLogin'
 import { CONTRACTS } from '@/components/Contracts'
-import { useSelector } from 'react-redux'
+import { RLoginResponseContext } from '@/context/RLoginProvider'
 
 const Portfolio = () => {
   const { t } = useI18n()
-  const { isAdmin, isLoggedIn } = useRLogin()
+  const { rLoginResponse } = useContext(RLoginResponseContext)
+  const { isAdmin } = useSelector(state => state.identity)
   const { portfolioList } = useSelector(state => state.profile)
 
   const PortfolioProjectComponents = Object.entries(CONTRACTS)
@@ -20,7 +22,7 @@ const Portfolio = () => {
   return (
     <Layout>
       <Seo title={t('portfolio')} />
-      {isLoggedIn ? (
+      {rLoginResponse ? (
         isAdmin ? (
           <Box>Portfolio page is for students</Box>
         ) : (
