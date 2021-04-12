@@ -10,6 +10,7 @@ your smart contract does NOT appear in the section **Deployed Contracts** in **D
 > It is possible to interact with a smart contract previously published!
 
 To interact with a published smart contract, you must have 2 informations:
+
 1. Contract address
 2. ABI - Application Binary Interface
 
@@ -20,7 +21,7 @@ I hope you have already saved the address of your smart contract **Name**.
 If you haven't saved it, you can get it by following these steps:
 1- Go to [RSK explorer](https://explorer.testnet.rsk.co/)
 2- Search the address of your wallet
-3- In the list of transactions, look for a line that has **contract created** or **contract deploy** 
+3- In the list of transactions, look for a line that has **contract created** or **contract deploy**
 4- Click on the transaction to see its details
 5- In the transaction, copy the value of **Contract Address**
 
@@ -50,14 +51,16 @@ You can use it for testing :)
 
 ## ABI - Application Binary Interface
 
-The [ABI](https://solidity.readthedocs.io/en/v0.5.3/abi-spec.html) is the standard way to interact with contracts, 
-both from outside the blockchain and for contract-to-contract interaction. 
+The [ABI](https://solidity.readthedocs.io/en/v0.5.3/abi-spec.html) is the standard way to interact with contracts,
+both from outside the blockchain and for contract-to-contract interaction.
 
 The ABI contains all public information on the smart contract:
+
 1. public variables
 2. public functions
 
 The smart contract **Name** contains the following information at ABI:
+
 - getName - public function defined in the smart contract
 - owner - public variable, which is the address that published the smart contract, that is, the address of your wallet.
 
@@ -72,12 +75,13 @@ In another module you will learn how to use ABI directly.
 Using Remix, we will use the smart contract source code, which we already know.
 
 ### Interacting with the smart contract Name on Remix
+
 1. On the 2nd button on the left - **file explorer**, open the file **Name.sol**,
-created earlier in the lesson [Create your first smart contract: name] (/ courses / dev / 02 / smart-contract-name)
+   created earlier in the lesson [Create your first smart contract: name] (/ courses / dev / 02 / smart-contract-name)
 
 2. Then go to **Deploy and run transactions**,
-In **Environment**,
-select the option **Injected Web3**.
+   In **Environment**,
+   select the option **Injected Web3**.
 
 3. Paste your smart contract address in the field next to the **At Address** button.
 
