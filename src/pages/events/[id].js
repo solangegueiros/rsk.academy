@@ -53,21 +53,21 @@ const Event = ({ event }) => {
 
   useEffect(() => {
     const fetchEvent = async () => {
-      const response = await fetch(`/api/event/${query.id}`)
-      const result = await response.json()
-      setEventItem(result)
+      if (query.id) {
+        const response = await fetch(`/api/event/${query.id}`)
+        const result = await response.json()
+        setEventItem(result)
+      }
     }
     fetchEvent()
-  }, [])
+  }, [query.id])
 
-  if (!event)
+  if (!event || !eventItem)
     return (
       <Flex h='100vh' align='center' justify='center'>
-        <Spinner size='lg'>No Event</Spinner>
+        <Spinner size='lg' />
       </Flex>
     )
-
-  console.log(`event`, event)
 
   const {
     datetime,
@@ -98,7 +98,6 @@ const Event = ({ event }) => {
       <Box my={8} mx='auto' bg={bg}>
         <Image w='full' src={image} />
       </Box>
-
       <SimpleGrid
         p={8}
         bg={bg}
