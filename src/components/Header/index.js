@@ -25,6 +25,7 @@ import {
   MobileNavContent,
   NavLink,
   Logo,
+  Transactions,
 } from '@/components/all'
 import { RLoginResponseContext } from '@/context/RLoginProvider'
 
@@ -129,7 +130,13 @@ export const Header = props => {
                 <MainNavLinkGroup />
               )}
             </HStack>
-            {useBreakpointValue({ base: false, md: true }) && <WalletConnect />}
+
+            {useBreakpointValue({ base: false, md: true }) && (
+              <HStack>
+                <Transactions />
+                <WalletConnect />
+              </HStack>
+            )}
             <MobileNavButton
               ref={mobileNavBtnRef}
               aria-label='Open Menu'

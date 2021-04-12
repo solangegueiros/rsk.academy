@@ -1,5 +1,5 @@
 import { useToast } from '@chakra-ui/react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { addTransaction } from '@/store/transaction/actions'
 import { useState } from 'react'
@@ -21,6 +21,7 @@ export const useTransactionCallback = ({
   const [isError, setIsError] = useState(false)
   const [result, setResult] = useState(null)
   const { loadContracts } = useLoadSmartContracts()
+  const { account } = useSelector(state => state.identity)
 
   const exec = async () => {
     setIsLoading(true)
@@ -32,6 +33,7 @@ export const useTransactionCallback = ({
         .on('transactionHash', hash => {
           dispatch(
             addTransaction({
+              account,
               name,
               hash,
               type: 'pending',
@@ -42,6 +44,7 @@ export const useTransactionCallback = ({
           setIsLoading(false)
           dispatch(
             addTransaction({
+              account,
               name,
               hash: receipt.transactionHash,
               type: 'confirmed',
@@ -65,6 +68,7 @@ export const useTransactionCallback = ({
           if (error.code !== 4001 && receipt) {
             dispatch(
               addTransaction({
+                account,
                 name,
                 type: 'failed',
                 hash: receipt.transactionHash,

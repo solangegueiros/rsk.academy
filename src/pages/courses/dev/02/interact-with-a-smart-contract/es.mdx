@@ -10,6 +10,7 @@ tu contrato inteligente NO aparece en la sección **Deployed Contracts** en **De
 > ¡Es posible interactuar con un contrato inteligente previamente publicado!
 
 Para interactuar con un contrato inteligente ya publicado, debe tener 2 información:
+
 1. Dirección del contrato
 2. ABI - Interfaz binaria de la aplicación
 
@@ -54,10 +55,12 @@ La [ABI](https://solidity.readthedocs.io/en/v0.5.3/abi-spec.html) es el estánda
 tanto desde fuera de Blockchain como para la interacción de contrato a contrato.
 
 ABI contiene toda la información pública sobre el contrato inteligente:
+
 1. variables públicas
 2. funciones públicas
 
 El contrato inteligente **Name** contiene la siguiente información en ABI:
+
 - getName - función pública definida en el contrato inteligente
 - propietario - variable pública, que es la dirección que publicó el contrato inteligente, es decir, la dirección de su billetera.
 
@@ -74,11 +77,11 @@ Usando Remix, usaremos el código fuente del contrato inteligente, que ya conoce
 ### Interacción con el nombre del contrato inteligente en Remix
 
 1. En el segundo botón de la izquierda - **file explorer**, abra el archivo **Name.sol**,
-creado anteriormente en la lección [Cree su primer contrato inteligente: nombre] (/ cursos / dev / 02 / nombre-contrato-inteligente)
+   creado anteriormente en la lección [Cree su primer contrato inteligente: nombre] (/ cursos / dev / 02 / nombre-contrato-inteligente)
 
 2. Luego, vaya a **Deploy and run transactions**,
-En **Environment**,
-seleccione la opción **Injected Web3**.
+   En **Environment**,
+   seleccione la opción **Injected Web3**.
 
 3. Pegue la dirección de su contrato inteligente en el campo junto al botón **At Address**.
 

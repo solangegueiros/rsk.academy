@@ -14,7 +14,7 @@ import { useRouter } from 'next/router'
 import { useI18n } from 'next-localization'
 import dynamic from 'next/dynamic'
 
-import { DarkModeSwitch } from '@/components/all'
+import { DarkModeSwitch, Transactions } from '@/components/all'
 import { RLoginResponseContext } from '@/context/RLoginProvider'
 import { MobileNavLink } from '../MobileNavLink'
 
@@ -73,11 +73,9 @@ export const MobileNavHeader = ({ shadow, onClose }) => {
           )}
           {isAdmin && <MobileNavLink href='/admin'>{t('admin')}</MobileNavLink>}
         </HStack>
-        <HStack
-          onClick={() => setTimeout(() => onClose(), 1000)}
-          align='center'
-        >
-          <WalletConnect />
+        <HStack align='center'>
+          <Transactions />
+          <WalletConnect onClick={() => setTimeout(() => onClose(), 1000)} />
         </HStack>
       </VStack>
     </Box>

@@ -22,16 +22,17 @@ Vamos entender:
 
 ### Origem
 
-Em grego: *kryptós*, "escondido", e *gráphein*, "escrita"
+Em grego: _kryptós_, "escondido", e *gráphein*, "escrita"
 
-É o estudo dos princípios e técnicas pelas quais a informação pode ser transformada da sua forma original para outra ilegível, 
-de forma que possa ser conhecida apenas por seu destinatário (detentor da "chave secreta"), 
+É o estudo dos princípios e técnicas pelas quais a informação pode ser transformada da sua forma original para outra ilegível,
+de forma que possa ser conhecida apenas por seu destinatário (detentor da "chave secreta"),
 o que a torna difícil de ser lida por alguém não autorizado.
-Só o receptor da mensagem pode ler a informação com facilidade. 
+Só o receptor da mensagem pode ler a informação com facilidade.
 
 É um ramo da Matemática, parte da Criptologia.
 
 A criptografia moderna é fundamental para aspectos de segurança da informação:
+
 - confidencialidade
 - integridade de dados
 - autenticação
@@ -39,21 +40,19 @@ A criptografia moderna é fundamental para aspectos de segurança da informaçã
 
 Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/Criptografia)
 
-
 ### Sugestão
 
-Filme que conta a história de Alan Turing e a a máquina Enigma que encriptava mensagens. 
+Filme que conta a história de Alan Turing e a a máquina Enigma que encriptava mensagens.
 
 [O Jogo da Imitação](https://pt.wikipedia.org/wiki/O_Jogo_da_Imita%C3%A7%C3%A3o)
 
 ### Leitura
 
-- [Enigma (máquina)](https://pt.wikipedia.org/wiki/Enigma_(m%C3%A1quina))
-
+- [Enigma (máquina)](<https://pt.wikipedia.org/wiki/Enigma_(m%C3%A1quina)>)
 
 ## Função Hash
 
-Algoritmo que mapeia dados de comprimento variável para dados de comprimento fixo. 
+Algoritmo que mapeia dados de comprimento variável para dados de comprimento fixo.
 
 Características:
 
@@ -65,7 +64,7 @@ Características:
 
 ### SHA-256
 
-Existem diversos tipos de função hash. 
+Existem diversos tipos de função hash.
 O mais importante para o Blockchain é o SHA-256 (Secure Hash Algorithm 256).
 
 Essa função recebe uma entrada de tamanho aleatório e a converte em uma saída de tamanho fixo de 256 bits = 64 caracteres.
@@ -74,7 +73,6 @@ Experimente:
 
 [Hash em Blockchain - Anders](https://andersbrownworth.com/blockchain/hash)
 
-
 The SHA-256 hash function is utilised within the Bitcoin network in two main ways:
 
 - Mining
@@ -82,27 +80,29 @@ The SHA-256 hash function is utilised within the Bitcoin network in two main way
 
 ## Chaves criptográficas
 
-Há dois tipos de chaves criptográficas: 
+Há dois tipos de chaves criptográficas:
 
-- chaves simétricas (criptografia de chave única) 
+- chaves simétricas (criptografia de chave única)
 - chaves assimétricas (criptografia de chave pública)
 
 Em Blockchain utiliza-se chaves assimétricas.
 
 ### Chave pública e chave privada
 
-Criptografia: 
-- qualquer pessoa pode criptografar uma mensagem usando a chave pública do destinatário. 
+Criptografia:
+
+- qualquer pessoa pode criptografar uma mensagem usando a chave pública do destinatário.
 - somente o dono da chave privada consegue descriptografar a mensagem criptografada com a chave pública correspondente.
 
-Autenticação: 
+Autenticação:
+
 - somente o dono da chave privada pode assinar / autorizar uma transação a partir da chave pública correspondente.
 - a chave pública verifica que o portador da chave privada enviou a mensagem.
 
-Os algoritmos de chave pública são baseados em problemas matemáticos 
-usando fatoração inteira, número primos, logaritmo discreto, e curva elíptica.  
+Os algoritmos de chave pública são baseados em problemas matemáticos
+usando fatoração inteira, número primos, logaritmo discreto, e curva elíptica.
 
-É praticamente impossível (computacionalmente impraticável) determinar uma chave privada 
+É praticamente impossível (computacionalmente impraticável) determinar uma chave privada
 a partir da sua chave pública correspondente.
 
 Alguns algoritmos de chave pública:
@@ -115,8 +115,8 @@ Alguns algoritmos de chave pública:
 
 ## Merkle tree
 
-Parte fundamental do Blockchain, 
-permite eficiência e segurança na verificação de uma massa grande de dados, 
+Parte fundamental do Blockchain,
+permite eficiência e segurança na verificação de uma massa grande de dados,
 para validar a integridade do conteúdo dos dados.
 
 - Árvore binária de hashes
@@ -139,23 +139,23 @@ Imagem: [merkle-root-and-merkle-proofs](https://bitcoin.stackexchange.com/questi
 - a raiz da árvore é chamada Merkle Root
 
 De acordo com Andreas M. Antonopoulos, em "the Bitcoin protocol":
-Merkle trees são utilizadas para compactar todas as transações de um bloco, 
-produzindo uma impressão digital do conjunto de transações, 
+Merkle trees são utilizadas para compactar todas as transações de um bloco,
+produzindo uma impressão digital do conjunto de transações,
 em um processo muito eficiente para verificar quando uma transação está em um bloco.
 
 ![Merkle tree](/img/courses/dev/03/blockchain/image-03.png)
 
-Imagem: [Wikipedia](https://commons.wikimedia.org/wiki/File:Bitcoin_Block_Data.png), 
+Imagem: [Wikipedia](https://commons.wikimedia.org/wiki/File:Bitcoin_Block_Data.png),
 licença Creative Commons Attribution-Share-Alike 3.0 Unported
 
 ## Redes distribuídas
 
-Os diagramas de Paul Baran, publicados no texto *On distributed communications* (BARAN, Paul - 1964)
+Os diagramas de Paul Baran, publicados no texto _On distributed communications_ (BARAN, Paul - 1964)
 são uma das melhores formas para apresentar redes distribuídas:
 
 ![On distributed communications](/img/courses/dev/03/blockchain/image-04.png)
 
-Este é o conceito básico do Blockchain: redes p2p, peer to peer ou ponto a ponto, 
+Este é o conceito básico do Blockchain: redes p2p, peer to peer ou ponto a ponto,
 onde a comunicação pode ser realizada entre qualquer par de computadores.
 
 [Wikipedia: Paul Baran](https://pt.wikipedia.org/wiki/Paul_Baran)
@@ -165,7 +165,7 @@ onde a comunicação pode ser realizada entre qualquer par de computadores.
 Quando estamos falando de teoria dos jogos,
 não estamos falando de videogames ou jogos de tabuleiro.
 
-É o estudo das tomadas de decisões entre indivíduos 
+É o estudo das tomadas de decisões entre indivíduos
 quando o resultado de cada um depende das decisões dos outros
 em uma interdependência similar a um jogo.
 
@@ -175,16 +175,16 @@ Ou seja, é o estudo das probabilidades em tomadas de decisões.
 
 Foi proposto em 1982 por Marshall Pease, Robert Shostak e Leslie Lamport.
 
-O problema dos generais bizantinos descreve as armadilhas e desafios que existem 
-ao tentar coordenar ações de comunicação dentro de uma rede cujos pares não são totalmente confiáveis. 
+O problema dos generais bizantinos descreve as armadilhas e desafios que existem
+ao tentar coordenar ações de comunicação dentro de uma rede cujos pares não são totalmente confiáveis.
 
-Este problema foi explicado e resolvido por Barbara Liskov e Miguel Castro, do MIT, em 1999: 
+Este problema foi explicado e resolvido por Barbara Liskov e Miguel Castro, do MIT, em 1999:
 [Practical Byzantine Fault Tolerance](http://pmg.csail.mit.edu/papers/osdi99.pdf) (em inglês).
 
 Estamos falando sobre consenso, como entrar em acordo sobre um determinado assunto.
 
 ## Conclusão
 
-O objetivo desta lição foi apresentar os fundamentos do Blockchain: criptografia, redes distribuídas e teoria dos jogos. 
+O objetivo desta lição foi apresentar os fundamentos do Blockchain: criptografia, redes distribuídas e teoria dos jogos.
 
 Na próxima lição você conhecerá alguns algoritmos de consenso.
