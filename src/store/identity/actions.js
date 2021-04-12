@@ -5,7 +5,6 @@ export const {
   changeChainId,
   reset,
   setError,
-  setChainError,
 } = identitySlice.actions
 
 export const login = (account, chainId) => dispatch => {

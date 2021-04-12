@@ -10,6 +10,7 @@ import {
   useBreakpointValue,
   Text,
   Tag,
+  Button,
 } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import { useI18n } from 'next-localization'
@@ -27,21 +28,23 @@ import {
 } from '@/components/all'
 import { RLoginResponseContext } from '@/context/RLoginProvider'
 
+const LoadingButton = () => <Button variant='inversed' isLoading={true} />
+
 const WalletConnect = dynamic(() => import('../WalletConnect/index'), {
   ssr: false,
+  // eslint-disable-next-line react/display-name
+  loading: () => <LoadingButton />,
 })
-
-console.log(`WalletConnect`, WalletConnect)
 
 const MainNavLinkGroup = props => {
   const { t } = useI18n()
-  const { isAdmin, isLoggedIn } = useSelector(state => state.identity)
+  const { isAdmin, account } = useSelector(state => state.identity)
 
   return (
     <HStack spacing='4' {...props}>
       <NavLink href='/courses'>{t('courses')}</NavLink>
       <NavLink href='/events'>{t('events')}</NavLink>
-      {isLoggedIn && !isAdmin && (
+      {account && !isAdmin && (
         <>
           <NavLink href='/portfolio'>{t('portfolio')}</NavLink>
           <NavLink href='/profile'>{t('profile')}</NavLink>

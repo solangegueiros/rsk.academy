@@ -1,4 +1,4 @@
-export const SUPPORTED_CHAINS = [30, 31, 5777, 1337]
+export const SUPPORTED_CHAINS = [30, 31, 1337]
 
 const ChainId = {
   MAINNET: 1,

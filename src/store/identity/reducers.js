@@ -16,7 +16,4 @@ export const reducers = {
   setError: (state, { payload: { error } }) => {
     state.error = error
   },
-  setChainError: (state, { payload }) => {
-    state.isUnsupportedChainError = payload
-  },
 }

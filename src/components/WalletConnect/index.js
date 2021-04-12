@@ -15,15 +15,9 @@ import RLogin from '@rsksmart/rlogin'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 
 import { trimValue } from '@/utils/trimValue'
-import { getRPCUrl } from '@/networks/getConfig'
 import { SUPPORTED_CHAINS } from '@/constants/constants'
 import { getAccountAndNetwork } from '@/utils/web3Rpc'
-import {
-  changeAccount,
-  changeChainId,
-  reset,
-  setChainError,
-} from '@/store/identity/actions'
+import { changeAccount, changeChainId, reset } from '@/store/identity/actions'
 import { RLoginResponseContext } from '@/context/RLoginProvider'
 import { useLoadSmartContracts } from '@/hooks/useLoadContracts'
 
@@ -34,14 +28,10 @@ const rLogin = new RLogin({
       package: WalletConnectProvider,
       options: {
         rpc: {
-          1: getRPCUrl(1),
-          3: getRPCUrl(3),
-          4: getRPCUrl(4),
-          5: getRPCUrl(5),
-          30: getRPCUrl(30),
-          31: getRPCUrl(31),
-          42: getRPCUrl(42),
-          5777: getRPCUrl(5777),
+          1: 'https://mainnet.infura.io/v3/8043bb2cf99347b1bfadfb233c5325c0',
+          30: 'https://public-node.rsk.co',
+          31: 'https://public-node.testnet.rsk.co',
+          1337: 'http://localhost:8545',
         },
       },
     },
@@ -50,13 +40,7 @@ const rLogin = new RLogin({
 })
 
 const WalletConnect = () => {
-  const {
-    account,
-    chainId,
-    error,
-    isUnsupportedChainError,
-    supportedChains,
-  } = useSelector(state => state.identity)
+  const { account, chainId, error } = useSelector(state => state.identity)
   const { hasCopied, onCopy } = useClipboard(account)
   const dispatch = useDispatch()
   const { resetResponse, setRLoginResponse, rLoginResponse } = useContext(
@@ -67,13 +51,6 @@ const WalletConnect = () => {
   const { loadContracts } = useLoadSmartContracts()
 
   const { t } = useI18n()
-
-  useEffect(() => {
-    if (account && chainId) {
-      const isSupportedChain = !supportedChains.includes(chainId)
-      dispatch(setChainError(isSupportedChain))
-    }
-  }, [account, chainId, rLoginResponse])
 
   useEffect(() => {
     if (
@@ -102,9 +79,13 @@ const WalletConnect = () => {
     // listen to change events and log out if any of them happen, passing
     // the rLogin response to the logout function as it has not been saved
     // into useState yet.
-    provider.on('accountsChanged', () => handleLogOut())
-    provider.on('chainChanged', () => handleLogOut())
-    provider.on('disconnect', () => handleLogOut())
+    provider.on('accountsChanged', accounts =>
+      dispatch(changeAccount({ account: accounts[0].toLowerCase() })),
+    )
+    provider.on('chainChanged', c =>
+      dispatch(changeChainId({ chainId: parseInt(c) })),
+    )
+    provider.on('disconnect', () => handleLogOut)
 
     // finally, set setRLoginResponse with useState
     // when the JS is compiled this variable is set after the promise is
@@ -114,38 +95,12 @@ const WalletConnect = () => {
 
   const getWalletStatus = () => {
     if (rLoginResponse) {
-      if (isUnsupportedChainError) {
+      if (error) {
         return (
-          <ButtonGroup w='200px' isAttached colorScheme='red'>
-            <Button leftIcon={<MdErrorOutline />}>{t('error.network')}</Button>
-            <Tooltip hasArrow label={t('logout')}>
-              <IconButton
-                ml='-1px'
-                icon={<FiLogOut />}
-                onClick={handleLogOut}
-              />
-            </Tooltip>
+          <ButtonGroup isAttached colorScheme='red'>
+            <Button leftIcon={<MdErrorOutline />}>{t('error.connect')}</Button>
           </ButtonGroup>
         )
-      }
-
-      if (error) {
-        if (error === 'Modal closed by user') {
-          return (
-            <ButtonGroup w='200px' isAttached colorScheme='yellow'>
-              <Button leftIcon={<MdErrorOutline />}>
-                {t('error.network')}
-              </Button>
-            </ButtonGroup>
-          )
-        } else
-          return (
-            <ButtonGroup isAttached colorScheme='red'>
-              <Button leftIcon={<MdErrorOutline />}>
-                {t('error.connect')}
-              </Button>
-            </ButtonGroup>
-          )
       }
 
       return (

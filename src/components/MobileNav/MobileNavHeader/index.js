@@ -7,6 +7,7 @@ import {
   Tag,
   useColorModeValue,
   VStack,
+  Button,
 } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
@@ -17,8 +18,12 @@ import { DarkModeSwitch } from '@/components/all'
 import { RLoginResponseContext } from '@/context/RLoginProvider'
 import { MobileNavLink } from '../MobileNavLink'
 
+const LoadingButton = () => <Button variant='inversed' isLoading={true} />
+
 const WalletConnect = dynamic(() => import('../../WalletConnect/index'), {
   ssr: false,
+  // eslint-disable-next-line react/display-name
+  loading: () => <LoadingButton />,
 })
 
 export const MobileNavHeader = ({ shadow, onClose }) => {
