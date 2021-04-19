@@ -39,7 +39,6 @@ function MyApp({ Component, pageProps }) {
         <link rel='manifest' href='/site.webmanifest/' />
         <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#000000' />
         <link rel='shortcut icon' href='/favicon.ico' />
-        <meta name='msapplication-TileColor' content='#ffffff' />
         <meta name='theme-color' content='#fff' />
         <link rel='preconnect' href='https://fonts.gstatic.com' />
         <link
