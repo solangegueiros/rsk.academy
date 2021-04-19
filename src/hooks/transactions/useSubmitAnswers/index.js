@@ -14,7 +14,7 @@ const stringifyAnswers = (answers, quizName) => {
       const qId = id.replace(`${quizName}-`, '')
       return `${qId} ${answer}`
     })
-    .join(',')
+    .join(';')
 }
 
 export const useSubmitAnswers = (course, module, numberOfQuestions) => {
