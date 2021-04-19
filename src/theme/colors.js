@@ -13,15 +13,14 @@ const generateColorPalette = color => ({
   900: darken(color, 23)(),
 })
 
-//const RSK_GREEN = '#00b520'
-//const RSK_GREEN = '#00B43C' // From BrandManual
 const RSK_GREEN = '#2BA149' // From images
-// const RSK_BLUE = '#007BFF'
+const RSK_BLUE = '#007BFF'
 const RSK_DARK = '#344147'
 const RSK_LIGHT = '#9FDFD1'
 
 export const colors = {
   primary: generateColorPalette(RSK_GREEN),
+  rif: generateColorPalette(RSK_BLUE),
   light: generateColorPalette(RSK_LIGHT),
   dark: generateColorPalette(RSK_DARK),
 }
