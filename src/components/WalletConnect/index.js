@@ -1,12 +1,27 @@
+/* eslint-disable max-lines-per-function */
 import { MdContentCopy, MdErrorOutline } from 'react-icons/md'
 import { useContext, useEffect } from 'react'
 import {
   Button,
   ButtonGroup,
+  Divider,
+  HStack,
+  Icon,
   IconButton,
+  Image,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  Text,
   Tooltip,
   useClipboard,
+  useColorModeValue,
+  useDisclosure,
   usePrevious,
+  VStack,
 } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useI18n } from 'next-localization'
@@ -20,6 +35,7 @@ import { getAccountAndNetwork } from '@/utils/web3Rpc'
 import { changeAccount, changeChainId, reset } from '@/store/identity/actions'
 import { RLoginResponseContext } from '@/context/RLoginProvider'
 import { useLoadSmartContracts } from '@/hooks/useLoadContracts'
+import { FaPlus } from 'react-icons/fa'
 
 const rLogin = new RLogin({
   cachedProvider: false,
@@ -42,6 +58,7 @@ const rLogin = new RLogin({
 const WalletConnect = () => {
   const { account, chainId, error } = useSelector(state => state.identity)
   const { hasCopied, onCopy } = useClipboard(account)
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const dispatch = useDispatch()
   const { resetResponse, setRLoginResponse, rLoginResponse } = useContext(
     RLoginResponseContext,
@@ -51,6 +68,8 @@ const WalletConnect = () => {
   const { loadContracts } = useLoadSmartContracts()
 
   const { t } = useI18n()
+  const bg = useColorModeValue('white', 'dark.500')
+  const color = useColorModeValue('primary.500', 'light.500')
 
   useEffect(() => {
     if (
@@ -69,6 +88,7 @@ const WalletConnect = () => {
   }
 
   const handleLogin = async () => {
+    onClose()
     const res = await rLogin.connect()
     const provider = res.provider
     const [acc, network] = await getAccountAndNetwork(provider)
@@ -93,41 +113,130 @@ const WalletConnect = () => {
     setRLoginResponse(res)
   }
 
-  const getWalletStatus = () => {
-    if (rLoginResponse) {
-      if (error) {
-        return (
-          <ButtonGroup isAttached colorScheme='red'>
-            <Button leftIcon={<MdErrorOutline />}>{t('error.connect')}</Button>
-          </ButtonGroup>
-        )
-      }
+  const addNetwork = async params => {
+    if (typeof window !== undefined) {
+      await window.ethereum.request({
+        method: 'wallet_addEthereumChain',
+        params,
+      })
 
+      dispatch(changeChainId({ chainId: parseInt(params[0].chainId) }))
+    }
+  }
+
+  const addRskTestnet = () =>
+    addNetwork([
+      {
+        chainId: '0x1f',
+        chainName: 'RSK Testnet',
+        nativeCurrency: {
+          name: 'Test RSK BTC',
+          symbol: 'tRBTC',
+          decimals: 18,
+        },
+        rpcUrls: ['https://public-node.testnet.rsk.co'],
+        blockExplorerUrls: ['https://explorer.testnet.rsk.co'],
+      },
+    ])
+
+  const addRskMainnet = () =>
+    addNetwork([
+      {
+        chainId: '0x1e',
+        chainName: 'RSK Mainnet',
+        nativeCurrency: {
+          name: 'RSK BTC',
+          symbol: 'RBTC',
+          decimals: 18,
+        },
+        rpcUrls: ['https://public-node.rsk.co'],
+        blockExplorerUrls: ['https://explorer.rsk.co'],
+      },
+    ])
+
+  if (rLoginResponse) {
+    if (error) {
       return (
-        <ButtonGroup w='200px' variant='inversed' role='group' isAttached>
-          <Button
-            w='200px'
-            onClick={onCopy}
-            leftIcon={!hasCopied && <MdContentCopy />}
-            isTruncated
-          >
-            {hasCopied ? t('copied') : trimValue(account)}
-          </Button>
-          <Tooltip hasArrow label={t('logout')}>
-            <IconButton ml='-1px' icon={<FiLogOut />} onClick={handleLogOut} />
-          </Tooltip>
+        <ButtonGroup isAttached colorScheme='red'>
+          <Button leftIcon={<MdErrorOutline />}>{t('error.connect')}</Button>
         </ButtonGroup>
       )
     }
 
     return (
-      <Button variant='inversed' onClick={handleLogin}>
-        {t('connect')}
-      </Button>
+      <ButtonGroup w='200px' variant='inversed' role='group' isAttached>
+        <Button
+          w='200px'
+          onClick={onCopy}
+          leftIcon={!hasCopied && <MdContentCopy />}
+          isTruncated
+        >
+          {hasCopied ? t('copied') : trimValue(account)}
+        </Button>
+        <Tooltip hasArrow label={t('logout')}>
+          <IconButton ml='-1px' icon={<FiLogOut />} onClick={handleLogOut} />
+        </Tooltip>
+      </ButtonGroup>
     )
   }
 
-  return getWalletStatus()
+  return (
+    <>
+      <Button variant='inversed' onClick={onOpen}>
+        {t('connect')}
+      </Button>
+      <Modal isCentered isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent bg={bg} p={4}>
+          <ModalHeader textAlign='center' color={color}>
+            {t('connect')}
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={4}>
+            <Text textAlign='center'>Add Rsk configurations for MetaMask</Text>
+            <HStack justify='center' my={2}>
+              <VStack
+                as={Button}
+                variant='inversed'
+                w='full'
+                borderWidth={1}
+                p={4}
+                h='auto'
+                onClick={addRskMainnet}
+              >
+                <HStack>
+                  <Image h={50} src='/img/metamask-fox.svg' />
+                  <Icon as={FaPlus} />
+                  <Image h={50} src='/img/rsk.svg' />
+                </HStack>
+                <Text>Add RSK Mainnet</Text>
+              </VStack>
+              <VStack
+                as={Button}
+                variant='inversed'
+                w='full'
+                borderWidth={1}
+                p={4}
+                h='auto'
+                onClick={addRskTestnet}
+              >
+                <HStack>
+                  <Image h={50} src='/img/metamask-fox.svg' />
+                  <Icon as={FaPlus} />
+                  <Image h={50} src='/img/rsk.svg' />
+                </HStack>
+                <Text>Add RSK Testnet</Text>
+              </VStack>
+            </HStack>
+            <Divider my={4} />
+            <Button isFullWidth colorScheme='rif' onClick={handleLogin}>
+              Connect with RLogin
+            </Button>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </>
+  )
 }
 
 export default WalletConnect

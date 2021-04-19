@@ -8,6 +8,15 @@ import { loadQuizResult } from '@/store/profile/actions'
 import { finalizeAnswers, pendingAnswers } from '@/store/quiz/actions'
 import { useTransactionCallback } from '../useTransactionCallback'
 
+const stringifyAnswers = (answers, quizName) => {
+  return Object.entries(answers)
+    .map(([id, { answer }]) => {
+      const qId = id.replace(`${quizName}-`, '')
+      return `${qId} ${answer}`
+    })
+    .join(';')
+}
+
 export const useSubmitAnswers = (course, module, numberOfQuestions) => {
   const { AcademyClass, AcademyStudentQuiz } = useContext(ContractContext)
   const dispatch = useDispatch()
@@ -26,7 +35,12 @@ export const useSubmitAnswers = (course, module, numberOfQuestions) => {
     name: `Submit Answers ${quizName}`,
     from: account,
     method: AcademyClass.contract?.methods.addQuizAnswer,
-    args: [quizName, userAnswers, totalQuestions, correctAnswers],
+    args: [
+      quizName,
+      stringifyAnswers(userAnswers, quizName),
+      totalQuestions,
+      correctAnswers,
+    ],
   })
 
   const submitAnswers = async () => {
