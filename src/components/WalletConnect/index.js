@@ -38,6 +38,7 @@ import { RLoginResponseContext } from '@/context/RLoginProvider'
 import { useLoadSmartContracts } from '@/hooks/useLoadContracts'
 import { RifIcon } from '@/components/all'
 
+
 const rLogin = new RLogin({
   cachedProvider: false,
   providerOptions: {
