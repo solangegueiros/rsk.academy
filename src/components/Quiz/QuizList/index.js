@@ -121,7 +121,7 @@ export const QuizList = ({ course, module, numberOfQuestions }) => {
         />
       ))}
       <Button
-        variant='normal'
+        variant='flat'
         leftIcon={`${numberOfAnswers}/${numberOfQuestions}`}
         isDisabled={numberOfAnswers !== numberOfQuestions}
         onClick={handleSubmit}

@@ -29,7 +29,7 @@ import {
 } from '@/components/all'
 import { RLoginResponseContext } from '@/context/RLoginProvider'
 
-const LoadingButton = () => <Button variant='inversed' isLoading={true} />
+const LoadingButton = () => <Button variant='reversed' isLoading={true} />
 
 const WalletConnect = dynamic(() => import('../WalletConnect/index'), {
   ssr: false,
@@ -74,20 +74,18 @@ export const Header = props => {
     <>
       <Box d={useBreakpointValue({ base: 'none', md: 'block' })} bg={bg}>
         <Container maxW={1200}>
-          <HStack w='full' py={1} justify='center' pos='relative'>
-            <Box>
-              <Text
-                userSelect='none'
-                color={useColorModeValue('primary.500', 'light.500')}
-                fontSize='sm'
-                fontWeight='bold'
-              >
-                <span aria-label='student' role='img'>
-                  👨🏻‍🎓
-                </span>{' '}
-                {t('topBanner')}
-              </Text>
-            </Box>
+          <HStack w='full' py={2} justify='center' pos='relative'>
+            <Text
+              userSelect='none'
+              color={useColorModeValue('primary.500', 'light.500')}
+              fontSize='sm'
+              fontWeight='bold'
+            >
+              <span aria-label='student' role='img'>
+                👨🏻‍🎓
+              </span>{' '}
+              {t('topBanner')}
+            </Text>
             <HStack pos='absolute' right={0}>
               {rLoginResponse && NETWORK_LABELS[chainId] && (
                 <Tag colorScheme={colorScheme}>{NETWORK_LABELS[chainId]}</Tag>

@@ -67,7 +67,7 @@ export const MasterName = () => {
           <Button
             isLoading={isLoadingSet}
             isFullWidth
-            variant='normal'
+            variant='flat'
             onClick={handleSetName}
             isDisabled={studentName}
           >

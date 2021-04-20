@@ -28,6 +28,7 @@ import { useI18n } from 'next-localization'
 import { FiLogOut } from 'react-icons/fi'
 import RLogin from '@rsksmart/rlogin'
 import WalletConnectProvider from '@walletconnect/web3-provider'
+import { FaPlus } from 'react-icons/fa'
 
 import { trimValue } from '@/utils/trimValue'
 import { SUPPORTED_CHAINS } from '@/constants/constants'
@@ -35,7 +36,8 @@ import { getAccountAndNetwork } from '@/utils/web3Rpc'
 import { changeAccount, changeChainId, reset } from '@/store/identity/actions'
 import { RLoginResponseContext } from '@/context/RLoginProvider'
 import { useLoadSmartContracts } from '@/hooks/useLoadContracts'
-import { FaPlus } from 'react-icons/fa'
+import { RifIcon } from '@/components/all'
+
 
 const rLogin = new RLogin({
   cachedProvider: false,
@@ -89,28 +91,33 @@ const WalletConnect = () => {
 
   const handleLogin = async () => {
     onClose()
-    const res = await rLogin.connect()
-    const provider = res.provider
-    const [acc, network] = await getAccountAndNetwork(provider)
+    try {
+      const res = await rLogin.connect()
+      const provider = res.provider
 
-    dispatch(changeAccount({ account: acc.toLowerCase() }))
-    dispatch(changeChainId({ chainId: parseInt(network) }))
+      const [acc, network] = await getAccountAndNetwork(provider)
 
-    // listen to change events and log out if any of them happen, passing
-    // the rLogin response to the logout function as it has not been saved
-    // into useState yet.
-    provider.on('accountsChanged', accounts =>
-      dispatch(changeAccount({ account: accounts[0].toLowerCase() })),
-    )
-    provider.on('chainChanged', c =>
-      dispatch(changeChainId({ chainId: parseInt(c) })),
-    )
-    provider.on('disconnect', () => handleLogOut)
+      dispatch(changeAccount({ account: acc.toLowerCase() }))
+      dispatch(changeChainId({ chainId: parseInt(network) }))
 
-    // finally, set setRLoginResponse with useState
-    // when the JS is compiled this variable is set after the promise is
-    // resolved which is why it is at the very end.
-    setRLoginResponse(res)
+      // listen to change events and log out if any of them happen, passing
+      // the rLogin response to the logout function as it has not been saved
+      // into useState yet.
+      provider.on('accountsChanged', accounts =>
+        dispatch(changeAccount({ account: accounts[0].toLowerCase() })),
+      )
+      provider.on('chainChanged', c =>
+        dispatch(changeChainId({ chainId: parseInt(c) })),
+      )
+      provider.on('disconnect', () => handleLogOut)
+
+      // finally, set setRLoginResponse with useState
+      // when the JS is compiled this variable is set after the promise is
+      // resolved which is why it is at the very end.
+      setRLoginResponse(res)
+    } catch (err) {
+      console.log(`RLogin Error`, err)
+    }
   }
 
   const addNetwork = async params => {
@@ -164,7 +171,7 @@ const WalletConnect = () => {
     }
 
     return (
-      <ButtonGroup w='200px' variant='inversed' role='group' isAttached>
+      <ButtonGroup w='200px' variant='reversed' role='group' isAttached>
         <Button
           w='200px'
           onClick={onCopy}
@@ -182,7 +189,7 @@ const WalletConnect = () => {
 
   return (
     <>
-      <Button variant='inversed' onClick={onOpen}>
+      <Button variant='reversed' onClick={onOpen}>
         {t('connect')}
       </Button>
       <Modal isCentered isOpen={isOpen} onClose={onClose}>
@@ -193,11 +200,22 @@ const WalletConnect = () => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={4}>
+            <Button
+              size='lg'
+              isFullWidth
+              colorScheme='rif'
+              onClick={handleLogin}
+              leftIcon={<RifIcon w={8} h={8} />}
+            >
+              Connect with RLogin
+            </Button>
+            <Divider my={4} />
             <Text textAlign='center'>Add Rsk configurations for MetaMask</Text>
             <HStack justify='center' my={2}>
               <VStack
                 as={Button}
-                variant='inversed'
+                variant='reversed'
+                size='sm'
                 w='full'
                 borderWidth={1}
                 p={4}
@@ -213,7 +231,8 @@ const WalletConnect = () => {
               </VStack>
               <VStack
                 as={Button}
-                variant='inversed'
+                variant='reversed'
+                size='sm'
                 w='full'
                 borderWidth={1}
                 p={4}
@@ -228,10 +247,6 @@ const WalletConnect = () => {
                 <Text>Add RSK Testnet</Text>
               </VStack>
             </HStack>
-            <Divider my={4} />
-            <Button isFullWidth colorScheme='rif' onClick={handleLogin}>
-              Connect with RLogin
-            </Button>
           </ModalBody>
         </ModalContent>
       </Modal>

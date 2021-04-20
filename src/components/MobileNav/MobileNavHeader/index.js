@@ -18,7 +18,7 @@ import { DarkModeSwitch, Transactions } from '@/components/all'
 import { RLoginResponseContext } from '@/context/RLoginProvider'
 import { MobileNavLink } from '../MobileNavLink'
 
-const LoadingButton = () => <Button variant='inversed' isLoading={true} />
+const LoadingButton = () => <Button variant='reversed' isLoading={true} />
 
 const WalletConnect = dynamic(() => import('../../WalletConnect/index'), {
   ssr: false,
