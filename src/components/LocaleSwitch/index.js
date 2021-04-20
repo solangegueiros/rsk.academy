@@ -3,24 +3,20 @@ import { useRouter } from 'next/router'
 export const LocaleSwitch = props => {
   const router = useRouter()
   const { locale, locales } = router
-  const color = useColorModeValue('white', 'dark.500')
-  const bg = useColorModeValue('primary.500', 'light.500')
+  const colorScheme = useColorModeValue('primary', 'light')
 
   const handleChange = async lang => {
     await router.push(router.pathname, router.asPath, { locale: lang })
   }
 
   return (
-    <ButtonGroup isAttached {...props}>
+    <ButtonGroup spacing={0} {...props}>
       {locales.map(code => (
         <Button
           key={code}
-          color={code === locale && color}
-          bg={code === locale && bg}
-          _hover={{ bg: null }}
-          _active={{ bg: null }}
+          variant={code === locale ? 'flat' : 'ghost'}
+          colorScheme={colorScheme}
           onClick={() => handleChange(code)}
-          variant='ghost'
           size='xs'
         >
           {code.toUpperCase()}

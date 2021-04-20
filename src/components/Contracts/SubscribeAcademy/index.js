@@ -32,12 +32,7 @@ export const SubscribeAcademy = ({ contractName, buttonText }) => {
           <Text>You have already subscribed the course {contractName}</Text>
         </Alert>
       ) : (
-        <Button
-          isLoading={isLoading}
-          isFullWidth
-          variant='normal'
-          onClick={exec}
-        >
+        <Button isLoading={isLoading} isFullWidth variant='flat' onClick={exec}>
           {buttonText || 'Subscribe'}
         </Button>
       )}

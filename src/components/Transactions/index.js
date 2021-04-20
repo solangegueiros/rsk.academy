@@ -36,7 +36,7 @@ export const Transactions = () => {
           >
             <IconButton
               borderRadius='full'
-              variant='inversed'
+              variant='reversed'
               icon={<BiTransferAlt />}
             />
 

@@ -29,7 +29,7 @@ const ContractCard = ({ contract }) => {
           arrowShadowColor={useColorModeValue('primary.500', 'dark.600')}
         >
           <PopoverTrigger>
-            <Button variant='inversed' size='xs'>
+            <Button variant='reversed' size='xs'>
               Functions
             </Button>
           </PopoverTrigger>
