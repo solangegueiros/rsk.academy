@@ -133,7 +133,7 @@ const Event = ({ event }) => {
               size='lg'
               target='_blank'
               rel='noopener noreferrer'
-              variant='normal'
+              variant='flat'
               as='a'
               leftIcon={<RiVideoChatFill />}
               href={webinar_link}
@@ -147,7 +147,7 @@ const Event = ({ event }) => {
             size='lg'
             target='_blank'
             rel='noopener noreferrer'
-            variant='normal'
+            variant='flat'
             as='a'
             leftIcon={<GoRepo />}
             href={resources}

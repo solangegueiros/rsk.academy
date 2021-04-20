@@ -114,7 +114,7 @@ export const Footer = () => {
                 </ListItem>
                 <ListItem>
                   <Button
-                    variant='normal'
+                    variant='flat'
                     as={Link}
                     href='https://developers.rsk.co/'
                     _hover={{ color: 'white' }}

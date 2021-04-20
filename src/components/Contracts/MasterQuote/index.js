@@ -53,7 +53,7 @@ export const MasterQuote = () => {
           onChange={e => setAddress(e.target.value)}
         />
         <ButtonGroup w='full'>
-          <Button isFullWidth variant='normal' onClick={handleSetQuote}>
+          <Button isFullWidth variant='flat' onClick={handleSetQuote}>
             Set Name
           </Button>
           <Button isFullWidth colorScheme='red' onClick={handleDeleteName}>
