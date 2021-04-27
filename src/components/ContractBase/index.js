@@ -40,7 +40,7 @@ const NotLoggedIn = () => {
   )
 }
 
-export const ContractBase = ({ contract, children }) => {
+export const ContractBase = ({ contract, children, ...rest }) => {
   const { hasCopied, onCopy } = useClipboard(contract?.address)
   const { rLoginResponse } = useContext(RLoginResponseContext)
   const color = useColorModeValue('primary.500', 'light.500')
@@ -55,7 +55,7 @@ export const ContractBase = ({ contract, children }) => {
     rLoginResponse && !contract.isDeployedOnCurrentNetwork
 
   return (
-    <Box bg={bg} p={8} boxShadow='md' borderRadius={10} mt={4}>
+    <Box bg={bg} p={8} boxShadow='md' borderRadius={10} w='full' {...rest}>
       {/* Contract Header */}
       <HStack mb={4} justify='center'>
         <Tooltip label='View on explorer'>
