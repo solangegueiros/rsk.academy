@@ -179,7 +179,7 @@ const WalletConnect = () => {
         >
           {hasCopied ? t('copied') : trimValue(account)}
         </Button>
-        <Tooltip hasArrow label={t('logout')}>
+        <Tooltip hasArrow label={t('logout')} bg={color}>
           <IconButton ml='-1px' icon={<FiLogOut />} onClick={handleLogOut} />
         </Tooltip>
       </ButtonGroup>

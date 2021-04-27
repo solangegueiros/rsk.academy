@@ -55,10 +55,18 @@ export const ContractBase = ({ contract, children, ...rest }) => {
     rLoginResponse && !contract.isDeployedOnCurrentNetwork
 
   return (
-    <Box bg={bg} p={8} boxShadow='md' borderRadius={10} w='full' {...rest}>
+    <Box
+      bg={bg}
+      p={8}
+      boxShadow='md'
+      borderRadius={10}
+      w='full'
+      mt={4}
+      {...rest}
+    >
       {/* Contract Header */}
       <HStack mb={4} justify='center'>
-        <Tooltip label='View on explorer'>
+        <Tooltip label='View on explorer' bg={color}>
           <Heading as='h3' size='md'>
             <chakra.a
               rel='noopener'
@@ -70,7 +78,7 @@ export const ContractBase = ({ contract, children, ...rest }) => {
           </Heading>
         </Tooltip>
         {rLoginResponse && contract.address && (
-          <Tooltip label={trimValue(contract.address, 8)} hasArrow>
+          <Tooltip label={trimValue(contract.address, 8)} hasArrow bg={color}>
             <Box
               color={color}
               cursor='pointer'

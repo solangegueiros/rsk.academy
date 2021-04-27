@@ -16,6 +16,7 @@ import {
   SubscribeAcademy,
   frontMatterType,
   WalletAddress,
+  LowerCase,
 } from '@/components/all'
 
 import devSidebar from '@/configs/dev-sidebar.json'
@@ -62,6 +63,7 @@ function MDXLayout({ frontmatter, children }) {
         QuizList,
         SubscribeAcademy,
         WalletAddress,
+        LowerCase,
       }}
     >
       <PageContainer
