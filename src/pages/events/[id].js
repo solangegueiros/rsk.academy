@@ -14,6 +14,7 @@ import {
   SimpleGrid,
   useColorModeValue,
   AspectRatio,
+  Stack,
 } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import React, { useEffect, useState } from 'react'
@@ -91,19 +92,30 @@ const Event = ({ event }) => {
   return (
     <Layout>
       <Seo title={title} />
-      <Heading my={8} as='h1'>
+      <Heading textTransform='capitalize' my={8} as='h1'>
         {title}
       </Heading>
-      <Text fontSize='1.2em'>{description}</Text>
-      <Box my={8} mx='auto' bg={bg}>
-        <Image w='full' src={image} />
-      </Box>
+      <Stack
+        bg={bg}
+        p={8}
+        spacing={8}
+        direction={{ base: 'column', md: 'row' }}
+        mb={8}
+      >
+        <Box w={{ base: 'full', md: 1 / 2 }} mx='auto' bg={bg}>
+          <Image w='full' src={image} />
+        </Box>
+        <VStack align='start' justify='center' w={{ base: 'full', md: 1 / 2 }}>
+          <Text fontSize='1.2em'>{description}</Text>
+        </VStack>
+      </Stack>
       <SimpleGrid
         p={8}
         bg={bg}
         alignItems='center'
         columns={{ base: 1, md: 2 }}
         gap={8}
+        mb={8}
       >
         <VStack spacing={4} align='flex-start' fontSize='1.2em'>
           <TimeZone timeStr={datetime} spacing={4} />
