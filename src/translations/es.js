@@ -2,6 +2,8 @@ export default {
   about: 'Sobre',
   admin: 'Admin',
   events: 'Clases en vivo',
+  pastEvents: 'Eventos Pasados',
+  nextEvents: 'Próximos Eventos',
   articles: 'Artículos',
   home: 'Comienzo',
   register: 'Regístrate!',
