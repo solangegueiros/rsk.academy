@@ -3,6 +3,8 @@ export default {
   admin: 'Admin',
   articles: 'Artigos',
   events: 'Aulas ao vivo',
+  pastEvents: 'Eventos Passados',
+  nextEvents: 'Próximos Eventos',
   home: 'Início',
   register: 'Registrar!',
   search: 'Pesquisa',

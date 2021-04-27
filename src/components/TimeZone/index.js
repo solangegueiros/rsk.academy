@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
-import { HStack, Icon, Text, VStack } from '@chakra-ui/react'
+import { HStack, Icon, Stack, Text } from '@chakra-ui/react'
 import { utcToZonedTime, format } from 'date-fns-tz'
 import { IoCalendarOutline, IoTimeOutline } from 'react-icons/io5'
 
-const TimeZone = ({ timeStr, spacing = 2 }) => {
+const TimeZone = ({ timeStr, spacing = 2, direction = 'column' }) => {
   // eslint-disable-next-line babel/new-cap
   const timeZone = Intl?.DateTimeFormat().resolvedOptions().timeZone
   const date = new Date(timeStr).toISOString()
@@ -13,7 +13,7 @@ const TimeZone = ({ timeStr, spacing = 2 }) => {
   const time = format(zonedTime, 'HH:mm')
 
   return (
-    <VStack spacing={spacing} align='start'>
+    <Stack direction={direction} spacing={spacing} align='start'>
       <HStack>
         <Icon as={IoCalendarOutline} />
         <Text>{day}</Text>
@@ -27,13 +27,14 @@ const TimeZone = ({ timeStr, spacing = 2 }) => {
           </Text>
         </Text>
       </HStack>
-    </VStack>
+    </Stack>
   )
 }
 
 TimeZone.propTypes = {
   timeStr: PropTypes.string.isRequired,
   spacing: PropTypes.number,
+  direction: PropTypes.string,
 }
 
 export default TimeZone

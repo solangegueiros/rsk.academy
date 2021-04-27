@@ -3,6 +3,8 @@ export default {
   admin: 'Admin',
   articles: 'Articles',
   events: 'Live classes',
+  pastEvents: 'Past Events',
+  nextEvents: 'Next Events',
   home: 'Home',
   register: 'Register',
   search: 'Search',

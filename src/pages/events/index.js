@@ -1,25 +1,24 @@
 import PropTypes from 'prop-types'
-import { Fragment } from 'react'
 import Layout from '@/components/Layout'
 import Seo from '@/components/Seo'
 import {
   Heading,
   Image,
-  SimpleGrid,
   Text,
-  Flex,
   HStack,
   Icon,
   Link,
   useColorModeValue,
   VStack,
-  Box,
+  Stack,
+  Center,
 } from '@chakra-ui/react'
 import { useI18n } from 'next-localization'
 import dynamic from 'next/dynamic'
 import { IoLanguage } from 'react-icons/io5'
-import { FaTwitter, FaArrowRight } from 'react-icons/fa'
+import { FaTwitter } from 'react-icons/fa'
 import NextLink from 'next/link'
+import { isFuture, isPast } from 'date-fns'
 
 import { getEvents } from '../../lib/api'
 
@@ -35,86 +34,126 @@ const LANGUAGES = {
 
 const Events = ({ events }) => {
   const { t } = useI18n()
-  const linkBg = useColorModeValue('primary.500', 'light.500')
   const bg = useColorModeValue('white', 'dark.400')
-  const color = useColorModeValue('white', 'dark.500')
+
+  const pastEvents = events.filter(({ datetime }) => isPast(new Date(datetime)))
+  const nextEvents = events.filter(({ datetime }) =>
+    isFuture(new Date(datetime)),
+  )
+
   return (
     <Layout>
       <Seo title={t('events')} />
-      <VStack spacing={8}>
-        {events.map(
-          ({
-            id,
-            title,
-            datetime,
-            language,
-            speaker,
-            role,
-            twitter,
-            image,
-          }) => (
-            <SimpleGrid
-              columns={{ base: 1, md: 2 }}
-              _hover={{ boxShadow: 'lg' }}
-              key={id}
-              boxShadow='md'
-              bg={bg}
-            >
-              <Box as={NextLink} href={`/events/${id}`}>
-                <Image cursor='pointer' w='full' src={image} />
-              </Box>
-              <VStack justify='space-between' align='stretch'>
-                <VStack spacing={2} align='start' p={4}>
-                  <Heading size='lg' as='h2' mb={4}>
-                    {title.split(':')?.map(text => (
-                      <Fragment key={text}>
-                        {text}
-                        <br />
-                      </Fragment>
-                    )) || title}
-                  </Heading>
-                  <TimeZone timeStr={datetime} spacing={2} />
-                  <HStack>
-                    <Icon as={IoLanguage} />
-                    <Text>{LANGUAGES[language]}</Text>
-                  </HStack>
-                  <HStack
-                    as={Link}
-                    rel='noopener noreferrer'
-                    target='_blank'
-                    href={`https://twitter.com/${twitter}`}
-                  >
-                    <Icon as={FaTwitter} />
-                    <Text>
-                      {speaker} | {role}
-                    </Text>
-                  </HStack>
-                </VStack>
-                <NextLink href={`/events/${id}`}>
-                  <Flex
-                    fontWeight='bold'
-                    role='group'
-                    align='center'
+      {nextEvents?.length > 0 && (
+        <>
+          <Heading mb={4}>{t('nextEvents')}</Heading>
+          <VStack spacing={8} align='start' w='full'>
+            {nextEvents.map(
+              ({
+                id,
+                title,
+                datetime,
+                language,
+                speaker,
+                role,
+                twitter,
+                image,
+              }) => (
+                <NextLink href={`/events/${id}`} key={id}>
+                  <Stack
+                    direction={{ base: 'column', md: 'row' }}
+                    _hover={{ boxShadow: 'lg' }}
+                    boxShadow='md'
+                    bg={bg}
                     cursor='pointer'
-                    px={4}
-                    py={2}
-                    bg={linkBg}
-                    color={color}
+                    w='full'
                   >
-                    <Text>More Info</Text>
-                    <Icon
-                      ml={4}
-                      _groupHover={{ ml: 6 }}
-                      transition='all 0.3s'
-                      as={FaArrowRight}
-                    />
-                  </Flex>
+                    <Center pl={2} w={{ base: 'full', md: 1 / 4 }}>
+                      <Image src={image} />
+                    </Center>
+                    <VStack
+                      w={{ base: 'full', md: 3 / 4 }}
+                      justify='space-between'
+                      align='stretch'
+                    >
+                      <VStack spacing={2} align='start' p={4}>
+                        <Heading
+                          textTransform='capitalize'
+                          size='lg'
+                          as='h2'
+                          mb={4}
+                        >
+                          {title}
+                        </Heading>
+                        <TimeZone timeStr={datetime} spacing={2} />
+                        <HStack>
+                          <Icon as={IoLanguage} />
+                          <Text>{LANGUAGES[language]}</Text>
+                        </HStack>
+                        <HStack
+                          as={Link}
+                          rel='noopener noreferrer'
+                          target='_blank'
+                          href={`https://twitter.com/${twitter}`}
+                        >
+                          <Icon as={FaTwitter} />
+                          <Text>
+                            {speaker} | {role}
+                          </Text>
+                        </HStack>
+                      </VStack>
+                    </VStack>
+                  </Stack>
                 </NextLink>
-              </VStack>
-            </SimpleGrid>
-          ),
-        )}
-      </VStack>
+              ),
+            )}
+          </VStack>
+        </>
+      )}
+      {pastEvents?.length > 0 && (
+        <>
+          <Heading mb={4}>{t('pastEvents')}</Heading>
+          <VStack spacing={4} align='start' w='full'>
+            {pastEvents.map(({ id, title, datetime, language, image }) => (
+              <NextLink href={`/events/${id}`} key={id}>
+                <Stack
+                  direction={{ base: 'column', md: 'row' }}
+                  _hover={{ boxShadow: 'lg' }}
+                  boxShadow='md'
+                  bg={bg}
+                  cursor='pointer'
+                  w='full'
+                >
+                  <Center pl={2} w={{ base: 'full', md: 1 / 4 }}>
+                    <Image src={image} />
+                  </Center>
+                  <VStack
+                    w={{ base: 'full', md: 3 / 4 }}
+                    justify='space-between'
+                    align='stretch'
+                  >
+                    <VStack spacing={2} align='start' p={4}>
+                      <Heading
+                        textTransform='capitalize'
+                        size='lg'
+                        as='h2'
+                        mb={4}
+                      >
+                        {title}
+                      </Heading>
+                      <TimeZone timeStr={datetime} spacing={2} />
+                      <HStack>
+                        <Icon as={IoLanguage} />
+                        <Text>{LANGUAGES[language]}</Text>
+                      </HStack>
+                    </VStack>
+                  </VStack>
+                </Stack>
+              </NextLink>
+            ))}
+          </VStack>
+        </>
+      )}
     </Layout>
   )
 }
