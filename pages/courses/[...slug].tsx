@@ -85,7 +85,6 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       ...ssrTranslations,
       filePath: `/courses/${filePath}`,
     },
-    revalidate: false,
   }
 }
 

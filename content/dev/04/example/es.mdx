@@ -21,12 +21,7 @@ var instance = Contract.new(
   },
   function (e, contract) {
     if (typeof contract.address !== 'undefined') {
-      console.log(
-        'Contract mined! address: ' +
-          contract.address +
-          ' transactionHash: ' +
-          contract.transactionHash,
-      )
+      console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash)
     }
   },
 )

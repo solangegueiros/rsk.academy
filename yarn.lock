@@ -7321,6 +7321,11 @@ escodegen@^2.0.0:
   optionalDependencies:
     source-map "~0.6.1"
 
+eslint-config-next@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-0.2.4.tgz#5dbc3f9b54111f306b3d0fe08b04c0e0fcf348c2"
+  integrity sha1-Xbw/m1QRHzBrPQ/giwTA4PzzSMI=
+
 eslint-config-prettier@^8.3.0:
   version "8.3.0"
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.3.0.tgz#f7471b20b6fe8a9a9254cc684454202886a2dd7a"

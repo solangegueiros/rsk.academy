@@ -5,15 +5,20 @@ import { ClockLoader } from 'react-spinners'
 import { trimValue } from '@utils/trimValue'
 import { useAppSelector } from '@store/store'
 
+const TsxTypeComponents = {
+  confirmed: <Icon boxSize={8} color='green.400' as={MdCheckCircle} mr={4} />,
+  pending: (
+    <Box boxSize={8} bg='yellow.400' borderRadius='full'>
+      <ClockLoader size={32} color='white' />
+    </Box>
+  ),
+  failed: <Icon boxSize={8} color='red.400' as={MdRemoveCircle} />,
+}
+
 export const TransactionList = (): JSX.Element => {
   const { transactions } = useAppSelector(state => state.transaction)
   const { account } = useAppSelector(state => state.identity)
   const bg = useColorModeValue('white', 'dark.500')
-  const colors = {
-    confirmed: 'green.400',
-    pending: 'yellow.400',
-    failed: 'red.400',
-  }
 
   return (
     <MenuList bg={bg} py={0}>
@@ -28,17 +33,7 @@ export const TransactionList = (): JSX.Element => {
             href={`https://explorer.testnet.rsk.co/tx/${tsx.hash}`}
             px={8}
           >
-            <Box>
-              {tsx.type === 'confirmed' ? (
-                <Icon boxSize={8} color={colors.confirmed} as={MdCheckCircle} mr={4} />
-              ) : tsx.type === 'pending' ? (
-                <Box boxSize={8} bg={colors.pending} borderRadius='full'>
-                  <ClockLoader size={32} color='white' />
-                </Box>
-              ) : (
-                tsx.type === 'failed' && <Icon boxSize={8} color={colors.failed} as={MdRemoveCircle} />
-              )}
-            </Box>
+            <Box>{TsxTypeComponents[tsx.type]}</Box>
             <Box my={2}>
               <Text fontWeight='bold'>{tsx.name}</Text>
               {tsx.hash && <Text>{trimValue(tsx.hash, 6)}</Text>}

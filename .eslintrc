@@ -8,6 +8,7 @@
     "amd": true
   },
   "extends": [
+    "next",
     "eslint:recommended",
     "plugin:mdx/recommended",
     "plugin:@typescript-eslint/eslint-recommended",

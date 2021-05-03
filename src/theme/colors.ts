@@ -14,14 +14,14 @@ const generateColorPalette = (color: string, theme: Theme): DeepPartial<Colors> 
   900: darken(color, 23)(theme),
 })
 
-const RSK_GREEN = '#2BA149' // From images
-const RSK_BLUE = '#007BFF'
-const RSK_DARK = '#344147'
-const RSK_LIGHT = '#9FDFD1'
+const RSK = '#2BA149'
+const RIF = '#007BFF'
+const DARK = '#344147'
+const LIGHT = '#9FDFD1'
 
 export const colors = (theme: Theme): Record<string, DeepPartial<Colors>> => ({
-  primary: generateColorPalette(RSK_GREEN, theme),
-  rif: generateColorPalette(RSK_BLUE, theme),
-  light: generateColorPalette(RSK_LIGHT, theme),
-  dark: generateColorPalette(RSK_DARK, theme),
+  primary: generateColorPalette(RSK, theme),
+  rif: generateColorPalette(RIF, theme),
+  light: generateColorPalette(LIGHT, theme),
+  dark: generateColorPalette(DARK, theme),
 })

@@ -41,27 +41,23 @@ export const SidebarContent = (props: SidebarContentProps): JSX.Element => {
             {lvl1.title[locale] || lvl1.title[defaultLocale]}
           </chakra.h4>
 
-          {lvl1.routes.map(lvl2 => {
-            if (!lvl2.routes) {
-              return (
-                <SidebarLink ml='-3' mt='2' key={lvl2.path} href={lvl2.path}>
-                  <chakra.span>{lvl2.title[locale] || lvl2.title[defaultLocale]}</chakra.span>
-                  {lvl2.new && (
-                    <Badge
-                      ml='2'
-                      lineHeight='tall'
-                      fontSize='10px'
-                      variant='solid'
-                      color={newBadgeColor}
-                      colorScheme={newBadgeColorScheme}
-                    >
-                      New
-                    </Badge>
-                  )}
-                </SidebarLink>
-              )
-            }
-          })}
+          {lvl1.routes.map(lvl2 => (
+            <SidebarLink ml='-3' mt='2' key={lvl2.path} href={lvl2.path}>
+              <chakra.span>{lvl2.title[locale] || lvl2.title[defaultLocale]}</chakra.span>
+              {lvl2.new && (
+                <Badge
+                  ml='2'
+                  lineHeight='tall'
+                  fontSize='10px'
+                  variant='solid'
+                  color={newBadgeColor}
+                  colorScheme={newBadgeColorScheme}
+                >
+                  New
+                </Badge>
+              )}
+            </SidebarLink>
+          ))}
         </Fragment>
       ))}
     </Box>

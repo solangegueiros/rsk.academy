@@ -10,7 +10,7 @@ export type QuestionType = {
   type: string
   question: { en: string; es: string; pt: string }
   answers?: { en: string; es: string; pt: string }[]
-  correct_answer?: number
+  correctAnswer?: number
 }
 
 export type RandomQuestionType = {
@@ -118,10 +118,10 @@ const quizReducers = {
       answer: number
     }>,
   ) => {
-    if (Object.keys(state.answers[course][module]).length - 1 >= 10) return state
+    if (Object.keys(state.answers[course][module]).length - 1 >= 10) return
 
     const question = state.questions[course][module].find(q => q.id === id)
-    const isCorrect = answer === question.correct_answer
+    const isCorrect = answer === question.correctAnswer
 
     state.answers[course][module].result[id] = {
       answer,

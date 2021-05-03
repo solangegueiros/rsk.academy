@@ -32,7 +32,7 @@ export const QuizResult = ({ course, module, title }: QuizResultProps): JSX.Elem
       </Heading>
 
       <VStack align='start' mt={16}>
-        {questions.map(({ id, question, answers, type, correct_answer }, i) => {
+        {questions.map(({ id, question, answers, type, correctAnswer }, i) => {
           const isCorrect = userAnswers[id].isCorrect
 
           return (
@@ -51,7 +51,7 @@ export const QuizResult = ({ course, module, title }: QuizResultProps): JSX.Elem
                   {!isCorrect && (
                     <HStack color={color}>
                       <Icon as={BiCheckCircle} />
-                      <Text>{type === 'tf' ? tf[correct_answer] : answers[correct_answer][locale]}</Text>
+                      <Text>{type === 'tf' ? tf[correctAnswer] : answers[correctAnswer][locale]}</Text>
                     </HStack>
                   )}
                 </Box>
