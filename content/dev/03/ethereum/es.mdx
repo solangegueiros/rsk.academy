@@ -1,0 +1,105 @@
+---
+title: 'Ethereum'
+description: 'Fundamentos de Ethereum'
+---
+
+## Ethereum
+
+Vitalik Buterin es parte de la comunidad Bitcoin,
+incluyendo ser uno de los cofundadores de la revista [Bitcoin Magazine](https://bitcoinmagazine.com/).
+
+Pero imaginó que Blockchain podría ir mucho más allá de las transacciones para transferencias de criptomonedas.
+Dado que no hubo consenso para implementar las ideas de Vitalik en Bitcoin Blockchain,
+creó Ethereum Blockchain.
+
+Vitalik vio Blockchain como una computadora global descentralizada,
+un entorno en el que se puedan ejecutar contratos inteligentes.
+
+Ethereum es una plataforma global de código abierto para aplicaciones descentralizadas.
+
+También podemos definirlo como una red minera descentralizada.
+incorporando una plataforma de desarrollo de software capaz de ejecutar contratos inteligentes
+y aplicaciones descentralizadas que utilizan tecnología blockchain.
+
+Estas aplicaciones funcionan exactamente como están programadas, sin posibilidad de censura, fraude o interferencia de terceros, ya que el código fuente del contrato inteligente es inmutable.
+
+## gWei
+
+La unidad más pequeña de Ethereum se llama **wei**.
+
+Es el decimoctavo lugar decimal de Ethereum, lo que significa:
+
+> 1 ETH = 1000000000000000000 wei
+
+## Gas x Fee
+
+En Bitcoin, para que un minero esté interesado en validar nuestra transacción,
+dejamos un "sobrante", o cambio, en la transacción, lo que se llama fee, _tarifa_.
+Los mineros validan primero las transacciones con las tarifas más altas.
+
+En Ethereum, cada comando, o _opcode_, tiene un costo, llamado **gas**.
+
+El gas generalmente se mide en **gWei**
+
+> 1 gWei = 1000000000 wei = 0.000000001 ETH
+
+Para conversiones fáciles, le recomiendo que use:
+[eth-converter.com](https://eth-converter.com/)
+
+Un cálculo muy común es la cantidad de gas que gastará un contrato inteligente.
+
+Para comprender el gas, gas price y gas limit, es mejor hacer una comparación con el mundo real.
+
+Imagina que quieres ir de São Paulo a Río de Janeiro.
+Gas es la cantidad de litros de gas que necesitas para realizar esta ruta.
+Gas price es el precio de la gasolina que pagará por el litro de gasolina.
+50 litros pueden caber en el tanque de gasolina de su coche, este es el Gas limit.
+Entonces, incluso si desea atravesar otras ciudades antes de llegar a Río de Janeiro,
+tendrás que limitar tu ruta por la capacidad del tanque de gasolina.
+Este es también el límite máximo que gastará.
+
+### Gas - cantidad
+
+Cantidad de gas que se utilizará de acuerdo con el código de bytes de su contrato inteligente.
+
+### Gas Price
+
+El _Gas Price_ es literalmente el precio del gas.
+
+Usted establece el precio que acepta pagar.
+Si establece un precio demasiado bajo, su transacción puede permanecer en Mempool infinitamente
+y esto bloquea todas las transacciones posteriores, es decir,
+no puede validar otras transacciones.
+
+Ya dejé una cuenta bloqueada durante casi 3 meses, con una transacción en la red Ethereum.
+El día 1/1/2021 intenté publicar un contrato inteligente usando el precio del gas de 30 gwei
+Hasta el 29/03/2021 la transacción todavía estaba en Mempool...
+¡Esto significa que el precio del gas ha estado por encima de los 30 gwei durante este período!
+
+### Gas usado
+
+Para encontrar la cantidad final de gas gastado en gWei
+necesitas multiplicar la cantidad de gas que gastará un contrato inteligente
+al precio del gas.
+
+### Gas limit
+
+El _Gas limit_ es el límite máximo que gastará.
+Existe un límite de gas porque algunas transacciones pueden variar en la cantidad de gas gastado
+según parámetros de entrada, oráculos, valores de otras variables que pueden generar un bucle
+De todos modos, tienes que tener un límite para no bloquear la red y terminar tu saldo.
+
+## Referencias
+
+- [Vitalik Buterin](https://en.wikipedia.org/wiki/Vitalik_Buterin) en inglês
+- [ethereum.org](https://ethereum.org/es/) en español
+- [ethereum.org](https://ethereum.org/en/) en inglês
+- [Mastering Ethereum, by Andreas M. Antonopoulos, Gavin Wood](https://github.com/ethereumbook/ethereumbook)
+
+## Conclusión
+
+El propósito de esta lección fue presentar Ethereum, la cadena de bloques para contratos inteligentes.
+Esta lección es solo una introducción.
+Recomiendo leer las referencias enumeradas.
+
+En la próxima lección aprenderá sobre RSK.

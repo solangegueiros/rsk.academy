@@ -1,0 +1,72 @@
+---
+title: 'Consensus algorithms'
+description: 'Consensus algorithms'
+---
+
+## Consensus
+
+Consensus is a mechanism to ensure that parties agree that a certain state of the system is correct, which is the truth.
+
+### PoW - Proof-of-Work: origins
+
+Concepted by Cynthia Dwork and Moni Naor in 1992 in the paper "Pricing via Processing, Or, Combatting Junk Mail, Advances in Cryptology";
+named by Markus Jakobsson and Ari Juels in 1999 in the paper: "Proofs of Work and Bread Pudding Protocols";
+
+Asymmetry:
+
+- Very difficult (but possible) to calculate;
+- Easy to check;
+
+### Hashcash
+
+Proposed in 1997 by Adam Back, uses the initial concept of PoW
+to decrease spam in emails through SHA-1 hash calculations
+
+Example:
+
+```
+X-Hashcash: 1:20:1303030600:adam@cypherspace.org::McMybZIhxKXu57jd:ckvi
+SHA-1 = 00000b7c65ac70650eb8d4f034e86d7d5cd1852f
+```
+
+### PoW - Proof-of-Work
+
+When we talk about Blockchain, PoW is a test of computational work, with expenditure of processing and energy.
+It aims to ensure the decentralization and security of distributed transactions.
+
+These are mathematical calculations that miners do on their computers to verify that the transactions are valid.
+
+Mining comes from the "discovery" of nonce,
+which is the process of trial and error to find the number that satisfies the degree of difficulty of the network.
+
+The timestamp is used in PoW mining to adjust the difficulty level of the network,
+keeping the block mining at the average defined in the whitepaper of a Blockchain.
+For example, for Bitcoin this average is 10 minutes, while for Ethereum it is 15 seconds.
+
+### PoS - Proof-of-Stake
+
+Known as proof of participation.
+
+To participate in the validation, the amount of coins that the miner has is used, instead of the computational power.
+
+The validator must place his deposited coins in a kind of safe to "prove" his participation, without moving the coins.
+
+The more coins you have, the greater the chance of validating transactions and earning from them.
+
+In terms of energy, it is more economical than PoW.
+
+It should bring more security and decentralization, but it makes larger coin holders more likely to get more coins.
+
+### PoA - Proof-of-Authority
+
+It is the proof of authority used in permissioned Blockchains.
+
+It is a group of _authorities_, nodes defined and authorized to create new blocks in a chain.
+
+It needs approval from most of the nodes for the block to be created.
+
+## Conclusion
+
+In this lesson you learned about the most used consensus algorithms.
+
+In the next lesson you will understand Bitcoin, the first Blockchain network capable of transferring values electronically.
