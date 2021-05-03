@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import {
   Box,
   Heading,
@@ -53,7 +54,7 @@ const TimeZone = dynamic(() => import('../../src/components/TimeZone'), {
 function extractVideoIdFromUrl(url) {
   const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
   const match = url.match(regExp)
-  return match && match[7].length == 11 ? match[7] : false
+  return match && match[7].length === 11 ? match[7] : false
 }
 
 const LANGUAGES = {

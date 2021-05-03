@@ -24,6 +24,10 @@ import { QuizItem } from '../QuizItem'
 import { useAppSelector } from '@store/store'
 import { CourseType, ModuleType } from '@store/quiz/slice'
 
+enum contractName {
+  dev = 'Developer',
+  business = 'Business',
+}
 interface QuizListProps {
   course: CourseType
   module: ModuleType
@@ -36,10 +40,8 @@ export const QuizList = ({ course, module, numberOfQuestions }: QuizListProps): 
   const { chainId } = useAppSelector(state => state.identity)
   const { quizResults } = useAppSelector(state => state.profile)
 
-  const contractName = course === 'dev' ? 'Developer' : course === 'business' ? 'Business' : ''
-
   const hasSubscribed = studentClasses?.includes(
-    CONTRACT_ADDRESSES[chainId] && CONTRACT_ADDRESSES[chainId][contractName],
+    CONTRACT_ADDRESSES[chainId] && CONTRACT_ADDRESSES[chainId][contractName[course]],
   )
 
   const QUIZ_NAME = `${course}-${module}`

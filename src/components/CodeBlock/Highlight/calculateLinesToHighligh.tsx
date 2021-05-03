@@ -6,7 +6,7 @@ export const calculateLinesToHighlight = (meta: string): ((index: number) => boo
   }
   const lineNumbers = REGEX.exec(meta)[1]
     .split(`,`)
-    .map(v => v.split(`-`).map(x => parseInt(x, 10)))
+    .map(v => v.split(`-`).map(x => Number(x)))
 
   return index => {
     const lineNumber = index + 1

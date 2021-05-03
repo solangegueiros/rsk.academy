@@ -23,18 +23,15 @@ const Portfolio = (): JSX.Element => {
   return (
     <Layout>
       <Seo title={t`portfolio`} description={t`portfolio`} />
-      {rLoginResponse ? (
-        isAdmin ? (
-          <Box>Portfolio page is for students</Box>
-        ) : (
-          <SimpleGrid columns={{ md: 2 }} gap={4}>
-            <AcademyWallet />
-
-            {PortfolioProjectComponents}
-          </SimpleGrid>
-        )
+      {!rLoginResponse && <Box>You must log in</Box>}
+      {rLoginResponse && isAdmin ? (
+        <Box>Portfolio page is for students</Box>
       ) : (
-        <Box>You must log in</Box>
+        <SimpleGrid columns={{ md: 2 }} gap={4}>
+          <AcademyWallet />
+
+          {PortfolioProjectComponents}
+        </SimpleGrid>
       )}
     </Layout>
   )

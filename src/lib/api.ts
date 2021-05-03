@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { google } from 'googleapis'
 
 export type EventType = {

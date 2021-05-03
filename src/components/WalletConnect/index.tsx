@@ -92,7 +92,7 @@ const WalletConnect = (): JSX.Element => {
       const network = await provider.request({ method: 'eth_chainId' })
 
       dispatch(changeAccount({ account: acc.toLowerCase() }))
-      dispatch(changeChainId({ chainId: parseInt(network) }))
+      dispatch(changeChainId({ chainId: Number(network) }))
 
       // listen to change events and log out if any of them happen, passing
       // the rLogin response to the logout function as it has not been saved
@@ -100,7 +100,7 @@ const WalletConnect = (): JSX.Element => {
       provider.on('accountsChanged', (accounts: string[]) =>
         dispatch(changeAccount({ account: accounts[0].toLowerCase() })),
       )
-      provider.on('chainChanged', (c: string) => dispatch(changeChainId({ chainId: parseInt(c) })))
+      provider.on('chainChanged', (c: string) => dispatch(changeChainId({ chainId: Number(c) })))
       provider.on('disconnect', () => handleLogOut)
 
       // finally, set setRLoginResponse with useState
@@ -120,7 +120,7 @@ const WalletConnect = (): JSX.Element => {
         params,
       })
 
-      dispatch(changeChainId({ chainId: parseInt(params[0].chainId) }))
+      dispatch(changeChainId({ chainId: Number(params[0].chainId) }))
     }
   }
 
@@ -188,7 +188,7 @@ const WalletConnect = (): JSX.Element => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={4}>
-            <Button size='lg' isFullWidth colorScheme='rif' onClick={handleLogin} leftIcon={<RifIcon />}>
+            <Button size='lg' isFullWidth colorScheme='blue' onClick={handleLogin} leftIcon={<RifIcon />}>
               Connect with RLogin
             </Button>
             <Divider my={4} />

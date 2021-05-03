@@ -29,7 +29,7 @@ export const QuizItem = ({
   const dispatch = useAppDispatch()
 
   const setAnswer = (val: string | number) => {
-    const answer = typeof val === 'number' ? val : parseInt(val)
+    const answer = typeof val === 'number' ? val : Number(val)
     dispatch(answerQuestion({ course, module, id, answer }))
   }
 

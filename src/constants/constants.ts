@@ -21,7 +21,7 @@ export const NETWORK_LABELS: Record<number, string> = {
   [ChainId.RSK_MAINNET]: 'RSK',
   [ChainId.RSK_TESTNET]: 'RSK Testnet',
   [ChainId.TRUFFLE_DEVELOP]: 'Truffle Develop',
-  [ChainId.GANACHE_CLI]: 'Ganache-Cli', //ganache-cli -i 1337 -m "your mnemonic"
+  [ChainId.GANACHE_CLI]: 'Ganache-Cli', // ganache-cli -i 1337 -m "your mnemonic"
 }
 
 export const DEPLOYED_NETWORKS = { ganache: 1337, testnet: 31 }
