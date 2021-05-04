@@ -2,9 +2,11 @@ import AcademyWalletAbi from '@contracts/AcademyWallet.json'
 import { Box, useClipboard, useColorModeValue } from '@chakra-ui/react'
 import { CopyButton } from '../CodeBlock/CopyButton'
 import { Highlight } from '../CodeBlock/Highlight'
+import { useAppSelector } from '@store/store'
 
 export const WalletAddress = (): JSX.Element => {
-  const address = process.env.NEXT_PUBLIC_ACADEMY_WALLET || AcademyWalletAbi.networks[31].address
+  const { chainId } = useAppSelector(state => state.identity)
+  const address = process.env.NEXT_PUBLIC_ACADEMY_WALLET || AcademyWalletAbi.networks[chainId]?.address
   const { hasCopied, onCopy } = useClipboard(address?.toLowerCase())
 
   return (
