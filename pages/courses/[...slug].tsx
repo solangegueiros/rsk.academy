@@ -1,5 +1,5 @@
 import fs from 'fs'
-import nodePath from 'path'
+import path from 'path'
 import matter from 'gray-matter'
 import { loadMDXInfo, CONTENT_PATH } from '@utils/loadMdxInfo'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const { slug } = params
   const filePath = typeof slug === 'string' ? slug : slug.join('/')
 
-  const mdxFilePath = nodePath.join(CONTENT_PATH, `${filePath}/${locale}.mdx`)
+  const mdxFilePath = path.join(CONTENT_PATH, `${filePath}/${locale}.mdx`)
 
   const source = fs.readFileSync(mdxFilePath)
 
@@ -82,8 +82,8 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       source: mdxSource,
       frontMatter: data,
       course: slug[0],
-      ...ssrTranslations,
       filePath: `/courses/${filePath}`,
+      ...ssrTranslations,
     },
   }
 }

@@ -1,4 +1,3 @@
-import { Seo, Layout } from '@components'
 import { Heading, Image, Text, HStack, Icon, Link, useColorModeValue, VStack, Stack, Center } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import dynamic from 'next/dynamic'
@@ -9,7 +8,8 @@ import { isFuture, isPast } from 'date-fns'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { GetStaticProps } from 'next'
 
-import { getEvents, EventType } from '@lib/api'
+import { Seo, Layout } from '@components'
+import { getEvents, EventType } from '@lib/sheet'
 
 const TimeZone = dynamic(() => import('../../src/components/TimeZone'), {
   ssr: false,

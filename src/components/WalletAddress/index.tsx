@@ -4,7 +4,7 @@ import { CopyButton } from '../CodeBlock/CopyButton'
 import { Highlight } from '../CodeBlock/Highlight'
 
 export const WalletAddress = (): JSX.Element => {
-  const address = process.env.NEXT_PUBLIC_WALLET_ADDRESS || AcademyWalletAbi.networks[31].address
+  const address = process.env.NEXT_PUBLIC_ACADEMY_WALLET || AcademyWalletAbi.networks[31].address
   const { hasCopied, onCopy } = useClipboard(address?.toLowerCase())
 
   return (
