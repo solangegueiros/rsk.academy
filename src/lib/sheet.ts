@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { google } from 'googleapis'
+import { GoogleSpreadsheet } from 'google-spreadsheet'
 
 export type EventType = {
   id: string
@@ -68,25 +68,17 @@ const parseRows = (rows: string[][]) => {
 
 export async function getEvents(): Promise<EventType[]> {
   try {
-    const scopes = ['https://www.googleapis.com/auth/spreadsheets.readonly']
-    const jwt = new google.auth.JWT(
-      process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
-      null,
-      process.env.GOOGLE_SHEETS_PRIVATE_KEY.replace(/\\n/g, '\n'),
-      scopes,
-    )
-
-    const sheets = google.sheets({ version: 'v4', auth: jwt })
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.SPREADSHEET_ID,
-      range: 'events',
+    const doc = new GoogleSpreadsheet(process.env.NEXT_PUBLIC_GOOGLE_SPREADSHEET_ID)
+    await doc.useServiceAccountAuth({
+      client_email: process.env.NEXT_PUBLIC_GOOGLE_SHEETS_CLIENT_EMAIL,
+      private_key: process.env.NEXT_PUBLIC_GOOGLE_SHEETS_PRIVATE_KEY.replace(/\\n/g, '\n'),
     })
 
-    const rows = response.data.values
-
-    if (rows.length) {
-      return parseRows(rows.slice(1))
-    }
+    await doc.loadInfo()
+    const rows = await doc.sheetsByIndex[0].getRows()
+    const mappedRows = rows.map(row => row._rawData)
+    const parsedRows = parseRows(mappedRows)
+    return parsedRows
   } catch (err) {
     console.error(err)
   }

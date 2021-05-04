@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+import { GetStaticPaths, GetStaticProps } from 'next'
 import {
   Box,
   Heading,
@@ -17,19 +18,16 @@ import {
   Stack,
 } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
-import React, { useEffect, useState } from 'react'
 import { FaTwitter } from 'react-icons/fa'
 import { IoLanguage } from 'react-icons/io5'
 import { RiVideoChatFill, RiMapPin2Line } from 'react-icons/ri'
 import { GoRepo } from 'react-icons/go'
 import { useTranslation } from 'next-i18next'
 import { isPast } from 'date-fns'
-import { useRouter } from 'next/router'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Layout, Seo } from '@components'
-import { getEvents } from '@lib/api'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { getEvents } from '@lib/sheet'
 
 export type EventType = {
   datetime: string
@@ -51,10 +49,10 @@ const TimeZone = dynamic(() => import('../../src/components/TimeZone'), {
   ssr: false,
 })
 
-function extractVideoIdFromUrl(url) {
+function extractVideoIdFromUrl(url: string): string {
   const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
   const match = url.match(regExp)
-  return match && match[7].length === 11 ? match[7] : false
+  return match && match[7].length === 11 ? match[7] : null
 }
 
 const LANGUAGES = {
@@ -66,21 +64,8 @@ const LANGUAGES = {
 const Event = ({ event }: { event: EventType }): JSX.Element => {
   const { t } = useTranslation('common')
   const bg = useColorModeValue('white', 'dark.400')
-  const { query } = useRouter()
-  const [eventItem, setEventItem] = useState<EventType>(event)
 
-  useEffect(() => {
-    const fetchEvent = async () => {
-      if (query.id) {
-        const response = await fetch(`/api/event/${query.id}`)
-        const result = await response.json()
-        setEventItem(result)
-      }
-    }
-    fetchEvent()
-  }, [query.id])
-
-  if (!event || !eventItem)
+  if (!event)
     return (
       <Flex h='100vh' align='center' justify='center'>
         <Spinner size='lg' />
@@ -101,7 +86,7 @@ const Event = ({ event }: { event: EventType }): JSX.Element => {
     image,
     video_link,
     resources,
-  } = eventItem
+  } = event
 
   const isExpired = isPast(new Date(datetime))
   const videoId = extractVideoIdFromUrl(video_link)

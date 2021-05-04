@@ -1,17 +1,11 @@
 import fs from 'fs'
-import nodePath from 'path'
+import path from 'path'
 import matter from 'gray-matter'
 import { loadMDXInfo, CONTENT_PATH } from '@utils/loadMdxInfo'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import { Spinner } from '@chakra-ui/react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import remarkAutolinkHeadings from 'remark-autolink-headings'
-import remarkEmoji from 'remark-emoji'
-import remarkImages from 'remark-images'
-import remarkSlug from 'remark-slug'
-import remarkToc from 'remark-toc'
-import remarkUnwrapImages from 'remark-unwrap-images'
 import { PageContainer, Pagination, Sidebar } from '@components'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { getRoutes } from '@utils/getRoutes'
@@ -73,17 +67,13 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const { slug } = params
   const filePath = typeof slug === 'string' ? slug : slug.join('/')
 
-  const mdxFilePath = nodePath.join(CONTENT_PATH, `${filePath}/${locale}.mdx`)
+  const mdxFilePath = path.join(CONTENT_PATH, `${filePath}/${locale}.mdx`)
 
   const source = fs.readFileSync(mdxFilePath)
 
   const { content, data } = matter(source)
 
-  const mdxSource = await serialize(content, {
-    mdxOptions: {
-      remarkPlugins: [remarkAutolinkHeadings, remarkEmoji, remarkImages, remarkSlug, remarkToc, remarkUnwrapImages],
-    },
-  })
+  const mdxSource = await serialize(content)
 
   const ssrTranslations = await serverSideTranslations(locale, ['common'])
 
@@ -92,8 +82,8 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       source: mdxSource,
       frontMatter: data,
       course: slug[0],
-      ...ssrTranslations,
       filePath: `/courses/${filePath}`,
+      ...ssrTranslations,
     },
   }
 }
