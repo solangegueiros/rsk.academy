@@ -9,7 +9,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { GetStaticProps } from 'next'
 
 import { Seo, Layout } from '@components'
-import { getEvents, EventType } from '@lib/sheet'
+import { getEvents, EventType } from '@lib/getEvents'
 
 const TimeZone = dynamic(() => import('../../src/components/TimeZone'), {
   ssr: false,
