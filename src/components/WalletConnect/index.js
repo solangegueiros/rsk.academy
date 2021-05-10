@@ -38,7 +38,6 @@ import { RLoginResponseContext } from '@/context/RLoginProvider'
 import { useLoadSmartContracts } from '@/hooks/useLoadContracts'
 import { RifIcon } from '@/components/all'
 
-
 const rLogin = new RLogin({
   cachedProvider: false,
   providerOptions: {
@@ -180,7 +179,7 @@ const WalletConnect = () => {
         >
           {hasCopied ? t('copied') : trimValue(account)}
         </Button>
-        <Tooltip hasArrow label={t('logout')}>
+        <Tooltip hasArrow label={t('logout')} bg={color}>
           <IconButton ml='-1px' icon={<FiLogOut />} onClick={handleLogOut} />
         </Tooltip>
       </ButtonGroup>
