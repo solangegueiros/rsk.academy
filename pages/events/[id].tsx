@@ -27,7 +27,7 @@ import { isPast } from 'date-fns'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Layout, Seo } from '@components'
-import { getEvents } from '@lib/sheet'
+import { getEvent, getEventPaths } from '@lib/getEvents'
 
 export type EventType = {
   datetime: string
@@ -175,8 +175,7 @@ const Event = ({ event }: { event: EventType }): JSX.Element => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await getEvents()
-  const paths = response.map(e => ({ params: { id: e.id } }))
+  const paths = await getEventPaths()
 
   return {
     paths,
@@ -185,13 +184,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params: { id } }) => {
-  const response = await getEvents()
-  const event = response.find(e => e.id === id)
+  const event = await getEvent(id)
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
       event,
     },
+    revalidate: 5,
   }
 }
 

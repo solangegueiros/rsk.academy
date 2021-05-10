@@ -85,3 +85,25 @@ export async function getEvents(): Promise<EventType[]> {
 
   return []
 }
+
+export async function getEvent(id: string | string[]): Promise<EventType> {
+  try {
+    const events = await getEvents()
+    return events.find(e => e.id === id)
+  } catch (err) {
+    console.error(err)
+  }
+
+  return null
+}
+
+export async function getEventPaths(): Promise<{ params: { id: string } }[]> {
+  try {
+    const events = await getEvents()
+    return events.map(e => ({ params: { id: e.id } }))
+  } catch (err) {
+    console.error(err)
+  }
+
+  return []
+}

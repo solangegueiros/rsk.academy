@@ -19,7 +19,7 @@ interface MdxPageProps {
 }
 
 const MdxPage = ({ source, frontMatter, course, filePath }: MdxPageProps): JSX.Element => {
-  const routes = getRoutes(course)
+  const routes = getRoutes(course || 'dev')
   if (!frontMatter) return <Spinner />
 
   const route = findRouteByPath(filePath, routes, '#')
@@ -43,7 +43,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   }
 }
 
