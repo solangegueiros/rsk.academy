@@ -39,7 +39,7 @@ const MdxPage = ({ source, frontMatter, course, filePath }: MdxPageProps): JSX.E
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getMdxPaths()
+  const paths = await getMdxPaths()
 
   return {
     paths,
