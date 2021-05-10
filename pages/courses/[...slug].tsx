@@ -1,9 +1,4 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import { loadMDXInfo, CONTENT_PATH } from '@utils/loadMdxInfo'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
 import { Spinner } from '@chakra-ui/react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { PageContainer, Pagination, Sidebar } from '@components'
@@ -13,6 +8,8 @@ import { findRouteByPath } from '@utils/findRouteByPath'
 import { getRouteContext } from '@utils/getRouteContext'
 import { MDXProvider } from '@mdx-js/react'
 import { Markdown } from '@components/Markdown'
+import { getMdxPaths } from '@lib/getMdxPaths'
+import { getMdxInfo } from '@lib/getMdxInfo'
 
 interface MdxPageProps {
   source: MDXRemoteSerializeResult<Record<string, unknown>>
@@ -42,20 +39,7 @@ const MdxPage = ({ source, frontMatter, course, filePath }: MdxPageProps): JSX.E
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const mdxPages = loadMDXInfo(CONTENT_PATH)
-
-  const paths = mdxPages.map(({ slug }) => {
-    const slugArr = slug.split('/').filter(Boolean)
-
-    const [course, module, url, lang] = slugArr
-
-    return {
-      params: {
-        slug: [course, module, url],
-      },
-      locale: lang,
-    }
-  })
+  const paths = getMdxPaths()
 
   return {
     paths,
@@ -64,24 +48,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
-  const { slug } = params
-  const filePath = typeof slug === 'string' ? slug : slug.join('/')
-
-  const mdxFilePath = path.join(CONTENT_PATH, `${filePath}/${locale}.mdx`)
-
-  const source = fs.readFileSync(mdxFilePath)
-
-  const { content, data } = matter(source)
-
-  const mdxSource = await serialize(content)
+  const slug = params.slug as string[]
+  const filePath = slug.join('/')
+  const { source, frontMatter } = await getMdxInfo(filePath, locale)
 
   const ssrTranslations = await serverSideTranslations(locale, ['common'])
 
   return {
     props: {
-      source: mdxSource,
-      frontMatter: data,
-      course: slug[0],
+      source,
+      frontMatter,
+      course: params.slug[0],
       filePath: `/courses/${filePath}`,
       ...ssrTranslations,
     },
