@@ -1,5 +1,5 @@
+import fs from 'fs'
 import path from 'path'
-import shell from 'shelljs'
 import matter from 'gray-matter'
 
 import siteConfig from '@configs/site-config'
@@ -14,12 +14,29 @@ type ExtendedFrontMatterType = {
   content?: string
 }
 
+async function* getFiles(dir: string) {
+  const dirents = await fs.promises.readdir(dir, { withFileTypes: true })
+  for (const dirent of dirents) {
+    const res = path.resolve(dir, dirent.name)
+    if (dirent.isDirectory()) {
+      yield* getFiles(res)
+    } else {
+      yield res
+    }
+  }
+}
+
 export const CONTENT_FOLDER_NAME = 'content'
 export const CONTENT_PATH = path.join(process.cwd(), CONTENT_FOLDER_NAME)
 
-export const loadMDXInfo = (mdxDir: string, locale = '*'): ExtendedFrontMatterType[] => {
+export const loadMDXInfo = async (mdxDir: string, locale = '*'): Promise<ExtendedFrontMatterType[]> => {
   const root = process.cwd()
-  const filenames = shell.ls('-R', `${mdxDir}/**/${locale}.mdx`)
+  const result = await getFiles(path.join(root, CONTENT_FOLDER_NAME))
+  const filenames = []
+
+  for await (const filePath of result) {
+    if (filePath.includes(`${locale}.mdx`)) filenames.push(filePath)
+  }
 
   return filenames.map((filename: string) => {
     const mdxPath = path.relative(root, filename).replace(`${CONTENT_FOLDER_NAME}/`, '')
