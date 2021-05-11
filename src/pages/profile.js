@@ -44,12 +44,15 @@ const Profile = () => {
             following courses.
           </Alert>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-            {Object.keys(COURSE_ADDRESSES[chainId]).map(courseName => (
-              <SubscribeAcademy key={courseName} contractName={courseName} />
-            ))}
+              <SubscribeAcademy contractName='Developer' />
           </SimpleGrid>
         </Box>
       )
+      /*  to list all courses to subscribe:
+            {Object.keys(COURSE_ADDRESSES[chainId]).map(courseName => (
+              <SubscribeAcademy key={courseName} contractName={courseName} />
+            ))}      
+      */
 
     return (
       <>
