@@ -19,7 +19,7 @@
     "id": "dev-01-mc-02",
     "type": "mc",
     "question": {
-      "en": "Even though I know the mnemonico of my wallet, where can I NOT use it to access my cryptos?",
+      "en": "Even though I know the mnemonic of my wallet, where can I NOT use it to access my cryptos?",
       "es": "Aunque conozco el mnemónico de mi billetera, ¿dónde NO puedo usarlo para acceder a mis criptos?",
       "pt": "Mesmo sabendo o mnemonico da minha carteira, onde NÃO posso utilizá-lo para acessar minhas cryptos?"
     },
@@ -104,7 +104,7 @@
       "pt": "Qual das opções a seguir é comumente usada para armazenar criptomoedas?"
     },
     "answers": [
-      { "en": "In your pocket", "es": "En tu bolsillo", "pt": "No seu bolso" },
+      { "en": "Your pocket", "es": "Tu bolsillo", "pt": "Seu bolso" },
       { "en": "Stack", "es": "Pila (Stack)", "pt": "Pilha (Stack)" },
       { "en": "Box", "es": "Caja", "pt": "Caixa" },
       { "en": "Wallet", "es": "Billetera", "pt": "Carteira" }
