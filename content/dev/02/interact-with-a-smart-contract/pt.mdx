@@ -1,0 +1,109 @@
+---
+title: 'Interagindo com um smart contract já publicado na rede'
+description: 'Interagindo com um smart contract já publicado na rede'
+---
+
+Imagine que é outro dia e você quer ver seu smart contract Name.
+Você fechou o Remix e abriu de novo,
+seu smart contract NÃO aparece na seção **Deployed Contracts** em **Deploy and run transactions**.
+
+> É possível interagir com um smart contract já publicado anteriormente!
+
+Para interagir com um smart contract já publicado, você precisa de 2 informações:
+
+1. Contract address
+2. ABI - Application Binary Interface
+
+## Contract address - endereço do seu smart contract **Name**
+
+Espero que você já tenha guardado o endereço do seu smart contract **Name**.
+
+Se você não guardou, pode obtê-lo seguindo estes passos:
+1- Vá no [RSK explorer](https://explorer.testnet.rsk.co/)
+2- Pesquise o endereço da sua carteira
+3- Na lista de transações, procure uma linha que tenha **contract created** ou **contract deploy**
+4- Clique na transação, para ver seus detalhes
+5- Na transação, copie o valor do **Contract Address**
+
+Pesquise o endereço da sua carteira no [RSK explorer](https://explorer.testnet.rsk.co/)
+
+![explorer search](/img/courses/dev/02/interact-with-a-smart-contract/image-01.png)
+
+Veja a linha da criação do contrato:
+
+![explorer search address](/img/courses/dev/02/interact-with-a-smart-contract/image-02.png)
+
+Por exemplo, este é o endereço da minha carteira:
+
+[0xa63375173ffa44725b5cde4dcfde7d6ccf5fffaa](https://explorer.testnet.rsk.co/address/0xa63375173ffa44725b5cde4dcfde7d6ccf5fffaa)
+
+Esta é a transação da criação do smart contract **Name**:
+
+[0x5d1b6be07f981b6068de686439cb876fd34007de6671aeeabf29fc55399a113f](https://explorer.testnet.rsk.co/tx/0x5d1b6be07f981b6068de686439cb876fd34007de6671aeeabf29fc55399a113f)
+
+E este é o endereço do meu smart contract **Name**:
+
+![explorer search contract created](/img/courses/dev/02/interact-with-a-smart-contract/image-03.png)
+
+[0xb3210016baa0Eb6D99646a86aE9D74B3336866af](https://explorer.testnet.rsk.co/address/0xb3210016baa0Eb6D99646a86aE9D74B3336866af)
+
+Você pode utilizá-lo para fazer testes :)
+
+## ABI - Application Binary Interface
+
+A [ABI](https://solidity.readthedocs.io/en/v0.5.3/abi-spec.html) é o padrão para interagir com smart contracts,
+tanto de fora do Blockchain quanto para a interação contrato-a-contrato.
+
+A ABI contém todas as informações públicas do smart contract:
+
+1. variáveis públicas
+2. funções públicas
+
+O smart contract **Name** contém as seguintes informações na ABI:
+
+- getName - função pública definida no smart contract
+- owner - variável pública, que é o endereço que publicou o smart contract, ou seja, o endereço da sua carteira.
+
+Que aparecem como os botões azuis no terminal do Remix:
+
+![Name buttons](/img/courses/dev/02/interact-with-a-smart-contract/image-04.png)
+
+Se você conhece a ABI, você não precisa saber o código fonte do smart contract.
+Mas, se você já tem acesso ao código fonte do smart contract, automaticamente você pode gerar a ABI.
+Em outro módulo você vai aprender como usar a ABI diretamente.
+
+Utilizando Remix, vamos usar o código fonte do smart contract, que já conhecemos.
+
+### Interagindo com o smart contract Name no Remix
+
+1. No 2o botão do lado esquerdo - **file explorer**, abra o arquivo **Name.sol**,
+   criado anteriormente na lição [Crie seu primeiro smart contract: name](/courses/dev/02/smart-contract-name)
+
+2. Depois vá em **Deploy and run transactions**,
+   Em **Environment**,
+   selecione a opção **Injected Web3**.
+
+3. Cole o o endereço do seu smart contract no campo ao lado do botão **At Address**.
+
+4. Clique no botão **At Address**.
+
+5. Ele aparecerá na seção **Deployed Contracts**
+
+![At address](/img/courses/dev/02/interact-with-a-smart-contract/image-05.png)
+
+Você poderá interagir com ele da mesma maneira que já fez anteriormente.
+
+![Name buttons](/img/courses/dev/02/interact-with-a-smart-contract/image-06.png)
+
+> Certifique-se de que está com a rede **RSK testnet** selecionada na sua wallet.
+
+## Considerações finais
+
+Parabéns!
+
+Agora você já sabe interagir com qualquer smart contract no Remix.
+
+Na próxima lição seu smart contract será validado por outro smart contract, chamado **MasterName**.
+
+Com o **MasterName** você aprenderá como seu smart contract pode interagir com outros
+:)

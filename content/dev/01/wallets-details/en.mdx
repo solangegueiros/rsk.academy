@@ -1,0 +1,229 @@
+---
+title: 'Crypto wallets details'
+description: 'Learn about Ethereum and RSK Accounts, checksum, Metamask vs Nifty wallet and account vs UTXO'
+---
+
+Before go deeply in some crypto wallet concepts, it will present a little review.
+
+> In short, a crypto wallet is a tool that you can use to interact with a Blockchain network.
+
+Contrary to popular belief, crypto wallets don't truly store cryptocurrencies.
+
+Instead, they provide the tools to send and receive cryptocurrency via Blockchain transactions.
+Among other things,
+they manage one or more pairs of public and private keys.
+
+## More about mnemonics
+
+Wallets which are based in a mnemonic is a HD wallet.
+HD is an acronym for **H**ierarchical **D**eterministic.
+
+Essentially, a seed phrase, or mnemonic,
+works like a root key that generates and gives access to all keys and addresses in a crypto wallet.
+
+A mnemonic is generated from the pattern defined in
+[BIP-39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)
+
+- BIP = Bitcoin Improvement Proposal
+
+Mnemonics are usually words that are easier to write than a private key.
+
+If the wallet is stolen, for example, just use the word combination to gain access to it again.
+Therefore words must be kept in absolute secrecy and safety.
+
+### Ian Coleman app
+
+This web app:
+
+[iancoleman.io/bip39](https://iancoleman.io/bip39/)
+
+is very useful for understanding mnemonics and derived keys.
+
+I recommend to do some tests.
+
+On the other hand, it's not so safe to generate a mnemonic and private keys on a website,
+so do NOT store real cryptos in addresses generated from here.
+
+## Derivation Path, or dPath
+
+If you use a mnemonic phrase or hardware wallet,
+you may come across the term "derivation path".
+
+The same mnemonic can generate addresses for different Blockchains using the dPath.
+So each coin has its own base derivation path,
+to ensure that you get different addresses for each coin.
+
+In short, it specifies which is the way will be generated the private key from this wallet.
+The address comes from public keys which also are generated using the derivation path.
+
+A derivation path looks something like this:
+
+```
+m/44'/60'/0'/0/0
+```
+
+Note the extra "/0" at the end of the derivation path.
+This number is called the address index,
+and is used by wallets to show you different address from the same source
+
+Take a look on some dPaths:
+
+| Blockchain  |        dPath        |
+| :---------- | :-----------------: |
+| Bitcoin     |    m/44'/0'/0'/0    |
+| Ethereum    |  m/44'/60'/0'/0/0   |
+| RSK Mainnet |  m/44'/137'/0'/0/0  |
+| RSK Testnet | m/44'/37310'/0'/0/0 |
+
+The mnemonic generates "master"s public and private keys,
+and using the address index it is created many addresses from same base.
+
+There are some specifications for this:
+
+- [BIP-32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)
+- [BIP-44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki)
+
+For example, this mnemonic:
+
+```
+shoot gate legend member sniff asthma smart slot famous call marriage math
+```
+
+Can generate different addresses:
+
+| Blockchain  |                  Address                   |
+| :---------- | :----------------------------------------: |
+| Bitcoin     |     1DgNhyMRzko5rJ5qZ91ZvGkw1B91kpJp2j     |
+| Ethereum    | 0x0eDbe1BbdA93b333640E1E32866C474ca2Fb5756 |
+| RSK Mainnet | 0x1aB23F5e15CfAE441F43e3a9b1FD9767C054432e |
+| RSK Testnet | 0xa63375173fFA44725b5CDe4dCfdE7D6Ccf5FFFaa |
+
+You can try it on [iancoleman.io/bip39](https://iancoleman.io/bip39/).
+
+## Ethereum and RSK Accounts
+
+RSK is compatible with Ethereum address and dPath, but, in fact, it has your own dPaths.
+
+Another difference about Ethereum and RSK is that on Ethereum, the addresses from Mainnet and all Testnets are the same.
+RSK uses different dPaths for Mainnet and Testnet.
+This avoid you to wrongly uses funds from a testnet Blockchain in another thats the money is "real".
+
+This it a great flexibility, but also can create some confusing between wallets.
+
+RSK recognizes Ethereum addresses, and in some cases,
+like when you are using a token bridge, which the funds will be sent from one Blockchain to another,
+they will be sent to the same address.
+So you need to use the Ethereum dPath on this case.
+
+## Checksum
+
+Another point that can create confusion in addresses in different wallets is the checksum concept.
+
+The checksum is the use of the chainID on the process of generate a address.
+
+This will change some uppercase and lowercase letters.
+
+Some wallets use it, others no, and the address can looks different, but in fact they are all the same.
+
+Here is the list of chain IDs for EVMs,
+Blockchains which are compatibles with the **E**thereum **V**irtual **M**achine.
+
+- [ChainIds list](https://chainid.network/)
+
+This is a example, showing the index 0 of the mnemonic presented previously:
+
+- 0xA63375173FFa44725B5cDE4DcFDe7d6ccf5Fffaa - RSK Testnet, without checksum
+- 0xa63375173fFA44725b5CDe4dCfdE7D6Ccf5FFFaa - RSK Testnet, with checksum
+- 0xa63375173ffa44725b5cde4dcfde7d6ccf5fffaa - RSK Testnet, lowercase
+
+> If you have problems with wallets saying that the address is invalid,
+> try to convert the address to lowercase.
+> This will works in most part of the cases.
+
+They have good intentions,
+they were created to prevent people from sending funds from one network to another unintentionally.
+
+But **checksum** and **dPath** can cause a lot of confusion!
+
+So pay attention, this is the most technical topic in this module,
+but it is very important that you understand it well in order not to have problems with addresses and wallets.
+
+## Metamask vs Nifty wallet
+
+Nifty wallet nativally has the cofigurations for RSK networks,
+so the addresses generated by Nifty uses the RSK's dPath and checksum.
+
+In the other hand, Metamask doesn't have RSK networks already configured,
+but it allows you to add custom networks too.
+In this way, it is possible to add the RSK networks.
+
+Take a look on these addresses on RSK testnet:
+
+- 0x0eDbe1BbdA93b333640E1E32866C474ca2Fb5756 - Metamask
+- 0xa63375173fFA44725b5CDe4dCfdE7D6Ccf5FFFaa - Nifty
+
+Hey, they are completaly different!
+
+- Metamask uses dPath **m/44'/60'/0'/0/0** (from Ethereum), without checksum
+- Nifty uses dPath **m/44'/37310'/0'/0/0**, with checksum
+
+But Metamask, until now, only uses the Ethereum dPath.
+So you will have a address generated for RSK Blockchain,
+which you can send and receive funds and transactions normally,
+but other wallets can tell you that this address is NOT valid in RSK network, but it is!
+
+You also can configure a custom network in Nifty adding the RSK networks, but using Ethereum dPaths.
+This is a great funcionallity from Nifty!
+
+## Account vs UTXO
+
+A important concept about Blockchains Bitcoin and RSK / Ethereum is the way they manage the balance of an address.
+
+This is the difference between Account vs UTXO.
+
+#### Accounts
+
+RSK and Ethereum uses the account concept, it means that it has a screenshot of all accounts in the last block,
+and the balance of an address is the value stored over there.
+
+#### UTXO
+
+UTXO means unspent transaction output.
+
+Bitcoin uses the UTXO model.
+
+A UTXO is an output of a Blockchain transaction that has not been spent,
+i.e. can be used as an input in a new transaction.
+
+When a portion of a Bitcoin is transferred,
+at the current address it will be a spent transaction,
+and at the new address it will be an unspent transaction.
+
+I like to say that it is the "parking lot" of Bitcoins,
+they are the addresses that a part of Bitcoin has passed through.
+
+The goal here is to have only an overview.
+To deepen these concepts,
+I suggest some reference books at the end of this lesson.
+
+## The importance of backups
+
+If you loose the access in your wallet and you don't have any backup,
+you probally lost your cryptocurrency forever!
+
+It's important to back up them regularly.
+In many cases, this is achieved by simply backing up wallet.dat files or seed phrases.
+
+Also, if you opted for password encryption, remember to back up your password as well.
+
+> It is very important that you have a backup of your mnemonic / seed phrase!
+
+## Closing thoughts
+
+Crypto wallets are an integral part of using cryptocurrencies.
+
+Now you know important concepts related to wallets!
+
+They are one of the basic pieces of infrastructure that make it possible to send and receive funds through Blockchain networks.
+
+The next step is know about some types of wallets.

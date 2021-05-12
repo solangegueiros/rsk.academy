@@ -1,6 +1,5 @@
 node_modules
 .next
+out
 yarn.lock
-package-lock.json
-public
 src/contracts/*.json

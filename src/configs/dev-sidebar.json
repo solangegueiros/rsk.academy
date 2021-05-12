@@ -100,9 +100,9 @@
         },
         {
           "title": {
-            "en": "Module 1 Exam",
-            "es": "Módulo 1 Examen",
-            "pt": "Módulo 1 Exame"
+            "en": "Module 1 Quiz",
+            "es": "Módulo 1 Quiz",
+            "pt": "Módulo 1 Quiz"
           },
           "path": "/courses/dev/01/quiz"
         }
