@@ -1,53 +1,89 @@
 import { createContext, ReactNode, useCallback, useReducer } from 'react'
 import {
-  AcademyClassAbi,
-  AcademyClassListAbi,
-  AcademyProjectListAbi,
-  AcademyStudentsAbi,
-  AcademyWalletAbi,
-  MasterNameAbi,
-  MasterQuoteAbi,
-  StudentPortfolioAbi,
-} from '@contracts'
+  AcademyClassListFactory,
+  AcademyClassFactory,
+  AcademyProjectListFactory,
+  AcademyStudentQuizFactory,
+  AcademyStudentsFactory,
+  AcademyWalletFactory,
+  MasterNameFactory,
+  StudentPortfolioFactory,
+  AcademyClassDevFactory,
+  AcademyClassBusinessFactory,
+} from '@type_chain'
 
 import { useAppSelector } from '@store/store'
 
-const ABIS = [
-  AcademyClassAbi,
-  AcademyClassListAbi,
-  AcademyProjectListAbi,
-  AcademyStudentsAbi,
-  AcademyWalletAbi,
-  MasterNameAbi,
-  MasterQuoteAbi,
-  StudentPortfolioAbi,
-]
-
-const initialContracts = ABIS.reduce((obj, { abi, contractName, networks }) => {
-  obj[contractName] = {
-    abi,
-    name: contractName,
-    deployedNetworks: Object.keys(networks),
-    isDeployedOnCurrentNetwork: null,
-    address: null,
-    contract: null,
+const initialContracts = {
+  AcademyClassList: {
+    name: 'AcademyClassList',
+    contract: AcademyClassListFactory,
     isLoading: false,
     isError: false,
-  }
-  return obj
-}, {})
+  },
+  AcademyClass: {
+    name: 'AcademyClass',
+    contract: AcademyClassFactory,
+    isLoading: false,
+    isError: false,
+  },
+  AcademyProjectList: {
+    name: 'AcademyProjectList',
+    contract: AcademyProjectListFactory,
+    isLoading: false,
+    isError: false,
+  },
+  AcademyStudentQuiz: {
+    name: 'AcademyStudentQuiz',
+    contract: AcademyStudentQuizFactory,
+    isLoading: false,
+    isError: false,
+  },
+  AcademyStudents: {
+    name: 'AcademyStudents',
+    contract: AcademyStudentsFactory,
+    isLoading: false,
+    isError: false,
+  },
+  AcademyWallet: {
+    name: 'AcademyWallet',
+    contract: AcademyWalletFactory,
+    isLoading: false,
+    isError: false,
+  },
+  MasterName: {
+    name: 'MasterName',
+    contract: MasterNameFactory,
+    isLoading: false,
+    isError: false,
+  },
+  StudentPortfolio: {
+    name: 'StudentPortfolio',
+    contract: StudentPortfolioFactory,
+    isLoading: false,
+    isError: false,
+  },
+  Developer: {
+    name: 'Developer',
+    contract: AcademyClassDevFactory,
+    isLoading: false,
+    isError: false,
+  },
+  Business: {
+    name: 'Business',
+    contract: AcademyClassBusinessFactory,
+    isLoading: false,
+    isError: false,
+  },
+}
 
-const contractReducer = (state: typeof initialContracts, { type, payload: { abi, contract, address, chainId } }) => {
+const contractReducer = (state: typeof initialContracts, { type, payload: contract }) => {
   switch (type) {
-    case abi.contractName:
+    case type:
       return {
         ...state,
-        [abi.contractName]: {
-          abi: abi.abi,
-          name: abi.contractName,
-          deployedNetworks: Object.keys(abi.networks),
-          isDeployedOnCurrentNetwork: Object.keys(abi.networks).includes(chainId?.toString()),
-          address,
+        [type]: {
+          name: type,
           contract,
           isLoading: false,
           isError: false,
@@ -67,10 +103,10 @@ export const ContractProvider = ({ children }: { children: ReactNode }): JSX.Ele
   const [contractState, dispatch] = useReducer(contractReducer, initialContracts)
 
   const loadContract = useCallback(
-    ({ abi, contract, address }) =>
+    (name, contract) =>
       dispatch({
-        type: abi.contractName,
-        payload: { abi, contract, address, chainId },
+        type: name,
+        payload: contract,
       }),
     [chainId],
   )

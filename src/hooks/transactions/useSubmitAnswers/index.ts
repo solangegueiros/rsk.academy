@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { toBN } from 'web3-utils'
+import { BigNumber } from 'ethers'
 
 import { useQuiz } from '@hooks/useQuiz'
 import { ContractContext } from '@context/ContractProvider'
@@ -36,13 +36,13 @@ export const useSubmitAnswers = (
 
   const numberOfCorrectAnswers = Object.entries(userAnswers).filter(answers => answers[1].isCorrect).length
 
-  const totalQuestions = toBN(numberOfQuestions)
-  const correctAnswers = toBN(numberOfCorrectAnswers)
+  const totalQuestions = BigNumber.from(numberOfQuestions)
+const correctAnswers = BigNumber.from(numberOfCorrectAnswers)
 
   const { exec, isError, isLoading } = useTransactionCallback({
     name: `Submit Answers ${quizName}`,
     from: account,
-    method: AcademyClass.contract?.methods.addQuizAnswer,
+    method: AcademyClass.contract?.addQuizAnswer,
     args: [quizName, stringifyAnswers(userAnswers, quizName), totalQuestions, correctAnswers],
   })
 
@@ -50,7 +50,7 @@ export const useSubmitAnswers = (
     dispatch(pendingAnswers({ course, module }))
     await exec()
 
-    const result = await AcademyStudentQuiz.contract?.methods.getStudentQuiz(account, quizName).call()
+    const result = await AcademyStudentQuiz.contract?.getStudentQuiz(account, quizName)
 
     const { total, grade, attempt, quiz, answer } = result
 

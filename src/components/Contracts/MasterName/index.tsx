@@ -8,7 +8,7 @@ import { useLoadSmartContracts } from '@hooks/useLoadContracts'
 import { useAppSelector } from '@store/store'
 
 export const MasterName = (): JSX.Element => {
-  const { MasterName: MasterNameContract } = useContext(ContractContext)
+  const { MasterName: {contract, name: contractName} } = useContext(ContractContext)
   const { account } = useAppSelector(state => state.identity)
   const { loadContracts } = useLoadSmartContracts()
 
@@ -23,7 +23,7 @@ export const MasterName = (): JSX.Element => {
   const { exec: handleSetName, isLoading: isLoadingSet } = useTransactionCallback({
     name: 'Set Name',
     from: account,
-    method: MasterNameContract.contract?.methods.addName,
+    method: contract.addName,
     args: [address, name],
     onCompleted: onSetCompleted,
   })
@@ -31,7 +31,7 @@ export const MasterName = (): JSX.Element => {
   const { exec: handleDeleteName, isLoading: isLoadingDelete } = useTransactionCallback({
     name: 'Delete Name',
     from: account,
-    method: MasterNameContract.contract?.methods.deleteName,
+    method: contract.deleteName,
     onCompleted: onDeleteCompleted,
   })
 
@@ -41,7 +41,7 @@ export const MasterName = (): JSX.Element => {
   }, [studentName, account])
 
   return (
-    <ContractBase contract={MasterNameContract}>
+    <ContractBase name={contractName} contract={contract}>
       <VStack spacing={4}>
         <Input value={name} placeholder='Name' onChange={e => setName(e.target.value)} />
         <Input value={address} placeholder='Address' onChange={e => setAddress(e.target.value)} />

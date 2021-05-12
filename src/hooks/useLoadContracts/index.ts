@@ -1,73 +1,74 @@
+/* eslint-disable camelcase */
 import { useContext } from 'react'
-
-import {
-  AcademyClassAbi,
-  AcademyStudentQuizAbi,
-  AcademyStudentsAbi,
-  MasterNameAbi,
-  StudentPortfolioAbi,
-  AcademyClassListAbi,
-  AcademyProjectListAbi,
-  AcademyWalletAbi,
-  MasterQuoteAbi,
-} from '@contracts'
 import { saveProfile, resetProfile } from '@store/profile/slice'
 import { AdminNameListType, AdminStudentsType, loadAdmin } from '@store/admin/slice'
-import { getContract, ContractAbiType } from '@utils/getContract'
 import { ContractContext } from '@context/ContractProvider'
-import { COURSE_ADDRESSES } from '@constants/constants'
+import { CONTRACT_ADDRESSES } from '@constants/constants'
 import { RLoginResponseContext } from '@context/RLoginProvider'
 import { useAppDispatch, useAppSelector } from '@store/store'
+import {
+  AcademyClassListFactory,
+  AcademyClassFactory,
+  AcademyProjectListFactory,
+  AcademyStudentQuizFactory,
+  AcademyStudentsFactory,
+  AcademyStudentsType,
+  AcademyWalletFactory,
+  MasterNameFactory,
+  StudentPortfolioFactory,
+  AcademyClassDevFactory,
+  AcademyClassBusinessFactory,
+} from '@type_chain'
+import { ethers } from 'ethers'
 
 export function useLoadSmartContracts(): { loadContracts: () => void } {
   const { rLoginResponse } = useContext(RLoginResponseContext)
   const dispatch = useAppDispatch()
   const { account, chainId, isAdmin } = useAppSelector(state => state.identity)
   const { loadContract, resetContracts } = useContext(ContractContext)
-  const provider = rLoginResponse?.provider
+  const prv = rLoginResponse?.provider
+  const provider = prv && new ethers.providers.Web3Provider(prv)
 
   const loadContracts = async () => {
     if (provider && chainId) {
       // Load AcademyStudentsSC
 
-      const AcademyStudents = getContract(<ContractAbiType>AcademyStudentsAbi, chainId, provider)
-      loadContract(AcademyStudents)
+      const AcademyStudents: AcademyStudentsType = AcademyStudentsFactory.connect(CONTRACT_ADDRESSES[chainId].AcademyStudents, provider)
+      loadContract("AcademyStudents", AcademyStudents)
 
       // Load AcademyWalletSC
-      const AcademyWallet = getContract(<ContractAbiType>AcademyWalletAbi, chainId, provider)
-      loadContract(AcademyWallet)
+      const AcademyWallet = AcademyWalletFactory.connect(CONTRACT_ADDRESSES[chainId].AcademyWallet, provider)
+      loadContract("AcademyWallet", AcademyWallet)
 
       // Load AcademyClassListSC
-      const AcademyClassList = getContract(<ContractAbiType>AcademyClassListAbi, chainId, provider)
-      loadContract(AcademyClassList)
+      const AcademyClassList = AcademyClassListFactory.connect(CONTRACT_ADDRESSES[chainId].AcademyClassList, provider)
+      loadContract("AcademyClassList", AcademyClassList)
 
       // Load AcademyProjectListSC
-      const AcademyProjectList = getContract(<ContractAbiType>AcademyProjectListAbi, chainId, provider)
-      loadContract(AcademyProjectList)
+      const AcademyProjectList = AcademyProjectListFactory.connect(
+        CONTRACT_ADDRESSES[chainId].AcademyProjectList,
+        provider,
+      )
+      loadContract("AcademyProjectList", AcademyProjectList)
 
       // Load MasterNameSC
-      const MasterName = getContract(<ContractAbiType>MasterNameAbi, chainId, provider)
-      loadContract(MasterName)
-
-      // Load MasterNameSC
-      const MasterQuote = getContract(<ContractAbiType>MasterQuoteAbi, chainId, provider)
-      loadContract(MasterQuote)
+      const MasterName = MasterNameFactory.connect(CONTRACT_ADDRESSES[chainId].MasterName, provider)
+      loadContract("MasterName", MasterName)
 
       // Load StudentQuizSC
-      const StudentQuiz = getContract(<ContractAbiType>AcademyStudentQuizAbi, chainId, provider)
-      loadContract(StudentQuiz)
+      const StudentQuiz = AcademyStudentQuizFactory.connect(CONTRACT_ADDRESSES[chainId].AcademyStudentQuiz, provider)
+      loadContract("StudentQuiz", StudentQuiz)
 
       // Load Courses
-      Object.entries(COURSE_ADDRESSES[chainId]).map(([contractName, courseAddress]) => {
-        const Abi = { ...AcademyClassAbi, contractName } as ContractAbiType
-        const contract = getContract(Abi, chainId, provider, courseAddress)
-        return loadContract(contract)
-      })
+      const Developer = AcademyClassDevFactory.connect(CONTRACT_ADDRESSES[chainId].Developer, provider)
+      loadContract('Developer', Developer)
+      const Business = AcademyClassBusinessFactory.connect(CONTRACT_ADDRESSES[chainId].Business, provider)
+      loadContract('Business', Business)
 
       let quizResults: Record<string, { total: number; grade: number; attempt: number; answer: string }> = null
 
       if (account && StudentQuiz.address) {
-        const quizNames: string[] = await StudentQuiz.contract.methods.listQuizByStudent(account).call()
+        const quizNames: string[] = await StudentQuiz.listQuizByStudent(account)
         if (quizNames.length > 0) {
           const results: {
             total: number
@@ -75,9 +76,7 @@ export function useLoadSmartContracts(): { loadContracts: () => void } {
             attempt: number
             quiz: string
             answer: string
-          }[] = await Promise.all(
-            quizNames.map(name => StudentQuiz.contract.methods.getStudentQuiz(account, name).call()),
-          )
+          }[] = await Promise.all(quizNames.map(name => StudentQuiz['getStudentQuiz(address,string)'](account, name)))
 
           if (results) {
             quizResults = results.reduce((obj, result) => {
@@ -95,16 +94,13 @@ export function useLoadSmartContracts(): { loadContracts: () => void } {
       }
 
       // Load Admin
-      if (isAdmin && AcademyStudents.abi.networks[chainId]) {
-        const students: AdminStudentsType[] = await AcademyStudents.contract.methods?.listStudents().call()
+      if (isAdmin && CONTRACT_ADDRESSES[chainId].AcademyStudents) {
+        const students: string[] = await AcademyStudents.listStudents()
 
-        const studentInfos =
-          students &&
-          (await Promise.all(
-            students.map(student => AcademyStudents.contract.methods.getStudentByAddress(student).call()),
-          ))
+        const studentInfos: AdminStudentsType[] =
+          students && (await Promise.all(students.map(student => AcademyStudents.getStudentByAddress(student))))
 
-        const nameList: AdminNameListType[] = await MasterName.contract.methods.listNameInfo().call()
+        const nameList: AdminNameListType[] = await MasterName.listNameInfo()
 
         dispatch(loadAdmin({ students: studentInfos, nameList }))
       }
@@ -115,7 +111,7 @@ export function useLoadSmartContracts(): { loadContracts: () => void } {
       }
 
       // Load StudentProfile
-      const studentInfo = await AcademyStudents.contract.methods.getStudentByAddress(account).call()
+      const studentInfo = await AcademyStudents.getStudentByAddress(account)
 
       if (!studentInfo) {
         console.warn('Student account is not exist!')
@@ -132,11 +128,11 @@ export function useLoadSmartContracts(): { loadContracts: () => void } {
 
       if (portfolioAddress !== '0x0000000000000000000000000000000000000000') {
         // Load StudentPortfolio
-        const StudentPortfolio = getContract(<ContractAbiType>StudentPortfolioAbi, chainId, provider, portfolioAddress)
-        loadContract(StudentPortfolio)
+        const StudentPortfolio = StudentPortfolioFactory.connect(portfolioAddress, provider)
+        loadContract("StudentPortfolio", StudentPortfolio)
 
         // Load StudentPortfolioList
-        const portfolioList = await StudentPortfolio.contract?.methods.listPortfolio().call()
+        const portfolioList = await StudentPortfolio.listPortfolio()
 
         let studentName = null
         // Load StudentName
@@ -144,16 +140,16 @@ export function useLoadSmartContracts(): { loadContracts: () => void } {
           const nameProject = portfolioList.find(({ name }) => name === 'Name')
           if (nameProject) {
             const nameProjectAddress = nameProject.projectAddress
-            studentName = await MasterName.contract.methods.getName(nameProjectAddress).call()
+            studentName = await MasterName.getName(nameProjectAddress)
           }
         }
 
         // Load AcademyClass
-        const AcademyClass = getContract(<ContractAbiType>AcademyClassAbi, chainId, provider, activeClassAddress)
-        loadContract(AcademyClass)
+        const AcademyClass = AcademyClassFactory.connect(activeClassAddress, provider)
+        loadContract("AcademyClass", AcademyClass)
 
-        const studentActiveClassName = await AcademyClass.contract?.methods.className().call()
-        const classStudentInfo = await AcademyClass.contract?.methods.getStudentByAddress(account).call()
+        const studentActiveClassName = await AcademyClass.className()
+        const classStudentInfo = await AcademyClass.getStudentByAddress(account)
 
         setTimeout(() => {
           dispatch(

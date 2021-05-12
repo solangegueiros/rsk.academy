@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { ethers } from 'ethers'
 
-export type AdminStudentsType = {
-  activeClass: string
-  index: string
+export type AdminStudentsType = [ethers.BigNumber, string, string, string, string[]] &
+{
+  index: ethers.BigNumber
   ownerAddress: string
   portfolioAddress: string
+  activeClass: string
   studentClasses: string[]
 }
 

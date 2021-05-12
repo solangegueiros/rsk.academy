@@ -13,8 +13,7 @@ interface SubscribeAcademyProps {
 }
 
 export const SubscribeAcademy = ({ contractName, buttonText }: SubscribeAcademyProps): JSX.Element => {
-  const context = useContext(ContractContext)
-  const contract = context[contractName]
+  const {[contractName]: {contract, name}} = useContext(ContractContext)
   const { studentClasses } = useAppSelector(state => state.profile)
   const { account, chainId } = useAppSelector(state => state.identity)
 
@@ -25,11 +24,11 @@ export const SubscribeAcademy = ({ contractName, buttonText }: SubscribeAcademyP
   const { exec, isLoading } = useTransactionCallback({
     name: `Subscribe course ${contractName}`,
     from: account,
-    method: contract?.contract?.methods.subscribe,
+    method: contract?.subscribe,
   })
 
   return (
-    <ContractBase contract={contract}>
+    <ContractBase name={name} contract={contract}>
       {hasSubscribed ? (
         <Alert>
           <AlertIcon />

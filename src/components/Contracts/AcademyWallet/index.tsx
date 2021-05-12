@@ -24,7 +24,7 @@ import { FaPaste } from 'react-icons/fa'
 import { Popup } from '@components/Popup'
 
 export const AcademyWallet = (): JSX.Element => {
-  const { AcademyWallet: contract } = useContext(ContractContext)
+  const { AcademyWallet: {contract, name} } = useContext(ContractContext)
   const [balance, setBalance] = useState<number | null>(null)
   const [address, setAddress] = useState<string>('')
   const toast = useToast()
@@ -38,7 +38,7 @@ export const AcademyWallet = (): JSX.Element => {
 
   const getBalance = async () => {
     try {
-      const res = await contract.contract?.methods.balanceOf(address.toLowerCase()).call()
+      const res = await contract?.balanceOf(address.toLowerCase())
       account.current = address
       setBalance(res)
       setAddress(null)
@@ -52,7 +52,7 @@ export const AcademyWallet = (): JSX.Element => {
   }
 
   return (
-    <ContractBase contract={contract}>
+    <ContractBase name={name} contract={contract}>
       <Box>
         <VStack mb={4} spacing={4}>
           <FormControl>

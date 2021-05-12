@@ -6,7 +6,7 @@ import { ContractContext } from '@context/ContractProvider'
 import { useAppSelector } from '@store/store'
 
 export const MasterQuote = (): JSX.Element => {
-  const { MasterQuote: contract } = useContext(ContractContext)
+  const { MasterQuote: {contract, name} } = useContext(ContractContext)
   const { account } = useAppSelector(state => state.identity)
 
   const [quote, setQuote] = useState<string>('')
@@ -14,7 +14,7 @@ export const MasterQuote = (): JSX.Element => {
 
   const handleSetQuote = () => {
     try {
-      contract.contract.methods
+      contract
         .addName(address, quote)
         .send({ from: account })
         .once('receipt', receipt => {
@@ -27,7 +27,7 @@ export const MasterQuote = (): JSX.Element => {
   }
   const handleDeleteName = () => {
     try {
-      contract.contract.methods
+      contract
         .deleteName()
         .send({ from: account })
         .once('receipt', receipt => {
@@ -40,7 +40,7 @@ export const MasterQuote = (): JSX.Element => {
   }
 
   return (
-    <ContractBase contract={contract}>
+    <ContractBase name={name} contract={contract}>
       <VStack spacing={4}>
         <Input value={quote} placeholder='Name' onChange={e => setQuote(e.target.value)} />
         <Input value={address} placeholder='Address' onChange={e => setAddress(e.target.value)} />

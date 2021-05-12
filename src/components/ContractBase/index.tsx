@@ -19,13 +19,12 @@ import { trimValue } from '@utils/trimValue'
 import { RLoginResponseContext } from '@context/RLoginProvider'
 import { FaCheckCircle, FaCopy } from 'react-icons/fa'
 import { Popup } from '@components/Popup'
+import { useAppSelector } from '@store/store'
+import { SUPPORTED_CHAINS } from '@constants/constants'
 
 interface ContractBaseProps {
-  contract: {
-    name: string
-    address: string
-    isDeployedOnCurrentNetwork: boolean
-  }
+  contract: any
+  name: string
   children: ReactNode
 }
 
@@ -49,10 +48,12 @@ const NotLoggedIn = (): JSX.Element => {
   )
 }
 
-export const ContractBase = ({ contract, children, ...rest }: ContractBaseProps & BoxProps): JSX.Element => {
+export const ContractBase = ({ contract, name, children, ...rest }: ContractBaseProps & BoxProps): JSX.Element => {
   const { hasCopied, onCopy } = useClipboard(contract?.address)
   const context = useContext(RLoginResponseContext)
   const { rLoginResponse } = context
+  const { chainId } = useAppSelector(state => state.identity)
+
 
   const color = useColorModeValue('primary.500', 'light.500')
   const { t } = useTranslation('common')
@@ -60,8 +61,8 @@ export const ContractBase = ({ contract, children, ...rest }: ContractBaseProps 
 
   if (!contract) return <NotLoggedIn />
 
-  const showDeployedContract = rLoginResponse && contract.isDeployedOnCurrentNetwork
-  const showIsNotDeployed = rLoginResponse && !contract.isDeployedOnCurrentNetwork
+  const showDeployedContract = rLoginResponse && SUPPORTED_CHAINS.includes(chainId)
+  const showIsNotDeployed = rLoginResponse && !SUPPORTED_CHAINS.includes(chainId)
 
   return (
     <Box bg={bg} p={8} boxShadow='md' borderRadius={10} w='full' mt={4} {...rest}>
@@ -74,7 +75,7 @@ export const ContractBase = ({ contract, children, ...rest }: ContractBaseProps 
               target='_blank'
               href={`https://explorer.testnet.rsk.co/address/${contract.address}`}
             >
-              {contract.name}
+              {name}
             </chakra.a>
           </Heading>
         </Popup>

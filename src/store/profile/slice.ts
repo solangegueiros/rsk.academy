@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { ethers } from 'ethers'
 
 type ProfileStateType = {
-  index: string
+  index: ethers.BigNumber
   ownerAddress: string
   portfolioAddress: string
   activeClassAddress: string
