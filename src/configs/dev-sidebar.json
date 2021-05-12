@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "routes": [
     {
@@ -250,3 +251,257 @@
     }
   ]
 }
+=======
+{
+  "routes": [
+    {
+      "title": {
+        "en": "Developers",
+        "es": "Desarrolladores",
+        "pt": "Desenvolvedores"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Welcome",
+            "es": "¡Bienvenido(a)!",
+            "pt": "Bem-vindo(a)"
+          },
+          "path": "/courses/dev/_/welcome"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "01 - wallets",
+        "es": "01 - billeteras",
+        "pt": "01 - Wallets"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Overview",
+            "es": "Overview",
+            "pt": "Overview"
+          },
+          "path": "/courses/dev/01/intro"
+        },
+        {
+          "title": {
+            "en": "Crypto wallets basics",
+            "es": "Conceptos básicos",
+            "pt": "Básico das wallets"
+          },
+          "path": "/courses/dev/01/wallets-intro"
+        },
+        {
+          "title": {
+            "en": "Install Web Wallet",
+            "es": "Instalar Web Wallet",
+            "pt": "Instalando uma web wallet"
+          },
+          "path": "/courses/dev/01/install-web-wallet"
+        },
+        {
+          "title": {
+            "en": "Connecting to Academy",
+            "es": "Conectando a Academy",
+            "pt": "Conectando-se à Academy"
+          },
+          "path": "/courses/dev/01/connecting-to-academy"
+        },
+        {
+          "title": {
+            "en": "RSK faucet",
+            "es": "RSK faucet",
+            "pt": "RSK faucet"
+          },
+          "path": "/courses/dev/01/rsk-faucet"
+        },
+        {
+          "title": {
+            "en": "First transfer",
+            "es": "Primera transferencia",
+            "pt": "Primeira transferência"
+          },
+          "path": "/courses/dev/01/first-transfer"
+        },
+        {
+          "title": {
+            "en": "Subscribe to RSK Academy",
+            "es": "Suscríbete a RSK Academy",
+            "pt": "Inscreva-se na RSK Academy"
+          },
+          "path": "/courses/dev/01/subscribe-to-academy"
+        },
+        {
+          "title": {
+            "en": "Crypto wallets details",
+            "es": "Detalles de billeteras crypto",
+            "pt": "Detalhes das wallets"
+          },
+          "path": "/courses/dev/01/wallets-details"
+        },
+        {
+          "title": {
+            "en": "Crypto wallets types",
+            "es": "Tipos de billeteras crypto",
+            "pt": "Tipos de wallets"
+          },
+          "path": "/courses/dev/01/wallets-types"
+        },
+        {
+          "title": {
+            "en": "Module 1 Quiz",
+            "es": "Module 1 Quiz",
+            "pt": "Module 1 Quiz"
+          },
+          "path": "/courses/dev/01/quiz"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "02 - smart contracts intro",
+        "es": "02 - smart contracts intro",
+        "pt": "02 - smart contracts intro"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Overview",
+            "es": "Overview",
+            "pt": "Overview"
+          },
+          "path": "/courses/dev/02/intro"
+        },
+        {
+          "title": {
+            "en": "Introduction to Smart Contracts",
+            "es": "Introducción a los Contratos Inteligentes",
+            "pt": "Introdução aos Smart Contracts"
+          },
+          "path": "/courses/dev/02/introduction"
+        },
+        {
+          "title": {
+            "en": "Remix",
+            "es": "Remix",
+            "pt": "Remix"
+          },
+          "path": "/courses/dev/02/remix"
+        },
+        {
+          "title": {
+            "en": "Your first smart contract: name",
+            "es": "Tu primer contrato inteligente: name",
+            "pt": "Seu primeiro contrato inteligente: name"
+          },
+          "path": "/courses/dev/02/smart-contract-name"
+        },
+        {
+          "title": {
+            "en": "Deploy on RSK testnet",
+            "es": "Deploy en RSK testnet",
+            "pt": "Publicando na RSK testnet"
+          },
+          "path": "/courses/dev/02/publish-on-rsk-testnet"
+        },
+        {
+          "title": {
+            "en": "Validate your name at RSK Academy",
+            "es": "Valide su nombre en RSK Academy",
+            "pt": "Valide seu nome na RSK Academy"
+          },
+          "path": "/courses/dev/02/validate-name"
+        },
+        {
+          "title": {
+            "en": "Module 2 Quiz",
+            "es": "Module 2 Quiz",
+            "pt": "Module 2 Quiz"
+          },
+          "path": "/courses/dev/02/quiz"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "03 - Blockchain",
+        "es": "03 - Blockchain",
+        "pt": "03 - Blockchain"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Overview",
+            "es": "Overview",
+            "pt": "Overview"
+          },
+          "path": "/courses/dev/03/intro"
+        },
+        {
+          "title": {
+            "en": "What is Blockchain?",
+            "es": "¿Qué es Blockchain?",
+            "pt": "O que é Blockchain?"
+          },
+          "path": "/courses/dev/03/blockchain"
+        },
+        {
+          "title": {
+            "en": "Fundamentals",
+            "es": "Fundamentos",
+            "pt": "Fundamentos"
+          },
+          "path": "/courses/dev/03/fundamentals"
+        },
+        {
+          "title": {
+            "en": "Consensus algorithms",
+            "es": "Algoritmos de consenso",
+            "pt": "Algoritmos de consenso"
+          },
+          "path": "/courses/dev/03/consensus-algorithms"
+        },
+        {
+          "title": {
+            "en": "Bitcoin",
+            "es": "Bitcoin",
+            "pt": "Bitcoin"
+          },
+          "path": "/courses/dev/03/bitcoin"
+        },
+        {
+          "title": {
+            "en": "Ethereum",
+            "es": "Ethereum",
+            "pt": "Ethereum"
+          },
+          "path": "/courses/dev/03/ethereum"
+        },
+        {
+          "title": {
+            "en": "RSK",
+            "es": "RSK",
+            "pt": "RSK"
+          },
+          "path": "/courses/dev/03/rsk"
+        },
+        {
+          "title": {
+            "en": "Module 3 Quiz",
+            "es": "Module 3 Quiz",
+            "pt": "Module 3 Quiz"
+          },
+          "path": "/courses/dev/03/quiz"
+        }
+      ]
+    }
+  ]
+}
+>>>>>>> 39ec81e (update: developer quiz)
