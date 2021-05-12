@@ -56,8 +56,8 @@ export default {
     balanceIs: 'El saldo es',
   },
   quiz: {
-    yes: 'Sí',
-    no: 'No',
+    yes: 'Verdadero',
+    no: 'Falso',
     subscribers:
       'Solo los estudiantes inscritos en el curso pueden realizar la prueba.',
   },

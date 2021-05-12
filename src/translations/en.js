@@ -55,8 +55,8 @@ export default {
     balanceIs: 'Balance is',
   },
   quiz: {
-    yes: 'Yes',
-    no: 'No',
+    yes: 'True',
+    no: 'False',
     subscribers: 'Only course subscribers can take the quiz.',
   },
 }
