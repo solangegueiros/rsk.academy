@@ -25,7 +25,7 @@ export const QuizItem = ({
   const { t } = useTranslation('common')
 
   const questionAnswers = type === 'tf' ? [0, 1] : answers
-  const tf = [t`quiz.yes`, t`quiz.no`]
+  const tf = [t('quiz.no'), t('quiz.yes')]
   const dispatch = useAppDispatch()
 
   const setAnswer = (val: string | number) => {

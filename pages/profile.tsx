@@ -39,9 +39,7 @@ const Profile = (): JSX.Element => {
           </Alert>
           {COURSE_ADDRESSES[chainId] && (
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-              {Object.keys(COURSE_ADDRESSES[chainId]).map(courseName => (
-                <SubscribeAcademy key={courseName} contractName={courseName} />
-              ))}
+              <SubscribeAcademy key='Developer' contractName='Developer' />
             </SimpleGrid>
           )}
         </Box>
@@ -105,9 +103,7 @@ const Profile = (): JSX.Element => {
         </Box>
         <Heading mb={8}>Courses</Heading>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
-          {Object.keys(COURSE_ADDRESSES[chainId]).map(courseName => (
-            <SubscribeAcademy key={courseName} contractName={courseName} />
-          ))}
+          <SubscribeAcademy key='Developer' contractName='Developer' />
         </SimpleGrid>
       </>
     )

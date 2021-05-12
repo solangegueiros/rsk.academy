@@ -21,14 +21,14 @@ const Courses = (): JSX.Element => {
             </Box>
           </Box>
         </NextLink>
-        <NextLink href='/courses/business/_/welcome' passHref>
+        {/* <NextLink href='/courses/business/_/welcome' passHref>
           <Box _hover={{ boxShadow: 'lg' }} cursor='pointer' boxShadow='md' bg={bg} transition='box-shadow 0.3s'>
             <Image w='full' src='/img/business.svg' alt='business course' />
             <Box p={4}>
               <Heading textAlign='center'>{t`business`}</Heading>
             </Box>
           </Box>
-        </NextLink>
+        </NextLink> */}
       </SimpleGrid>
     </Layout>
   )

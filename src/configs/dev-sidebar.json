@@ -97,6 +97,14 @@
             "pt": "Tipos de wallets"
           },
           "path": "/courses/dev/01/wallets-types"
+        },
+        {
+          "title": {
+            "en": "Module 1 Quiz",
+            "es": "Module 1 Quiz",
+            "pt": "Module 1 Quiz"
+          },
+          "path": "/courses/dev/01/quiz"
         }
       ]
     },
@@ -155,6 +163,14 @@
             "pt": "Valide seu nome na RSK Academy"
           },
           "path": "/courses/dev/02/validate-name"
+        },
+        {
+          "title": {
+            "en": "Module 2 Quiz",
+            "es": "Module 2 Quiz",
+            "pt": "Module 2 Quiz"
+          },
+          "path": "/courses/dev/02/quiz"
         }
       ]
     },
@@ -221,6 +237,14 @@
             "pt": "RSK"
           },
           "path": "/courses/dev/03/rsk"
+        },
+        {
+          "title": {
+            "en": "Module 3 Quiz",
+            "es": "Module 3 Quiz",
+            "pt": "Module 3 Quiz"
+          },
+          "path": "/courses/dev/03/quiz"
         }
       ]
     }
