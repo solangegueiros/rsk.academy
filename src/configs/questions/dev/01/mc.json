@@ -19,7 +19,7 @@
     "id": "dev-01-mc-02",
     "type": "mc",
     "question": {
-      "en": "Even though I know the mnemonico of my wallet, where can I NOT use it to access my cryptos?",
+      "en": "Even though I know the mnemonic of my wallet, where can I NOT use it to access my cryptos?",
       "es": "Aunque conozco el mnemónico de mi billetera, ¿dónde NO puedo usarlo para acceder a mis criptos?",
       "pt": "Mesmo sabendo o mnemonico da minha carteira, onde NÃO posso utilizá-lo para acessar minhas cryptos?"
     },
