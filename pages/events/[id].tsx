@@ -1,4 +1,6 @@
 /* eslint-disable camelcase */
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import {
   Box,
@@ -27,23 +29,7 @@ import { isPast } from 'date-fns'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Layout, Seo } from '@components'
-import { getEvent, getEventPaths } from '@lib/getEvents'
-
-export type EventType = {
-  datetime: string
-  title: string
-  language: string
-  speaker: string
-  role: string
-  twitter: string
-  city: string
-  description: string
-  webinar_link: string
-  rsvp_embed: string
-  image: string
-  video_link: string
-  resources: string
-}
+import { getEvent, getEventPaths, EventType } from '@lib/getEvents'
 
 const TimeZone = dynamic(() => import('../../src/components/TimeZone'), {
   ssr: false,
@@ -64,8 +50,19 @@ const LANGUAGES = {
 const Event = ({ event }: { event: EventType }): JSX.Element => {
   const { t } = useTranslation('common')
   const bg = useColorModeValue('white', 'dark.400')
+  const [eventState, setEventState] = useState<EventType>(event)
+  const { query } = useRouter()
 
-  if (!event)
+  useEffect(() => {
+    ;(async function fetchEvent() {
+      const response = await fetch(`/api/events?id${query.id}`)
+      const result = await response.json()
+      const _event = result.find((event: EventType) => event.id === query.id)
+      setEventState(_event)
+    })()
+  }, [])
+
+  if (!eventState)
     return (
       <Flex h='100vh' align='center' justify='center'>
         <Spinner size='lg' />
@@ -86,7 +83,7 @@ const Event = ({ event }: { event: EventType }): JSX.Element => {
     image,
     video_link,
     resources,
-  } = event
+  } = eventState
 
   const isExpired = isPast(new Date(datetime))
   const videoId = extractVideoIdFromUrl(video_link)

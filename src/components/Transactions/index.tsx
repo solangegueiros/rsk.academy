@@ -14,7 +14,6 @@ export const Transactions = (): JSX.Element => {
   }
 
   const pendingCount = transactions[account]?.filter(tsx => tsx.type === 'pending')?.length || 0
-  console.log(pendingCount)
 
   return (
     <Menu size='xl' placement='bottom'>

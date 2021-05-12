@@ -2,7 +2,6 @@ import { useContext, useRef } from 'react'
 import {
   Box,
   useColorModeValue,
-  Container,
   HStack,
   useUpdateEffect,
   useDisclosure,
@@ -27,6 +26,7 @@ import {
   NavLink,
   Logo,
   Transactions,
+  Container,
 } from '@components'
 import { RLoginResponseContext } from '@context/RLoginProvider'
 import { useAppSelector } from '@store/store'
@@ -44,7 +44,7 @@ const MainNavLinkGroup = (props: StackProps): JSX.Element => {
 
   return (
     <HStack spacing='4' {...props}>
-      <NavLink href='/courses'>{t`courses`}</NavLink>
+      <NavLink href='/courses/dev/_/welcome'>{t`courses`}</NavLink>
       <NavLink href='/events'>{t`events`}</NavLink>
       {account && !isAdmin && (
         <>
@@ -74,7 +74,7 @@ export const Header = (props: BoxProps): JSX.Element => {
   return (
     <>
       <Box d={useBreakpointValue({ base: 'none', md: 'block' })} bg={bg}>
-        <Container maxW={1200}>
+        <Container>
           <HStack w='full' py={2} justify='center' pos='relative'>
             <Text
               userSelect='none'
@@ -108,13 +108,13 @@ export const Header = (props: BoxProps): JSX.Element => {
         zIndex='sticky'
         {...props}
       >
-        <Container maxW={1200} h='4.5rem'>
+        <Container h='4.5rem'>
           <HStack justify='space-between' align='center' h='full' w='full'>
             <HStack spacing={16} h='full'>
               <NextLink href='/' passHref>
                 <chakra.a
                   fontWeight='bold'
-                  fontSize='4em'
+                  fontSize='6em'
                   lineHeight='1'
                   mr={4}
                   d='flex'
