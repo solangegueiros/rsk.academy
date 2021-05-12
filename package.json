@@ -19,7 +19,7 @@
     "build-storybook": "build-storybook",
     "lint": "eslint '**/*.{ts,tsx}'",
     "tsc": "tsc",
-    "format": "prettier --write '**/*.{js,jsx,ts,tsx,mdx}'",
+    "format": "prettier --write '**/*.{json,js,jsx,ts,tsx,mdx}'",
     "test": "jest -c test/jest.config.js",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run --config video=false",
