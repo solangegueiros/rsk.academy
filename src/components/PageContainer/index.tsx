@@ -30,12 +30,12 @@ export const PageContainer = (props: PageContainerProps): JSX.Element => {
       <Seo title={title} description={description} />
       <SkipNavLink zIndex={20}>Skip to Content</SkipNavLink>
       <Header />
-      <Container d='flex' as='main' maxW='full' minH='calc(100vh - 4.5rem)'>
+      <Container d='flex' as='main' minH='calc(100vh - 4.5rem)'>
         <Flex flex='1'>
           {sidebar || null}
           <Box flex='1' w='full'>
             <SkipNavContent />
-            <Flex h='full' flexDir='column' id='content' px={5} mx='auto' maxW='64rem'>
+            <Flex h='full' flexDir='column' id='content' maxW='72rem'>
               <PageTransition>
                 <Box flex='1' h='full' d='flex' flexDir='column'>
                   <chakra.h1 tabIndex={-1} outline={0} apply='mdx.h1' mb={8}>

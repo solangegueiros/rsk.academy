@@ -14,7 +14,7 @@
             "es": "¡Bienvenido(a)!",
             "pt": "Bem-vindo(a)"
           },
-          "path": "/courses/dev"
+          "path": "/courses/dev/_/welcome"
         }
       ]
     },
@@ -32,7 +32,7 @@
             "es": "Overview",
             "pt": "Overview"
           },
-          "path": "/courses/dev/01"
+          "path": "/courses/dev/01/intro"
         },
         {
           "title": {
@@ -122,7 +122,7 @@
             "es": "Overview",
             "pt": "Overview"
           },
-          "path": "/courses/dev/02"
+          "path": "/courses/dev/02/intro"
         },
         {
           "title": {
@@ -188,7 +188,7 @@
             "es": "Overview",
             "pt": "Overview"
           },
-          "path": "/courses/dev/03"
+          "path": "/courses/dev/03/intro"
         },
         {
           "title": {

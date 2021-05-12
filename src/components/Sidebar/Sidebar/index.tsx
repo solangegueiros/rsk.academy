@@ -11,10 +11,10 @@ export const Sidebar = ({ routes }: SidebarProps): JSX.Element => {
   const ref = useRef(null)
 
   return (
-    <Flex flexDir='column' display={{ base: 'none', md: 'block' }} w='320px'>
+    <Flex mr={12} flexDir='column' display={{ base: 'none', md: 'block' }} w='350px'>
       <Box
         pos='sticky'
-        top='9rem'
+        top='5rem'
         ref={ref}
         as='nav'
         aria-label='Main Navigation'
@@ -23,7 +23,7 @@ export const Sidebar = ({ routes }: SidebarProps): JSX.Element => {
         }}
         overflowY='auto'
         flexShrink={0}
-        p='4'
+        py={4}
         h='calc(100vh - 10rem);'
       >
         <SidebarContent routes={routes} contentRef={ref} />
