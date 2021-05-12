@@ -13,7 +13,7 @@
       { "en": "Wallet", "es": "Billetera", "pt": "Carteira" },
       { "en": "In your pocket", "es": "En tu bolsillo", "pt": "No seu bolso" }
     ],
-    "correctAnswer": 2
+    "correct_answer": 2
   },
   {
     "id": "dev-01-mc-02",
@@ -29,7 +29,7 @@
       { "en": "Mobile wallet", "es": "Mobile wallet", "pt": "Mobile wallet" },
       { "en": "Desktop wallet", "es": "Desktop wallet", "pt": "Desktop wallet" }
     ],
-    "correctAnswer": 1
+    "correct_answer": 1
   },
   {
     "id": "dev-01-mc-03",
@@ -61,7 +61,7 @@
         "pt": "Uma wallet para o computador"
       }
     ],
-    "correctAnswer": 0
+    "correct_answer": 0
   },
   {
     "id": "dev-01-mc-04",
@@ -93,23 +93,23 @@
         "pt": "Uma chave que abre uma porta secreta"
       }
     ],
-    "correctAnswer": 2
+    "correct_answer": 2
   },
   {
     "id": "dev-01-mc-05",
     "type": "mc",
     "question": {
-      "en": "Which of the following is popularly used for storing crypto assets?",
-      "es": "Qual desdes é comumente usado para guardar criptoativos?",
-      "pt": "Qual das opções a seguir é comumente usada para armazenar criptomoedas?"
+      "en": "Ana would like to transfer 1 RBTC to Bob. Who needs to use the private key?",
+      "es": "Ana quiere transferir 1 RBTC a Bob. ¿Quién necesita usar su clave privada?",	
+      "pt": "Ana quer transferir 1 RBTC para Bob. Quem precisa usar sua private key?"	          
     },
     "answers": [
-      { "en": "Your pocket", "es": "Tu bolsillo", "pt": "Seu bolso" },
-      { "en": "Stack", "es": "Pila (Stack)", "pt": "Pilha (Stack)" },
-      { "en": "Box", "es": "Caja", "pt": "Caixa" },
-      { "en": "Wallet", "es": "Billetera", "pt": "Carteira" }
+      { "en": "Ana", "es": "Ana", "pt": "Ana" },
+      { "en": "Bob", "es": "Bob", "pt": "Bob" },
+      { "en": "Both Ana and Bob", "es": "Tanto Ana como Bob", "pt": "Ambos Ana e Bob" },
+      { "en": "None of them", "es": "Ninguno de los dos", "pt": "Nenhum dos dois" }
     ],
-    "correctAnswer": 3
+    "correct_answer": 0
   },
   {
     "id": "dev-01-mc-06",
@@ -133,7 +133,7 @@
       { "en": "Mnemonic", "es": "Mnemónico", "pt": "Mnemônico" },
       { "en": "Private key", "es": "Llave privada", "pt": "Chave privada" }
     ],
-    "correctAnswer": 0
+    "correct_answer": 0
   },
   {
     "id": "dev-01-mc-07",
@@ -161,7 +161,7 @@
         "pt": "Em uma hard wallet"
       }
     ],
-    "correctAnswer": 3
+    "correct_answer": 3
   },
   {
     "id": "dev-01-mc-08",
@@ -181,6 +181,6 @@
       { "en": "Checksum", "es": "Checksum", "pt": "Checksum" },
       { "en": "ChainID", "es": "ChainID", "pt": "ChainID" }
     ],
-    "correctAnswer": 1
+    "correct_answer": 1
   }
 ]
