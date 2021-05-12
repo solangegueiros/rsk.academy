@@ -1,0 +1,69 @@
+---
+title: 'RSK'
+description: 'RSK network'
+---
+
+## Sidechains
+
+A sidechain, as its name says,
+is a side chain, or rather, parallel to another,
+and that it has some form of connection with the main chain.
+
+A sidechain is an independent blockchain whose native currency is pegged to the value of another blockchain currency.
+The peg can be enforced by a protocol or it can be synthetic.
+
+A 2-way peg is a protocol-enforced system allowing two currencies to be exchanged freely, automatically, and without incurring in a price negotiation.
+
+## RSK
+
+RSK is a Bitcoin sidechain with the ability to execute Ethereum smart contracts.
+
+I particularly consider this the best of both worlds!
+
+RSK's cryptocurrency is RBTC, which has its value tied to Bitcoin,
+pegged to Bitcoin, that is, 1: 1, 1 RBTC is worth 1 Bitcoin.
+
+More than half of Bitcoin miners also validate RSK blocks.
+They use the same equipment and special software that identifies when a transaction is Bitcoin or RSK
+
+Miners at RSK do not receive new cryptocurrencies created.
+The reward in the RSK network is the gas for the execution of smart contracts.
+
+RSK MainNet network was released in early January 2018.
+
+Live statistics about the entire RSK network is available at [RSK Stats](https://stats.rsk.co/).
+
+All the necessary source code can be found at our GitHub repository: [RSKSmart](https://github.com/rsksmart).
+
+All the project information, including a getting started guide, can be found on the [RSK & RIF Developer Portal](https://developers.rsk.co/).
+
+For latest news and updates, check out [RSK Blog](https://blog.rsk.co/).
+
+## 2 way peg - PowPeg
+
+The conversion between Bitcoin (BTC) and Smart Bitcoin (R-BTC) is accomplished through a 2-way peg mechanism.
+
+This 2-way peg was bootstrapped using a federation of nodes managing a Bitcoin multisignature.
+However, RSK has transitioned its federation to a PowPeg.
+
+A PowPeg is a multi-signature management system where participants' nodes have no direct access or control over private keys.
+Keys are controlled by tamper-proof HSMs.
+These HSMs internally run lightweight RSK nodes which obey commands originating from an RSK smart-contract called the Bridge that orchestrate peg-outs.
+Only when such commands are confirmed by thousands of blocks produced by the mining network does the HSM proceed to sign peg-out requests.
+
+The PowPeg is a new security protection layered on top of the previous federation.
+It is unique in the crypto ecosystem and radically reduces the attack surface for the most frequent security breaches.
+The RSK community has collectively decided on a strategy for increasing the security of the peg based on defence-in-depth:
+adding more security layers on top of existing ones, protecting the system from the failure of any of them.
+The ultimate goal is the complete decentralisation of the peg.
+
+## References
+
+- [RSK](https://www.rsk.co/)
+- [Developer's portal](https://developers.rsk.co/)
+- [PowPeg](https://developers.rsk.co/rsk/architecture/powpeg/)
+
+## Conclusion
+
+In this module we present some basic concepts of Blockchain, Bitcoin, Ethereum and RSK.
+We also indicate several reading references to deepen your studies.

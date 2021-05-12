@@ -1,19 +1,22 @@
 {
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "env": {
+    "node": true,
+    "browser": true,
+    "amd": true
+  },
   "extends": [
-    "kentcdodds",
-    "kentcdodds/react",
-    "kentcdodds/jsx-a11y",
-    "plugin:mdx/recommended"
+    "next",
+    "eslint:recommended",
+    "plugin:mdx/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
   "rules": {
-    "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": "warn",
-    "react/jsx-no-undef": "error",
-    "import/no-unresolved": "off",
-    "import/extensions": "off",
-    "react/prop-types": "error",
-    "consistent-return": "off",
-    "radix": "off",
-    "no-negated-condition": "off"
+    "@typescript-eslint/no-empty-function": "warn",
+    "@typescript-eslint/no-unused-vars": "error"
   }
 }

@@ -1,0 +1,109 @@
+---
+title: 'Usando Remix para interactuar con un contrato inteligente ya publicado'
+description: 'Usando Remix para interactuar con un contrato inteligente ya publicado'
+---
+
+Imagina que es otro día y quieres ver tu contrato inteligente **Name** .
+Cerrastes Remix y lo abristes de nuevo,
+tu contrato inteligente NO aparece en la sección **Deployed Contracts** en **Deploy and run transactions**.
+
+> ¡Es posible interactuar con un contrato inteligente previamente publicado!
+
+Para interactuar con un contrato inteligente ya publicado, debe tener 2 información:
+
+1. Dirección del contrato
+2. ABI - Interfaz binaria de la aplicación
+
+## Contract address - endereço de tu contrato inteligente **Name**
+
+Espero que ya haya guardado la dirección de tu contrato inteligente **Name**.
+
+Si no lo ha guardado, puede obtenerlo siguiendo estos pasos:
+1- Vaya a [RSK explorer](https://explorer.testnet.rsk.co/)
+2- Busque la dirección de tu billetera
+3- En la lista de transacciones, busque una línea que tenga **contract created** o **contract deploy**
+4- Haga clic en la transacción para ver sus detalles
+5- En la transacción, copie el valor de **Contract Address**
+
+Busca la dirección de tu billetera en [RSK explorer](https://explorer.testnet.rsk.co/)
+
+![explorer search](/img/courses/dev/02/interact-with-a-smart-contract/image-01.png)
+
+Vea la línea para crear el contrato:
+
+![explorer search address](/img/courses/dev/02/interact-with-a-smart-contract/image-02.png)
+
+Por ejemplo, esta es la dirección de mi billetera:
+
+[0xa63375173ffa44725b5cde4dcfde7d6ccf5fffaa](https://explorer.testnet.rsk.co/address/0xa63375173ffa44725b5cde4dcfde7d6ccf5fffaa)
+
+Esta es la transacción hecha para crear el contrato inteligente **Name**.
+
+[0x5d1b6be07f981b6068de686439cb876fd34007de6671aeeabf29fc55399a113f](https://explorer.testnet.rsk.co/tx/0x5d1b6be07f981b6068de686439cb876fd34007de6671aeeabf29fc55399a113f)
+
+Y esta es la dirección de mi contrato inteligente **Name**
+
+![explorer search contract created](/img/courses/dev/02/interact-with-a-smart-contract/image-03.png)
+
+[0xb3210016baa0Eb6D99646a86aE9D74B3336866af](https://explorer.testnet.rsk.co/address/0xb3210016baa0Eb6D99646a86aE9D74B3336866af)
+
+Puedes usarlo para probar :)
+
+## ABI - Application Binary Interface
+
+La [ABI](https://solidity.readthedocs.io/en/v0.5.3/abi-spec.html) es el estándar para interactuar con contratos inteligentes,
+tanto desde fuera de Blockchain como para la interacción de contrato a contrato.
+
+ABI contiene toda la información pública sobre el contrato inteligente:
+
+1. variables públicas
+2. funciones públicas
+
+El contrato inteligente **Name** contiene la siguiente información en ABI:
+
+- getName - función pública definida en el contrato inteligente
+- propietario - variable pública, que es la dirección que publicó el contrato inteligente, es decir, la dirección de su billetera.
+
+Estos aparecen como botones azules en el terminal Remix:
+
+![Name buttons](/img/courses/dev/02/interact-with-a-smart-contract/image-04.png)
+
+Si conoce ABI, no necesita conocer el código fuente del contrato inteligente.
+Pero, si ya tiene acceso al código fuente del contrato inteligente, puede generar automáticamente el ABI.
+En otro módulo aprenderá a utilizar ABI directamente.
+
+Usando Remix, usaremos el código fuente del contrato inteligente, que ya conocemos.
+
+### Interacción con el nombre del contrato inteligente en Remix
+
+1. En el segundo botón de la izquierda - **file explorer**, abra el archivo **Name.sol**,
+   creado anteriormente en la lección [Cree su primer contrato inteligente: nombre] (/ cursos / dev / 02 / nombre-contrato-inteligente)
+
+2. Luego, vaya a **Deploy and run transactions**,
+   En **Environment**,
+   seleccione la opción **Injected Web3**.
+
+3. Pegue la dirección de su contrato inteligente en el campo junto al botón **At Address**.
+
+4. Haga clic en el botón **At Address**.
+
+5. Aparecerá en la sección **Deployed Contracts**.
+
+![At address](/img/courses/dev/02/interact-with-a-smart-contract/image-05.png)
+
+Podrás interactuar con él de la misma forma que lo has hecho anteriormente.
+
+![Name buttons](/img/courses/dev/02/interact-with-a-smart-contract/image-06.png)
+
+> Asegúrese de tener la red **RSK testnet** seleccionada en su billetera.
+
+## Consideraciones finales
+
+¡Felicidades!
+
+Ahora sabes cómo interactuar con cualquier contrato inteligente en Remix.
+
+En la siguiente lección, tu contrato inteligente será validado por otro contrato inteligente, llamado **MasterName**.
+
+Con **MasterName** aprenderá cómo su contrato inteligente puede interactuar con otros
+:)

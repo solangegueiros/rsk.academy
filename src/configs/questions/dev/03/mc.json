@@ -29,7 +29,7 @@
         "pt": "Nenhuma das opções"
       }
     ],
-    "correct_answer": 0
+    "correctAnswer": 0
   },
   {
     "id": "dev-03-mc-02",
@@ -61,7 +61,7 @@
         "pt": "Dinheiro ponto a ponto"
       }
     ],
-    "correct_answer": 2
+    "correctAnswer": 2
   },
   {
     "id": "dev-03-mc-03",
@@ -93,7 +93,7 @@
         "pt": "Chave privada à chave pública em inglês (Private Key to Public Key)"
       }
     ],
-    "correct_answer": 1
+    "correctAnswer": 1
   },
   {
     "id": "dev-03-mc-04",
@@ -121,7 +121,7 @@
         "pt": "Um computador em uma rede Blockchain"
       }
     ],
-    "correct_answer": 3
+    "correctAnswer": 3
   },
   {
     "id": "dev-03-mc-05",
@@ -153,7 +153,7 @@
         "pt": "Computadores que validam e processam transações de Blockchain"
       }
     ],
-    "correct_answer": 3
+    "correctAnswer": 3
   },
   {
     "id": "dev-03-mc-06",
@@ -181,7 +181,7 @@
         "pt": "Um livro-razão centralizado"
       }
     ],
-    "correct_answer": 0
+    "correctAnswer": 0
   },
   {
     "id": "dev-03-mc-07",
@@ -197,7 +197,7 @@
       { "en": "A division", "es": "Una division", "pt": "Uma divisão" },
       { "en": "A fork", "es": "Un fork", "pt": "Um fork" }
     ],
-    "correct_answer": 3
+    "correctAnswer": 3
   },
   {
     "id": "dev-03-mc-08",
@@ -221,7 +221,7 @@
       },
       { "en": "More memory", "es": "Mas memoria", "pt": "Mais memória" }
     ],
-    "correct_answer": 0
+    "correctAnswer": 0
   },
   {
     "id": "dev-03-mc-09",
@@ -253,7 +253,7 @@
         "pt": "O primeiro bloco de um Blockchain"
       }
     ],
-    "correct_answer": 3
+    "correctAnswer": 3
   },
   {
     "id": "dev-03-mc-10",
@@ -269,6 +269,6 @@
       { "en": "2009", "es": "2009", "pt": "2009" },
       { "en": "2010", "es": "2010", "pt": "2010" }
     ],
-    "correct_answer": 1
+    "correctAnswer": 1
   }
 ]

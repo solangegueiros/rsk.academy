@@ -7,7 +7,7 @@
       "es": "02 True False A ES",
       "pt": "02 True False A PT"
     },
-    "correct_answer": 0
+    "correctAnswer": 0
   },
   {
     "id": "dev-02-tf-02",
@@ -17,7 +17,7 @@
       "es": "02 True False B ES",
       "pt": "02 True False B PT"
     },
-    "correct_answer": 1
+    "correctAnswer": 1
   },
   {
     "id": "dev-02-tf-03",
@@ -27,7 +27,7 @@
       "es": "02 True False C ES",
       "pt": "02 True False C PT"
     },
-    "correct_answer": 1
+    "correctAnswer": 1
   },
   {
     "id": "dev-02-tf-04",
@@ -37,7 +37,7 @@
       "es": "02 True False D ES",
       "pt": "02 True False D PT"
     },
-    "correct_answer": 1
+    "correctAnswer": 1
   },
   {
     "id": "dev-02-tf-05",
@@ -47,7 +47,7 @@
       "es": "02 True False E ES",
       "pt": "02 True False E PT"
     },
-    "correct_answer": 0
+    "correctAnswer": 0
   },
   {
     "id": "dev-02-tf-06",
@@ -57,7 +57,7 @@
       "es": "02 True False F ES",
       "pt": "02 True False F PT"
     },
-    "correct_answer": 1
+    "correctAnswer": 1
   },
   {
     "id": "dev-02-tf-07",
@@ -67,7 +67,7 @@
       "es": "02 True False G ES",
       "pt": "02 True False G PT"
     },
-    "correct_answer": 1
+    "correctAnswer": 1
   },
   {
     "id": "dev-02-tf-08",
@@ -77,7 +77,7 @@
       "es": "02 True False H ES",
       "pt": "02 True False H PT"
     },
-    "correct_answer": 0
+    "correctAnswer": 0
   },
   {
     "id": "dev-02-tf-09",
@@ -87,7 +87,7 @@
       "es": "02 True False I ES",
       "pt": "02 True False I PT"
     },
-    "correct_answer": 1
+    "correctAnswer": 1
   },
   {
     "id": "dev-02-tf-10",
@@ -97,6 +97,6 @@
       "es": "02 True False J ES",
       "pt": "02 True False J PT"
     },
-    "correct_answer": 1
+    "correctAnswer": 1
   }
 ]

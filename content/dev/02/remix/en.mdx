@@ -1,0 +1,106 @@
+---
+title: 'Remix'
+description: 'Remix IDE (Integrated Development Environment)'
+---
+
+## Remix
+
+Remix is an online web tool. It is an IDE (Integrated Development Environment) used to write, compile, deploy and debug Solidity code. Can be connected with Metamask and used to deploy smart contracts to both the RSK Testnet and Mainnet.
+
+Go to
+[remix.ethereum.org](https://remix.ethereum.org/)
+
+![remix.ethereum.org](/img/courses/dev/02/remix/image-01.png)
+
+In home / welcome page, select **environment Solidity**
+
+![Remix environment Solidity](/img/courses/dev/02/remix/image-02.png)
+
+## Terminal
+
+On the right below side of Remix is located a terminal including some libraries.
+
+You can send commands and transactions over there.
+This part also presents the result of transactions / calls to smart contract functions.
+
+This section is very important to follow results!
+
+![remix terminal](/img/courses/dev/02/remix/image-03.png)
+
+## Compilador Solidity
+
+In the 3rd button at left side click on **Solidity compiler**.
+
+![remix solidity compiler](/img/courses/dev/02/remix/image-04.png)
+
+It is useful to **enable auto-compile** in order to compile smart contracts automaticallywhile editing in Remix.
+
+![auto-compile](/img/courses/dev/02/remix/image-05.png)
+
+## JavascriptVM
+
+On the left side, click **Deploy and run transactions**, it is the fourth button.
+
+![deploy and run transactions](/img/courses/dev/02/remix/image-10.png)
+
+Remix has the envirnment **JavaScriptVM**, a Blockchain simulator running in browser memory.
+
+![JavaScriptVM](/img/courses/dev/02/remix/image-11.png)
+
+### Accounts
+
+This Blockchain simulator has several addresses / accounts funded with fictitious Ethers
+that we can choose to publish a smart contract or interact with it.
+
+Here is an example of the account list:
+
+![account](/img/courses/dev/02/remix/image-12.png)
+
+In some versions of Remix,
+the list of accounts is changed every time you start Remix or refresh the page.
+
+## Web3 Providers
+
+### Web3 Injected
+
+Web3 Injected is a web3 provider injected by a browser plugin such as
+[MetaMask](https://metamask.io/) or [Nifty](https://www.poa.network/for-users/nifty-wallet).
+
+# Connect Remix to RSK Testnet
+
+First of all, be sure that you selected the RSK network selected the web wallet, Nifty or Metamask...
+
+Then, in Remix, on the left side, locate the fourth button: **Deploy and run transactions**.
+
+![Deploy and run transactions](/img/courses/dev/02/remix/image-13.png)
+
+In Environment, choose **Injected Web3**.
+
+![Injected Web3](/img/courses/dev/02/remix/image-14.png)
+
+Injected Web3 connects Remix with the active account on the web wallet.
+
+### At Metamask
+
+If you are using Metamask, a popup window will open to authorize the connection.
+
+First, select the account and click the Next button.
+You probably only have one, and in the other window, click the Connect button.
+
+![Metamask select accounts](/img/courses/dev/02/remix/image-15.png)
+
+![Metamask connect](/img/courses/dev/02/remix/image-16.png)
+
+### Remix conected
+
+In Remix, in **Deploy and run transactions**, look at the **Custom Network**.
+
+![Injected Web3 - ChainID 31](/img/courses/dev/02/remix/image-17.png)
+
+**ChainID 31** was defined at RSK Testnet custom network in Nifty / Metamask.
+
+## Final considerations
+
+Done! Now it is possible to publish any smart contract on RSK network.
+
+In the next lesson you will create your first smart contract :)
