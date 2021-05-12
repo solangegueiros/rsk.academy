@@ -55,7 +55,8 @@
     "question": {
       "en": "If you use the same mnemonic (or seed) in different wallets, you will see the same balance on a blockchain.",
       "es": "Si usas el mismo mnemónico (o semilla) en diferentes carteras, verás el mismo saldo en una Blockchain.",
-      "pt": "Se você usar o mesmo mnemônico (ou seed, semente) em diferentes carteiras, verá o mesmo saldo em um blockchain."    },
+      "pt": "Se você usar o mesmo mnemônico (ou seed, semente) em diferentes carteiras, verá o mesmo saldo em um blockchain."
+    },
     "correct_answer": 1
   }
 ]

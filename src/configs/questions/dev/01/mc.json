@@ -100,8 +100,8 @@
     "type": "mc",
     "question": {
       "en": "Ana would like to transfer 1 RBTC to Bob. Who needs to use the private key?",
-      "es": "Ana quiere transferir 1 RBTC a Bob. ¿Quién necesita usar su clave privada?",	
-      "pt": "Ana quer transferir 1 RBTC para Bob. Quem precisa usar sua private key?"	          
+      "es": "Ana quiere transferir 1 RBTC a Bob. ¿Quién necesita usar su clave privada?",
+      "pt": "Ana quer transferir 1 RBTC para Bob. Quem precisa usar sua private key?"
     },
     "answers": [
       { "en": "Ana", "es": "Ana", "pt": "Ana" },

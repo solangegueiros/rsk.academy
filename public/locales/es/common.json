@@ -39,7 +39,7 @@
   "contract.getBalance": "Obtener saldo",
   "contract.getThisBalance": "Obtener saldo total de Academy Wallet",
   "contract.balanceIs": "El saldo es",
-  "quiz.yes": "Sí",
-  "quiz.no": "No",
+  "quiz.yes": "Verdadero",
+  "quiz.no": "Falso",
   "quiz.subscribers": "Solo los estudiantes inscritos en el curso pueden realizar la prueba."
 }
