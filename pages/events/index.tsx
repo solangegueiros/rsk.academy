@@ -1,4 +1,16 @@
-import { Heading, Image, Text, HStack, Icon, Link, useColorModeValue, VStack, Stack, Center } from '@chakra-ui/react'
+import {
+  Heading,
+  Image,
+  Text,
+  HStack,
+  Icon,
+  Link,
+  useColorModeValue,
+  VStack,
+  Stack,
+  Center,
+  Box,
+} from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import dynamic from 'next/dynamic'
 import { IoLanguage } from 'react-icons/io5'
@@ -10,6 +22,8 @@ import { GetStaticProps } from 'next'
 
 import { Seo, Layout } from '@components'
 import { getEvents, EventType } from '@lib/getEvents'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 const TimeZone = dynamic(() => import('../../src/components/TimeZone'), {
   ssr: false,
@@ -28,15 +42,26 @@ interface EventsProps {
 const Events = ({ events }: EventsProps): JSX.Element => {
   const { t } = useTranslation('common')
   const bg = useColorModeValue('white', 'dark.400')
+  const [eventState, setEventState] = useState<EventType[]>(events)
+  const { locale } = useRouter()
 
-  const pastEvents = events.filter(({ datetime }) => isPast(new Date(datetime)))
-  const nextEvents = events.filter(({ datetime }) => isFuture(new Date(datetime)))
+  const pastEvents = eventState.filter(({ datetime }) => isPast(new Date(datetime)))
+  const nextEvents = eventState.filter(({ datetime }) => isFuture(new Date(datetime)))
+
+  useEffect(() => {
+    ;(async function fetchEvents() {
+      const response = await fetch('/api/events')
+      const result = await response.json()
+      const _events = result.filter((event: EventType) => event.language === locale)
+      setEventState(_events)
+    })()
+  }, [])
 
   return (
     <Layout>
       <Seo title={t`events`} description={t`events`} />
       {nextEvents?.length > 0 && (
-        <>
+        <Box mb={8}>
           <Heading mb={4}>{t`nextEvents`}</Heading>
           <VStack spacing={8} align='start' w='full'>
             {nextEvents.map(({ id, title, datetime, language, speaker, role, twitter, image }) => (
@@ -79,10 +104,10 @@ const Events = ({ events }: EventsProps): JSX.Element => {
               </NextLink>
             ))}
           </VStack>
-        </>
+        </Box>
       )}
       {pastEvents?.length > 0 && (
-        <>
+        <Box mb={8}>
           <Heading mb={4}>{t`pastEvents`}</Heading>
           <VStack spacing={4} align='start' w='full'>
             {pastEvents.map(({ id, title, datetime, language, image }) => (
@@ -114,7 +139,7 @@ const Events = ({ events }: EventsProps): JSX.Element => {
               </NextLink>
             ))}
           </VStack>
-        </>
+        </Box>
       )}
     </Layout>
   )

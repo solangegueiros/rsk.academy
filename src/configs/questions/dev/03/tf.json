@@ -3,29 +3,29 @@
     "id": "dev-03-tf-01",
     "type": "tf",
     "question": {
-      "en": "03 True False A EN",
-      "es": "03 True False A ES",
-      "pt": "03 True False A PT"
+      "en": "When we send a transaction to the Blockchain, it stays in a queue, or waiting room, called mempool.",
+      "es": "Cuando enviamos una transacción a Blockchain, está en una cola de espera llamada mempool.",
+      "pt": "Quando enviamos uma transação para o Blockchain, ela fica em uma área de espera, chamada mempool."
     },
-    "correctAnswer": 0
+    "correctAnswer": 1
   },
   {
     "id": "dev-03-tf-02",
     "type": "tf",
     "question": {
-      "en": "03 True False B EN",
-      "es": "03 True False B ES",
-      "pt": "03 True False B PT"
+      "en": "From a hash it is possible to return to the original information",
+      "es": "Desde un hash es posible volver a la información original",
+      "pt": "A partir de um hash é possível voltar à informação original"
     },
-    "correctAnswer": 1
+    "correctAnswer": 0
   },
   {
     "id": "dev-03-tf-03",
     "type": "tf",
     "question": {
-      "en": "03 True False C EN",
-      "es": "03 True False C ES",
-      "pt": "03 True False C PT"
+      "en": "The timestamp is an information stored in each block,to determine the exact moment when the block was created and validated by the Blockchain network",
+      "es": "Timestamp es información almacenada en cada bloque, para determinar el momento exacto en que el bloque fue creado y validado por la red Blockchain",
+      "pt": "Timestamp é uma informação armazenada em cada bloco para determinar o momento exato em que o bloco foi criado e validado pela rede Blockchain"
     },
     "correctAnswer": 1
   },
@@ -33,59 +33,59 @@
     "id": "dev-03-tf-04",
     "type": "tf",
     "question": {
-      "en": "03 True False D EN",
-      "es": "03 True False D ES",
-      "pt": "03 True False D PT"
+      "en": "When we talk about cryptographic keys, Blockchain uses symmetric keys",
+      "es": "Cuando hablamos de claves criptográficas, en Blockchain se utilizan claves simétricas",
+      "pt": "Quando falamos de chaves criptográficas, em Blockchain utiliza-se chaves simétricas"
     },
-    "correctAnswer": 1
+    "correctAnswer": 0
   },
   {
     "id": "dev-03-tf-05",
     "type": "tf",
     "question": {
-      "en": "03 True False E EN",
-      "es": "03 True False E ES",
-      "pt": "03 True False E PT"
+      "en": "Merkle tree is a binary hashes tree used to validate data integrity",
+      "es": "El árbol Merkle es un árbol hash binario que se utiliza para validar la integridad de los datos.",
+      "pt": "Merkle tree é uma árvore binária de hashes usada para para validar a integridade dos dados"
     },
-    "correctAnswer": 0
+    "correctAnswer": 1
   },
   {
     "id": "dev-03-tf-06",
     "type": "tf",
     "question": {
-      "en": "03 True False F EN",
-      "es": "03 True False F ES",
-      "pt": "03 True False F PT"
+      "en": "Based on Paul Baran's diagrams, p2p networks are decentralized networks, but not distributed",
+      "es": "Según los diagramas de Paul Baran, las redes p2p son redes descentralizadas, pero no distribuidas",
+      "pt": "Baseando-se nos diagramas de Paul Baran, redes p2p são redes descentralizadas, porém não distribuídas"
     },
-    "correctAnswer": 1
+    "correctAnswer": 0
   },
   {
     "id": "dev-03-tf-07",
     "type": "tf",
     "question": {
-      "en": "03 True False G EN",
-      "es": "03 True False G ES",
-      "pt": "03 True False G PT"
+      "en": "PoW is a consensus algorithm where the validation of blocks depends on the amount of coins that the miner has",
+      "es": "PoW es un algoritmo de consenso donde la validación de los bloques depende de la cantidad de monedas que tenga el minero",
+      "pt": "PoW é um algoritmo de consenso onde a validação dos blocos depende da quantidade de moedas que o minerador possui"
     },
-    "correctAnswer": 1
+    "correctAnswer": 0
   },
   {
     "id": "dev-03-tf-08",
     "type": "tf",
     "question": {
-      "en": "03 True False H EN",
-      "es": "03 True False H ES",
-      "pt": "03 True False H PT"
+      "en": "The smallest unit of Bitcoin is called satoshi, which is the 8th decimal place of Bitcoin, that is: 1 BTC = 100000000 satoshi",
+      "es": "La unidad más pequeña de Bitcoin se llama satoshi, que es el octavo lugar decimal de Bitcoin, es decir: 1 BTC = 100000000 satoshi",
+      "pt": "A menor unidade do Bitcoin é chamda satoshi, que é a 8a casa decimal do Bitcoin, ou seja: 1 BTC = 100000000 satoshi"
     },
-    "correctAnswer": 0
+    "correctAnswer": 1
   },
   {
     "id": "dev-03-tf-09",
     "type": "tf",
     "question": {
-      "en": "03 True False I EN",
-      "es": "03 True False I ES",
-      "pt": "03 True False I PT"
+      "en": "The smallest unit of Blockchin Ethereum is called wei, which is the 18th decimal place of Ether, that is: 1 ETH = 1000000000000000000 wei",
+      "es": "La unidad más pequeña del Blockchain Ethereum se llama wei, que es la decimaoctava casa decimal del Ether, es decir: 1 ETH = 1000000000000000000 wei",
+      "pt": "A menor unidade do Blockchain Ethereum é chamda wei, que é a 18a casa decimal do Ether, ou seja: 1 ETH = 1000000000000000000 wei"
     },
     "correctAnswer": 1
   },
@@ -93,10 +93,10 @@
     "id": "dev-03-tf-10",
     "type": "tf",
     "question": {
-      "en": "03 True False J EN",
-      "es": "03 True False J ES",
-      "pt": "03 True False J PT"
+      "en": "Vitalik Buterin, creator of Blockchain Ethereum, had never heard of Bitcoin before creating Ethereum",
+      "es": "Vitalik Buterin, creador de Blockchain Ethereum, nunca había oído hablar de Bitcoin antes de crear Ethereum",
+      "pt": "Vitalik Buterin, criador do Blockchain Ethereum, nunca tinha ouvido falar do Bitcoin antes de criar o Ethereum"
     },
-    "correctAnswer": 1
+    "correctAnswer": 0
   }
 ]

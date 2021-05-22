@@ -3,9 +3,9 @@
     "id": "dev-02-tf-01",
     "type": "tf",
     "question": {
-      "en": "02 True False A EN",
-      "es": "02 True False A ES",
-      "pt": "02 True False A PT"
+      "en": "Smart contracts are smart",
+      "es": "Los contratos inteligentes son inteligentes",
+      "pt": "Smart contracts são smart"
     },
     "correctAnswer": 0
   },
@@ -13,49 +13,49 @@
     "id": "dev-02-tf-02",
     "type": "tf",
     "question": {
-      "en": "02 True False B EN",
-      "es": "02 True False B ES",
-      "pt": "02 True False B PT"
+      "en": "Smart contracts are contracts",
+      "es": "Los contratos inteligentes son contratos",
+      "pt": "Smart contracts são contracts"      
     },
-    "correctAnswer": 1
+    "correctAnswer": 0
   },
   {
     "id": "dev-02-tf-03",
     "type": "tf",
     "question": {
-      "en": "02 True False C EN",
-      "es": "02 True False C ES",
-      "pt": "02 True False C PT"
+      "en": "The 'vending machine', that automatic machine that sells soft drinks and snacks, can be considered the ancestor of the smart contract",
+      "es": "La 'vending machine', o 'máquina expendedora', esa máquina automática que vende refrescos y dulces, puede considerarse el antepasado del contrato inteligente",
+      "pt": "A 'vending machine', aquela máquina automática que vende refrigerantes e guloseimas, pode ser considerada o ancestral do smart contract"
     },
-    "correctAnswer": 1
+     "correctAnswer": 1
   },
   {
     "id": "dev-02-tf-04",
     "type": "tf",
     "question": {
-      "en": "02 True False D EN",
-      "es": "02 True False D ES",
-      "pt": "02 True False D PT"
+      "en": "Smart contracts are the same on Ethereum and Bitcoin",
+      "es": "Los contratos inteligentes son los mismos en Ethereum y Bitcoin",
+      "pt": "Smart contracts são iguais no Ethereum e no Bitcoin"
     },
-    "correctAnswer": 1
+    "correctAnswer": 0
   },
   {
     "id": "dev-02-tf-05",
     "type": "tf",
     "question": {
-      "en": "02 True False E EN",
-      "es": "02 True False E ES",
-      "pt": "02 True False E PT"
+      "en": "The source code of a smart contract published on Blockchain is immutable",
+      "es": "El código fuente de un contrato inteligente publicado en Blockchain es inmutable",
+      "pt": "O código fonte de um smart contract publicado no Blockchain é imutável"
     },
-    "correctAnswer": 0
+    "correctAnswer": 1
   },
   {
     "id": "dev-02-tf-06",
     "type": "tf",
     "question": {
-      "en": "02 True False F EN",
-      "es": "02 True False F ES",
-      "pt": "02 True False F PT"
+      "en": "The RSK network uses the same smart contracts as Ethereum, that is, they are also written in Solidity",
+      "es": "La red RSK usa los mismos contratos inteligentes que Ethereum, es decir, también están escritos en Solidity",
+      "pt": "A rede RSK usa os mesmos smart contracts do Ethereum, ou seja, também são escritos em Solidity"
     },
     "correctAnswer": 1
   },
@@ -63,39 +63,39 @@
     "id": "dev-02-tf-07",
     "type": "tf",
     "question": {
-      "en": "02 True False G EN",
-      "es": "02 True False G ES",
-      "pt": "02 True False G PT"
+      "en": "RSK's virtual machine implementation is NOT compatible with the Ethereum EVM",
+      "es": "La implementación de la máquina virtual RSK NO es compatible con Ethereum EVM",
+      "pt": "A implementação da máquina virtual da RSK NÃO é compatível com o Ethereum EVM"
     },
-    "correctAnswer": 1
+    "correctAnswer": 0
   },
   {
     "id": "dev-02-tf-08",
     "type": "tf",
     "question": {
-      "en": "02 True False H EN",
-      "es": "02 True False H ES",
-      "pt": "02 True False H PT"
+      "en": "Each published smart contract has its own address on the Blockchain",
+      "es": "Cada contrato inteligente publicado tiene su propia dirección en Blockchain",
+      "pt": "Cada smart contract publicado possui seu próprio endereço no Blcokchain"
     },
-    "correctAnswer": 0
+    "correctAnswer": 1
   },
   {
     "id": "dev-02-tf-09",
     "type": "tf",
     "question": {
-      "en": "02 True False I EN",
-      "es": "02 True False I ES",
-      "pt": "02 True False I PT"
+      "en": "It is possible to interact with a smart contract without knowing its publication address on the Blockchain",
+      "es": "Es posible interactuar con un contrato inteligente sin conocer su dirección de publicación en Blockchain",
+      "pt": "É possível interagir com um smart contract sem saber seu endereço de publicação em no Blockchain"
     },
-    "correctAnswer": 1
+    "correctAnswer": 0
   },
   {
     "id": "dev-02-tf-10",
     "type": "tf",
     "question": {
-      "en": "02 True False J EN",
-      "es": "02 True False J ES",
-      "pt": "02 True False J PT"
+      "en": "A smart contract can interact with another smart contract",
+      "es": "Un contrato inteligente puede interactuar con otro contrato inteligente",
+      "pt": "Um  smart contract pode interagir com outro smart contract"
     },
     "correctAnswer": 1
   }

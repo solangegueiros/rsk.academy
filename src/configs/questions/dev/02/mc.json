@@ -8,7 +8,7 @@
       "pt": "O que eu preciso alterar em um smart contract feito em Solidity para publicá-lo na rede RSK?"
     },
     "answers": [
-      { "en": "Pragma version", "es": "Answer A ES", "pt": "Pragma version" },
+      { "en": "Pragma version", "es": "Pragma version", "pt": "Pragma version" },
       { "en": "Constructor", "es": "Constructor", "pt": "Constructor" },
       {
         "en": "None of theese",
@@ -21,150 +21,106 @@
         "pt": "Todos as opções"
       }
     ],
-    "correctAnswer": 3
+    "correctAnswer": 2
   },
   {
     "id": "dev-02-mc-02",
     "type": "mc",
     "question": {
-      "en": "02 Multiple Choice B EN",
-      "es": "02 Multiple Choice B ES",
-      "pt": "02 Multiple Choice B PT"
+      "en": "I have already selected the RSK network on my web wallet and I am using Remix to publish a smart contract on RSK network. What is the environment I need to select?",
+      "es": "Ya seleccioné la red RSK en la billetera web y quiero usar Remix para publicar un contrato inteligente en la red RSK. ¿Qué environment debo usar?",
+      "pt": "Já selecionei a rede RSK na carteira web e quero usar o Remix para publicar um contrato inteligente na rede RSK. Qual o ambiente devo selecionar?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "JavaScript VM", "es": "JavaScript VM", "pt": "JavaScript VM" },
+      { "en": "Injected Web3", "es": "Injected Web3", "pt": "Injected Web3" },
+      { "en": "Web3 Provider", "es": "Web3 Provider", "pt": "Web3 Provider" },
+      { "en": "None of these", "es": "Ninguna de las opciones", "pt": "Nenhuma das opções" }
     ],
-    "correctAnswer": 1
+    "correctAnswer": 2
   },
   {
     "id": "dev-02-mc-03",
     "type": "mc",
     "question": {
-      "en": "02 Multiple Choice C EN",
-      "es": "02 Multiple Choice C ES",
-      "pt": "02 Multiple Choice C PT"
+      "en": "I have the RSK network configured on Metamask. What do I need to do in order to send transactions on RSK Network using Remix?",
+      "es": "Tengo la red RSK configurada en Metamask. ¿Qué debo hacer para enviar transacciones en RSK Network usando Remix?",
+      "pt": "Eu já tenho a rede RSK configurada no Metamask. O que preciso fazer para enviar transações na rede RSK usando Remix?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "Switch chainId", "es": "Cambiar el ChainId", "pt": "Trocar o ChainId" },
+      { "en": "Update the mnemonic", "es": "Actualizar el mnemónico", "pt": "Atualizar o mnemônico" },
+      { "en": "Switch account", "es": "Cambiar la  cuenta", "pt": "Trocar a conta" },
+      { "en": "Select the network in Metamask", "es": "Seleccionar la red en Metamask", "pt": "Selecionar a rede no Metamask" } 
     ],
-    "correctAnswer": 1
+    "correctAnswer": 3
   },
   {
     "id": "dev-02-mc-04",
     "type": "mc",
     "question": {
-      "en": "02 Multiple Choice D EN",
-      "es": "02 Multiple Choice D ES",
-      "pt": "02 Multiple Choice D PT"
+      "en": "Who defined the term smart contract?",
+      "es": "¿Quién definió el término contrato inteligente?",
+      "pt": "Quem definiu o termo smart contract?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "Nick Szabo", "es": "Nick Szabo", "pt": "Nick Szabo" },
+      { "en": "Vitalik Buterin", "es": "Vitalik Buterin", "pt": "Vitalik Buterin" },
+      { "en": "Satoshi Nakamoto", "es": "Satoshi Nakamoto", "pt": "Satoshi Nakamoto" },
+      { "en": "David Chaum", "es": "David Chaum", "pt": "David Chaum" } 
     ],
-    "correctAnswer": 1
+    "correctAnswer": 0
   },
   {
     "id": "dev-02-mc-05",
     "type": "mc",
     "question": {
-      "en": "02 Multiple Choice E EN",
-      "es": "02 Multiple Choice E ES",
-      "pt": "02 Multiple Choice E PT"
+      "en": "Is it possible to change data in a smart contract published on a Blockchain?",
+      "es": "¿Es posible cambiar datos en un contrato inteligente publicado en una Blockchain?",
+      "pt": "É possivel alterar dados em um smart contract publicado em um Blockchain?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "No way", "es": "De ninguna manera", "pt": "De jeito nenhum" },
+      { "en": "Yes, always", "es": "Sí, siempre", "pt": "Sim, sempre" },
+      { "en": "Only if there are functions defined to change data", "es": "Solo si hay funciones definidas para cambiar datos", "pt": "Apenas se houver funções definidas para alterar dados" },
+      { "en": "Yes, if there are public variables", "es": "Sí, si hay variables públicas", "pt": "Sim, se houver variáveis públicas" } 
     ],
-    "correctAnswer": 1
+    "correctAnswer": 2
   },
   {
     "id": "dev-02-mc-06",
     "type": "mc",
     "question": {
-      "en": "02 Multiple Choice F EN",
-      "es": "02 Multiple Choice F ES",
-      "pt": "02 Multiple Choice F PT"
+      "en": "What is JavascriptVM in Remix?",
+      "es": "¿Qué es JavascriptVM en Remix?",
+      "pt": "O que é a JavascriptVM no Remix?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "A new Blockchain", "es": "Una nueva Blockchain", "pt": "Um novo Blockchain" },
+      { "en": "A testnet", "es": "Una testnet", "pt": "Uma testnet" },
+      { "en": "A blockchain node", "es": "Un nodo de blockchain", "pt": "Um  nó blockchain" },
+      { "en": "A Blockchain simulator in the browser memory.", 
+        "es": "Un simulador de Blockchain en la memoria del navegador.", 
+        "pt": "Um simulador de Blockchain na memória do browser." } 
     ],
-    "correctAnswer": 1
+    "correctAnswer": 3
   },
   {
     "id": "dev-02-mc-07",
     "type": "mc",
     "question": {
-      "en": "02 Multiple Choice G EN",
-      "es": "02 Multiple Choice G ES",
-      "pt": "02 Multiple Choice G PT"
+      "en": "What is a Blockchain explorer?",
+      "es": "¿Qué es un explorador de Blockchain?",
+      "pt": "O que é um Blockchain explorer?"
     },
     "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
+      { "en": "A blockchain node", "es": "Un nodo de blockchain", "pt": "Um  nó blockchain" },
+      { "en": "A miner", "es": "Un minero", "pt": "Um  minerador" },
+      { "en": "A blockchain search engine that allows you to search for a particular piece of information on the blockchain. ", 
+        "es": "Un motor de búsqueda de blockchain que le permite buscar una pieza particular de información en el blockchain.", 
+        "pt": "Um mecanismo de pesquisa de blockchain que permite que você pesquise uma informação específica sobre o blockchain." },
+      { "en": "A testnet", "es": "Una testnet", "pt": "Uma testnet" } 
     ],
-    "correctAnswer": 1
-  },
-  {
-    "id": "dev-02-mc-08",
-    "type": "mc",
-    "question": {
-      "en": "02 Multiple Choice H EN",
-      "es": "02 Multiple Choice H ES",
-      "pt": "02 Multiple Choice H PT"
-    },
-    "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
-    ],
-    "correctAnswer": 1
-  },
-  {
-    "id": "dev-02-mc-09",
-    "type": "mc",
-    "question": {
-      "en": "02 Multiple Choice I EN",
-      "es": "02 Multiple Choice I ES",
-      "pt": "02 Multiple Choice I PT"
-    },
-    "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
-    ],
-    "correctAnswer": 1
-  },
-  {
-    "id": "dev-02-mc-10",
-    "type": "mc",
-    "question": {
-      "en": "02 Multiple Choice J EN",
-      "es": "02 Multiple Choice J ES",
-      "pt": "02 Multiple Choice J PT"
-    },
-    "answers": [
-      { "en": "Answer A EN", "es": "Answer A ES", "pt": "Answer A PT" },
-      { "en": "Answer B EN", "es": "Answer B ES", "pt": "Answer B PT" },
-      { "en": "Answer C EN", "es": "Answer C ES", "pt": "Answer C PT" },
-      { "en": "Answer D EN", "es": "Answer D ES", "pt": "Answer D PT" }
-    ],
-    "correctAnswer": 1
+    "correctAnswer": 2
   }
 ]
