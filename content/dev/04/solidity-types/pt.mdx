@@ -1,0 +1,173 @@
+---
+title: 'Solidity'
+description: 'Linguagem de programação Solidity'
+---
+
+Smart contracts precisam de algum estado.
+As variáveis armazenam as informações de estado.
+
+Solidity é uma linguagem tipificada estaticamente.
+Portanto, você sempre precisa declarar o tipo de variável antes do nome da variável.
+
+## Tipos
+
+### Boolean
+
+bool : true or false
+
+Operators:
+
+- Logical : ! (logical negation), && (AND), || (OR)
+- Comparisons : == (equality), != (inequality)
+
+### Integer
+
+- Unsigned : uint8 | uint16 | uint32 | uint64 | uint128 | uint256(uint)
+- Signed : int8 | int16 | int32 | int64 | int128 | int256(int)
+
+**uint** por padrão define um inteiro de 256 bits sem sinal.
+
+Você também pode especificar o número de bits, por intervalo de 8 bits.
+
+Aqui estão alguns exemplos:
+
+| Type   	| Number range  	| 
+|---	|---	|
+| uint8	| 0 to 255  	|
+| uint16  	| 0 to 65,535  	|
+| uint32  	| 0 to 2^32  	|
+| uint64  	| 0 to 2^64  	|
+| uint128  	| 0 to 2^128  	|
+| uint256  	| 0 to 2^256  	|
+
+Operators:
+
+- Comparisons: <=, <, ==, !=, >= and >
+- Bit operators: &, |, ^ (bitwise exclusive or) and ~ (bitwise negation)
+- Arithmetic operators: +, -, unary -, unary +, *, /, %, ** (exponentiation), << (left shift) and >> (right shift)
+
+### Address
+
+address: armazena um endereço Ethereum / RSK (com 20 bytes). 
+
+address payable : o mesmo que address, mas inclui métodos adicionais de transferência e envio: transfer e send
+
+Operators:
+
+- Comparisons: <=, <, ==, !=, >= and >
+
+Methods:
+
+- <address>.balance (uint256): balance of the Address in Wei
+- <address>.transfer(uint256 amount): send given amount of Wei to Address, throws on failure
+- <address>.send(uint256 amount) returns (bool): send given amount of Wei to Address, returns false on failure
+- <address>.call(...) returns (bool): issue low-level CALL, returns false on failure
+- <address>.delegatecall(...) returns (bool): issue low-level DELEGATECALL, returns false on failure
+
+> **delegatecall** usa o código do endereço de destino e outros aspectos (armazenamento, saldo, ...) do contrato de chamada.
+O objetivo de delegatecall é usar o código da biblioteca que está armazenado em outro contrato.
+O usuário deve garantir que o layout de armazenamento em ambos os contratos seja compatível para o uso de delegatecall.
+
+### Array
+
+Os arrays podem ser dinâmicos ou ter um tamanho fixo.
+
+```solidity
+uint[] dynamicSizeArray;
+
+uint[5] fixedSizeArray;
+```
+
+### Byte arrays - fixo
+
+bytes1(byte), bytes2, bytes3, …, bytes32
+
+Operators:
+
+- Comparisons: <=, <, ==, !=, >=, > (evaluate to bool) Bit operators: &, |, ^ (bitwise exclusive or), ~ (bitwise negation), << (left shift), >> (right shift) Index access: If x is of type bytesI, then x[k] for 0 <= k < I returns the k th byte (read-only).
+
+Members
+
+- .length : read-only
+
+### Byte arrays - dinâmico
+
+- bytes: Dynamically-sized byte array. 
+
+É semelhante a byte[], mas é compactado em calldata.
+
+### String
+
+string: string codificada em UTF-8 de tamanho dinâmico.
+
+É igual a bytes, mas não permite acesso ao comprimento ou índice de um byte.
+
+### Enum
+
+Enum funciona como em qualquer outra linguagem.
+
+```solidity
+enum ColorList { 
+  Red, 
+  Blue, 
+  Green, 
+  Yellow 
+}
+
+ColorList color = ColorList.Red;
+```
+
+### Struct
+
+Novos tipos podem ser declarados usando **struct**
+
+```solidity
+struct User {
+    address addr;
+    string name;    
+    string email;  
+    uint age;
+}
+
+User userAna;
+```
+
+### Mapping
+
+**mapping** é Uma lista de chaves e valores onde cada chave possui um valor.
+
+Os **mappings** podem ser considerados como tabelas hash que são virtualmente inicializadas de forma que cada chave possível já existe e é mapeada para um valor.
+
+A chave pode ser quase qualquer tipo. Exceções: mapping, array dinâmico, contract, enum, struct.
+
+O valor pode ser qualquer tipo, incluindo outro mapping.
+
+Declarado como **mapping(_KeyType => _ValueType)**
+
+## Variáveis globais
+
+### Variáveis de transação
+
+- msg.data (bytes): complete calldata
+- msg.gas (uint): remaining gas
+- msg.sender (address): sender of the message (current call)
+- msg.sig (bytes4): first four bytes of the calldata (i.e. function identifier)
+- msg.value (uint): number of wei sent with the message
+- tx.gasprice (uint): gas price of the transaction
+- tx.origin (address): sender of the transaction (full call chain)
+
+### Variáveis de blocos
+
+- block.blockhash(uint blockNumber) returns (bytes32): hash of the given block - only works for the 256 most recent blocks excluding current
+- block.coinbase (address): current block miner’s address
+- block.difficulty (uint): current block difficulty
+- block.gaslimit (uint): current block gaslimit
+- block.number (uint): current block number
+- block.timestamp (uint): current block timestamp as seconds since unix epoch
+- now (uint): current block timestamp (alias for block.timestamp)
+
+## Considerações finais
+
+O objetivo desta lição foi apresentar os tipos e variáveis na linguagem de programação Solidity.
+
+Na próxima lição, você criará um contrato inteligente para usar alguns deles.

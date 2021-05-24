@@ -3,30 +3,253 @@ title: 'Solidity'
 description: 'Solidity programing language'
 ---
 
-## Solidity programing language
+## Pragma: Solidity version compiler
 
-Solidity is an object-oriented, high-level language for implementing smart contracts.
-Smart contracts are programs which govern the behaviour of accounts within the Ethereum state.
+How to define the Solidity version compiler?
 
-It is a [curly-bracket](https://en.wikipedia.org/wiki/List_of_programming_languages_by_type#Curly-bracket_languages)
-language, which means that the characters **{** and **}** defines statement blocks.
+Use the keyword **pragma** to define the version of the compiler to be used in a smart contract.
 
-Solidity is influenced by C++, Python and JavaScript, and is designed to target the Ethereum Virtual Machine (EVM).
+Any compiler version from the 0.8 release (= 0.8.x)
 
-It is statically typed, supports inheritance, libraries and complex user-defined types among other features.
+```solidity
+pragma solidity ^0.8.0;  
+```
 
-From [Solidity docs](https://docs.soliditylang.org/)
+Greater than version 0.7.1, less than version 0.8.5
 
-## Yellow Paper
+```solidity
+pragma solidity >0.7.1 <0.8.5;
+```
 
-Gavin Wood
+Lock version: exactly version 0.8.4
 
+```solidity
+pragma solidity 0.8.4;
+```
 
+Contracts should be deployed with the same compiler version that they have been tested the most with. 
+Locking the pragma helps ensure that contracts do not accidentally get deployed using, for example, the latest compiler which may have higher risks of undiscovered bugs. 
+Contracts may also be deployed by others and the pragma indicates the compiler version intended by the original authors.
 
+> Do not forget to end your declaration statements with a semicolon **;**
+
+## Define a contract 
+
+Use the keyword contract followed by your contract name.
+
+```solidity
+
+contract MySmartContract {
+
+    // You will start writing your code here =)
+
+}
+
+```
+
+## Import files
+
+```solidity
+import "filename";
+
+import * as symbolName from "filename"; 
+
+import "filename" as symbolName;
+
+import {symbol1 as alias, symbol2} from "filename";
+```
+
+## Constructor
+
+Function that is executed ONLY during contract deployment. 
+
+Defined using the **constructor** keyword.
+
+```solidity
+contract NameSmartContract {
+    string name;
+    address owner;
+
+    constructor() {
+        owner = msg.sender;
+        name = "Your fullname";
+    }
+}
+```
+
+## Access modifiers
+
+### public
+Accessible from this contract, inherited contracts and externally.
+
+### private
+Accessible only from this contract.
+
+### internal
+Accessible only from this contract and contracts inheriting from it.
+
+### external
+Cannot be accessed internally, only externally. 
+Recommended to reduce gas. 
+
+If you have the external function `myFunction()`, you can access internally using `this.myFunction()`.
+
+## Functions
+
+Structure:
+
+function (<parameter types>) {internal|external|public|private} [pure|constant|view|payable] [returns (<return types>)]
+
+- Must has an access modifier.
+
+### Parameters
+
+Input parameters
+
+Parameters are declared just like variables and are memory variables.
+
+```solidity
+function myFunction(uint _a, uint _b) {}
+```
+
+Output parameters
+
+Output parameters are declared after the `returns` keyword
+
+```solidity
+function sum(uint _a, uint _b) returns (uint _result) {
+   _result = _a + _b;
+}
+```
+
+Output can also be specified using `return` statement inside the function. 
+In that case, we can omit parameter name, declaring only the data type `returns (uint)`.
+
+```solidity
+function sum(uint _a, uint _b) returns (uint) {
+   return (_a + _b);
+}
+```
+
+Multiple return types are possible with `return (v0, v1, ..., vn)`
+
+## Function Calls
+
+### Internal Function Calls
+
+Functions of the current contract can be called directly.
+
+```solidity
+contract C {
+    function fA() returns (uint) { 
+       return 5; 
+    }
+    
+    function fB(uint _a) returns (uint) { 
+       return fA() + _a; 
+    }
+}
+```
+
+### External Function Calls
+
+> TO DO
+
+this.g(8); and c.g(2); (where c is a contract instance) are also valid function calls, but, the function will be called “externally”, via a message call.
+
+>  .gas() and .value() can also be used with external function calls.
+
+### Named Calls
+
+Function call arguments can also be given by name in any order as below.
+
+```solidity
+function f(uint a, uint b) {  }
+
+function g() {
+    f({b: 1, a: 2});
+}
+```
+
+## Modifier
+
+Modifiers can automatically check a condition prior to executing the function.
+
+```solidity
+modifier onlyOwner {
+    require(msg.sender == owner);
+    _;
+}
+
+function kill() onlyOwner {
+    selfdestruct(owner);
+}
+```
+
+## View or Constant Functions
+
+Functions must be declared **view** or **constant** in which case they promise not to modify the state, but only read from them.
+
+```solidity
+string private name;
+
+function getName() public view returns (string memory) {
+    return name;
+}
+```
+
+## Pure Functions
+
+Functions must be declared **pure** in which case they promise not to read from or modify the state.
+
+```solidity
+function double(uint number) pure returns (uint) {
+    return number * 2;
+}
+```
+
+## Events
+
+Solidity Events are the same as events in any other programming language. 
+
+Event is an inheritable member of a contract. 
+An event is emitted, it stores the arguments passed in transaction logs. 
+
+These logs are stored on blockchain and are accessible using address of the smart contract. 
+
+Events allow the convenient usage of the EVM logging facilities, 
+which in turn can be used to **call** JavaScript callbacks in the user interface of a dapp, 
+which listen for these events.
+
+Events notify the applications about the change made to the contracts and applications which can be used to execute the dependent logic.
+
+Up to three parameters can receive the attribute indexed, 
+which will cause the respective arguments to be searched for.
+
+All non-indexed arguments will be stored in the data part of the log.
+
+>  An event generated is not accessible from within contracts, not even the one which have created and emitted them.
+
+An event can be declared using **event** keyword.
+
+```solidity
+pragma solidity ^0.4.0;
+
+contract ClientReceipt {
+    event Deposit(
+        address indexed _from,
+        bytes32 indexed _id,
+        uint _value
+    );
+
+    function deposit(bytes32 _id) payable {
+        emit Deposit(msg.sender, _id, msg.value);
+    }
+}
+```
 
 ## Final considerations
 
-The purpose of this lesson was to present the Solidity programing language.
+The purpose of this lesson was to present the basics of Solidity programing language.
 
-In the next lesson you will learn ...
-
+In the next lesson you will learn Solidity types and variables.
