@@ -1,0 +1,159 @@
+---
+title: 'Requisitos'
+description: 'requisitos'
+---
+
+Hay algunos requisitos técnicos antes de comenzar.
+
+1. Git
+2. Node.js and NPM
+3. Code editor
+
+## Git
+
+[Git](https://git-scm.com/doc) es un sistema de control de versiones de código abierto. 
+Algunos paquetes que instalaremos utilizan Git internamente para descargar las versiones correctas.
+Además, tiene algunas utilidades, como `Git Bash`
+
+Quizás Git ya esté instalado. 
+Para averiguarlo, abra una terminal e ingrese:
+
+```shell
+git --version
+```
+
+![git version](../../images/truffle/image-01.png)
+
+Hay varias formas de instalar Git.
+Compruébalo en el tutorial [Install Git](https://www.atlassian.com/git/tutorials/install-git) (en inglés).
+
+**Windows OS**
+
+Hay otras opciones para Windows:
+
+- [Installer for Windows](https://git-scm.com/download/win).
+- [Git for Windows](https://gitforwindows.org/).
+
+## Node.js and NPM
+
+Otra dependencia es NPM, que se instala con Node.js.
+
+Para comprobar si Node.js y NPM ya están instalados, 
+comprueba si los siguientes comandos funcionan en la terminal:
+
+
+```shell
+node --version
+npm --version
+```
+
+Resultado en OS Windows:
+
+![node and npm version](img/courses/dev/05/requirements/image-02.png)
+
+Si no hay un resultado como el anterior, aquí se explica cómo instalarlo en Ubuntu, Mac OSX y Windows.
+
+### Linux
+
+```shell
+sudo apt update
+sudo apt install curl git
+sudo apt install build-essential # We need this to build native dependencies
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt install nodejs
+```
+
+### Mac OS
+
+```shell
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+nvm install 12
+nvm use 12
+nvm alias default 12
+npm install npm --global # Upgrade npm to the latest version
+```
+
+Asegúrese de tener instalado `node-gyp`:
+
+```shell
+npm install -g node-gyp
+```
+
+Este próximo paso es necesario para construir dependencias nativas.
+Aparecerá una ventana emergente y deberá continuar con la instalación.
+Llevará algún tiempo y es posible que se descarguen algunos GB de datos.
+
+```shell
+xcode-select --install
+```
+
+### Windows OS
+
+La instalación de Node.js en Windows requiere algunos pasos manuales.
+
+Ve a [Node.js](https://nodejs.org/en/) para descargar e instalarlo.
+
+Installing Node.js on Windows requires a few manual steps.
+
+Go to [Node.js](https://nodejs.org/en/) to download and install it.
+
+Luego [abre tu terminal como Administrador](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/) 
+
+También necesita instalar las herramientas de compilación NPM `Windows Build Tools`
+
+```shell
+npm install --global --production windows-build-tools
+```
+
+y ejecuta el siguiente comando:
+
+```shell
+npm install -g node-gyp
+```
+
+### Comentarios sobre Node.js and NPM
+
+NPM generalmente se instala junto con Node.js, por lo que después de instalar Node.js, no es necesario instalarlo por separado.
+
+Si deseas tener más de una versión del Node.js instalada, 
+usa el administrador de versiones del Node.js, llamado [nvm](https://github.com/nvm-sh/nvm).
+
+> Si ves errores que mencionan "node-gyp", segúrate de haberlo instalado.
+
+## Editor de código fuente
+
+Necesitamos algún editor de código, preferiblemente uno que destaque los lenguajes Solidity y Javascript.
+
+[VS Code](https://code.visualstudio.com/)  es una buena opción.
+
+### Visual Studio Code (VS Code)
+
+Para instalarlo, [descárgalo aquí](https://code.visualstudio.com/download).
+
+Comprueba si la instalación del VS Code está bien consultando su versión en el terminal:
+
+```shell
+code -v
+```
+
+![VS Code version](img/courses/dev/05/requirements/image-03.png)
+
+
+### Extensión VSCode para el lenguaje Solidity
+
+Si usas VSCode, es genial contar con el soporte de Solidity.
+Utilizo la extensión para Solidity de [Juan Blanco](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity).
+
+Para instalarla, ve a Extensions (Menu View -> Extensions):
+
+1. Escribe `solidity` en el campo de búsqueda.
+2. Selecciona la extensión "solidity" de Juan Blanco.
+3. Haz clic en `install`.
+
+![Juan Blanco solidity extension](img/courses/dev/05/requirements/image-04.png)
+
+## Próximos pasos
+
+Todos los requisitos previos ya están instalados.
+
+¡Ahora conocerá web3 y luego creará su primera interfaz!
