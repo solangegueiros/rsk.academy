@@ -3,30 +3,259 @@ title: 'Solidity'
 description: 'Lenguaje de programación Solidity'
 ---
 
-## Lenguaje de programación Solidity
+## Pragma: versión del compilador Solidity
 
-Solidity es un lenguaje de alto nivel, orientado a objetos, para implementar contratos inteligentes.
-Los contratos inteligentes rigen el comportamiento de las cuentas y sus cambios de estado en Ethereum.
+¿Cómo definir el compilador de la versión Solidity?
 
-Es un [curly-bracket](https://en.wikipedia.org/wiki/List_of_programming_languages_by_type#Curly-bracket_languages)
-lenguaje, lo que significa que los caracteres **{** y **}** son los delimitadores de los bloques de código del lenguaje.
+Utilice la palabra **pragma** para definir la versión del compilador que se utilizará en un contrato inteligente.
 
-Su sintaxis está influenciada por C++, Python y JavaScript,
-y fue creado para ejecutarse en la EVM - Ethereum Virtual Machine (Máquina Virtual Ethereum).
+Cualquier versión del compilador a partir de la versión 0.8 (= 0.8.x)
 
-Solidity es un lenguaje _fuertemente tipado_, o _tipado estáticamente_, admite herencia, bibliotecas y
-tipos complejos definidos por el usuario, entre otras características.
+```solidity
+pragma solidity ^0.8.0;  
+```
 
-Esta definición de Solidity fue traducida de [Solidity docs](https://docs.soliditylang.org/).
+Mayor que la versión 0.7.1, menor que la versión 0.8.5
+
+```solidity
+pragma solidity >0.7.1 <0.8.5;
+```
+
+Versión bloqueada: exactamente la versión 0.8.4
+
+```solidity
+pragma solidity 0.8.4;
+```
+
+Los contratos deben implementarse con la misma versión del compilador con lo que se han probado.
+Bloquear el pragma ayuda a garantizar que los contratos no se implementen accidentalmente utilizando, por ejemplo, el último compilador que puede tener mayores riesgos de errores no descubiertos.
+Los contratos también pueden ser implementados por otros y el pragma indica la versión del compilador prevista por los autores originales.
+
+> No olvide terminar sus declaraciones y comandos con un punto y coma **;**
+
+## Define a contract 
+
+Utilice la palabra clave **contract** seguida del nombre de su contrato.
+
+```solidity
+
+contract MySmartContract {
+
+    // You will start writing your code here =)
+
+}
+
+```
+
+## Import files
+
+```solidity
+import "filename";
+
+import * as symbolName from "filename"; 
+
+import "filename" as symbolName;
+
+import {symbol1 as alias, symbol2} from "filename";
+```
+
+## Constructor
+
+Función que se ejecuta ÚNICAMENTE durante la implementación del contrato.
+
+Definido mediante la palabra clave **constructor**.
+
+```solidity
+contract NameSmartContract {
+    string name;
+    address owner;
+
+    constructor() {
+        owner = msg.sender;
+        name = "Your fullname";
+    }
+}
+```
+
+## Modificadores de acceso
+
+### public
+Accesible desde este contrato, contratos heredados y externamente.
+
+### private
+Accesible solo desde este contrato.
+
+### internal
+Accesible solo desde este contrato y los contratos heredados de él.
+
+### external
+No se puede acceder internamente, solo externamente. 
+Recomendado para reducir el gas usado. 
+
+Si tiene la función externa `myFunction()`, puede acceder internamente usando `this.myFunction()`.
+
+## Funciones - functions
+
+Estructura:
+
+```solidity
+function (<parameter types>) {internal|external|public|private} [pure|constant|view|payable] [returns (<return types>)]`]
+```
+
+- Debe tener un modificador de acceso.
+
+### Parámetros - Parameters
+
+Parámetros de entrada
+
+Los parámetros se declaran como variables y son variables de memoria.
+
+```solidity
+function myFunction(uint _a, uint _b) {}
+```
+
+Parâmetros de salida
+
+Los parámetros de salida se declaran después de la palabra clave `returns`.
+
+```solidity
+function sum(uint _a, uint _b) returns (uint _result) {
+   _result = _a + _b;
+}
+```
+
+La salida también se puede especificar mediante la declaración `return` dentro de la función.
+En ese caso, podemos omitir los nombres del parámetro, declarando solo el tipo de datos `returns (uint)`.
+
+```solidity
+function sum(uint _a, uint _b) returns (uint) {
+   return (_a + _b);
+}
+```
+
+Son posibles devolución de varios tipos con `return (v0, v1, ..., vn)`
+
+## Llamadas a funciones
+
+### Llamadas a funciones internas
+
+Las funciones del contrato actual se pueden llamar directamente.
+
+```solidity
+contract C {
+    function fA() returns (uint) { 
+       return 5; 
+    }
+    
+    function fB(uint _a) returns (uint) { 
+       return fA() + _a; 
+    }
+}
+```
+
+Llamadas a funciones externas
+
+> TO DO
+
+this.g(8); and c.g(2); (where c is a contract instance) are also valid function calls, but, the function will be called “externally”, via a message call.
+
+>  .gas() and .value() can also be used with external function calls.
+
+### Llamadas con argumentos con nombre
+
+Los argumentos de llamada de función también se pueden dar por nombre en cualquier orden como se muestra a continuación.
+
+```solidity
+function f(uint a, uint b) {  }
+
+function g() {
+    f({b: 1, a: 2});
+}
+```
+
+## Modificadores - Modifier
+
+Los modificadores pueden verificar automáticamente una condición antes de ejecutar una función.
+
+```solidity
+modifier onlyOwner {
+    require(msg.sender == owner);
+    _;
+}
+
+function kill() onlyOwner {
+    selfdestruct(owner);
+}
+```
+
+## Funciones View o Constant
+
+Las funciones deben declararse **view** o **constant**, cuando no cambian el estado, solo leen de él.
+
+Functions must be declared view or constant in which case they promise not to modify the state, but only read from them.
+
+```solidity
+string private name;
+
+function getName() public view returns (string memory) {
+    return name;
+}
+```
+
+## Funciones puras
+
+Las funciones deben declararse **pure** cuando no leen ni cambian el estado.
+
+```solidity
+function double(uint number) pure returns (uint) {
+    return number * 2;
+}
+```
+
+## Events
+
+Eventos Solidity son los mismos que los eventos en cualquier otro lenguaje de programación.
+
+El evento es un miembro heredable de un contrato.
+Cuando se emite un evento, sus argumentos se almacenan en los registros de transacciones.
+
+Estos registros se almacenan en blockchain y se puede acceder a ellos mediante la dirección del contrato inteligente.
 
 
-## Yellow Paper
+Los eventos proporcionan un uso conveniente de los recursos de registro de EVM,
+que, a su vez, se puede utilizar en una **call**, una callback JavaScript en la interfaz de usuario de una dapp,
+que escucha estos eventos.
 
-Gavin Wood
+Los eventos notifican a las aplicaciones sobre cambios en los contratos
+y se puede utilizar para ejecutar lógica dependiente.
 
+Se pueden indexar hasta tres parámetros, 
+lo que hará que se puedan buscar los argumentos respectivos.
 
-## Consideraciones finales
+Todos los argumentos no indexados se almacenarán en la parte de datos del log.
 
-El propósito de esta lección fue presentar el lenguaje de programación Solidity.
+>  Un evento generado no es accesible desde dentro de los contratos, ni siquiera el que los ha creado y emitido.
 
-En la siguiente lección, conocerá ...
+Un evento se puede declarar usando la palabra clave **event**.
+
+```solidity
+pragma solidity ^0.4.0;
+
+contract ClientReceipt {
+    event Deposit(
+        address indexed _from,
+        bytes32 indexed _id,
+        uint _value
+    );
+
+    function deposit(bytes32 _id) payable {
+        emit Deposit(msg.sender, _id, msg.value);
+    }
+}
+```
+
+## Final considerations
+
+El propósito de esta lección fue presentar los conceptos básicos del lenguaje de programación Solidity.
+
+En la próxima lección aprenderá los tipos y variables en Solidity.
