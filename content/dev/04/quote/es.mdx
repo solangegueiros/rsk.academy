@@ -28,14 +28,14 @@ pragma solidity 0.8.1;
 
 contract Quote {
   address public owner;
-  string private message;  
+  string private message;
   mapping (address => bool) public whiteList;
 
   constructor() {
       owner = msg.sender;
       whiteList[msg.sender] = true;
   }
-  
+
   modifier onlyOwner {
       require(msg.sender == owner,"Only owner");
       _;
@@ -57,10 +57,10 @@ contract Quote {
   function addMember (address _member) public onlyOwner {
       whiteList[_member] = true;
   }
-  
+
   function delMember (address _member) public onlyOwner {
       whiteList[_member] = false;
-  }   
+  }
 }
 
 ```
@@ -70,7 +70,6 @@ contract Quote {
 Entendamos el contrato inteligente.
 
 ### Variables
-
 
 **owner**
 
@@ -94,8 +93,7 @@ Mensaje almacenado en Blockchain.
 mapping (address => bool) public whiteList;
 ```
 
-Lista de direcciones que define quién puede actualizar la variable **message**. 
-
+Lista de direcciones que define quién puede actualizar la variable **message**.
 
 ### Constructor
 
@@ -129,7 +127,7 @@ modifier onlyOwner {
 ```
 
 Este modificador verifica si la persona que envía la transacción es el **owner** del contrato inteligente.
-De lo contrario, se envía el mensaje de error ***Only owner**.
+De lo contrario, se envía el mensaje de error **\*Only owner**.
 
 #### onlyWhitelist
 

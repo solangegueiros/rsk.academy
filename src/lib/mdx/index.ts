@@ -4,15 +4,16 @@ import matter from 'gray-matter'
 import shell from 'shelljs'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
+import { slash } from '@utils/slash'
 
 const CONTENT_FOLDER = 'content'
 
 export const getMdxPaths = async (): Promise<{ params: { slug: string[] }; locale: string }[]> => {
-  const dir = path.join(process.cwd(), CONTENT_FOLDER)
+  const dir = slash(path.join(process.cwd(), CONTENT_FOLDER))
   const mdxPages = shell.ls('-R', `${dir}/**/*.mdx`)
 
   return mdxPages.map(filePath => {
-    const slugArr = filePath.replace('.mdx', '').replace(dir, '').split('/').filter(Boolean)
+    const slugArr = slash(filePath).replace('.mdx', '').replace(dir, '').split('/').filter(Boolean)
 
     const [course, module, url, lang] = slugArr
 
