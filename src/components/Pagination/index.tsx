@@ -1,8 +1,8 @@
 import { Icon, Text, SimpleGridProps, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 import { PaginationLink } from './PaginationLink'
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 interface PaginationProps {
   previous: {

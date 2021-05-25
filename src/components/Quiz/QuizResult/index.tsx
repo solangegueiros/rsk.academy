@@ -1,10 +1,11 @@
+import { useMemo } from 'react'
+
 import { Box, Heading, HStack, Icon, Text, useColorModeValue, VStack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { BiCheckCircle, BiXCircle } from 'react-icons/bi'
 
 import { useQuiz } from '@hooks/useQuiz'
-import { useMemo } from 'react'
 import { CourseType, ModuleType } from '@store/quiz/slice'
 
 interface QuizResultProps {

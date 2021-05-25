@@ -10,12 +10,12 @@ import {
   SimpleGrid,
   Button,
 } from '@chakra-ui/react'
+import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Container, Layout, Seo } from '@components'
 import { useGradient } from '@hooks/useGradient'
-import { GetStaticProps } from 'next'
 
 const Home = (): JSX.Element => {
   const gradient1 = useGradient('to-r')

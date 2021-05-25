@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
-import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { GetStaticPaths, GetStaticProps } from 'next'
+
 import {
   Box,
   Heading,
@@ -19,14 +18,16 @@ import {
   AspectRatio,
   Stack,
 } from '@chakra-ui/react'
+import { isPast } from 'date-fns'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import { FaTwitter } from 'react-icons/fa'
+import { GoRepo } from 'react-icons/go'
 import { IoLanguage } from 'react-icons/io5'
 import { RiVideoChatFill, RiMapPin2Line } from 'react-icons/ri'
-import { GoRepo } from 'react-icons/go'
-import { useTranslation } from 'next-i18next'
-import { isPast } from 'date-fns'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Layout, Seo } from '@components'
 import { getEvent, getEventPaths, EventType } from '@lib/getEvents'

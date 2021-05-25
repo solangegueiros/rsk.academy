@@ -1,13 +1,14 @@
 import { useContext } from 'react'
+
 import { Alert, AlertIcon, Box, Heading, SimpleGrid, useColorModeValue } from '@chakra-ui/react'
+import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Layout, Seo, SubscribeAcademy } from '@components'
+import { COURSE_ADDRESSES } from '@constants'
 import { RLoginResponseContext } from '@context/RLoginProvider'
-import { COURSE_ADDRESSES } from '@constants/constants'
-import { useAppSelector } from '@store/store'
-import { GetStaticProps } from 'next'
+import { useAppSelector } from '@store'
 
 const Profile = (): JSX.Element => {
   const { t } = useTranslation('common')

@@ -1,8 +1,8 @@
 import { extendTheme, theme as chakraTheme, DeepPartial, ThemeConfig } from '@chakra-ui/react'
 
-import { styles } from './global'
 import { colors } from './colors'
 import { components } from './components'
+import { styles } from './global'
 import { mdx } from './mdx'
 const fonts = { body: `'Rubik', sans-serif`, mono: `'Consolas', monospace` }
 

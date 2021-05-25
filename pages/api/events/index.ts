@@ -1,5 +1,6 @@
-import { getEvents } from '@lib/getEvents'
 import { NextApiRequest, NextApiResponse } from 'next'
+
+import { getEvents } from '@lib/getEvents'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   const { id } = req.query

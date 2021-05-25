@@ -1,6 +1,6 @@
-import devSidebar from '@configs/dev-sidebar.json'
-import businessSidebar from '@configs/business-sidebar.json'
 import { RouteType } from '@components'
+import businessSidebar from '@configs/business-sidebar.json'
+import devSidebar from '@configs/dev-sidebar.json'
 
 export const getRoutes = (slug: string): RouteType[] => {
   const configMap = {

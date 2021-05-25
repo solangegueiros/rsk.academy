@@ -1,8 +1,10 @@
 import { ReactNode } from 'react'
+
 import { Box, chakra, Flex, Grid } from '@chakra-ui/react'
 import { SkipNavContent, SkipNavLink } from '@chakra-ui/skip-nav'
 
 import { Container, Header, Seo, Footer } from '@components'
+
 import { Transactions } from '../Transactions'
 import { EditPageButton } from './EditPageButton'
 

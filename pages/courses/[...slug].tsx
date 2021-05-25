@@ -1,15 +1,15 @@
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { Spinner } from '@chakra-ui/react'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { MDXProvider } from '@mdx-js/react'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 
-import { getRoutes } from '@utils/getRoutes'
-import { findRouteByPath } from '@utils/findRouteByPath'
-import { getRouteContext } from '@utils/getRouteContext'
 import { FrontMatterType, PageContainer, Pagination, Sidebar } from '@components'
 import { Markdown } from '@components/Markdown'
 import { getMdxPaths, getMdxInfo } from '@lib/mdx'
+import { findRouteByPath } from '@utils/findRouteByPath'
+import { getRouteContext } from '@utils/getRouteContext'
+import { getRoutes } from '@utils/getRoutes'
 
 interface MdxPageProps {
   source: MDXRemoteSerializeResult<Record<string, unknown>>

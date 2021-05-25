@@ -1,4 +1,5 @@
 import { ReactNode, useContext } from 'react'
+
 import {
   Alert,
   AlertDescription,
@@ -12,13 +13,13 @@ import {
   useClipboard,
   useColorModeValue,
 } from '@chakra-ui/react'
-import { IoMdWallet } from 'react-icons/io'
 import { useTranslation } from 'next-i18next'
-
-import { trimValue } from '@utils/trimValue'
-import { RLoginResponseContext } from '@context/RLoginProvider'
 import { FaCheckCircle, FaCopy } from 'react-icons/fa'
+import { IoMdWallet } from 'react-icons/io'
+
 import { Popup } from '@components/Popup'
+import { RLoginResponseContext } from '@context/RLoginProvider'
+import { trimValue } from '@utils/trimValue'
 
 interface ContractBaseProps {
   contract: {

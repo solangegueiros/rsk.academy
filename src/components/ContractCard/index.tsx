@@ -12,8 +12,9 @@ import {
   Button,
   useColorModeValue,
 } from '@chakra-ui/react'
-import { NETWORK_LABELS } from '@constants/constants'
+
 import { ContractBase } from '@components'
+import { NETWORK_LABELS } from '@constants'
 
 export interface ContractCardProps {
   name: string

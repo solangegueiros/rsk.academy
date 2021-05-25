@@ -1,12 +1,14 @@
 import { useContext } from 'react'
+
 import { toBN } from 'web3-utils'
 
-import { useQuiz } from '@hooks/useQuiz'
 import { ContractContext } from '@context/ContractProvider'
+import { useQuiz } from '@hooks/useQuiz'
+import { useAppDispatch, useAppSelector } from '@store'
 import { saveQuizResult } from '@store/profile/slice'
 import { CourseType, finalizeAnswers, ModuleType, pendingAnswers } from '@store/quiz/slice'
+
 import { useTransactionCallback } from '../useTransactionCallback'
-import { useAppDispatch, useAppSelector } from '@store/store'
 
 const stringifyAnswers = (answers: Record<string, { answer: number; isCorrect: boolean }>, quizName: string) => {
   return Object.entries(answers)

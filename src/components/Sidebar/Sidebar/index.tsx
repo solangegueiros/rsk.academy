@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+
 import { Box, Flex } from '@chakra-ui/react'
 
 import { RouteType, SidebarContent } from '../SidebarContent'
