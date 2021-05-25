@@ -12,7 +12,7 @@ Use the keyword **pragma** to define the version of the compiler to be used in a
 Any compiler version from the 0.8 release (= 0.8.x)
 
 ```solidity
-pragma solidity ^0.8.0;  
+pragma solidity ^0.8.0;
 ```
 
 Greater than version 0.7.1, less than version 0.8.5
@@ -27,13 +27,13 @@ Lock version: exactly version 0.8.4
 pragma solidity 0.8.4;
 ```
 
-Contracts should be deployed with the same compiler version that they have been tested the most with. 
-Locking the pragma helps ensure that contracts do not accidentally get deployed using, for example, the latest compiler which may have higher risks of undiscovered bugs. 
+Contracts should be deployed with the same compiler version that they have been tested the most with.
+Locking the pragma helps ensure that contracts do not accidentally get deployed using, for example, the latest compiler which may have higher risks of undiscovered bugs.
 Contracts may also be deployed by others and the pragma indicates the compiler version intended by the original authors.
 
 > Do not forget to end your declaration statements with a semicolon **;**
 
-## Define a contract 
+## Define a contract
 
 Use the keyword contract followed by your contract name.
 
@@ -52,7 +52,7 @@ contract MySmartContract {
 ```solidity
 import "filename";
 
-import * as symbolName from "filename"; 
+import * as symbolName from "filename";
 
 import "filename" as symbolName;
 
@@ -61,7 +61,7 @@ import {symbol1 as alias, symbol2} from "filename";
 
 ## Constructor
 
-Function that is executed ONLY during contract deployment. 
+Function that is executed ONLY during contract deployment.
 
 Defined using the **constructor** keyword.
 
@@ -80,17 +80,21 @@ contract NameSmartContract {
 ## Access modifiers
 
 ### public
+
 Accessible from this contract, inherited contracts and externally.
 
 ### private
+
 Accessible only from this contract.
 
 ### internal
+
 Accessible only from this contract and contracts inheriting from it.
 
 ### external
-Cannot be accessed internally, only externally. 
-Recommended to reduce gas. 
+
+Cannot be accessed internally, only externally.
+Recommended to reduce gas.
 
 If you have the external function `myFunction()`, you can access internally using `this.myFunction()`.
 
@@ -124,7 +128,7 @@ function sum(uint _a, uint _b) returns (uint _result) {
 }
 ```
 
-Output can also be specified using `return` statement inside the function. 
+Output can also be specified using `return` statement inside the function.
 In that case, we can omit parameter name, declaring only the data type `returns (uint)`.
 
 ```solidity
@@ -143,12 +147,12 @@ Functions of the current contract can be called directly.
 
 ```solidity
 contract C {
-    function fA() returns (uint) { 
-       return 5; 
+    function fA() returns (uint) {
+       return 5;
     }
-    
-    function fB(uint _a) returns (uint) { 
-       return fA() + _a; 
+
+    function fB(uint _a) returns (uint) {
+       return fA() + _a;
     }
 }
 ```
@@ -159,7 +163,7 @@ contract C {
 
 this.g(8); and c.g(2); (where c is a contract instance) are also valid function calls, but, the function will be called “externally”, via a message call.
 
->  .gas() and .value() can also be used with external function calls.
+> .gas() and .value() can also be used with external function calls.
 
 ### Named Calls
 
@@ -212,25 +216,25 @@ function double(uint number) pure returns (uint) {
 
 ## Events
 
-Solidity Events are the same as events in any other programming language. 
+Solidity Events are the same as events in any other programming language.
 
-Event is an inheritable member of a contract. 
-An event is emitted, it stores the arguments passed in transaction logs. 
+Event is an inheritable member of a contract.
+An event is emitted, it stores the arguments passed in transaction logs.
 
-These logs are stored on blockchain and are accessible using address of the smart contract. 
+These logs are stored on blockchain and are accessible using address of the smart contract.
 
-Events allow the convenient usage of the EVM logging facilities, 
-which in turn can be used to **call** JavaScript callbacks in the user interface of a dapp, 
+Events allow the convenient usage of the EVM logging facilities,
+which in turn can be used to **call** JavaScript callbacks in the user interface of a dapp,
 which listen for these events.
 
 Events notify the applications about the change made to the contracts and applications which can be used to execute the dependent logic.
 
-Up to three parameters can receive the attribute indexed, 
+Up to three parameters can receive the attribute indexed,
 which will cause the respective arguments to be searched for.
 
 All non-indexed arguments will be stored in the data part of the log.
 
->  An event generated is not accessible from within contracts, not even the one which have created and emitted them.
+> An event generated is not accessible from within contracts, not even the one which have created and emitted them.
 
 An event can be declared using **event** keyword.
 

@@ -51,7 +51,11 @@
       { "en": "Switch chainId", "es": "Cambiar el ChainId", "pt": "Trocar o ChainId" },
       { "en": "Update the mnemonic", "es": "Actualizar el mnemónico", "pt": "Atualizar o mnemônico" },
       { "en": "Switch account", "es": "Cambiar la  cuenta", "pt": "Trocar a conta" },
-      { "en": "Select the network in Metamask", "es": "Seleccionar la red en Metamask", "pt": "Selecionar a rede no Metamask" } 
+      {
+        "en": "Select the network in Metamask",
+        "es": "Seleccionar la red en Metamask",
+        "pt": "Selecionar a rede no Metamask"
+      }
     ],
     "correctAnswer": 3
   },
@@ -67,7 +71,7 @@
       { "en": "Nick Szabo", "es": "Nick Szabo", "pt": "Nick Szabo" },
       { "en": "Vitalik Buterin", "es": "Vitalik Buterin", "pt": "Vitalik Buterin" },
       { "en": "Satoshi Nakamoto", "es": "Satoshi Nakamoto", "pt": "Satoshi Nakamoto" },
-      { "en": "David Chaum", "es": "David Chaum", "pt": "David Chaum" } 
+      { "en": "David Chaum", "es": "David Chaum", "pt": "David Chaum" }
     ],
     "correctAnswer": 0
   },
@@ -82,8 +86,16 @@
     "answers": [
       { "en": "No way", "es": "De ninguna manera", "pt": "De jeito nenhum" },
       { "en": "Yes, always", "es": "Sí, siempre", "pt": "Sim, sempre" },
-      { "en": "Only if there are functions defined to change data", "es": "Solo si hay funciones definidas para cambiar datos", "pt": "Apenas se houver funções definidas para alterar dados" },
-      { "en": "Yes, if there are public variables", "es": "Sí, si hay variables públicas", "pt": "Sim, se houver variáveis públicas" } 
+      {
+        "en": "Only if there are functions defined to change data",
+        "es": "Solo si hay funciones definidas para cambiar datos",
+        "pt": "Apenas se houver funções definidas para alterar dados"
+      },
+      {
+        "en": "Yes, if there are public variables",
+        "es": "Sí, si hay variables públicas",
+        "pt": "Sim, se houver variáveis públicas"
+      }
     ],
     "correctAnswer": 2
   },
@@ -99,9 +111,11 @@
       { "en": "A new Blockchain", "es": "Una nueva Blockchain", "pt": "Um novo Blockchain" },
       { "en": "A testnet", "es": "Una testnet", "pt": "Uma testnet" },
       { "en": "A blockchain node", "es": "Un nodo de blockchain", "pt": "Um  nó blockchain" },
-      { "en": "A Blockchain simulator in the browser memory.", 
-        "es": "Un simulador de Blockchain en la memoria del navegador.", 
-        "pt": "Um simulador de Blockchain na memória do browser." } 
+      {
+        "en": "A Blockchain simulator in the browser memory.",
+        "es": "Un simulador de Blockchain en la memoria del navegador.",
+        "pt": "Um simulador de Blockchain na memória do browser."
+      }
     ],
     "correctAnswer": 3
   },
@@ -116,10 +130,12 @@
     "answers": [
       { "en": "A blockchain node", "es": "Un nodo de blockchain", "pt": "Um  nó blockchain" },
       { "en": "A miner", "es": "Un minero", "pt": "Um  minerador" },
-      { "en": "A blockchain search engine that allows you to search for a particular piece of information on the blockchain. ", 
-        "es": "Un motor de búsqueda de blockchain que le permite buscar una pieza particular de información en el blockchain.", 
-        "pt": "Um mecanismo de pesquisa de blockchain que permite que você pesquise uma informação específica sobre o blockchain." },
-      { "en": "A testnet", "es": "Una testnet", "pt": "Uma testnet" } 
+      {
+        "en": "A blockchain search engine that allows you to search for a particular piece of information on the blockchain. ",
+        "es": "Un motor de búsqueda de blockchain que le permite buscar una pieza particular de información en el blockchain.",
+        "pt": "Um mecanismo de pesquisa de blockchain que permite que você pesquise uma informação específica sobre o blockchain."
+      },
+      { "en": "A testnet", "es": "Una testnet", "pt": "Uma testnet" }
     ],
     "correctAnswer": 2
   }

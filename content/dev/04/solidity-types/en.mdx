@@ -3,10 +3,10 @@ title: 'Solidity types and variables'
 description: 'Solidity types and variables'
 ---
 
-Contract would need some state. 
+Contract would need some state.
 Variables store the state information.
 
-Solidity is a statically typed language. 
+Solidity is a statically typed language.
 So you always need to declare the variable type before the variable name.
 
 ## Types
@@ -31,24 +31,24 @@ You can also specify the number of bits, by range of 8 bits.
 
 Here are some examples below:
 
-| Type   	| Number range  	| 
-|---	|---	|
-| uint8	| 0 to 255  	|
-| uint16  	| 0 to 65,535  	|
-| uint32  	| 0 to 2^32  	|
-| uint64  	| 0 to 2^64  	|
-| uint128  	| 0 to 2^128  	|
-| uint256  	| 0 to 2^256  	|
+| Type    | Number range |
+| ------- | ------------ |
+| uint8   | 0 to 255     |
+| uint16  | 0 to 65,535  |
+| uint32  | 0 to 2^32    |
+| uint64  | 0 to 2^64    |
+| uint128 | 0 to 2^128   |
+| uint256 | 0 to 2^256   |
 
 Operators:
 
 - Comparisons: <=, <, ==, !=, >= and >
 - Bit operators: &, |, ^ (bitwise exclusive or) and ~ (bitwise negation)
-- Arithmetic operators: +, -, unary -, unary +, *, /, %, ** (exponentiation), << (left shift) and >> (right shift)
+- Arithmetic operators: +, -, unary -, unary +, \*, /, %, \*\* (exponentiation), << (left shift) and >> (right shift)
 
 ### Address
 
-address: holds an Ethereum address (20 byte value). 
+address: holds an Ethereum address (20 byte value).
 
 address payable : same as address, but includes additional methods transfer and send
 
@@ -64,9 +64,9 @@ Methods:
 - `<address>.call(...) returns (bool)` : issue low-level CALL, returns false on failure
 - `<address>.delegatecall(...) returns (bool)` : issue low-level DELEGATECALL, returns false on failure
 
-> **delegatecall** uses the code of the target address and other aspects (storage, balance, …) from the calling contract. 
-The purpose of delegatecall is to use library code which is stored in another contract. 
-The user has to ensure that the layout of storage in both contracts is compatible for use of delegatecall.
+> **delegatecall** uses the code of the target address and other aspects (storage, balance, …) from the calling contract.
+> The purpose of delegatecall is to use library code which is stored in another contract.
+> The user has to ensure that the layout of storage in both contracts is compatible for use of delegatecall.
 
 ### Array
 
@@ -92,26 +92,26 @@ Members
 
 ### Byte arrays - dynamic
 
-- bytes: Dynamically-sized byte array. 
+- bytes: Dynamically-sized byte array.
 
-It is similar to byte[], but it is packed tightly in calldata. 
+It is similar to byte[], but it is packed tightly in calldata.
 
 ### String
 
-string: dynamically-sized UTF-8-encoded string. 
+string: dynamically-sized UTF-8-encoded string.
 
-It is equal to bytes but does not allow length or index access. 
+It is equal to bytes but does not allow length or index access.
 
 ### Enum
 
 Enum works just like in every other language.
 
 ```solidity
-enum ColorList { 
-  Red, 
-  Blue, 
-  Green, 
-  Yellow 
+enum ColorList {
+  Red,
+  Blue,
+  Green,
+  Yellow
 }
 
 ColorList color = ColorList.Red;
@@ -124,8 +124,8 @@ New types can be declared using **struct**
 ```solidity
 struct User {
     address addr;
-    string name;    
-    string email;  
+    string name;
+    string email;
     uint age;
 }
 
@@ -138,11 +138,11 @@ A list of key and values which each key has one value.
 
 Mappings can be seen as hash tables which are virtually initialized such that every possible key exists and is mapped to a value.
 
-Key can be almost any type. Exceptions: mapping, dynamically sized array, contract, enum, struct. 
+Key can be almost any type. Exceptions: mapping, dynamically sized array, contract, enum, struct.
 
 Value can be any type, including mappings.
 
-Declared as **mapping(_KeyType => _ValueType)**
+Declared as **mapping(\_KeyType => \_ValueType)**
 
 ## Global variables
 
@@ -171,4 +171,3 @@ Declared as **mapping(_KeyType => _ValueType)**
 The purpose of this lesson was to present the types and variables in Solidity programing language.
 
 In the next lesson you will create a smart contract to use some of them.
-

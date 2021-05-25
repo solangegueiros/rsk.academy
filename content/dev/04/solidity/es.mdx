@@ -12,7 +12,7 @@ Utilice la palabra **pragma** para definir la versión del compilador que se uti
 Cualquier versión del compilador a partir de la versión 0.8 (= 0.8.x)
 
 ```solidity
-pragma solidity ^0.8.0;  
+pragma solidity ^0.8.0;
 ```
 
 Mayor que la versión 0.7.1, menor que la versión 0.8.5
@@ -33,7 +33,7 @@ Los contratos también pueden ser implementados por otros y el pragma indica la 
 
 > No olvide terminar sus declaraciones y comandos con un punto y coma **;**
 
-## Define a contract 
+## Define a contract
 
 Utilice la palabra clave **contract** seguida del nombre de su contrato.
 
@@ -52,7 +52,7 @@ contract MySmartContract {
 ```solidity
 import "filename";
 
-import * as symbolName from "filename"; 
+import * as symbolName from "filename";
 
 import "filename" as symbolName;
 
@@ -80,17 +80,21 @@ contract NameSmartContract {
 ## Modificadores de acceso
 
 ### public
+
 Accesible desde este contrato, contratos heredados y externamente.
 
 ### private
+
 Accesible solo desde este contrato.
 
 ### internal
+
 Accesible solo desde este contrato y los contratos heredados de él.
 
 ### external
-No se puede acceder internamente, solo externamente. 
-Recomendado para reducir el gas usado. 
+
+No se puede acceder internamente, solo externamente.
+Recomendado para reducir el gas usado.
 
 Si tiene la función externa `myFunction()`, puede acceder internamente usando `this.myFunction()`.
 
@@ -143,12 +147,12 @@ Las funciones del contrato actual se pueden llamar directamente.
 
 ```solidity
 contract C {
-    function fA() returns (uint) { 
-       return 5; 
+    function fA() returns (uint) {
+       return 5;
     }
-    
-    function fB(uint _a) returns (uint) { 
-       return fA() + _a; 
+
+    function fB(uint _a) returns (uint) {
+       return fA() + _a;
     }
 }
 ```
@@ -159,7 +163,7 @@ Llamadas a funciones externas
 
 this.g(8); and c.g(2); (where c is a contract instance) are also valid function calls, but, the function will be called “externally”, via a message call.
 
->  .gas() and .value() can also be used with external function calls.
+> .gas() and .value() can also be used with external function calls.
 
 ### Llamadas con argumentos con nombre
 
@@ -221,7 +225,6 @@ Cuando se emite un evento, sus argumentos se almacenan en los registros de trans
 
 Estos registros se almacenan en blockchain y se puede acceder a ellos mediante la dirección del contrato inteligente.
 
-
 Los eventos proporcionan un uso conveniente de los recursos de registro de EVM,
 que, a su vez, se puede utilizar en una **call**, una callback JavaScript en la interfaz de usuario de una dapp,
 que escucha estos eventos.
@@ -229,12 +232,12 @@ que escucha estos eventos.
 Los eventos notifican a las aplicaciones sobre cambios en los contratos
 y se puede utilizar para ejecutar lógica dependiente.
 
-Se pueden indexar hasta tres parámetros, 
+Se pueden indexar hasta tres parámetros,
 lo que hará que se puedan buscar los argumentos respectivos.
 
 Todos los argumentos no indexados se almacenarán en la parte de datos del log.
 
->  Un evento generado no es accesible desde dentro de los contratos, ni siquiera el que los ha creado y emitido.
+> Un evento generado no es accesible desde dentro de los contratos, ni siquiera el que los ha creado y emitido.
 
 Un evento se puede declarar usando la palabra clave **event**.
 

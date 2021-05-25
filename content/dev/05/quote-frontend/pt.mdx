@@ -7,7 +7,7 @@ Vamos criar um frontend para o contrato inteligente **Quote**, usado no último 
 
 ## Criando o projeto
 
-Crie uma nova pasta chamada **Quote**, 
+Crie uma nova pasta chamada **Quote**,
 e inicialize um projeto nesta pasta executando os comandos abaixo no terminal:
 
 ```shell
@@ -24,7 +24,7 @@ npm init -y
 
 Por exemplo, eu vou criar a pasta neste local: `C:\RSK\`
 
-Então meu projeto pode ser localizado no diretório:  `C:\RSK\Quote`.
+Então meu projeto pode ser localizado no diretório: `C:\RSK\Quote`.
 
 ![Quote project](img/courses/dev/05/quote-frontend/image-01.png)
 
@@ -34,13 +34,13 @@ Alguns requisitos devem ser instalados diretamente no projeto.
 
 ## Express
 
-[Express](http://expressjs.com/) é uma aplicação Node.js, um framework web que facilita o desenvolvimento de aplicações web. 
+[Express](http://expressjs.com/) é uma aplicação Node.js, um framework web que facilita o desenvolvimento de aplicações web.
 Ele é um servidor HTTP minimalista.
 
 Para instalar Express, digite o comando abaixo no terminal e pressione a tecla `enter`, na pasta do seu projeto:
 
 ```shell
-npm install -E express 
+npm install -E express
 ```
 
 > A opção **-E** é para salvar dependências com uma versão exata em vez de usar o padrão do npm.
@@ -53,7 +53,7 @@ Mais informações:
 
 ## Web3.js
 
-[Web3.js](https://web3js.readthedocs.io/) auxilia o desenvolvimento de websites ou clients que interagem com o blockchain. 
+[Web3.js](https://web3js.readthedocs.io/) auxilia o desenvolvimento de websites ou clients que interagem com o blockchain.
 
 Para instalar web3.js, na pasta do seu projeto, digite o comando abaixo no terminal e pressione `enter`:
 
@@ -65,9 +65,9 @@ npm install -E web3@1.3.6
 
 ## Verifique o arquivo package.json
 
-`package.json` é um arquivo de configurações que criamos na inicialização do projeto, com o comando `npm init -y`. 
+`package.json` é um arquivo de configurações que criamos na inicialização do projeto, com o comando `npm init -y`.
 
-Depois das instalações abra o arquivo `package.json` no VSCode 
+Depois das instalações abra o arquivo `package.json` no VSCode
 e verifique a parte das dependências (dependencies):
 
 ![package.json](img/courses/dev/05/quote-frontend/image-04.png)
@@ -100,33 +100,35 @@ Copie e cole o código fonte abaixo:
 <!DOCTYPE html>
 <html>
   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Quote</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quote</title>
 
-      <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
-      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-      <script src="./node_modules/web3/dist/web3.min.js"></script>
-      <script src="./index.js"></script>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+    <script src="./index.js"></script>
   </head>
 
   <body class="container">
     <h1 class="page-header">Quote dApp</h1>
-      <br/>
+    <br />
 
-      <h2>
-        <label id="lastInfo"></label>
-      </h2>
+    <h2>
+      <label id="lastInfo"></label>
+    </h2>
 
-      <h3>Set quote</h3>
-      <form id="form" class="form-inline" role="form">
-          <input class="form-control" id="input" type="text"/>
-          <input type="submit" class="btn btn-primary" value="Set quote"/>
-      </form>
-      
+    <h3>Set quote</h3>
+    <form id="form" class="form-inline" role="form">
+      <input class="form-control" id="input" type="text" />
+      <input type="submit" class="btn btn-primary" value="Set quote" />
+    </form>
   </body>
 </html>
-
 ```
 
 ## index.js
@@ -135,101 +137,99 @@ No diretório **Quote**, crie um arquivo chamado **index.js**.
 
 Copie e cole o código fonte abaixo:
 
-```javascript
+```js
 // Web3
 const getWeb3 = () => {
   return new Promise((resolve, reject) => {
-    window.addEventListener("load", async () => {
+    window.addEventListener('load', async () => {
       if (window.ethereum) {
-        const web3 = new Web3(window.ethereum);
+        const web3 = new Web3(window.ethereum)
         try {
           // ask user permission to access his accounts
-          await window.ethereum.request({ method: "eth_requestAccounts" });
-          resolve(web3);
+          await window.ethereum.request({ method: 'eth_requestAccounts' })
+          resolve(web3)
         } catch (error) {
-          reject(error);
+          reject(error)
         }
       } else {
-        reject("MetaMask is NOT installed");
+        reject('MetaMask is NOT installed')
       }
-    });
-  });
-};
+    })
+  })
+}
 
-const contractAddress = '0xF2FD988A92484ff16Edd5BD9DAbE5eb809c5B3Dd';
-const abi = JSON.parse( '[ { "inputs": [ { "internalType": "address", "name": "_member", "type": "address" } ], "name": "addMember", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "_member", "type": "address" } ], "name": "delMember", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "string", "name": "_message", "type": "string" } ], "name": "setQuote", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" }, { "inputs": [], "name": "getQuote", "outputs": [ { "internalType": "string", "name": "", "type": "string" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [ { "internalType": "address", "name": "", "type": "address" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "", "type": "address" } ], "name": "whiteList", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "view", "type": "function" } ]' );
+const contractAddress = '0xF2FD988A92484ff16Edd5BD9DAbE5eb809c5B3Dd'
+const abi = JSON.parse(
+  '[ { "inputs": [ { "internalType": "address", "name": "_member", "type": "address" } ], "name": "addMember", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "_member", "type": "address" } ], "name": "delMember", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "string", "name": "_message", "type": "string" } ], "name": "setQuote", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" }, { "inputs": [], "name": "getQuote", "outputs": [ { "internalType": "string", "name": "", "type": "string" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [ { "internalType": "address", "name": "", "type": "address" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "", "type": "address" } ], "name": "whiteList", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "view", "type": "function" } ]',
+)
 
 // Contract
-const getContract = async (web3) => {
-  const quote = new web3.eth.Contract(abi, contractAddress);  
-  return quote;
-};
+const getContract = async web3 => {
+  const quote = new web3.eth.Contract(abi, contractAddress)
+  return quote
+}
 
 //Smart contract functions
 const getQuote = async (result, contract) => {
-  result = await contract.methods.getQuote().call();
-  console.log("result: ", result);
-  document.getElementById('lastInfo').innerHTML = result;
-};
+  result = await contract.methods.getQuote().call()
+  document.getElementById('lastInfo').innerHTML = result
+}
 
 const setQuote = (result, contract, accounts) => {
-  let input;
-  $("#input").on("change", (e) => {
-    input = e.target.value;
-  });
+  let input
+  $('#input').on('change', e => {
+    input = e.target.value
+  })
 
-  $("#form").on("submit", async (e) => {
-    e.preventDefault();
-    await contract.methods
-      .setQuote(input)
-      .send({ from: accounts[0] });
-      getQuote(result, contract);
-  });
-};
+  $('#form').on('submit', async e => {
+    e.preventDefault()
+    await contract.methods.setQuote(input).send({ from: accounts[0] })
+    getQuote(result, contract)
+  })
+}
 
 // App
 async function quoteApp() {
-  const web3 = await getWeb3();
-  const accounts = await web3.eth.getAccounts();
-  const contract = await getContract(web3);
-  let quote;
+  const web3 = await getWeb3()
+  const accounts = await web3.eth.getAccounts()
+  const contract = await getContract(web3)
+  let quote
 
-  getQuote(quote, contract);
-  setQuote(quote, contract, accounts);
+  getQuote(quote, contract)
+  setQuote(quote, contract, accounts)
 }
 
-quoteApp();
-
+quoteApp()
 ```
 
 ## Atualize o index.js
 
 Você lembra do endereço do smart contract que copiamos depois da publicação?
 
-Localiza a linha que começa com **const contractAddress = '...'** 
+Localiza a linha que começa com **const contractAddress = '...'**
 (perto da linha 21) e atualize:
 
-```javascript
-const contractAddress = '0xF2FD988A92484ff16Edd5BD9DAbE5eb809c5B3Dd';
+```js
+const contractAddress = '0xF2FD988A92484ff16Edd5BD9DAbE5eb809c5B3Dd'
 ```
 
 ## HTML server
 
 No diretório **Quote**, crie o arquivo **server.js**.
 
-```javascript
-var express = require('express');
-var app = express();
-app.use(express.static(__dirname));
-app.listen('3300');
-console.log('Running at\nhttp://localhost:3300');
+```js
+const express = require('express')
+const app = express()
+app.use(express.static(__dirname))
+app.listen('3300')
+console.log('Running at\nhttp://localhost:3300')
 ```
 
 Este arquivo configura o servidor HTML express.
 
 ## Executando
 
-A última etapa é executar o servidor express. 
+A última etapa é executar o servidor express.
 Digite o seguinte comando no terminal.
 
 ```shell
@@ -246,7 +246,6 @@ Em seu browser, vá no endereço:
 
 Se você estiver usando a carteira web Metamask,
 clique no botão **Connect** quando a janela do Metamask aparecer.
-
 
 ## Interagindo com o smart contract
 

@@ -12,7 +12,7 @@ Utilizamos a palavra **pragma** para definir a versão do compilador a ser utili
 Qualquer versão do compilador a partir da versão 0.8 (= 0.8.x)
 
 ```solidity
-pragma solidity ^0.8.0;  
+pragma solidity ^0.8.0;
 ```
 
 Maior que a versão 0.7.1, menor que a versão 0.8.5
@@ -33,7 +33,7 @@ Os contratos também podem ser publicados por terceiros e o pragma indica a vers
 
 > Não se esqueça de terminar suas declarações e comandos com ponto e vírgula **;**
 
-## Define a contract 
+## Define a contract
 
 Use a palavra-chave **contract** seguida do nome do seu contrato.
 
@@ -52,7 +52,7 @@ contract MySmartContract {
 ```solidity
 import "filename";
 
-import * as symbolName from "filename"; 
+import * as symbolName from "filename";
 
 import "filename" as symbolName;
 
@@ -80,16 +80,20 @@ contract NameSmartContract {
 ## Modificadores de acesso
 
 ### public
+
 Acessível a partir deste contrato, contratos herdados e externamente.
 
 ### private
+
 Acessível apenas a partir deste contrato.
 
 ### internal
+
 Acessível apenas a partir deste contrato e contratos herdados dele.
 
 ### external
-Não pode ser acessado internamente, apenas externamente. 
+
+Não pode ser acessado internamente, apenas externamente.
 Recomendado para reduzir o gás.
 
 Se você tem a função externa `myFunction()`, você pode acessar internamente usando `this.myFunction()`.
@@ -143,12 +147,12 @@ As funções do contrato atual podem ser chamadas diretamente.
 
 ```solidity
 contract C {
-    function fA() returns (uint) { 
-       return 5; 
+    function fA() returns (uint) {
+       return 5;
     }
-    
-    function fB(uint _a) returns (uint) { 
-       return fA() + _a; 
+
+    function fB(uint _a) returns (uint) {
+       return fA() + _a;
     }
 }
 ```
@@ -159,7 +163,7 @@ contract C {
 
 this.g(8); and c.g(2); (where c is a contract instance) are also valid function calls, but, the function will be called “externally”, via a message call.
 
->  .gas() and .value() can also be used with external function calls.
+> .gas() and .value() can also be used with external function calls.
 
 ### Chamadas com argumentos nomeados
 
@@ -202,7 +206,7 @@ function getName() public view returns (string memory) {
 
 ## Funções puras
 
-As funções devem ser declaradas como **pure** quando não lêem  e nem alteram o estado.
+As funções devem ser declaradas como **pure** quando não lêem e nem alteram o estado.
 
 Functions can be declared pure in which case they promise not to read from or modify the state.
 
@@ -225,7 +229,7 @@ Eventos proporcionam um conveniente uso dos recursos de log da EVM,
 que, por sua vez, pode ser usado em uma **call** , uma callback JavaScript na interface do usuário de uma dapp,
 que escuta esses eventos.
 
-Os eventos notificam os aplicativos sobre as alterações feitas nos contratos 
+Os eventos notificam os aplicativos sobre as alterações feitas nos contratos
 e podem ser usados para executar lógicas dependentes.
 
 Até três parâmetros podem ser indexados,
@@ -235,7 +239,7 @@ Todos os argumentos não indexados são armazenados na parte de dados do log.
 
 All non-indexed arguments will be stored in the data part of the log.
 
->  Um evento emitido não está acessível dentro de smart contracts, nem mesmo daquele que os criou e emitiu.
+> Um evento emitido não está acessível dentro de smart contracts, nem mesmo daquele que os criou e emitiu.
 
 Um evento pode ser declarado usando a palavra-chave **event**.
 

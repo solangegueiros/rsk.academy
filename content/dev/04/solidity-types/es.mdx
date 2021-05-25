@@ -31,20 +31,20 @@ También puede especificar el número de bits, por rango de 8 bits.
 
 A continuación se muestran algunos ejemplos:
 
-| Type   	| Number range  	| 
-|---	|---	|
-| uint8	| 0 to 255  	|
-| uint16  	| 0 to 65,535  	|
-| uint32  	| 0 to 2^32  	|
-| uint64  	| 0 to 2^64  	|
-| uint128  	| 0 to 2^128  	|
-| uint256  	| 0 to 2^256  	|
+| Type    | Number range |
+| ------- | ------------ |
+| uint8   | 0 to 255     |
+| uint16  | 0 to 65,535  |
+| uint32  | 0 to 2^32    |
+| uint64  | 0 to 2^64    |
+| uint128 | 0 to 2^128   |
+| uint256 | 0 to 2^256   |
 
 Operators:
 
 - Comparisons: <=, <, ==, !=, >= and >
 - Bit operators: &, |, ^ (bitwise exclusive or) and ~ (bitwise negation)
-- Arithmetic operators: +, -, unary -, unary +, *, /, %, ** (exponentiation), << (left shift) and >> (right shift)
+- Arithmetic operators: +, -, unary -, unary +, \*, /, %, \*\* (exponentiation), << (left shift) and >> (right shift)
 
 ### Address
 
@@ -65,8 +65,8 @@ Methods:
 - `<address>.delegatecall(...) returns (bool)` : issue low-level DELEGATECALL, returns false on failure
 
 > **delegatecall** utiliza el código de la dirección de destino y otros aspectos (almacenamiento, saldo,…) del contrato de llamada.
-El propósito de delegatecall es utilizar el código de la biblioteca que se almacena en otro contrato.
-El usuario debe asegurarse de que el diseño del almacenamiento en ambos contratos sea compatible para el uso de delegatecall.
+> El propósito de delegatecall es utilizar el código de la biblioteca que se almacena en otro contrato.
+> El usuario debe asegurarse de que el diseño del almacenamiento en ambos contratos sea compatible para el uso de delegatecall.
 
 ### Array
 
@@ -92,7 +92,7 @@ Members
 
 ### Byte arrays - dinámico
 
-- bytes: Dynamically-sized byte array. 
+- bytes: Dynamically-sized byte array.
 
 Es similar al byte[], pero está empaquetado de forma ajustada en calldata.
 
@@ -107,11 +107,11 @@ Es igual a bytes pero no permite el acceso a la longitud o al índice de un byte
 Enum funciona como en cualquier otro language.
 
 ```solidity
-enum ColorList { 
-  Red, 
-  Blue, 
-  Green, 
-  Yellow 
+enum ColorList {
+  Red,
+  Blue,
+  Green,
+  Yellow
 }
 
 ColorList color = ColorList.Red;
@@ -124,8 +124,8 @@ Los nuevos tipos se pueden declarar usando **struct**
 ```solidity
 struct User {
     address addr;
-    string name;    
-    string email;  
+    string name;
+    string email;
     uint age;
 }
 
@@ -142,7 +142,7 @@ La clave puede ser de casi cualquier tipo. Excepciones: mapping, array dinámico
 
 El valor puede ser de cualquier tipo, incluso otro mapping.
 
-Declarado como **mapping(_KeyType => _ValueType)**
+Declarado como **mapping(\_KeyType => \_ValueType)**
 
 ## Variables globales
 
@@ -171,4 +171,3 @@ Declarado como **mapping(_KeyType => _ValueType)**
 El propósito de esta lección fue presentar los tipos y variables en el lenguaje de programación Solidity.
 
 En la siguiente lección, crearás un contrato inteligente para usar algunos de ellos.
-
