@@ -135,7 +135,7 @@ En la carpeta **Quote**, crea el archivo **index.js**
 
 Copia y pega el código a continuación:
 
-```javascript
+```js
 // Web3
 const getWeb3 = () => {
   return new Promise((resolve, reject) => {
@@ -170,7 +170,6 @@ const getContract = async web3 => {
 //Smart contract functions
 const getQuote = async (result, contract) => {
   result = await contract.methods.getQuote().call()
-  console.log('result: ', result)
   document.getElementById('lastInfo').innerHTML = result
 }
 
@@ -208,7 +207,7 @@ quoteApp()
 Busque la línea que comienza con **const contractAddress = '...'**
 (alrededor de la línea 21) y actualícelo:
 
-```javascript
+```js
 const contractAddress = '0xF2FD988A92484ff16Edd5BD9DAbE5eb809c5B3Dd'
 ```
 
@@ -216,9 +215,9 @@ const contractAddress = '0xF2FD988A92484ff16Edd5BD9DAbE5eb809c5B3Dd'
 
 En la carpeta **Quote**, crea el archivo **server.js**
 
-```javascript
-var express = require('express')
-var app = express()
+```js
+const express = require('express')
+const app = express()
 app.use(express.static(__dirname))
 app.listen('3300')
 console.log('Running at\nhttp://localhost:3300')
