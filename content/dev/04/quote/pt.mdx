@@ -28,14 +28,14 @@ pragma solidity 0.8.1;
 
 contract Quote {
   address public owner;
-  string private message;  
+  string private message;
   mapping (address => bool) public whiteList;
 
   constructor() {
       owner = msg.sender;
       whiteList[msg.sender] = true;
   }
-  
+
   modifier onlyOwner {
       require(msg.sender == owner,"Only owner");
       _;
@@ -57,10 +57,10 @@ contract Quote {
   function addMember (address _member) public onlyOwner {
       whiteList[_member] = true;
   }
-  
+
   function delMember (address _member) public onlyOwner {
       whiteList[_member] = false;
-  }   
+  }
 }
 
 ```
@@ -93,7 +93,7 @@ Mensagem guardada no Blockchain.
 mapping (address => bool) public whiteList;
 ```
 
-Lista de endereços definindo quem pode atualizar a variável **message**. 
+Lista de endereços definindo quem pode atualizar a variável **message**.
 
 ### Constructor
 
@@ -158,7 +158,7 @@ function setQuote(string memory _message) public onlyWhitelist {
 
 Função para gravar uma mensagem, ou seja, atualizar a variável **message**.
 
-Utiliza o modificador **onlyWhitelist**, ou seja, 
+Utiliza o modificador **onlyWhitelist**, ou seja,
 apenas quem está na whitelist pode alterar a mensagem armazenada.
 
 #### getQuote
@@ -176,7 +176,7 @@ Função para retornar a mensagem salva na variável **message**.
 
 Temos funções para administrar a whitelist, ou seja, definir quem está ou não na whitelist.
 
-Estas funções são controladas pelo modificador **onlyOwner**, ou seja, 
+Estas funções são controladas pelo modificador **onlyOwner**, ou seja,
 apenas o criador do smart contract pode administrar a whitelist.
 
 #### addMember
@@ -190,7 +190,6 @@ function addMember (address _member) public onlyOwner {
 
 Define que para um determinado endereço, que é a chave, será armazenado o valor **true**.
 
-
 #### delMember
 
 ```solidity
@@ -200,7 +199,7 @@ function delMember (address _member) public onlyOwner {
 
 ```
 
-Define que para um determinado endereço, que é a chave, será armazenado o valor **false**,  que é o valor padrão.
+Define que para um determinado endereço, que é a chave, será armazenado o valor **false**, que é o valor padrão.
 Se el algum momento o endereço teve o valor **true** associado a ele, é preciso definir o valor **false** para que ele não tenha mais acesso.
 
 ## Compile o smart contract

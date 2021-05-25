@@ -15,7 +15,7 @@
     "question": {
       "en": "Smart contracts are contracts",
       "es": "Los contratos inteligentes son contratos",
-      "pt": "Smart contracts são contracts"      
+      "pt": "Smart contracts são contracts"
     },
     "correctAnswer": 0
   },
@@ -27,7 +27,7 @@
       "es": "La 'vending machine', o 'máquina expendedora', esa máquina automática que vende refrescos y dulces, puede considerarse el antepasado del contrato inteligente",
       "pt": "A 'vending machine', aquela máquina automática que vende refrigerantes e guloseimas, pode ser considerada o ancestral do smart contract"
     },
-     "correctAnswer": 1
+    "correctAnswer": 1
   },
   {
     "id": "dev-02-tf-04",

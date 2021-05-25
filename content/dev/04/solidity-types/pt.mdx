@@ -31,24 +31,24 @@ Você também pode especificar o número de bits, por intervalo de 8 bits.
 
 Aqui estão alguns exemplos:
 
-| Type   	| Number range  	| 
-|---	|---	|
-| uint8	| 0 to 255  	|
-| uint16  	| 0 to 65,535  	|
-| uint32  	| 0 to 2^32  	|
-| uint64  	| 0 to 2^64  	|
-| uint128  	| 0 to 2^128  	|
-| uint256  	| 0 to 2^256  	|
+| Type    | Number range |
+| ------- | ------------ |
+| uint8   | 0 to 255     |
+| uint16  | 0 to 65,535  |
+| uint32  | 0 to 2^32    |
+| uint64  | 0 to 2^64    |
+| uint128 | 0 to 2^128   |
+| uint256 | 0 to 2^256   |
 
 Operators:
 
 - Comparisons: <=, <, ==, !=, >= and >
 - Bit operators: &, |, ^ (bitwise exclusive or) and ~ (bitwise negation)
-- Arithmetic operators: +, -, unary -, unary +, *, /, %, ** (exponentiation), << (left shift) and >> (right shift)
+- Arithmetic operators: +, -, unary -, unary +, \*, /, %, \*\* (exponentiation), << (left shift) and >> (right shift)
 
 ### Address
 
-address: armazena um endereço Ethereum / RSK (com 20 bytes). 
+address: armazena um endereço Ethereum / RSK (com 20 bytes).
 
 address payable : o mesmo que address, mas inclui métodos adicionais de transferência e envio: transfer e send
 
@@ -65,8 +65,8 @@ Methods:
 - `<address>.delegatecall(...) returns (bool)` : issue low-level DELEGATECALL, returns false on failure
 
 > **delegatecall** usa o código do endereço de destino e outros aspectos (armazenamento, saldo, ...) do contrato de chamada.
-O objetivo de delegatecall é usar o código da biblioteca que está armazenado em outro contrato.
-O usuário deve garantir que o layout de armazenamento em ambos os contratos seja compatível para o uso de delegatecall.
+> O objetivo de delegatecall é usar o código da biblioteca que está armazenado em outro contrato.
+> O usuário deve garantir que o layout de armazenamento em ambos os contratos seja compatível para o uso de delegatecall.
 
 ### Array
 
@@ -92,7 +92,7 @@ Members
 
 ### Byte arrays - dinâmico
 
-- bytes: Dynamically-sized byte array. 
+- bytes: Dynamically-sized byte array.
 
 É semelhante a byte[], mas é compactado em calldata.
 
@@ -107,11 +107,11 @@ string: string codificada em UTF-8 de tamanho dinâmico.
 Enum funciona como em qualquer outra linguagem.
 
 ```solidity
-enum ColorList { 
-  Red, 
-  Blue, 
-  Green, 
-  Yellow 
+enum ColorList {
+  Red,
+  Blue,
+  Green,
+  Yellow
 }
 
 ColorList color = ColorList.Red;
@@ -124,8 +124,8 @@ Novos tipos podem ser declarados usando **struct**
 ```solidity
 struct User {
     address addr;
-    string name;    
-    string email;  
+    string name;
+    string email;
     uint age;
 }
 
@@ -142,7 +142,7 @@ A chave pode ser quase qualquer tipo. Exceções: mapping, array dinâmico, cont
 
 O valor pode ser qualquer tipo, incluindo outro mapping.
 
-Declarado como **mapping(_KeyType => _ValueType)**
+Declarado como **mapping(\_KeyType => \_ValueType)**
 
 ## Variáveis globais
 
