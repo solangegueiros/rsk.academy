@@ -1,9 +1,10 @@
 import { Text, Box, Link, Icon, useColorModeValue, MenuList, MenuItem } from '@chakra-ui/react'
-import { MdCheckCircle, MdRemoveCircle } from 'react-icons/md'
 import { formatDistanceToNow } from 'date-fns'
+import { MdCheckCircle, MdRemoveCircle } from 'react-icons/md'
 import { ClockLoader } from 'react-spinners'
+
+import { useAppSelector } from '@store'
 import { trimValue } from '@utils/trimValue'
-import { useAppSelector } from '@store/store'
 
 const TsxTypeComponents = {
   confirmed: <Icon boxSize={8} color='green.400' as={MdCheckCircle} mr={4} />,

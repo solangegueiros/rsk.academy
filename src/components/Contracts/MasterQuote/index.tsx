@@ -1,9 +1,10 @@
 import { useContext, useState } from 'react'
+
 import { Button, ButtonGroup, Input, VStack } from '@chakra-ui/react'
 
 import { ContractBase } from '@components'
 import { ContractContext } from '@context/ContractProvider'
-import { useAppSelector } from '@store/store'
+import { useAppSelector } from '@store'
 
 export const MasterQuote = (): JSX.Element => {
   const { MasterQuote: contract } = useContext(ContractContext)

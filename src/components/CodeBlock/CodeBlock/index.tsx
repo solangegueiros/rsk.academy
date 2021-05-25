@@ -1,9 +1,11 @@
-import { Box, useClipboard, useColorModeValue } from '@chakra-ui/react'
 import React, { ReactNode } from 'react'
 
-import { Highlight } from '@components'
-import { CopyButton } from '../CopyButton'
+import { Box, useClipboard, useColorModeValue } from '@chakra-ui/react'
 import { Language } from 'prism-react-renderer'
+
+import { Highlight } from '@components'
+
+import { CopyButton } from '../CopyButton'
 
 interface CodeBlockProps {
   className: string

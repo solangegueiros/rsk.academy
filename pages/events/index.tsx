@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import {
   Heading,
   Image,
@@ -11,19 +13,18 @@ import {
   Center,
   Box,
 } from '@chakra-ui/react'
-import { useTranslation } from 'next-i18next'
-import dynamic from 'next/dynamic'
-import { IoLanguage } from 'react-icons/io5'
-import { FaTwitter } from 'react-icons/fa'
-import NextLink from 'next/link'
 import { isFuture, isPast } from 'date-fns'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { GetStaticProps } from 'next'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import dynamic from 'next/dynamic'
+import NextLink from 'next/link'
+import { useRouter } from 'next/router'
+import { FaTwitter } from 'react-icons/fa'
+import { IoLanguage } from 'react-icons/io5'
 
 import { Seo, Layout } from '@components'
 import { getEvents, EventType } from '@lib/getEvents'
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 
 const TimeZone = dynamic(() => import('../../src/components/TimeZone'), {
   ssr: false,

@@ -1,7 +1,8 @@
+import { ReactNode } from 'react'
+
 import { chakra, LinkProps, useColorModeValue } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
-import { ReactNode } from 'react'
 
 interface NavLinkProps {
   href: string

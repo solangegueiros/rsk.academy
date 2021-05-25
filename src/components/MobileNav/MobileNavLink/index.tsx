@@ -1,7 +1,8 @@
-import { Center, useColorModeValue } from '@chakra-ui/react'
-import { useRouter } from 'next/router'
-import NextLink from 'next/link'
 import { ReactNode } from 'react'
+
+import { Center, useColorModeValue } from '@chakra-ui/react'
+import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 
 interface MobileNavLinkProps {
   href: string

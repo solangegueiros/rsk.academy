@@ -1,7 +1,10 @@
+.next
+.husky
 node_modules
 out
-.next
-next-env.d.ts
 cypress
 test
 content
+*.json
+yarn*
+next*

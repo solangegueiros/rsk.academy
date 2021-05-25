@@ -1,10 +1,10 @@
-import NextLink from 'next/link'
 import { Box, Heading, Image, SimpleGrid, useColorModeValue } from '@chakra-ui/react'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import NextLink from 'next/link'
 import { useTranslation } from 'react-i18next'
 
 import { Seo, Layout } from '@components'
-import { GetStaticProps } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const Courses = (): JSX.Element => {
   const { t } = useTranslation()

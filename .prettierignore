@@ -1,5 +1,8 @@
 node_modules
 .next
+.husky
+.eslintignore
+.prettierignore
 out
 yarn.lock
 src/contracts/*.json

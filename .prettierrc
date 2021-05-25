@@ -7,5 +7,5 @@
   "trailingComma": "all",
   "jsxSingleQuote": true,
   "printWidth": 120,
-  "endOfLine": "crlf"
+  "endOfLine": "lf"
 }

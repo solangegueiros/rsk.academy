@@ -1,4 +1,5 @@
 import { useContext, useRef } from 'react'
+
 import {
   Box,
   useColorModeValue,
@@ -14,10 +15,9 @@ import {
   BoxProps,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
-import NextLink from 'next/link'
 import dynamic from 'next/dynamic'
+import NextLink from 'next/link'
 
-import { NETWORK_LABELS } from '@constants/constants'
 import {
   DarkModeSwitch,
   LocaleSwitch,
@@ -28,8 +28,9 @@ import {
   Transactions,
   Container,
 } from '@components'
+import { NETWORK_LABELS } from '@constants'
 import { RLoginResponseContext } from '@context/RLoginProvider'
-import { useAppSelector } from '@store/store'
+import { useAppSelector } from '@store'
 
 const LoadingButton = () => <Button variant='outlined' isLoading={true} />
 

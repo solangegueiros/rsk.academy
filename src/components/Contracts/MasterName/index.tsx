@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from 'react'
+
 import { Button, ButtonGroup, Input, VStack } from '@chakra-ui/react'
 
 import { ContractBase } from '@components'
 import { ContractContext } from '@context/ContractProvider'
 import { useTransactionCallback } from '@hooks/transactions/useTransactionCallback'
 import { useLoadSmartContracts } from '@hooks/useLoadContracts'
-import { useAppSelector } from '@store/store'
+import { useAppSelector } from '@store'
 
 export const MasterName = (): JSX.Element => {
   const { MasterName: MasterNameContract } = useContext(ContractContext)

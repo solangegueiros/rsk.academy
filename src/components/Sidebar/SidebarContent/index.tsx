@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import {
   Accordion,
   AccordionButton,
@@ -12,7 +14,6 @@ import {
 import { useRouter } from 'next/router'
 
 import { SidebarLink } from '@components'
-import { useEffect, useState } from 'react'
 
 export type RouteType = {
   heading?: boolean
