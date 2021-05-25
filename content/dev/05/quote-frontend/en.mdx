@@ -137,7 +137,7 @@ In **Quote** folder, create a file named **index.js**.
 
 Copy and paste the code below:
 
-```javascript
+```js
 // Web3
 const getWeb3 = () => {
   return new Promise((resolve, reject) => {
@@ -172,7 +172,6 @@ const getContract = async web3 => {
 //Smart contract functions
 const getQuote = async (result, contract) => {
   result = await contract.methods.getQuote().call()
-  console.log('result: ', result)
   document.getElementById('lastInfo').innerHTML = result
 }
 
@@ -220,9 +219,9 @@ Also we need a HTML server to act like a provider for our dApp.
 
 In the **Quote** folder, create a file named **server.js**.
 
-```javascript
-var express = require('express')
-var app = express()
+```js
+const express = require('express')
+const app = express()
 app.use(express.static(__dirname))
 app.listen('3300')
 console.log('Running at\nhttp://localhost:3300')

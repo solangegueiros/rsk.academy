@@ -3,6 +3,8 @@ import BaseHighlight, { defaultProps, Language } from 'prism-react-renderer'
 import nightOwl from 'prism-react-renderer/themes/nightOwl'
 import nightOwlLight from 'prism-react-renderer/themes/nightOwlLight'
 import { calculateLinesToHighlight } from './calculateLinesToHighligh'
+import Prism from 'prismjs'
+import 'prismjs/components/prism-solidity'
 
 interface HighlightProps {
   codeString?: string
@@ -23,7 +25,7 @@ export const Highlight = ({
   const lineHighlightColor = useColorModeValue('primary.50', 'dark.400')
 
   return (
-    <BaseHighlight {...defaultProps} code={codeString} language={language} theme={theme} {...props}>
+    <BaseHighlight {...defaultProps} code={codeString} Prism={Prism} language={language} theme={theme} {...props}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <chakra.div fontFamily='code' bg='transparent' data-language={language}>
           <pre className={className} style={{ ...style, backgroundColor: 'transparent' }}>
