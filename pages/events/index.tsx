@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 
 import {
   Heading,
@@ -19,7 +19,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import { FaTwitter } from 'react-icons/fa'
 import { IoLanguage } from 'react-icons/io5'
 
@@ -43,20 +43,20 @@ interface EventsProps {
 const Events = ({ events }: EventsProps): JSX.Element => {
   const { t } = useTranslation('common')
   const bg = useColorModeValue('white', 'dark.400')
-  const [eventState, setEventState] = useState<EventType[]>(events)
-  const { locale } = useRouter()
+  // const [eventState, setEventState] = useState<EventType[]>(events)
+  // const { locale } = useRouter()
 
-  const pastEvents = eventState.filter(({ datetime }) => isPast(new Date(datetime)))
-  const nextEvents = eventState.filter(({ datetime }) => isFuture(new Date(datetime)))
+  const pastEvents = events.filter(({ datetime }) => isPast(new Date(datetime)))
+  const nextEvents = events.filter(({ datetime }) => isFuture(new Date(datetime)))
 
-  useEffect(() => {
-    ;(async function fetchEvents() {
-      const response = await fetch('/api/events')
-      const result = await response.json()
-      const _events = result.filter((event: EventType) => event.language === locale)
-      setEventState(_events)
-    })()
-  }, [])
+  // useEffect(() => {
+  //   ;(async function fetchEvents() {
+  //     const response = await fetch('/api/events')
+  //     const result = await response.json()
+  //     const _events = result.filter((event: EventType) => event.language === locale)
+  //     setEventState(_events)
+  //   })()
+  // }, [])
 
   return (
     <Layout>

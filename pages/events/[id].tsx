@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 
 import {
   Box,
@@ -23,7 +23,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import { FaTwitter } from 'react-icons/fa'
 import { GoRepo } from 'react-icons/go'
 import { IoLanguage } from 'react-icons/io5'
@@ -51,19 +51,19 @@ const LANGUAGES = {
 const Event = ({ event }: { event: EventType }): JSX.Element => {
   const { t } = useTranslation('common')
   const bg = useColorModeValue('white', 'dark.400')
-  const [eventState, setEventState] = useState<EventType>(event)
-  const { query } = useRouter()
+  // const [eventState, setEventState] = useState<EventType>(event)
+  // const { query } = useRouter()
 
-  useEffect(() => {
-    ;(async function fetchEvent() {
-      const response = await fetch(`/api/events?id${query.id}`)
-      const result = await response.json()
-      const _event = result.find((event: EventType) => event.id === query.id)
-      setEventState(_event)
-    })()
-  }, [])
+  // useEffect(() => {
+  //   ;(async function fetchEvent() {
+  //     const response = await fetch(`/api/events?id${query.id}`)
+  //     const result = await response.json()
+  //     const _event = result.find((event: EventType) => event.id === query.id)
+  //     setEventState(_event)
+  //   })()
+  // }, [])
 
-  if (!eventState)
+  if (!event)
     return (
       <Flex h='100vh' align='center' justify='center'>
         <Spinner size='lg' />
@@ -84,7 +84,7 @@ const Event = ({ event }: { event: EventType }): JSX.Element => {
     image,
     video_link,
     resources,
-  } = eventState
+  } = event
 
   const isExpired = isPast(new Date(datetime))
   const videoId = extractVideoIdFromUrl(video_link)
