@@ -2,9 +2,10 @@ import { chakra, useColorModeValue } from '@chakra-ui/react'
 import BaseHighlight, { defaultProps, Language } from 'prism-react-renderer'
 import nightOwl from 'prism-react-renderer/themes/nightOwl'
 import nightOwlLight from 'prism-react-renderer/themes/nightOwlLight'
-import { calculateLinesToHighlight } from './calculateLinesToHighligh'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-solidity'
+
+import { calculateLinesToHighlight } from './calculateLinesToHighligh'
 
 interface HighlightProps {
   codeString?: string

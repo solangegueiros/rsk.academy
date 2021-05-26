@@ -3,10 +3,11 @@ import { Alert, Box, chakra, ChakraComponent, Kbd, useColorModeValue } from '@ch
 
 import * as Components from '@components'
 import { CodeBlock } from '@components'
+
 import { LinkedHeading } from './LinkedHeading'
-import { MdxTable, MdxTHead, MdxTd } from './Table'
 import { MdxImage } from './MdxImage'
 import { Navigate } from './Navigate'
+import { MdxTable, MdxTHead, MdxTd } from './Table'
 
 const Pre = (props: ChakraComponent<'div'>): JSX.Element => <chakra.div my='2em' borderRadius='sm' {...props} />
 

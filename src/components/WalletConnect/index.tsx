@@ -1,6 +1,6 @@
 /* eslint-disable max-lines-per-function */
-import { MdContentCopy, MdErrorOutline } from 'react-icons/md'
 import { useContext, useEffect } from 'react'
+
 import {
   Button,
   ButtonGroup,
@@ -22,20 +22,21 @@ import {
   usePrevious,
   VStack,
 } from '@chakra-ui/react'
-import { useTranslation } from 'next-i18next'
-import { FiLogOut } from 'react-icons/fi'
 import RLogin from '@rsksmart/rlogin'
 import WalletConnectProvider from '@walletconnect/web3-provider'
+import { useTranslation } from 'next-i18next'
 import { FaPlus } from 'react-icons/fa'
+import { FiLogOut } from 'react-icons/fi'
+import { MdContentCopy, MdErrorOutline } from 'react-icons/md'
 
-import { trimValue } from '@utils/trimValue'
-import { SUPPORTED_CHAINS } from '@constants/constants'
-import { changeAccount, changeChainId, reset } from '@store/identity/slice'
+import { RifIcon } from '@components'
+import { Popup } from '@components/Popup'
+import { SUPPORTED_CHAINS } from '@constants'
 import { RLoginResponseContext } from '@context/RLoginProvider'
 import { useLoadSmartContracts } from '@hooks/useLoadContracts'
-import { RifIcon } from '@components'
-import { useAppDispatch, useAppSelector } from '@store/store'
-import { Popup } from '@components/Popup'
+import { useAppDispatch, useAppSelector } from '@store'
+import { changeAccount, changeChainId, reset } from '@store/identity/slice'
+import { trimValue } from '@utils/trimValue'
 
 type Global = typeof window & { ethereum: any }
 

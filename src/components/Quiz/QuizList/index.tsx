@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react'
+
 import {
   Box,
   Button,
@@ -16,13 +17,14 @@ import {
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
-import { useQuiz } from '@hooks/useQuiz'
-import { useSubmitAnswers } from '@hooks/transactions/useSubmitAnswers'
-import { CONTRACT_ADDRESSES } from '@constants/constants'
+import { CONTRACT_ADDRESSES } from '@constants'
 import { RLoginResponseContext } from '@context/RLoginProvider'
-import { QuizItem } from '../QuizItem'
-import { useAppSelector } from '@store/store'
+import { useSubmitAnswers } from '@hooks/transactions/useSubmitAnswers'
+import { useQuiz } from '@hooks/useQuiz'
+import { useAppSelector } from '@store'
 import { CourseType, ModuleType } from '@store/quiz/slice'
+
+import { QuizItem } from '../QuizItem'
 
 enum contractName {
   dev = 'Developer',

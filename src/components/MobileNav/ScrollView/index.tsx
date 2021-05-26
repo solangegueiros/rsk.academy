@@ -1,6 +1,7 @@
+import { useRef, useState, useEffect } from 'react'
+
 import { Box, BoxProps, useUpdateEffect } from '@chakra-ui/react'
 import { useElementScroll } from 'framer-motion'
-import { useRef, useState, useEffect } from 'react'
 
 type ScrollViewProps = {
   onScroll?: (arg0: boolean) => void

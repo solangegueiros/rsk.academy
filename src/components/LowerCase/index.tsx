@@ -1,3 +1,5 @@
+import React, { forwardRef, useState } from 'react'
+
 import {
   HStack,
   IconButton,
@@ -12,9 +14,9 @@ import {
   Alert,
   BoxProps,
 } from '@chakra-ui/react'
-import { Popup } from '@components/Popup'
-import React, { forwardRef, useState } from 'react'
 import { FaCopy, FaPaste } from 'react-icons/fa'
+
+import { Popup } from '@components/Popup'
 
 export const PopupLabel = forwardRef<HTMLDivElement, BoxProps>((props, ref) => (
   <HStack ref={ref}>

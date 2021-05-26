@@ -1,7 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { ADMIN_ACCOUNTS } from '@constants/constants'
-import { PayloadAction } from '@reduxjs/toolkit'
+import { ADMIN_ACCOUNTS } from '@constants'
 
 export type IdentityStateType = {
   account: string

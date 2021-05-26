@@ -1,6 +1,7 @@
+import { ReactNode } from 'react'
+
 import { HStack, Link, LinkProps, ResponsiveValue, useColorModeValue } from '@chakra-ui/react'
 import NextLink from 'next/link'
-import { ReactNode } from 'react'
 
 interface PaginationLinkProps {
   href: string

@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useCallback, useReducer } from 'react'
+
 import {
   AcademyClassAbi,
   AcademyClassListAbi,
@@ -9,8 +10,7 @@ import {
   MasterQuoteAbi,
   StudentPortfolioAbi,
 } from '@contracts'
-
-import { useAppSelector } from '@store/store'
+import { useAppSelector } from '@store'
 
 const ABIS = [
   AcademyClassAbi,

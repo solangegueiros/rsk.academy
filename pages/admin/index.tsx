@@ -1,13 +1,13 @@
 import { useContext } from 'react'
-import { Box, Heading, SimpleGrid, Text, useColorModeValue } from '@chakra-ui/react'
 
-import { Layout } from '@components'
-import { ContractContext } from '@context/ContractProvider'
-import { ContractCard, ContractCardProps } from '@components'
-import { RLoginResponseContext } from '@context/RLoginProvider'
-import { useAppSelector } from '@store/store'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { Box, Heading, SimpleGrid, Text, useColorModeValue } from '@chakra-ui/react'
 import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
+import { Layout, ContractCard, ContractCardProps } from '@components'
+import { ContractContext } from '@context/ContractProvider'
+import { RLoginResponseContext } from '@context/RLoginProvider'
+import { useAppSelector } from '@store'
 
 const Admin = (): JSX.Element => {
   const { rLoginResponse } = useContext(RLoginResponseContext)

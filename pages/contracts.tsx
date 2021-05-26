@@ -1,7 +1,9 @@
-import { Layout } from '@components'
 import { useContext } from 'react'
-import { ContractContext } from '@context/ContractProvider'
+
 import { HStack, Text, Box, Code } from '@chakra-ui/react'
+
+import { Layout } from '@components'
+import { ContractContext } from '@context/ContractProvider'
 
 const Contracts = (): JSX.Element => {
   const { allContracts } = useContext(ContractContext)

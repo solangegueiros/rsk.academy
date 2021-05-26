@@ -1,5 +1,5 @@
-import { lighten, darken } from '@chakra-ui/theme-tools'
 import { Theme, DeepPartial, Colors } from '@chakra-ui/react'
+import { lighten, darken } from '@chakra-ui/theme-tools'
 
 const generateColorPalette = (color: string, theme: Theme): DeepPartial<Colors> => ({
   50: lighten(color, 50)(theme),

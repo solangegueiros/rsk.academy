@@ -1,4 +1,5 @@
 import { useContext, useRef, useState } from 'react'
+
 import {
   Alert,
   AlertDescription,
@@ -17,11 +18,11 @@ import {
   VStack,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
-
-import { ContractContext } from '@context/ContractProvider'
-import { ContractBase } from '@components'
 import { FaPaste } from 'react-icons/fa'
+
+import { ContractBase } from '@components'
 import { Popup } from '@components/Popup'
+import { ContractContext } from '@context/ContractProvider'
 
 export const AcademyWallet = (): JSX.Element => {
   const { AcademyWallet: contract } = useContext(ContractContext)

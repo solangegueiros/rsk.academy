@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import { questions } from '@configs/questions'
 import { getRandom } from 'src/utils/getRandom'
 

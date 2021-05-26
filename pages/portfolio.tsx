@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useContext } from 'react'
+
 import { Box, SimpleGrid } from '@chakra-ui/react'
+import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Layout, Seo, AcademyWallet } from '@components'
 import { CONTRACTS } from '@components/Contracts'
 import { RLoginResponseContext } from '@context/RLoginProvider'
-import { useAppSelector } from '@store/store'
-import { GetStaticProps } from 'next'
+import { useAppSelector } from '@store'
 
 const Portfolio = (): JSX.Element => {
   const { t } = useTranslation('common')

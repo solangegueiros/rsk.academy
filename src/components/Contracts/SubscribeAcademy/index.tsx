@@ -1,11 +1,12 @@
 import { useContext } from 'react'
+
 import { Alert, AlertIcon, Button, Text } from '@chakra-ui/react'
 
 import { ContractBase } from '@components'
+import { CONTRACT_ADDRESSES } from '@constants'
 import { ContractContext } from '@context/ContractProvider'
-import { CONTRACT_ADDRESSES } from '@constants/constants'
 import { useTransactionCallback } from '@hooks/transactions/useTransactionCallback'
-import { useAppSelector } from '@store/store'
+import { useAppSelector } from '@store'
 
 interface SubscribeAcademyProps {
   contractName: string

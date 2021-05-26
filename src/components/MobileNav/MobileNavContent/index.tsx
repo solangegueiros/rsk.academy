@@ -1,13 +1,15 @@
 import { useRef } from 'react'
+
 import { Flex, useColorModeValue, useUpdateEffect } from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { RemoveScroll } from 'react-remove-scroll'
 
-import { getRoutes } from '@utils/getRoutes'
 import { SidebarContent } from '@components'
-import { ScrollView } from '../ScrollView'
+import { getRoutes } from '@utils/getRoutes'
+
 import { MobileNavHeader } from '../MobileNavHeader'
+import { ScrollView } from '../ScrollView'
 
 interface MobileNavContentProps {
   isOpen: boolean

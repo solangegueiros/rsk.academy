@@ -1,8 +1,10 @@
 import { Box, Center, IconButton, Menu, MenuButton, useColorModeValue } from '@chakra-ui/react'
 import { BiTransferAlt } from 'react-icons/bi'
-import { TransactionList } from './TransactionList'
-import { useAppSelector } from '@store/store'
+
 import { Popup } from '@components/Popup'
+import { useAppSelector } from '@store'
+
+import { TransactionList } from './TransactionList'
 
 export const Transactions = (): JSX.Element => {
   const { transactions } = useAppSelector(state => state.transaction)

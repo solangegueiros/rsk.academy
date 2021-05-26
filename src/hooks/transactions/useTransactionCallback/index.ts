@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-types */
+
+import { useState } from 'react'
+
 import { useToast } from '@chakra-ui/react'
 
-import { addTransaction } from '@store/transaction/slice'
-import { useState } from 'react'
 import { useLoadSmartContracts } from '@hooks/useLoadContracts'
-import { useAppDispatch, useAppSelector } from '@store/store'
+import { useAppDispatch, useAppSelector } from '@store'
+import { addTransaction } from '@store/transaction/slice'
 
 type UseTransactionCallbackReturnType = {
   exec: () => {}

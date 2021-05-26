@@ -1,12 +1,14 @@
+import { Dispatch } from 'react'
+
 import { AnyAction, configureStore } from '@reduxjs/toolkit'
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import thunk from 'redux-thunk'
+
+import { adminSlice } from './admin/slice'
 import { identitySlice } from './identity/slice'
 import { profileSlice } from './profile/slice'
-import { adminSlice } from './admin/slice'
 import { quizSlice } from './quiz/slice'
 import { transactionSlice } from './transaction/slice'
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import { Dispatch } from 'react'
 
 const store = configureStore({
   middleware: [thunk],

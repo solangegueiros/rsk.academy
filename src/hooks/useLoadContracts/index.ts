@@ -1,5 +1,8 @@
 import { useContext } from 'react'
 
+import { COURSE_ADDRESSES } from '@constants'
+import { ContractContext } from '@context/ContractProvider'
+import { RLoginResponseContext } from '@context/RLoginProvider'
 import {
   AcademyClassAbi,
   AcademyStudentQuizAbi,
@@ -11,13 +14,10 @@ import {
   AcademyWalletAbi,
   MasterQuoteAbi,
 } from '@contracts'
-import { saveProfile, resetProfile } from '@store/profile/slice'
+import { useAppDispatch, useAppSelector } from '@store'
 import { AdminNameListType, AdminStudentsType, loadAdmin } from '@store/admin/slice'
+import { saveProfile, resetProfile } from '@store/profile/slice'
 import { getContract, ContractAbiType } from '@utils/getContract'
-import { ContractContext } from '@context/ContractProvider'
-import { COURSE_ADDRESSES } from '@constants/constants'
-import { RLoginResponseContext } from '@context/RLoginProvider'
-import { useAppDispatch, useAppSelector } from '@store/store'
 
 export function useLoadSmartContracts(): { loadContracts: () => void } {
   const { rLoginResponse } = useContext(RLoginResponseContext)
