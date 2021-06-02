@@ -19,7 +19,6 @@ import {
   useClipboard,
   useColorModeValue,
   useDisclosure,
-  usePrevious,
   VStack,
   useToast,
 } from '@chakra-ui/react'
@@ -33,9 +32,9 @@ import { MdContentCopy, MdErrorOutline } from 'react-icons/md'
 
 import { RifIcon } from '@components'
 import { Popup } from '@components/Popup'
-import { SUPPORTED_CHAINS } from '@constants'
+import { DeployedNetworksType, SUPPORTED_CHAINS } from '@constants'
 import { Web3Context } from '@context/Web3Provider'
-import { useLoadSmartContracts } from '@hooks/useLoadContracts'
+import { useLoadAllContracts } from '@hooks/useLoadAllContracts'
 import { useAppDispatch, useAppSelector } from '@store'
 import { changeAccount, changeChainId, reset } from '@store/identity/slice'
 import { getSigner } from '@utils/getContract'
@@ -66,10 +65,8 @@ const WalletConnect = (): JSX.Element => {
   const { hasCopied, onCopy } = useClipboard(account)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const dispatch = useAppDispatch()
-  const { logout, login, rLoginResponse } = useContext(Web3Context)
-  const prevAccount = usePrevious(account)
-  const prevChainId = usePrevious(chainId)
-  const { loadContracts } = useLoadSmartContracts()
+  const { logout, login, isLoggedIn } = useContext(Web3Context)
+  const { loadAllContracts } = useLoadAllContracts()
   const toast = useToast()
 
   const { t } = useTranslation('common')
@@ -79,14 +76,10 @@ const WalletConnect = (): JSX.Element => {
   useEffect(() => {
     if (chainId && !SUPPORTED_CHAINS.includes(chainId)) {
       toast({ status: 'error', title: 'Unsupported Network', description: `Network Id: ${chainId}`, isClosable: true })
-    } else if (
-      (rLoginResponse?.provider && chainId && account !== '') ||
-      prevAccount !== account ||
-      prevChainId !== chainId
-    ) {
-      loadContracts()
+    } else if (isLoggedIn && chainId && Boolean(account)) {
+      loadAllContracts()
     }
-  }, [account, chainId, rLoginResponse?.provider])
+  }, [account, chainId, isLoggedIn])
 
   // handle logging out
   const handleLogOut = () => {
@@ -110,7 +103,7 @@ const WalletConnect = (): JSX.Element => {
         const network = await web3Provider.getNetwork()
 
         dispatch(changeAccount({ account: acc.toLowerCase() }))
-        dispatch(changeChainId({ chainId: Number(network.chainId) }))
+        dispatch(changeChainId({ chainId: Number(network.chainId) as DeployedNetworksType }))
 
         // listen to change events and log out if any of them happen, passing
         // the rLogin response to the logout function as it has not been saved
@@ -118,7 +111,9 @@ const WalletConnect = (): JSX.Element => {
         rLoginProvider.on('accountsChanged', (accounts: string[]) =>
           dispatch(changeAccount({ account: accounts[0].toLowerCase() })),
         )
-        rLoginProvider.on('chainChanged', (c: string) => dispatch(changeChainId({ chainId: Number(c) })))
+        rLoginProvider.on('chainChanged', (c: string) =>
+          dispatch(changeChainId({ chainId: Number(c) as DeployedNetworksType })),
+        )
         rLoginProvider.on('disconnect', () => handleLogOut)
 
         login({ rLoginResponse: res, web3Provider, signer })
@@ -136,7 +131,7 @@ const WalletConnect = (): JSX.Element => {
         params,
       })
 
-      dispatch(changeChainId({ chainId: Number(params[0].chainId) }))
+      dispatch(changeChainId({ chainId: Number(params[0].chainId) as DeployedNetworksType }))
     }
   }
 
@@ -170,7 +165,7 @@ const WalletConnect = (): JSX.Element => {
       },
     ])
 
-  if (rLoginResponse) {
+  if (isLoggedIn) {
     if (error) {
       return (
         <ButtonGroup isAttached colorScheme='red'>

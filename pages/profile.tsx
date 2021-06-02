@@ -19,7 +19,7 @@ const Profile = (): JSX.Element => {
     index,
     ownerAddress,
     portfolioAddress,
-    activeClassAddress,
+    activeClass,
     studentClasses,
     portfolioList,
     studentActiveClassName,
@@ -97,7 +97,7 @@ const Profile = (): JSX.Element => {
                 Active Class:
               </Box>
               <pre>
-                {studentActiveClassName} - {activeClassAddress}
+                {studentActiveClassName} - {activeClass}
               </pre>
             </Box>
           )}

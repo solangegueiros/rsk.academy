@@ -40,7 +40,7 @@ interface QuizListProps {
 export const QuizList = ({ course, module, numberOfQuestions }: QuizListProps): JSX.Element => {
   const { questions, start, userAnswers = {} } = useQuiz(course, module, numberOfQuestions)
   const { studentClasses } = useAppSelector(state => state.profile)
-  const { chainId, isLoading } = useAppSelector(state => state.identity)
+  const { chainId } = useAppSelector(state => state.identity)
   const { quizResults } = useAppSelector(state => state.profile)
 
   const hasSubscribed = studentClasses?.includes(
@@ -51,7 +51,7 @@ export const QuizList = ({ course, module, numberOfQuestions }: QuizListProps): 
   const numberOfAnswers = Object.keys(userAnswers)?.length || 0
   const color = useColorModeValue('primary.500', 'light.500')
 
-  const { submitAnswers } = useSubmitAnswers(course, module, numberOfQuestions)
+  const { submitAnswers, isLoading } = useSubmitAnswers(course, module, numberOfQuestions)
 
   const { isLoggedIn } = useContext(Web3Context)
   const { t } = useTranslation('common')

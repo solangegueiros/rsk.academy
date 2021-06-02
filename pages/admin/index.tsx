@@ -1,66 +1,64 @@
 import { useContext } from 'react'
 
-import { Box, Heading, SimpleGrid, Text, useColorModeValue } from '@chakra-ui/react'
+import { Box, Heading, HStack, List, ListItem, SimpleGrid } from '@chakra-ui/react'
 import { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Layout } from '@components'
+import { Navigate } from '@components/Markdown/Navigate'
 import { Web3Context } from '@context/Web3Provider'
 import { useAppSelector } from '@store'
 
 const Admin = (): JSX.Element => {
   const { isLoggedIn } = useContext(Web3Context)
+
   const { isAdmin } = useAppSelector(state => state.identity)
-  const { students, nameList } = useAppSelector(state => state.admin)
-  const bg = useColorModeValue('white', 'dark.400')
+  const { nameCount, nameList, studentCount, students } = useAppSelector(state => state.admin)
 
-  const renderAdmin = () => {
-    if (!isLoggedIn) return <Box>Login with admin account</Box>
-    if (!isAdmin) return <Box>You are not an admin</Box>
+  if (!isLoggedIn) return <Layout>Login with admin account</Layout>
+  if (!isAdmin) return <Layout>You are not an admin</Layout>
 
-    return (
-      <Box>
-        <Heading my={8} textAlign='center'>
-          Contracts
-        </Heading>
-        <Heading my={8} textAlign='center'>
-          Students
-        </Heading>
-        <SimpleGrid gap={4} columns={{ lg: 2 }}>
-          {students?.map((student, i) => (
-            <Box key={i} bg={bg} p={8} boxShadow='md' borderRadius={10}>
-              <Text>
-                Portfolio: <pre>{student.portfolioAddress}</pre>
-              </Text>
-              <Text>
-                Classes: <pre>{JSON.stringify(student.studentClasses, null, 2)}</pre>
-              </Text>
-              <Text>
-                Active Class: <pre>{student.activeClass}</pre>
-              </Text>
-            </Box>
-          ))}
-        </SimpleGrid>
-        <Heading my={8} textAlign='center'>
-          Name List
-        </Heading>
-        <SimpleGrid gap={4} columns={{ lg: 2 }}>
-          {nameList?.map((item, i) => (
-            <Box key={i} bg={bg} p={8} boxShadow='md' borderRadius={10}>
-              <Text>{item.name}</Text>
-              <Text>
-                Owner: <pre>{item.owner}</pre>
-              </Text>
-              <Text>
-                Contract: <pre>{item.scName}</pre>
-              </Text>
-            </Box>
-          ))}
-        </SimpleGrid>
-      </Box>
-    )
-  }
-  return <Layout>{renderAdmin()}</Layout>
+  return (
+    <Layout>
+      <SimpleGrid columns={{ base: 1, md: 2 }} gap={8}>
+        <Box p={4} boxShadow='lg'>
+          <Heading as='h3' size='xl' mb={4}>
+            Students ({studentCount})
+          </Heading>
+          <List maxH={500} overflowY='auto'>
+            {students?.map((student, i) => (
+              <ListItem my={2} key={student}>
+                <Navigate href={`https://explorer.testnet.rsk.co/address/${student}`}>
+                  {i + 1}. {student}
+                </Navigate>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+        <Box p={4} boxShadow='lg'>
+          <Heading as='h3' size='xl' mb={4}>
+            Names ({nameCount})
+          </Heading>
+          <List maxH={500} overflowY='auto'>
+            {nameList?.map((n, i) => (
+              <ListItem my={2} key={n.owner}>
+                <HStack spacing={8}>
+                  <Box>
+                    <Navigate href={`https://explorer.testnet.rsk.co/address/${n.scName}`}>
+                      {i + 1}. Name Contract
+                    </Navigate>
+                  </Box>
+                  <Box>
+                    <Navigate href={`https://explorer.testnet.rsk.co/address/${n.owner}`}>{n.name}</Navigate>
+                  </Box>
+                </HStack>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      </SimpleGrid>
+    </Layout>
+  )
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({

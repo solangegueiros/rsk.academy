@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useToast, useUpdateEffect } from '@chakra-ui/react'
 import { ContractReceipt, ContractTransaction } from 'ethers'
 
-import { useLoadSmartContracts } from '@hooks/useLoadContracts'
+import { useLoadAllContracts } from '@hooks/useLoadAllContracts'
 import { useAppDispatch, useAppSelector } from '@store'
 import { addTransaction } from '@store/transaction/slice'
 
@@ -19,7 +19,7 @@ type UseTransactionCallbackReturnType = {
 
 export const useTransactionCallback = (name: string): UseTransactionCallbackReturnType => {
   const toast = useToast()
-  const { loadContracts } = useLoadSmartContracts()
+  const { loadAllContracts } = useLoadAllContracts()
   const dispatch = useAppDispatch()
   const { account } = useAppSelector(state => state.identity)
 
@@ -45,7 +45,7 @@ export const useTransactionCallback = (name: string): UseTransactionCallbackRetu
       setResponse(_response)
       const _receipt = await _response.wait()
 
-      loadContracts()
+      loadAllContracts()
       setReceipt(_receipt)
       setIsLoading(false)
 
