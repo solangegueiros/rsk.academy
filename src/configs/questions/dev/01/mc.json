@@ -19,7 +19,7 @@
     "id": "dev-01-mc-02",
     "type": "mc",
     "question": {
-      "en": "Even though I know the mnemonico of my wallet, where can I NOT use it to access my cryptos?",
+      "en": "Even though I know the mnemonic of my wallet, where can I NOT use it to access my cryptos?",
       "es": "Aunque conozco el mnemónico de mi billetera, ¿dónde NO puedo usarlo para acceder a mis criptos?",
       "pt": "Mesmo sabendo o mnemonico da minha carteira, onde NÃO posso utilizá-lo para acessar minhas cryptos?"
     },
@@ -99,17 +99,17 @@
     "id": "dev-01-mc-05",
     "type": "mc",
     "question": {
-      "en": "Which of the following is popularly used for storing crypto assets?",
-      "es": "Qual desdes é comumente usado para guardar criptoativos?",
-      "pt": "Qual das opções a seguir é comumente usada para armazenar criptomoedas?"
+      "en": "Ana would like to transfer 1 RBTC to Bob. Who needs to use the private key?",
+      "es": "Ana quiere transferir 1 RBTC a Bob. ¿Quién necesita usar su clave privada?",
+      "pt": "Ana quer transferir 1 RBTC para Bob. Quem precisa usar sua private key?"
     },
     "answers": [
-      { "en": "In your pocket", "es": "En tu bolsillo", "pt": "No seu bolso" },
-      { "en": "Stack", "es": "Pila (Stack)", "pt": "Pilha (Stack)" },
-      { "en": "Box", "es": "Caja", "pt": "Caixa" },
-      { "en": "Wallet", "es": "Billetera", "pt": "Carteira" }
+      { "en": "Ana", "es": "Ana", "pt": "Ana" },
+      { "en": "Bob", "es": "Bob", "pt": "Bob" },
+      { "en": "Both Ana and Bob", "es": "Tanto Ana como Bob", "pt": "Ambos Ana e Bob" },
+      { "en": "None of them", "es": "Ninguno de los dos", "pt": "Nenhum dos dois" }
     ],
-    "correctAnswer": 3
+    "correctAnswer": 0
   },
   {
     "id": "dev-01-mc-06",

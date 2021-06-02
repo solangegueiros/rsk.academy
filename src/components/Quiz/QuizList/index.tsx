@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react'
+
 import {
   Box,
   Button,
@@ -13,16 +14,18 @@ import {
   Alert,
   AlertDescription,
   AlertIcon,
+  Spinner,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
-import { useQuiz } from '@hooks/useQuiz'
+import { CONTRACT_ADDRESSES } from '@constants'
+import { Web3Context } from '@context/Web3Provider'
 import { useSubmitAnswers } from '@hooks/transactions/useSubmitAnswers'
-import { CONTRACT_ADDRESSES } from '@constants/constants'
-import { RLoginResponseContext } from '@context/RLoginProvider'
-import { QuizItem } from '../QuizItem'
-import { useAppSelector } from '@store/store'
+import { useQuiz } from '@hooks/useQuiz'
+import { useAppSelector } from '@store'
 import { CourseType, ModuleType } from '@store/quiz/slice'
+
+import { QuizItem } from '../QuizItem'
 
 enum contractName {
   dev = 'Developer',
@@ -37,7 +40,7 @@ interface QuizListProps {
 export const QuizList = ({ course, module, numberOfQuestions }: QuizListProps): JSX.Element => {
   const { questions, start, userAnswers = {} } = useQuiz(course, module, numberOfQuestions)
   const { studentClasses } = useAppSelector(state => state.profile)
-  const { chainId } = useAppSelector(state => state.identity)
+  const { chainId, isLoading } = useAppSelector(state => state.identity)
   const { quizResults } = useAppSelector(state => state.profile)
 
   const hasSubscribed = studentClasses?.includes(
@@ -48,9 +51,9 @@ export const QuizList = ({ course, module, numberOfQuestions }: QuizListProps): 
   const numberOfAnswers = Object.keys(userAnswers)?.length || 0
   const color = useColorModeValue('primary.500', 'light.500')
 
-  const { submitAnswers, isLoading } = useSubmitAnswers(course, module, numberOfQuestions)
+  const { submitAnswers } = useSubmitAnswers(course, module, numberOfQuestions)
 
-  const { rLoginResponse } = useContext(RLoginResponseContext)
+  const { isLoggedIn } = useContext(Web3Context)
   const { t } = useTranslation('common')
 
   useEffect(() => {
@@ -61,11 +64,21 @@ export const QuizList = ({ course, module, numberOfQuestions }: QuizListProps): 
     await submitAnswers()
   }
 
-  if (!rLoginResponse) {
+  if (isLoading)
     return (
-      <Center h='full'>
-        <Text>You must be logged in</Text>
+      <Center>
+        <Spinner />
       </Center>
+    )
+
+  if (!isLoggedIn) {
+    return (
+      <Alert my={8} status='warning'>
+        <AlertIcon />
+        <AlertDescription>
+          <Text>You must be logged in</Text>
+        </AlertDescription>
+      </Alert>
     )
   }
 

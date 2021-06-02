@@ -1,32 +1,21 @@
 import { useContext } from 'react'
+
 import { Box, Heading, SimpleGrid, Text, useColorModeValue } from '@chakra-ui/react'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Layout } from '@components'
-import { ContractContext } from '@context/ContractProvider'
-import { ContractCard, ContractCardProps } from '@components'
-import { RLoginResponseContext } from '@context/RLoginProvider'
-import { useAppSelector } from '@store/store'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { GetStaticProps } from 'next'
+import { Web3Context } from '@context/Web3Provider'
+import { useAppSelector } from '@store'
 
 const Admin = (): JSX.Element => {
-  const { rLoginResponse } = useContext(RLoginResponseContext)
+  const { isLoggedIn } = useContext(Web3Context)
   const { isAdmin } = useAppSelector(state => state.identity)
-  const { allContracts } = useContext(ContractContext)
   const { students, nameList } = useAppSelector(state => state.admin)
   const bg = useColorModeValue('white', 'dark.400')
 
-  const extractContracts: ContractCardProps[] = allContracts.map(contract => {
-    let methods = null
-    if (contract.contract?.methods) {
-      const CHARS = ['DEFAULT', '0x', '(']
-      methods = Object.keys(contract.contract.methods).filter(method => CHARS.every(char => !method.includes(char)))
-    }
-    return { ...contract, methods }
-  })
-
   const renderAdmin = () => {
-    if (!rLoginResponse) return <Box>Login with admin account</Box>
+    if (!isLoggedIn) return <Box>Login with admin account</Box>
     if (!isAdmin) return <Box>You are not an admin</Box>
 
     return (
@@ -34,11 +23,6 @@ const Admin = (): JSX.Element => {
         <Heading my={8} textAlign='center'>
           Contracts
         </Heading>
-        <SimpleGrid gap={4} columns={{ md: 2, lg: 3 }}>
-          {extractContracts.map((contract, i) => (
-            <ContractCard contract={contract} key={i} />
-          ))}
-        </SimpleGrid>
         <Heading my={8} textAlign='center'>
           Students
         </Heading>
@@ -76,7 +60,6 @@ const Admin = (): JSX.Element => {
       </Box>
     )
   }
-
   return <Layout>{renderAdmin()}</Layout>
 }
 

@@ -1,18 +1,19 @@
 import { useContext } from 'react'
+
 import { Alert, AlertIcon, Box, Heading, SimpleGrid, useColorModeValue } from '@chakra-ui/react'
+import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Layout, Seo, SubscribeAcademy } from '@components'
-import { RLoginResponseContext } from '@context/RLoginProvider'
-import { COURSE_ADDRESSES } from '@constants/constants'
-import { useAppSelector } from '@store/store'
-import { GetStaticProps } from 'next'
+import { COURSE_ADDRESSES } from '@constants'
+import { Web3Context } from '@context/Web3Provider'
+import { useAppSelector } from '@store'
 
 const Profile = (): JSX.Element => {
   const { t } = useTranslation('common')
   const profile = useAppSelector(state => state.profile)
-  const { rLoginResponse } = useContext(RLoginResponseContext)
+  const { isLoggedIn } = useContext(Web3Context)
   const { isAdmin, chainId } = useAppSelector(state => state.identity)
   const {
     index,
@@ -28,7 +29,7 @@ const Profile = (): JSX.Element => {
   const color = useColorModeValue('primary.500', 'light.500')
 
   const renderProfile = () => {
-    if (!rLoginResponse) return <Box>You must log in</Box>
+    if (!isLoggedIn) return <Box>You must log in</Box>
     if (isAdmin) return <Box>Portfolio page is for students</Box>
     if (!index)
       return (
@@ -39,9 +40,7 @@ const Profile = (): JSX.Element => {
           </Alert>
           {COURSE_ADDRESSES[chainId] && (
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-              {Object.keys(COURSE_ADDRESSES[chainId]).map(courseName => (
-                <SubscribeAcademy key={courseName} contractName={courseName} />
-              ))}
+              <SubscribeAcademy key='Developer' contractName='Developer' />
             </SimpleGrid>
           )}
         </Box>
@@ -105,9 +104,7 @@ const Profile = (): JSX.Element => {
         </Box>
         <Heading mb={8}>Courses</Heading>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
-          {Object.keys(COURSE_ADDRESSES[chainId]).map(courseName => (
-            <SubscribeAcademy key={courseName} contractName={courseName} />
-          ))}
+          <SubscribeAcademy key='Developer' contractName='Developer' />
         </SimpleGrid>
       </>
     )

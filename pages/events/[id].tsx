@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
-import { GetStaticPaths, GetStaticProps } from 'next'
+// import { useEffect, useState } from 'react'
+
 import {
   Box,
   Heading,
@@ -17,33 +18,19 @@ import {
   AspectRatio,
   Stack,
 } from '@chakra-ui/react'
+import { isPast } from 'date-fns'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
+// import { useRouter } from 'next/router'
 import { FaTwitter } from 'react-icons/fa'
+import { GoRepo } from 'react-icons/go'
 import { IoLanguage } from 'react-icons/io5'
 import { RiVideoChatFill, RiMapPin2Line } from 'react-icons/ri'
-import { GoRepo } from 'react-icons/go'
-import { useTranslation } from 'next-i18next'
-import { isPast } from 'date-fns'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Layout, Seo } from '@components'
-import { getEvent, getEventPaths } from '@lib/getEvents'
-
-export type EventType = {
-  datetime: string
-  title: string
-  language: string
-  speaker: string
-  role: string
-  twitter: string
-  city: string
-  description: string
-  webinar_link: string
-  rsvp_embed: string
-  image: string
-  video_link: string
-  resources: string
-}
+import { getEvent, getEventPaths, EventType } from '@lib/getEvents'
 
 const TimeZone = dynamic(() => import('../../src/components/TimeZone'), {
   ssr: false,
@@ -64,6 +51,17 @@ const LANGUAGES = {
 const Event = ({ event }: { event: EventType }): JSX.Element => {
   const { t } = useTranslation('common')
   const bg = useColorModeValue('white', 'dark.400')
+  // const [eventState, setEventState] = useState<EventType>(event)
+  // const { query } = useRouter()
+
+  // useEffect(() => {
+  //   ;(async function fetchEvent() {
+  //     const response = await fetch(`/api/events?id${query.id}`)
+  //     const result = await response.json()
+  //     const _event = result.find((event: EventType) => event.id === query.id)
+  //     setEventState(_event)
+  //   })()
+  // }, [])
 
   if (!event)
     return (

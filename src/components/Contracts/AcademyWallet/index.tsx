@@ -1,4 +1,5 @@
 import { useContext, useRef, useState } from 'react'
+
 import {
   Alert,
   AlertDescription,
@@ -17,15 +18,17 @@ import {
   VStack,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
-
-import { ContractContext } from '@context/ContractProvider'
-import { ContractBase } from '@components'
 import { FaPaste } from 'react-icons/fa'
+
+import { ContractBase } from '@components'
 import { Popup } from '@components/Popup'
+import { ContractContext } from '@context/ContractProvider'
 
 export const AcademyWallet = (): JSX.Element => {
-  const { AcademyWallet: {contract, name} } = useContext(ContractContext)
-  const [balance, setBalance] = useState<number | null>(null)
+  const {
+    AcademyWallet: { contract, name },
+  } = useContext(ContractContext)
+  const [balance, setBalance] = useState<number>(null)
   const [address, setAddress] = useState<string>('')
   const toast = useToast()
   const { t } = useTranslation('common')
@@ -40,13 +43,14 @@ export const AcademyWallet = (): JSX.Element => {
     try {
       const res = await contract?.balanceOf(address.toLowerCase())
       account.current = address
-      setBalance(res)
+      setBalance(res.toNumber())
       setAddress(null)
     } catch (err) {
       toast({
         status: 'error',
         title: 'Error!',
-        description: err.message || 'An error occured!',
+        description: err.message || 'An error occurred!',
+        isClosable: true,
       })
     }
   }

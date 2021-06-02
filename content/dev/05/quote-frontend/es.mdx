@@ -1,0 +1,273 @@
+---
+title: 'Quote frontend'
+description: 'Frontend para el smart contract Quote'
+---
+
+Vamos a crear una interfaz para el contrato inteligente **Quote**, utilizado en el último módulo.
+
+## Crea el proyecto
+
+Crea una carpeta llamada Register e inicia un proyecto npm en la carpeta **Quote** escribiendo los siguientes comandos a continuación en la terminal:
+
+```shell
+mkdir Quote
+```
+
+```shell
+cd Quote
+```
+
+```shell
+npm init -y
+```
+
+Por ejemplo, crearé una carpeta en esta ubicación: `C:\RSK\`
+
+Mi proyecto se puede encontrar en la carpeta `C:\RSK\Quote`.
+
+![Quote project](img/courses/dev/05/quote-frontend/image-01.png)
+
+## Requisitos del proyecto
+
+Algunos requisitos deben instalarse directamente en el proyecto.
+
+## Express
+
+[Express](http://expressjs.com/) es una aplicación Node.js que ayuda a desarrollar aplicaciones web. Es un servidor HTTP minimalista.
+
+Para instalar Express, en la ubicación de tu proyecto, ingresa el siguiente comando en la terminal y presiona `enter`:
+
+```shell
+npm install -E express
+```
+
+> The option **-E** es usada paa guardar las dependencias con una versión exacta en lugar de usar el valor predeterminado de npm.
+
+Más información:
+
+- [http://expressjs.com/](http://expressjs.com/)
+
+- [https://www.npmjs.com/package/express](https://www.npmjs.com/package/express)
+
+## Web3.js
+
+[Web3.js](https://web3js.readthedocs.io/) nos ayuda a desarrollar websites o clientes que interactúan con la blockchain, escribiendo código que lee y escribe datos en los contratos inteligentes.
+
+Para instalar web3.js, en la ubicación de tu proyecto, ingresa el siguiente comando en la terminal y presiona `enter`:
+
+```shell
+npm install -E web3@1.3.6
+```
+
+![web3 install](img/courses/dev/05/quote-frontend/image-03.png)
+
+## Verifica package.json
+
+`package.json` es un archivo creado por npm con algunas configuraciones, incluidos los paquetes que instalamos ahora.
+
+Después de las instalaciones, abre la carpeta del proyecto en VSCode y verifica el archivo package.json.
+Vamos a mirar las dependencias en el archivo:
+
+![package.json](img/courses/dev/05/quote-frontend/image-04.png)
+
+Se encontrarán los paquetes previamente instalados:
+
+```json
+ "dependencies": {
+    "express": "4.17.1",
+    "web3": "1.3.6"
+ }
+```
+
+## Aplicación del lado del cliente: el frontend
+
+Ahora comencemos a construir la interfaz que va a interactuar con el contrato inteligente.
+
+Solo tenemos 2 archivos en la interfaz:
+
+1. index.html
+2. index.js
+
+## index.html
+
+En la carpeta **Quote**, crea el archivo **index.html**
+
+Copia y pega el código a continuación:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quote</title>
+
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+    <script src="./index.js"></script>
+  </head>
+
+  <body class="container">
+    <h1 class="page-header">Quote dApp</h1>
+    <br />
+
+    <h2>
+      <label id="lastInfo"></label>
+    </h2>
+
+    <h3>Set quote</h3>
+    <form id="form" class="form-inline" role="form">
+      <input class="form-control" id="input" type="text" />
+      <input type="submit" class="btn btn-primary" value="Set quote" />
+    </form>
+  </body>
+</html>
+```
+
+## index.js
+
+En la carpeta **Quote**, crea el archivo **index.js**
+
+Copia y pega el código a continuación:
+
+```js
+// Web3
+const getWeb3 = () => {
+  return new Promise((resolve, reject) => {
+    window.addEventListener('load', async () => {
+      if (window.ethereum) {
+        const web3 = new Web3(window.ethereum)
+        try {
+          // ask user permission to access his accounts
+          await window.ethereum.request({ method: 'eth_requestAccounts' })
+          resolve(web3)
+        } catch (error) {
+          reject(error)
+        }
+      } else {
+        reject('MetaMask is NOT installed')
+      }
+    })
+  })
+}
+
+const contractAddress = '0xF2FD988A92484ff16Edd5BD9DAbE5eb809c5B3Dd'
+const abi = JSON.parse(
+  '[ { "inputs": [ { "internalType": "address", "name": "_member", "type": "address" } ], "name": "addMember", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "_member", "type": "address" } ], "name": "delMember", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "string", "name": "_message", "type": "string" } ], "name": "setQuote", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" }, { "inputs": [], "name": "getQuote", "outputs": [ { "internalType": "string", "name": "", "type": "string" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [ { "internalType": "address", "name": "", "type": "address" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "", "type": "address" } ], "name": "whiteList", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "view", "type": "function" } ]',
+)
+
+// Contract
+const getContract = async web3 => {
+  const quote = new web3.eth.Contract(abi, contractAddress)
+  return quote
+}
+
+//Smart contract functions
+const getQuote = async (result, contract) => {
+  result = await contract.methods.getQuote().call()
+  document.getElementById('lastInfo').innerHTML = result
+}
+
+const setQuote = (result, contract, accounts) => {
+  let input
+  $('#input').on('change', e => {
+    input = e.target.value
+  })
+
+  $('#form').on('submit', async e => {
+    e.preventDefault()
+    await contract.methods.setQuote(input).send({ from: accounts[0] })
+    getQuote(result, contract)
+  })
+}
+
+// App
+async function quoteApp() {
+  const web3 = await getWeb3()
+  const accounts = await web3.eth.getAccounts()
+  const contract = await getContract(web3)
+  let quote
+
+  getQuote(quote, contract)
+  setQuote(quote, contract, accounts)
+}
+
+quoteApp()
+```
+
+## Actualizar index.js
+
+¿Recuerdas que copiamos la dirección del contrato inteligente después de hacer deploy?
+
+Busque la línea que comienza con **const contractAddress = '...'**
+(alrededor de la línea 21) y actualícelo:
+
+```js
+const contractAddress = '0xF2FD988A92484ff16Edd5BD9DAbE5eb809c5B3Dd'
+```
+
+## HTML server
+
+En la carpeta **Quote**, crea el archivo **server.js**
+
+```js
+const express = require('express')
+const app = express()
+app.use(express.static(__dirname))
+app.listen('3300')
+console.log('Running at\nhttp://localhost:3300')
+```
+
+Este archivo configura el servidor HTML express.
+
+## Ejecutando
+
+El último paso es ejecutar el servidor express.
+Ingresa el siguiente comando en la terminal.
+
+```shell
+node server.js
+```
+
+![node server.js](img/courses/dev/05/quote-frontend/image-05.png)
+
+Después ve a
+
+[http://localhost:3300](http://localhost:3300)
+
+Si está utilizando la billetera web Metamask,
+haga clic en el botón **Connect** cuando aparezca la ventana emegente.
+
+# Interactuando con el contrato inteligente
+
+### Set quote
+
+Ingresa cualquier valor en el campo de texto y haz clic en el botón **Set quote**.
+
+La instancia web3 llamará a la función **setQuote()** en la instancia del contrato inteligente,
+con el mensaje que definiste.
+
+Voy a ingresar el mesage "Have a nice day".
+
+Espere unos segundos a que la transacción se incluya en un bloque.
+
+### Get quote
+
+La función **getQuote** se usa internamente, cada vez que carga la aplicación o cambia el mensaje.
+
+Probablemente se actualice automáticamente, pero, si no, puede volver a cargar la página.
+
+### Nota
+
+> Recuerde que solo una dirección que esté en la lista blanca puede llamar a la función **setQuote()**.
+
+## Resultado final
+
+**¡Felicidades!**
+
+¡Ha creado e implementado con éxito su primera aplicación descentralizada (DApp) impulsada por contratos inteligentes de RSK!

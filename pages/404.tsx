@@ -1,6 +1,7 @@
-import { Layout, Seo } from '@components'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
+import { Layout, Seo } from '@components'
 
 const NotFoundPage = (): JSX.Element => (
   <Layout>

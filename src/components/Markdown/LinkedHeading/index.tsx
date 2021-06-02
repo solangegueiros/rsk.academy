@@ -1,5 +1,6 @@
-import { chakra, useColorModeValue } from '@chakra-ui/react'
 import { ReactNode } from 'react'
+
+import { chakra, useColorModeValue } from '@chakra-ui/react'
 
 interface LinkedHeadingProps {
   children: ReactNode

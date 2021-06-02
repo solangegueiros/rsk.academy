@@ -1,9 +1,8 @@
-import { Icon, SimpleGrid, SimpleGridProps } from '@chakra-ui/react'
+import { Icon, Text, SimpleGridProps, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 import { PaginationLink } from './PaginationLink'
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 interface PaginationProps {
   previous: {
@@ -18,26 +17,46 @@ interface PaginationProps {
 
 export const Pagination = ({ previous, next, ...rest }: PaginationProps & SimpleGridProps): JSX.Element => {
   const { locale, defaultLocale } = useRouter()
-  const { t } = useTranslation('common')
   return (
-    <SimpleGrid as='nav' aria-label='Pagination' spacing='40px' my='64px' columns={{ base: 1, md: 2 }} {...rest}>
+    <Stack
+      direction={{ base: 'column', lg: 'row' }}
+      justifyContent='space-between'
+      as='nav'
+      aria-label='Pagination'
+      spacing='40px'
+      my='64px'
+      columns={{ base: 1, lg: 2 }}
+      {...rest}
+    >
       {previous ? (
-        <PaginationLink textAlign='left' label={t`previous`} href={previous.path} rel='prev'>
-          <Icon as={FaChevronLeft} mr='1' fontSize='1.2em' />
-          {previous.title[locale] || previous.title[defaultLocale]}
+        <PaginationLink href={previous.path} rel='prev'>
+          <Icon
+            transition='transform 0.3s'
+            _groupHover={{ transform: 'translateX(-5px)' }}
+            as={FaChevronLeft}
+            mr='1'
+            fontSize='1.2em'
+          />
+          <Text>{previous.title[locale] || previous.title[defaultLocale]}</Text>
         </PaginationLink>
       ) : (
         <div />
       )}
       {next ? (
-        <PaginationLink textAlign='right' label={t`next`} href={next.path} rel='next'>
-          {next.title[locale] || next.title[defaultLocale]}
-          <Icon as={FaChevronRight} ml='1' fontSize='1.2em' />
+        <PaginationLink justifyContent='flex-end' href={next.path} rel='next'>
+          <Text>{next.title[locale] || next.title[defaultLocale]}</Text>
+          <Icon
+            transition='transform 0.3s'
+            _groupHover={{ transform: 'translateX(5px)' }}
+            as={FaChevronRight}
+            ml='1'
+            fontSize='1.2em'
+          />
         </PaginationLink>
       ) : (
         <div />
       )}
-    </SimpleGrid>
+    </Stack>
   )
 }
 

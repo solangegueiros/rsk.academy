@@ -1,5 +1,6 @@
 import { Box, Image, List, ListItem, SimpleGrid, Text, VStack, Link, Button } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
+
 import { Container } from '@components'
 
 export const Footer = (): JSX.Element => {

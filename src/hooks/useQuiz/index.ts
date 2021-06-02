@@ -1,4 +1,6 @@
 import { useState } from 'react'
+
+import { useAppDispatch, useAppSelector } from '@store'
 import {
   setNextQuestion,
   setPreviousQuestion,
@@ -7,7 +9,6 @@ import {
   QuestionType,
   randomizeQuestions,
 } from '@store/quiz/slice'
-import { useAppDispatch, useAppSelector } from '@store/store'
 
 type UseQuizReturnType = {
   questions: QuestionType[]

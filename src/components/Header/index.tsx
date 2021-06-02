@@ -1,8 +1,8 @@
 import { useContext, useRef } from 'react'
+
 import {
   Box,
   useColorModeValue,
-  Container,
   HStack,
   useUpdateEffect,
   useDisclosure,
@@ -15,10 +15,9 @@ import {
   BoxProps,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
-import NextLink from 'next/link'
 import dynamic from 'next/dynamic'
+import NextLink from 'next/link'
 
-import { NETWORK_LABELS } from '@constants/constants'
 import {
   DarkModeSwitch,
   LocaleSwitch,
@@ -27,9 +26,11 @@ import {
   NavLink,
   Logo,
   Transactions,
+  Container,
 } from '@components'
-import { RLoginResponseContext } from '@context/RLoginProvider'
-import { useAppSelector } from '@store/store'
+import { NETWORK_LABELS } from '@constants'
+import { Web3Context } from '@context/Web3Provider'
+import { useAppSelector } from '@store'
 
 const LoadingButton = () => <Button variant='outlined' isLoading={true} />
 
@@ -44,7 +45,7 @@ const MainNavLinkGroup = (props: StackProps): JSX.Element => {
 
   return (
     <HStack spacing='4' {...props}>
-      <NavLink href='/courses'>{t`courses`}</NavLink>
+      <NavLink href='/courses/dev/_/welcome'>{t`courses`}</NavLink>
       <NavLink href='/events'>{t`events`}</NavLink>
       {account && !isAdmin && (
         <>
@@ -63,7 +64,7 @@ export const Header = (props: BoxProps): JSX.Element => {
   const bg = useColorModeValue('primary.50', 'dark.500')
   const colorScheme = useColorModeValue('primary', 'light')
   const { t } = useTranslation('common')
-  const { rLoginResponse } = useContext(RLoginResponseContext)
+  const { isLoggedIn } = useContext(Web3Context)
 
   const { chainId } = useAppSelector(state => state.identity)
 
@@ -74,7 +75,7 @@ export const Header = (props: BoxProps): JSX.Element => {
   return (
     <>
       <Box d={useBreakpointValue({ base: 'none', md: 'block' })} bg={bg}>
-        <Container maxW={1200}>
+        <Container>
           <HStack w='full' py={2} justify='center' pos='relative'>
             <Text
               userSelect='none'
@@ -88,9 +89,7 @@ export const Header = (props: BoxProps): JSX.Element => {
               {t`topBanner`}
             </Text>
             <HStack pos='absolute' right={0}>
-              {rLoginResponse && NETWORK_LABELS[chainId] && (
-                <Tag colorScheme={colorScheme}>{NETWORK_LABELS[chainId]}</Tag>
-              )}
+              {isLoggedIn && NETWORK_LABELS[chainId] && <Tag colorScheme={colorScheme}>{NETWORK_LABELS[chainId]}</Tag>}
               <LocaleSwitch />
               <DarkModeSwitch />
             </HStack>
@@ -108,13 +107,13 @@ export const Header = (props: BoxProps): JSX.Element => {
         zIndex='sticky'
         {...props}
       >
-        <Container maxW={1200} h='4.5rem'>
+        <Container h='4.5rem'>
           <HStack justify='space-between' align='center' h='full' w='full'>
             <HStack spacing={16} h='full'>
               <NextLink href='/' passHref>
                 <chakra.a
                   fontWeight='bold'
-                  fontSize='4em'
+                  fontSize='6em'
                   lineHeight='1'
                   mr={4}
                   d='flex'

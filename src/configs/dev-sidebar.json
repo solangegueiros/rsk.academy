@@ -97,6 +97,14 @@
             "pt": "Tipos de wallets"
           },
           "path": "/courses/dev/01/wallets-types"
+        },
+        {
+          "title": {
+            "en": "Module 1 Exam",
+            "es": "Módulo 1 Examen",
+            "pt": "Módulo 1 Exame"
+          },
+          "path": "/courses/dev/01/quiz"
         }
       ]
     },
@@ -155,6 +163,14 @@
             "pt": "Valide seu nome na RSK Academy"
           },
           "path": "/courses/dev/02/validate-name"
+        },
+        {
+          "title": {
+            "en": "Module 2 Exam",
+            "es": "Module 2 Examen",
+            "pt": "Module 2 Exame"
+          },
+          "path": "/courses/dev/02/quiz"
         }
       ]
     },
@@ -221,6 +237,106 @@
             "pt": "RSK"
           },
           "path": "/courses/dev/03/rsk"
+        },
+        {
+          "title": {
+            "en": "Module 3 Exam",
+            "es": "Module 3 Examen",
+            "pt": "Module 3 Exame"
+          },
+          "path": "/courses/dev/03/quiz"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "04 - Solidity",
+        "es": "04 - Solidity",
+        "pt": "04 - Solidity"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Overview",
+            "es": "Overview",
+            "pt": "Overview"
+          },
+          "path": "/courses/dev/04/intro"
+        },
+        {
+          "title": {
+            "en": "Introduction to Solidity",
+            "es": "Introducción a Solidity",
+            "pt": "Introdução à Solidity"
+          },
+          "path": "/courses/dev/04/introduction"
+        },
+        {
+          "title": {
+            "en": "Solidity",
+            "es": "Solidity",
+            "pt": "Solidity"
+          },
+          "path": "/courses/dev/04/solidity"
+        },
+        {
+          "title": {
+            "en": "Solidity types",
+            "es": "Solidity types",
+            "pt": "Solidity types"
+          },
+          "path": "/courses/dev/04/solidity-types"
+        },
+        {
+          "title": {
+            "en": "Quote",
+            "es": "Quote",
+            "pt": "Quote"
+          },
+          "path": "/courses/dev/04/quote"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "05 - Frontend",
+        "es": "05 - Frontend",
+        "pt": "05 - Frontend"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Overview",
+            "es": "Overview",
+            "pt": "Overview"
+          },
+          "path": "/courses/dev/05/intro"
+        },
+        {
+          "title": {
+            "en": "Requirements",
+            "es": "Requisitos",
+            "pt": "Requisitos"
+          },
+          "path": "/courses/dev/05/requirements"
+        },
+        {
+          "title": {
+            "en": "Web3",
+            "es": "Web3",
+            "pt": "Web3"
+          },
+          "path": "/courses/dev/05/web3"
+        },
+        {
+          "title": {
+            "en": "Quote frontend",
+            "es": "Quote frontend",
+            "pt": "Quote frontend"
+          },
+          "path": "/courses/dev/05/quote-frontend"
         }
       ]
     }

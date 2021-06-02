@@ -1,14 +1,15 @@
-import { appWithTranslation } from 'next-i18next'
 import { ChakraProvider } from '@chakra-ui/react'
-import { Provider as ReduxProvider } from 'react-redux'
+import { appWithTranslation } from 'next-i18next'
 import { DefaultSeo } from 'next-seo'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import store from '@store/store'
-import { theme } from '@theme'
+import { Provider as ReduxProvider } from 'react-redux'
+
 import siteConfig from '@configs/site-config'
-import { RLoginProvider } from '@context/RLoginProvider'
 import { ContractProvider } from '@context/ContractProvider'
+import { RLoginProvider } from '@context/Web3Provider'
+import store from '@store'
+import { theme } from '@theme'
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (

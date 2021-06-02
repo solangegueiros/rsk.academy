@@ -1,8 +1,10 @@
-import AcademyWalletAbi from '@contracts/AcademyWallet.json'
 import { Box, useClipboard, useColorModeValue } from '@chakra-ui/react'
+
+import AcademyWalletAbi from '@contracts/AcademyWallet.json'
+import { useAppSelector } from '@store'
+
 import { CopyButton } from '../CodeBlock/CopyButton'
 import { Highlight } from '../CodeBlock/Highlight'
-import { useAppSelector } from '@store/store'
 
 export const WalletAddress = (): JSX.Element => {
   const { chainId } = useAppSelector(state => state.identity)

@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+
 import { Box, Flex } from '@chakra-ui/react'
 
 import { RouteType, SidebarContent } from '../SidebarContent'
@@ -11,7 +12,7 @@ export const Sidebar = ({ routes }: SidebarProps): JSX.Element => {
   const ref = useRef(null)
 
   return (
-    <Flex flexDir='column' display={{ base: 'none', md: 'block' }} w='320px'>
+    <Flex flexDir='column' display={{ base: 'none', md: 'block' }}>
       <Box
         pos='sticky'
         top='9rem'

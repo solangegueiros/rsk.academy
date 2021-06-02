@@ -2,8 +2,8 @@ import { Box, Flex, Text, useColorModeValue } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 
+import { useAppDispatch } from '@store'
 import { answerQuestion, CourseType, ModuleType, QuestionType } from '@store/quiz/slice'
-import { useAppDispatch } from '@store/store'
 
 interface QuizItemProps {
   userAnswers: Record<string, { answer: number; isCorrect: boolean }>
@@ -25,7 +25,7 @@ export const QuizItem = ({
   const { t } = useTranslation('common')
 
   const questionAnswers = type === 'tf' ? [0, 1] : answers
-  const tf = [t`quiz.yes`, t`quiz.no`]
+  const tf = [t('quiz.no'), t('quiz.yes')]
   const dispatch = useAppDispatch()
 
   const setAnswer = (val: string | number) => {

@@ -47,6 +47,16 @@
       "es": "El mnemónico (o seed, semilla) de una billetera es el conjunto de palabras que se utilizan para generar todas las direcciones en esta billetera.",
       "pt": "O mnemônico (ou seed, semente) de uma carteira é o conjunto de palavras utilizado para gerar todos os endereços desta carteira."
     },
-    "correctAnswer": 0
+    "correctAnswer": 1
+  },
+  {
+    "id": "dev-01-tf-06",
+    "type": "tf",
+    "question": {
+      "en": "If you use the same mnemonic (or seed) in different wallets, you will see the same balance on a blockchain.",
+      "es": "Si usas el mismo mnemónico (o semilla) en diferentes carteras, verás el mismo saldo en una Blockchain.",
+      "pt": "Se você usar o mesmo mnemônico (ou seed, semente) em diferentes carteiras, verá o mesmo saldo em um blockchain."
+    },
+    "correctAnswer": 1
   }
 ]

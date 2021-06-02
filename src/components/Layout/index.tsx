@@ -1,7 +1,8 @@
+import { ReactNode } from 'react'
+
 import { Container, Flex, FlexProps } from '@chakra-ui/react'
 
 import { Header, Footer } from '@components'
-import { ReactNode } from 'react'
 
 interface LayoutProps {
   children: ReactNode

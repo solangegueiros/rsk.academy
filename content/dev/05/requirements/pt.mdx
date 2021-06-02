@@ -1,0 +1,151 @@
+---
+title: 'Requisitos'
+description: 'Requisitos'
+---
+
+Existem alguns requisitos de software antes de começar
+
+1. Git
+2. Node.js and NPM
+3. Code editor
+
+## Git
+
+[Git](https://git-scm.com/doc) é um sistema open-source de controle de versão. Alguns pacotes que serão instalados posteriormente utilizam o Git internamente para fazer download de suas versões corretas.
+Ele também tem alguns utilitários, como um terminal POSIX, chamado `Git Bash`.
+
+Talvez você já tenha Git instalado.
+Para descobrir, abra um terminar e digite:
+
+```shell
+git --version
+```
+
+![git version](../../images/truffle/image-01.png)
+
+Existem diversas maneiras de instalar Git.
+Veja este tutorial [Install Git](https://www.atlassian.com/git/tutorials/install-git) (em inglês).
+
+**Windows OS**
+
+Para Windows, existem outras opções também:
+
+- [Installer for Windows](https://git-scm.com/download/win).
+- [Git for Windows](https://gitforwindows.org/).
+
+## Node.js and NPM
+
+Outra dependência é NPM, que é instalado com Node.js.
+
+Pra verificar se Node.js e NPM já estão instalados, verifique se os comandos abaixo funcionam no terminal:
+
+```shell
+node --version
+npm --version
+```
+
+Resultado no OS Windows:
+
+![node and npm version](img/courses/dev/05/requirements/image-02.png)
+
+Se não houve um retorno como acima, veja como instalá-lo no Ubuntu, Mac OSX e Windows.
+
+### Linux
+
+```shell
+sudo apt update
+sudo apt install curl git
+sudo apt install build-essential # We need this to build native dependencies
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt install nodejs
+```
+
+### Mac OS
+
+```shell
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+nvm install 12
+nvm use 12
+nvm alias default 12
+npm install npm --global # Upgrade npm to the latest version
+```
+
+Tenha certeza de instalar `node-gyp`:
+
+```shell
+npm install -g node-gyp
+```
+
+O próximo comando é necessário para construir dependências nativas.
+Uma janela pop-up aparecerá e você deverá prosseguir com a instalação.
+Isso levará algum tempo e poderá fazer downlaod de alguns GB de dados.
+
+```shell
+xcode-select --install
+```
+
+### Windows OS
+
+A instalação do Node.js no Windows requer alguns passos manuais.
+
+Vá em [Node.js](https://nodejs.org/en/) para fazer download e instalar.
+
+Depois [abra seu terminal como administrador](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)
+
+E também instale NPM's `Windows Build Tools`
+
+```shell
+npm install --global --production windows-build-tools
+```
+
+Depois execute este comando:
+
+```shell
+npm install -g node-gyp
+```
+
+### Sobre Node.js and NPM
+
+O NPM geralmente é instalado junto com o Node.js, portanto, após instalar o Node.js, não é preciso instalá-lo separadamente.
+
+Caso queira ter mais de uma versão do node instalada,
+utilize o gerenciador de versões para o node, chamado [nvm](https://github.com/nvm-sh/nvm).
+
+> Se você receber erros mencionando "node-gyp", certifique-se de tê-lo instalado.
+
+## Code editor
+
+Precisamos de algum editor de código, de preferência um que destaque as linguagens Solidity e Javascript.
+
+[VS Code](https://code.visualstudio.com/) é uma boa escolha, caso você não tenha nenhum.
+
+## Visual Studio Code (VS Code)
+
+Para instalar, [faça o download aqui](https://code.visualstudio.com/download).
+
+Verifique se a instalação do VS code está ok consultando sua versão no terminal:
+
+```shell
+code -v
+```
+
+![VS Code version](img/courses/dev/05/requirements/image-03.png)
+
+### VSCode extension for Solidity
+
+Se você está utilizando o VSCode, é bom ter suporte à linguagem Solidity.
+Eu uso a extensão solidity do [Juan Blanco](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity).
+
+Para instalar, vá em Extensions (Menu View -> Extensions).
+
+1. Digite `solidity` no campo de pesquisa.
+2. Selecione a extensão `solidity` do Juan Blanco.
+3. Clique em `install`.
+
+![Juan Blanco solidity extension](img/courses/dev/05/requirements/image-04.png)
+
+## Próximos passos
+
+Todos os pré-requisitos já estão instalados.
+
+Agora você vai conhecer o web3 e depois criar seu primeiro frontend!

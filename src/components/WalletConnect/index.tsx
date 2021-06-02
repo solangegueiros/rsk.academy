@@ -1,6 +1,6 @@
 /* eslint-disable max-lines-per-function */
-import { MdContentCopy, MdErrorOutline } from 'react-icons/md'
 import { useContext, useEffect } from 'react'
+
 import {
   Button,
   ButtonGroup,
@@ -21,21 +21,25 @@ import {
   useDisclosure,
   usePrevious,
   VStack,
+  useToast,
 } from '@chakra-ui/react'
-import { useTranslation } from 'next-i18next'
-import { FiLogOut } from 'react-icons/fi'
+import { Web3Provider } from '@ethersproject/providers'
 import RLogin from '@rsksmart/rlogin'
 import WalletConnectProvider from '@walletconnect/web3-provider'
+import { useTranslation } from 'next-i18next'
 import { FaPlus } from 'react-icons/fa'
+import { FiLogOut } from 'react-icons/fi'
+import { MdContentCopy, MdErrorOutline } from 'react-icons/md'
 
-import { trimValue } from '@utils/trimValue'
-import { SUPPORTED_CHAINS } from '@constants/constants'
-import { changeAccount, changeChainId, reset } from '@store/identity/slice'
-import { RLoginResponseContext } from '@context/RLoginProvider'
-import { useLoadSmartContracts } from '@hooks/useLoadContracts'
 import { RifIcon } from '@components'
-import { useAppDispatch, useAppSelector } from '@store/store'
 import { Popup } from '@components/Popup'
+import { SUPPORTED_CHAINS } from '@constants'
+import { Web3Context } from '@context/Web3Provider'
+import { useLoadSmartContracts } from '@hooks/useLoadContracts'
+import { useAppDispatch, useAppSelector } from '@store'
+import { changeAccount, changeChainId, reset } from '@store/identity/slice'
+import { getSigner } from '@utils/getContract'
+import { trimValue } from '@utils/trimValue'
 
 type Global = typeof window & { ethereum: any }
 
@@ -62,24 +66,31 @@ const WalletConnect = (): JSX.Element => {
   const { hasCopied, onCopy } = useClipboard(account)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const dispatch = useAppDispatch()
-  const { resetResponse, setRLoginResponse, rLoginResponse } = useContext(RLoginResponseContext)
+  const { logout, login, rLoginResponse } = useContext(Web3Context)
   const prevAccount = usePrevious(account)
   const prevChainId = usePrevious(chainId)
   const { loadContracts } = useLoadSmartContracts()
+  const toast = useToast()
 
   const { t } = useTranslation('common')
   const bg = useColorModeValue('white', 'dark.500')
   const color = useColorModeValue('primary.500', 'light.500')
 
   useEffect(() => {
-    if ((rLoginResponse?.provider && chainId && account !== '') || prevAccount !== account || prevChainId !== chainId) {
+    if (chainId && !SUPPORTED_CHAINS.includes(chainId)) {
+      toast({ status: 'error', title: 'Unsupported Network', description: `Network Id: ${chainId}`, isClosable: true })
+    } else if (
+      (rLoginResponse?.provider && chainId && account !== '') ||
+      prevAccount !== account ||
+      prevChainId !== chainId
+    ) {
       loadContracts()
     }
   }, [account, chainId, rLoginResponse?.provider])
 
   // handle logging out
   const handleLogOut = () => {
-    resetResponse()
+    logout()
     dispatch(reset())
   }
 
@@ -87,26 +98,31 @@ const WalletConnect = (): JSX.Element => {
     onClose()
     try {
       const res = await rLogin.connect()
-      const provider = res.provider
-      const [acc] = await provider.request({ method: 'eth_accounts' })
-      const network = await provider.request({ method: 'eth_chainId' })
+      const rLoginProvider = res.provider
 
-      dispatch(changeAccount({ account: acc.toLowerCase() }))
-      dispatch(changeChainId({ chainId: Number(network) }))
+      if (rLoginProvider) {
+        const web3Provider = new Web3Provider(rLoginProvider)
+        const signer = getSigner(web3Provider, account)
 
-      // listen to change events and log out if any of them happen, passing
-      // the rLogin response to the logout function as it has not been saved
-      // into useState yet.
-      provider.on('accountsChanged', (accounts: string[]) =>
-        dispatch(changeAccount({ account: accounts[0].toLowerCase() })),
-      )
-      provider.on('chainChanged', (c: string) => dispatch(changeChainId({ chainId: Number(c) })))
-      provider.on('disconnect', () => handleLogOut)
+        // const [acc] = await rLoginProvider.request({ method: 'eth_accounts' })
+        // const network = await rLoginProvider.request({ method: 'eth_chainId' })
+        const [acc] = await web3Provider.listAccounts()
+        const network = await web3Provider.getNetwork()
 
-      // finally, set setRLoginResponse with useState
-      // when the JS is compiled this variable is set after the promise is
-      // resolved which is why it is at the very end.
-      setRLoginResponse(res)
+        dispatch(changeAccount({ account: acc.toLowerCase() }))
+        dispatch(changeChainId({ chainId: Number(network.chainId) }))
+
+        // listen to change events and log out if any of them happen, passing
+        // the rLogin response to the logout function as it has not been saved
+        // into useState yet.
+        rLoginProvider.on('accountsChanged', (accounts: string[]) =>
+          dispatch(changeAccount({ account: accounts[0].toLowerCase() })),
+        )
+        rLoginProvider.on('chainChanged', (c: string) => dispatch(changeChainId({ chainId: Number(c) })))
+        rLoginProvider.on('disconnect', () => handleLogOut)
+
+        login({ rLoginResponse: res, web3Provider, signer })
+      }
     } catch (err) {
       console.log(`RLogin Error`, err)
     }

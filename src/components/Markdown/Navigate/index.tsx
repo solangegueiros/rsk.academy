@@ -1,7 +1,6 @@
 import { chakra, Icon, HTMLChakraProps } from '@chakra-ui/react'
-
-import { FiExternalLink } from 'react-icons/fi'
 import NextLink from 'next/link'
+import { FiExternalLink } from 'react-icons/fi'
 
 export const Navigate = (props: HTMLChakraProps<'a'>): JSX.Element => {
   const isExternalLink = props.href?.[0] !== '/'

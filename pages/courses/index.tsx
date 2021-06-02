@@ -1,10 +1,10 @@
-import NextLink from 'next/link'
 import { Box, Heading, Image, SimpleGrid, useColorModeValue } from '@chakra-ui/react'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import NextLink from 'next/link'
 import { useTranslation } from 'react-i18next'
 
 import { Seo, Layout } from '@components'
-import { GetStaticProps } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const Courses = (): JSX.Element => {
   const { t } = useTranslation()
@@ -21,14 +21,14 @@ const Courses = (): JSX.Element => {
             </Box>
           </Box>
         </NextLink>
-        <NextLink href='/courses/business/_/welcome' passHref>
+        {/* <NextLink href='/courses/business/_/welcome' passHref>
           <Box _hover={{ boxShadow: 'lg' }} cursor='pointer' boxShadow='md' bg={bg} transition='box-shadow 0.3s'>
             <Image w='full' src='/img/business.svg' alt='business course' />
             <Box p={4}>
               <Heading textAlign='center'>{t`business`}</Heading>
             </Box>
           </Box>
-        </NextLink>
+        </NextLink> */}
       </SimpleGrid>
     </Layout>
   )

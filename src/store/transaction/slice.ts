@@ -44,7 +44,7 @@ export const transactionReducers = {
       window.localStorage.setItem(STORE_KEY, JSON.stringify(currentTsx))
     }
 
-    state = initialTransactionState
+    state.transactions[account] = []
   },
   addTransaction: (
     state: TransactionStateType,

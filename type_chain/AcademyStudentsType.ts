@@ -13,259 +13,162 @@ import {
   ContractTransaction,
   Overrides,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+} from 'ethers'
+import { BytesLike } from '@ethersproject/bytes'
+import { Listener, Provider } from '@ethersproject/providers'
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi'
+import { TypedEventFilter, TypedEvent, TypedListener } from './commons'
 
 export interface AcademyStudentsInterface extends ethers.utils.Interface {
   functions: {
-    "DEFAULT_ADMIN_ROLE()": FunctionFragment;
-    "active()": FunctionFragment;
-    "getRoleAdmin(bytes32)": FunctionFragment;
-    "getRoleMember(bytes32,uint256)": FunctionFragment;
-    "getRoleMemberCount(bytes32)": FunctionFragment;
-    "grantRole(bytes32,address)": FunctionFragment;
-    "hasRole(bytes32,address)": FunctionFragment;
-    "projectListAddress()": FunctionFragment;
-    "renounceRole(bytes32,address)": FunctionFragment;
-    "revokeRole(bytes32,address)": FunctionFragment;
-    "addStudent(address)": FunctionFragment;
-    "delStudent(address)": FunctionFragment;
-    "addClass(address,address)": FunctionFragment;
-    "updateActiveClass(address)": FunctionFragment;
-    "updateStudentActiveClass(address,address)": FunctionFragment;
-    "changeActive()": FunctionFragment;
-    "updateProjectListAddress(address)": FunctionFragment;
-    "isStudent(address)": FunctionFragment;
-    "getStudentByAddress(address)": FunctionFragment;
-    "countStudents()": FunctionFragment;
-    "listStudents()": FunctionFragment;
-  };
+    'DEFAULT_ADMIN_ROLE()': FunctionFragment
+    'active()': FunctionFragment
+    'getRoleAdmin(bytes32)': FunctionFragment
+    'getRoleMember(bytes32,uint256)': FunctionFragment
+    'getRoleMemberCount(bytes32)': FunctionFragment
+    'grantRole(bytes32,address)': FunctionFragment
+    'hasRole(bytes32,address)': FunctionFragment
+    'projectListAddress()': FunctionFragment
+    'renounceRole(bytes32,address)': FunctionFragment
+    'revokeRole(bytes32,address)': FunctionFragment
+    'addStudent(address)': FunctionFragment
+    'delStudent(address)': FunctionFragment
+    'addClass(address,address)': FunctionFragment
+    'updateActiveClass(address)': FunctionFragment
+    'updateStudentActiveClass(address,address)': FunctionFragment
+    'changeActive()': FunctionFragment
+    'updateProjectListAddress(address)': FunctionFragment
+    'isStudent(address)': FunctionFragment
+    'getStudentByAddress(address)': FunctionFragment
+    'countStudents()': FunctionFragment
+    'listStudents()': FunctionFragment
+  }
 
-  encodeFunctionData(
-    functionFragment: "DEFAULT_ADMIN_ROLE",
-    values?: undefined
-  ): string;
-  encodeFunctionData(functionFragment: "active", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "getRoleAdmin",
-    values: [BytesLike]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getRoleMember",
-    values: [BytesLike, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getRoleMemberCount",
-    values: [BytesLike]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "grantRole",
-    values: [BytesLike, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "hasRole",
-    values: [BytesLike, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "projectListAddress",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "renounceRole",
-    values: [BytesLike, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "revokeRole",
-    values: [BytesLike, string]
-  ): string;
-  encodeFunctionData(functionFragment: "addStudent", values: [string]): string;
-  encodeFunctionData(functionFragment: "delStudent", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "addClass",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "updateActiveClass",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "updateStudentActiveClass",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "changeActive",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "updateProjectListAddress",
-    values: [string]
-  ): string;
-  encodeFunctionData(functionFragment: "isStudent", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "getStudentByAddress",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "countStudents",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "listStudents",
-    values?: undefined
-  ): string;
+  encodeFunctionData(functionFragment: 'DEFAULT_ADMIN_ROLE', values?: undefined): string
+  encodeFunctionData(functionFragment: 'active', values?: undefined): string
+  encodeFunctionData(functionFragment: 'getRoleAdmin', values: [BytesLike]): string
+  encodeFunctionData(functionFragment: 'getRoleMember', values: [BytesLike, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'getRoleMemberCount', values: [BytesLike]): string
+  encodeFunctionData(functionFragment: 'grantRole', values: [BytesLike, string]): string
+  encodeFunctionData(functionFragment: 'hasRole', values: [BytesLike, string]): string
+  encodeFunctionData(functionFragment: 'projectListAddress', values?: undefined): string
+  encodeFunctionData(functionFragment: 'renounceRole', values: [BytesLike, string]): string
+  encodeFunctionData(functionFragment: 'revokeRole', values: [BytesLike, string]): string
+  encodeFunctionData(functionFragment: 'addStudent', values: [string]): string
+  encodeFunctionData(functionFragment: 'delStudent', values: [string]): string
+  encodeFunctionData(functionFragment: 'addClass', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'updateActiveClass', values: [string]): string
+  encodeFunctionData(functionFragment: 'updateStudentActiveClass', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'changeActive', values?: undefined): string
+  encodeFunctionData(functionFragment: 'updateProjectListAddress', values: [string]): string
+  encodeFunctionData(functionFragment: 'isStudent', values: [string]): string
+  encodeFunctionData(functionFragment: 'getStudentByAddress', values: [string]): string
+  encodeFunctionData(functionFragment: 'countStudents', values?: undefined): string
+  encodeFunctionData(functionFragment: 'listStudents', values?: undefined): string
 
-  decodeFunctionResult(
-    functionFragment: "DEFAULT_ADMIN_ROLE",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "active", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getRoleAdmin",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getRoleMember",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getRoleMemberCount",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "grantRole", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "hasRole", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "projectListAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "renounceRole",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "revokeRole", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "addStudent", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "delStudent", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "addClass", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "updateActiveClass",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "updateStudentActiveClass",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "changeActive",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "updateProjectListAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "isStudent", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getStudentByAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "countStudents",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "listStudents",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: 'DEFAULT_ADMIN_ROLE', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'active', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getRoleAdmin', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getRoleMember', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getRoleMemberCount', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'grantRole', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'hasRole', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'projectListAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'renounceRole', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'revokeRole', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'addStudent', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'delStudent', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'addClass', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'updateActiveClass', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'updateStudentActiveClass', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'changeActive', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'updateProjectListAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'isStudent', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getStudentByAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'countStudents', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'listStudents', data: BytesLike): Result
 
   events: {
-    "RoleAdminChanged(bytes32,bytes32,bytes32)": EventFragment;
-    "RoleGranted(bytes32,address,address)": EventFragment;
-    "RoleRevoked(bytes32,address,address)": EventFragment;
-    "StudentClassSelected(address,address)": EventFragment;
-    "StudentCreated(address)": EventFragment;
-    "StudentRemoved(address)": EventFragment;
-    "StudentSubscribed(address,address)": EventFragment;
-  };
+    'RoleAdminChanged(bytes32,bytes32,bytes32)': EventFragment
+    'RoleGranted(bytes32,address,address)': EventFragment
+    'RoleRevoked(bytes32,address,address)': EventFragment
+    'StudentClassSelected(address,address)': EventFragment
+    'StudentCreated(address)': EventFragment
+    'StudentRemoved(address)': EventFragment
+    'StudentSubscribed(address,address)': EventFragment
+  }
 
-  getEvent(nameOrSignatureOrTopic: "RoleAdminChanged"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "RoleGranted"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "RoleRevoked"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "StudentClassSelected"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "StudentCreated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "StudentRemoved"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "StudentSubscribed"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'RoleAdminChanged'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'RoleGranted'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'RoleRevoked'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'StudentClassSelected'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'StudentCreated'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'StudentRemoved'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'StudentSubscribed'): EventFragment
 }
 
 export interface AcademyStudentsType extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
   listeners<EventArgsArray extends Array<any>, EventArgsObject>(
-    eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
+    eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>,
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>
   off<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
-    listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+    listener: TypedListener<EventArgsArray, EventArgsObject>,
+  ): this
   on<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
-    listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+    listener: TypedListener<EventArgsArray, EventArgsObject>,
+  ): this
   once<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
-    listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+    listener: TypedListener<EventArgsArray, EventArgsObject>,
+  ): this
   removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
-    listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+    listener: TypedListener<EventArgsArray, EventArgsObject>,
+  ): this
   removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
-    eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this;
+    eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
+  ): this
 
-  listeners(eventName?: string): Array<Listener>;
-  off(eventName: string, listener: Listener): this;
-  on(eventName: string, listener: Listener): this;
-  once(eventName: string, listener: Listener): this;
-  removeListener(eventName: string, listener: Listener): this;
-  removeAllListeners(eventName?: string): this;
+  listeners(eventName?: string): Array<Listener>
+  off(eventName: string, listener: Listener): this
+  on(eventName: string, listener: Listener): this
+  once(eventName: string, listener: Listener): this
+  removeListener(eventName: string, listener: Listener): this
+  removeAllListeners(eventName?: string): this
 
   queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
     event: TypedEventFilter<EventArgsArray, EventArgsObject>,
     fromBlockOrBlockhash?: string | number | undefined,
-    toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+    toBlock?: string | number | undefined,
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>
 
-  interface: AcademyStudentsInterface;
+  interface: AcademyStudentsInterface
 
   functions: {
-    DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<[string]>;
+    DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<[string]>
 
-    active(overrides?: CallOverrides): Promise<[boolean]>;
+    active(overrides?: CallOverrides): Promise<[boolean]>
 
     /**
      * Returns the admin role that controls `role`. See {grantRole} and {revokeRole}. To change a role's admin, use {_setRoleAdmin}.
      */
-    getRoleAdmin(role: BytesLike, overrides?: CallOverrides): Promise<[string]>;
+    getRoleAdmin(role: BytesLike, overrides?: CallOverrides): Promise<[string]>
 
     /**
      * Returns one of the accounts that have `role`. `index` must be a value between 0 and {getRoleMemberCount}, non-inclusive. Role bearers are not sorted in any particular way, and their ordering may change at any point. WARNING: When using {getRoleMember} and {getRoleMemberCount}, make sure you perform all queries on the same block. See the following https://forum.openzeppelin.com/t/iterating-over-elements-on-enumerableset-in-openzeppelin-contracts/2296[forum post] for more information.
      */
-    getRoleMember(
-      role: BytesLike,
-      index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
+    getRoleMember(role: BytesLike, index: BigNumberish, overrides?: CallOverrides): Promise<[string]>
 
     /**
      * Returns the number of accounts that have `role`. Can be used together with {getRoleMember} to enumerate all bearers of a role.
      */
-    getRoleMemberCount(
-      role: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    getRoleMemberCount(role: BytesLike, overrides?: CallOverrides): Promise<[BigNumber]>
 
     /**
      * Grants `role` to `account`. If `account` had not been already granted `role`, emits a {RoleGranted} event. Requirements: - the caller must have ``role``'s admin role.
@@ -273,19 +176,15 @@ export interface AcademyStudentsType extends BaseContract {
     grantRole(
       role: BytesLike,
       account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<ContractTransaction>
 
     /**
      * Returns `true` if `account` has been granted `role`.
      */
-    hasRole(
-      role: BytesLike,
-      account: string,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
+    hasRole(role: BytesLike, account: string, overrides?: CallOverrides): Promise<[boolean]>
 
-    projectListAddress(overrides?: CallOverrides): Promise<[string]>;
+    projectListAddress(overrides?: CallOverrides): Promise<[string]>
 
     /**
      * Revokes `role` from the calling account. Roles are often managed via {grantRole} and {revokeRole}: this function's purpose is to provide a mechanism for accounts to lose their privileges if they are compromised (such as when a trusted device is misplaced). If the calling account had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must be `account`.
@@ -293,8 +192,8 @@ export interface AcademyStudentsType extends BaseContract {
     renounceRole(
       role: BytesLike,
       account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<ContractTransaction>
 
     /**
      * Revokes `role` from `account`. If `account` had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must have ``role``'s admin role.
@@ -302,92 +201,83 @@ export interface AcademyStudentsType extends BaseContract {
     revokeRole(
       role: BytesLike,
       account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<ContractTransaction>
 
     addStudent(
       account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<ContractTransaction>
 
     delStudent(
       account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<ContractTransaction>
 
     addClass(
       account: string,
       classAddress: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<ContractTransaction>
 
     updateActiveClass(
       classAddress: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<ContractTransaction>
 
     updateStudentActiveClass(
       account: string,
       classAddress: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<ContractTransaction>
 
-    changeActive(
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    changeActive(overrides?: Overrides & { from?: string | Promise<string> }): Promise<ContractTransaction>
 
     updateProjectListAddress(
       addressProjectList: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<ContractTransaction>
 
-    isStudent(account: string, overrides?: CallOverrides): Promise<[boolean]>;
+    isStudent(account: string, overrides?: CallOverrides): Promise<[boolean]>
 
     getStudentByAddress(
       account: string,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<
       [
         [BigNumber, string, string, string, string[]] & {
-          index: BigNumber;
-          ownerAddress: string;
-          portfolioAddress: string;
-          activeClass: string;
-          studentClasses: string[];
-        }
+          index: BigNumber
+          ownerAddress: string
+          portfolioAddress: string
+          activeClass: string
+          studentClasses: string[]
+        },
       ]
-    >;
+    >
 
-    countStudents(overrides?: CallOverrides): Promise<[BigNumber]>;
+    countStudents(overrides?: CallOverrides): Promise<[BigNumber]>
 
-    listStudents(overrides?: CallOverrides): Promise<[string[]]>;
-  };
+    listStudents(overrides?: CallOverrides): Promise<[string[]]>
+  }
 
-  DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
+  DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<string>
 
-  active(overrides?: CallOverrides): Promise<boolean>;
+  active(overrides?: CallOverrides): Promise<boolean>
 
   /**
    * Returns the admin role that controls `role`. See {grantRole} and {revokeRole}. To change a role's admin, use {_setRoleAdmin}.
    */
-  getRoleAdmin(role: BytesLike, overrides?: CallOverrides): Promise<string>;
+  getRoleAdmin(role: BytesLike, overrides?: CallOverrides): Promise<string>
 
   /**
    * Returns one of the accounts that have `role`. `index` must be a value between 0 and {getRoleMemberCount}, non-inclusive. Role bearers are not sorted in any particular way, and their ordering may change at any point. WARNING: When using {getRoleMember} and {getRoleMemberCount}, make sure you perform all queries on the same block. See the following https://forum.openzeppelin.com/t/iterating-over-elements-on-enumerableset-in-openzeppelin-contracts/2296[forum post] for more information.
    */
-  getRoleMember(
-    role: BytesLike,
-    index: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<string>;
+  getRoleMember(role: BytesLike, index: BigNumberish, overrides?: CallOverrides): Promise<string>
 
   /**
    * Returns the number of accounts that have `role`. Can be used together with {getRoleMember} to enumerate all bearers of a role.
    */
-  getRoleMemberCount(
-    role: BytesLike,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  getRoleMemberCount(role: BytesLike, overrides?: CallOverrides): Promise<BigNumber>
 
   /**
    * Grants `role` to `account`. If `account` had not been already granted `role`, emits a {RoleGranted} event. Requirements: - the caller must have ``role``'s admin role.
@@ -395,19 +285,15 @@ export interface AcademyStudentsType extends BaseContract {
   grantRole(
     role: BytesLike,
     account: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: Overrides & { from?: string | Promise<string> },
+  ): Promise<ContractTransaction>
 
   /**
    * Returns `true` if `account` has been granted `role`.
    */
-  hasRole(
-    role: BytesLike,
-    account: string,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
+  hasRole(role: BytesLike, account: string, overrides?: CallOverrides): Promise<boolean>
 
-  projectListAddress(overrides?: CallOverrides): Promise<string>;
+  projectListAddress(overrides?: CallOverrides): Promise<string>
 
   /**
    * Revokes `role` from the calling account. Roles are often managed via {grantRole} and {revokeRole}: this function's purpose is to provide a mechanism for accounts to lose their privileges if they are compromised (such as when a trusted device is misplaced). If the calling account had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must be `account`.
@@ -415,8 +301,8 @@ export interface AcademyStudentsType extends BaseContract {
   renounceRole(
     role: BytesLike,
     account: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: Overrides & { from?: string | Promise<string> },
+  ): Promise<ContractTransaction>
 
   /**
    * Revokes `role` from `account`. If `account` had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must have ``role``'s admin role.
@@ -424,259 +310,185 @@ export interface AcademyStudentsType extends BaseContract {
   revokeRole(
     role: BytesLike,
     account: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: Overrides & { from?: string | Promise<string> },
+  ): Promise<ContractTransaction>
 
-  addStudent(
-    account: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  addStudent(account: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<ContractTransaction>
 
-  delStudent(
-    account: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  delStudent(account: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<ContractTransaction>
 
   addClass(
     account: string,
     classAddress: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: Overrides & { from?: string | Promise<string> },
+  ): Promise<ContractTransaction>
 
   updateActiveClass(
     classAddress: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: Overrides & { from?: string | Promise<string> },
+  ): Promise<ContractTransaction>
 
   updateStudentActiveClass(
     account: string,
     classAddress: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: Overrides & { from?: string | Promise<string> },
+  ): Promise<ContractTransaction>
 
-  changeActive(
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  changeActive(overrides?: Overrides & { from?: string | Promise<string> }): Promise<ContractTransaction>
 
   updateProjectListAddress(
     addressProjectList: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: Overrides & { from?: string | Promise<string> },
+  ): Promise<ContractTransaction>
 
-  isStudent(account: string, overrides?: CallOverrides): Promise<boolean>;
+  isStudent(account: string, overrides?: CallOverrides): Promise<boolean>
 
   getStudentByAddress(
     account: string,
-    overrides?: CallOverrides
+    overrides?: CallOverrides,
   ): Promise<
     [BigNumber, string, string, string, string[]] & {
-      index: BigNumber;
-      ownerAddress: string;
-      portfolioAddress: string;
-      activeClass: string;
-      studentClasses: string[];
+      index: BigNumber
+      ownerAddress: string
+      portfolioAddress: string
+      activeClass: string
+      studentClasses: string[]
     }
-  >;
+  >
 
-  countStudents(overrides?: CallOverrides): Promise<BigNumber>;
+  countStudents(overrides?: CallOverrides): Promise<BigNumber>
 
-  listStudents(overrides?: CallOverrides): Promise<string[]>;
+  listStudents(overrides?: CallOverrides): Promise<string[]>
 
   callStatic: {
-    DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
+    DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<string>
 
-    active(overrides?: CallOverrides): Promise<boolean>;
+    active(overrides?: CallOverrides): Promise<boolean>
 
     /**
      * Returns the admin role that controls `role`. See {grantRole} and {revokeRole}. To change a role's admin, use {_setRoleAdmin}.
      */
-    getRoleAdmin(role: BytesLike, overrides?: CallOverrides): Promise<string>;
+    getRoleAdmin(role: BytesLike, overrides?: CallOverrides): Promise<string>
 
     /**
      * Returns one of the accounts that have `role`. `index` must be a value between 0 and {getRoleMemberCount}, non-inclusive. Role bearers are not sorted in any particular way, and their ordering may change at any point. WARNING: When using {getRoleMember} and {getRoleMemberCount}, make sure you perform all queries on the same block. See the following https://forum.openzeppelin.com/t/iterating-over-elements-on-enumerableset-in-openzeppelin-contracts/2296[forum post] for more information.
      */
-    getRoleMember(
-      role: BytesLike,
-      index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    getRoleMember(role: BytesLike, index: BigNumberish, overrides?: CallOverrides): Promise<string>
 
     /**
      * Returns the number of accounts that have `role`. Can be used together with {getRoleMember} to enumerate all bearers of a role.
      */
-    getRoleMemberCount(
-      role: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getRoleMemberCount(role: BytesLike, overrides?: CallOverrides): Promise<BigNumber>
 
     /**
      * Grants `role` to `account`. If `account` had not been already granted `role`, emits a {RoleGranted} event. Requirements: - the caller must have ``role``'s admin role.
      */
-    grantRole(
-      role: BytesLike,
-      account: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    grantRole(role: BytesLike, account: string, overrides?: CallOverrides): Promise<void>
 
     /**
      * Returns `true` if `account` has been granted `role`.
      */
-    hasRole(
-      role: BytesLike,
-      account: string,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    hasRole(role: BytesLike, account: string, overrides?: CallOverrides): Promise<boolean>
 
-    projectListAddress(overrides?: CallOverrides): Promise<string>;
+    projectListAddress(overrides?: CallOverrides): Promise<string>
 
     /**
      * Revokes `role` from the calling account. Roles are often managed via {grantRole} and {revokeRole}: this function's purpose is to provide a mechanism for accounts to lose their privileges if they are compromised (such as when a trusted device is misplaced). If the calling account had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must be `account`.
      */
-    renounceRole(
-      role: BytesLike,
-      account: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    renounceRole(role: BytesLike, account: string, overrides?: CallOverrides): Promise<void>
 
     /**
      * Revokes `role` from `account`. If `account` had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must have ``role``'s admin role.
      */
-    revokeRole(
-      role: BytesLike,
-      account: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    revokeRole(role: BytesLike, account: string, overrides?: CallOverrides): Promise<void>
 
-    addStudent(account: string, overrides?: CallOverrides): Promise<BigNumber>;
+    addStudent(account: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    delStudent(account: string, overrides?: CallOverrides): Promise<boolean>;
+    delStudent(account: string, overrides?: CallOverrides): Promise<boolean>
 
-    addClass(
-      account: string,
-      classAddress: string,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    addClass(account: string, classAddress: string, overrides?: CallOverrides): Promise<boolean>
 
-    updateActiveClass(
-      classAddress: string,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    updateActiveClass(classAddress: string, overrides?: CallOverrides): Promise<boolean>
 
-    updateStudentActiveClass(
-      account: string,
-      classAddress: string,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    updateStudentActiveClass(account: string, classAddress: string, overrides?: CallOverrides): Promise<boolean>
 
-    changeActive(overrides?: CallOverrides): Promise<boolean>;
+    changeActive(overrides?: CallOverrides): Promise<boolean>
 
-    updateProjectListAddress(
-      addressProjectList: string,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    updateProjectListAddress(addressProjectList: string, overrides?: CallOverrides): Promise<boolean>
 
-    isStudent(account: string, overrides?: CallOverrides): Promise<boolean>;
+    isStudent(account: string, overrides?: CallOverrides): Promise<boolean>
 
     getStudentByAddress(
       account: string,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<
       [BigNumber, string, string, string, string[]] & {
-        index: BigNumber;
-        ownerAddress: string;
-        portfolioAddress: string;
-        activeClass: string;
-        studentClasses: string[];
+        index: BigNumber
+        ownerAddress: string
+        portfolioAddress: string
+        activeClass: string
+        studentClasses: string[]
       }
-    >;
+    >
 
-    countStudents(overrides?: CallOverrides): Promise<BigNumber>;
+    countStudents(overrides?: CallOverrides): Promise<BigNumber>
 
-    listStudents(overrides?: CallOverrides): Promise<string[]>;
-  };
+    listStudents(overrides?: CallOverrides): Promise<string[]>
+  }
 
   filters: {
     RoleAdminChanged(
       role?: BytesLike | null,
       previousAdminRole?: BytesLike | null,
-      newAdminRole?: BytesLike | null
-    ): TypedEventFilter<
-      [string, string, string],
-      { role: string; previousAdminRole: string; newAdminRole: string }
-    >;
+      newAdminRole?: BytesLike | null,
+    ): TypedEventFilter<[string, string, string], { role: string; previousAdminRole: string; newAdminRole: string }>
 
     RoleGranted(
       role?: BytesLike | null,
       account?: string | null,
-      sender?: string | null
-    ): TypedEventFilter<
-      [string, string, string],
-      { role: string; account: string; sender: string }
-    >;
+      sender?: string | null,
+    ): TypedEventFilter<[string, string, string], { role: string; account: string; sender: string }>
 
     RoleRevoked(
       role?: BytesLike | null,
       account?: string | null,
-      sender?: string | null
-    ): TypedEventFilter<
-      [string, string, string],
-      { role: string; account: string; sender: string }
-    >;
+      sender?: string | null,
+    ): TypedEventFilter<[string, string, string], { role: string; account: string; sender: string }>
 
     StudentClassSelected(
       classAddress?: string | null,
-      studentAddress?: string | null
-    ): TypedEventFilter<
-      [string, string],
-      { classAddress: string; studentAddress: string }
-    >;
+      studentAddress?: string | null,
+    ): TypedEventFilter<[string, string], { classAddress: string; studentAddress: string }>
 
-    StudentCreated(
-      studentAddress?: string | null
-    ): TypedEventFilter<[string], { studentAddress: string }>;
+    StudentCreated(studentAddress?: string | null): TypedEventFilter<[string], { studentAddress: string }>
 
-    StudentRemoved(
-      studentAddress?: string | null
-    ): TypedEventFilter<[string], { studentAddress: string }>;
+    StudentRemoved(studentAddress?: string | null): TypedEventFilter<[string], { studentAddress: string }>
 
     StudentSubscribed(
       classAddress?: string | null,
-      studentAddress?: string | null
-    ): TypedEventFilter<
-      [string, string],
-      { classAddress: string; studentAddress: string }
-    >;
-  };
+      studentAddress?: string | null,
+    ): TypedEventFilter<[string, string], { classAddress: string; studentAddress: string }>
+  }
 
   estimateGas: {
-    DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<BigNumber>;
+    DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<BigNumber>
 
-    active(overrides?: CallOverrides): Promise<BigNumber>;
+    active(overrides?: CallOverrides): Promise<BigNumber>
 
     /**
      * Returns the admin role that controls `role`. See {grantRole} and {revokeRole}. To change a role's admin, use {_setRoleAdmin}.
      */
-    getRoleAdmin(
-      role: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getRoleAdmin(role: BytesLike, overrides?: CallOverrides): Promise<BigNumber>
 
     /**
      * Returns one of the accounts that have `role`. `index` must be a value between 0 and {getRoleMemberCount}, non-inclusive. Role bearers are not sorted in any particular way, and their ordering may change at any point. WARNING: When using {getRoleMember} and {getRoleMemberCount}, make sure you perform all queries on the same block. See the following https://forum.openzeppelin.com/t/iterating-over-elements-on-enumerableset-in-openzeppelin-contracts/2296[forum post] for more information.
      */
-    getRoleMember(
-      role: BytesLike,
-      index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getRoleMember(role: BytesLike, index: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
     /**
      * Returns the number of accounts that have `role`. Can be used together with {getRoleMember} to enumerate all bearers of a role.
      */
-    getRoleMemberCount(
-      role: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getRoleMemberCount(role: BytesLike, overrides?: CallOverrides): Promise<BigNumber>
 
     /**
      * Grants `role` to `account`. If `account` had not been already granted `role`, emits a {RoleGranted} event. Requirements: - the caller must have ``role``'s admin role.
@@ -684,19 +496,15 @@ export interface AcademyStudentsType extends BaseContract {
     grantRole(
       role: BytesLike,
       account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<BigNumber>
 
     /**
      * Returns `true` if `account` has been granted `role`.
      */
-    hasRole(
-      role: BytesLike,
-      account: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    hasRole(role: BytesLike, account: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    projectListAddress(overrides?: CallOverrides): Promise<BigNumber>;
+    projectListAddress(overrides?: CallOverrides): Promise<BigNumber>
 
     /**
      * Revokes `role` from the calling account. Roles are often managed via {grantRole} and {revokeRole}: this function's purpose is to provide a mechanism for accounts to lose their privileges if they are compromised (such as when a trusted device is misplaced). If the calling account had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must be `account`.
@@ -704,8 +512,8 @@ export interface AcademyStudentsType extends BaseContract {
     renounceRole(
       role: BytesLike,
       account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<BigNumber>
 
     /**
      * Revokes `role` from `account`. If `account` had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must have ``role``'s admin role.
@@ -713,88 +521,65 @@ export interface AcademyStudentsType extends BaseContract {
     revokeRole(
       role: BytesLike,
       account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<BigNumber>
 
-    addStudent(
-      account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    addStudent(account: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
-    delStudent(
-      account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    delStudent(account: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
     addClass(
       account: string,
       classAddress: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<BigNumber>
 
     updateActiveClass(
       classAddress: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<BigNumber>
 
     updateStudentActiveClass(
       account: string,
       classAddress: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<BigNumber>
 
-    changeActive(
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    changeActive(overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
     updateProjectListAddress(
       addressProjectList: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<BigNumber>
 
-    isStudent(account: string, overrides?: CallOverrides): Promise<BigNumber>;
+    isStudent(account: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    getStudentByAddress(
-      account: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getStudentByAddress(account: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    countStudents(overrides?: CallOverrides): Promise<BigNumber>;
+    countStudents(overrides?: CallOverrides): Promise<BigNumber>
 
-    listStudents(overrides?: CallOverrides): Promise<BigNumber>;
-  };
+    listStudents(overrides?: CallOverrides): Promise<BigNumber>
+  }
 
   populateTransaction: {
-    DEFAULT_ADMIN_ROLE(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    active(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    active(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     /**
      * Returns the admin role that controls `role`. See {grantRole} and {revokeRole}. To change a role's admin, use {_setRoleAdmin}.
      */
-    getRoleAdmin(
-      role: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getRoleAdmin(role: BytesLike, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     /**
      * Returns one of the accounts that have `role`. `index` must be a value between 0 and {getRoleMemberCount}, non-inclusive. Role bearers are not sorted in any particular way, and their ordering may change at any point. WARNING: When using {getRoleMember} and {getRoleMemberCount}, make sure you perform all queries on the same block. See the following https://forum.openzeppelin.com/t/iterating-over-elements-on-enumerableset-in-openzeppelin-contracts/2296[forum post] for more information.
      */
-    getRoleMember(
-      role: BytesLike,
-      index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getRoleMember(role: BytesLike, index: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     /**
      * Returns the number of accounts that have `role`. Can be used together with {getRoleMember} to enumerate all bearers of a role.
      */
-    getRoleMemberCount(
-      role: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getRoleMemberCount(role: BytesLike, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     /**
      * Grants `role` to `account`. If `account` had not been already granted `role`, emits a {RoleGranted} event. Requirements: - the caller must have ``role``'s admin role.
@@ -802,21 +587,15 @@ export interface AcademyStudentsType extends BaseContract {
     grantRole(
       role: BytesLike,
       account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<PopulatedTransaction>
 
     /**
      * Returns `true` if `account` has been granted `role`.
      */
-    hasRole(
-      role: BytesLike,
-      account: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    hasRole(role: BytesLike, account: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    projectListAddress(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    projectListAddress(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     /**
      * Revokes `role` from the calling account. Roles are often managed via {grantRole} and {revokeRole}: this function's purpose is to provide a mechanism for accounts to lose their privileges if they are compromised (such as when a trusted device is misplaced). If the calling account had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must be `account`.
@@ -824,8 +603,8 @@ export interface AcademyStudentsType extends BaseContract {
     renounceRole(
       role: BytesLike,
       account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<PopulatedTransaction>
 
     /**
      * Revokes `role` from `account`. If `account` had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must have ``role``'s admin role.
@@ -833,57 +612,49 @@ export interface AcademyStudentsType extends BaseContract {
     revokeRole(
       role: BytesLike,
       account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<PopulatedTransaction>
 
     addStudent(
       account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<PopulatedTransaction>
 
     delStudent(
       account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<PopulatedTransaction>
 
     addClass(
       account: string,
       classAddress: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<PopulatedTransaction>
 
     updateActiveClass(
       classAddress: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<PopulatedTransaction>
 
     updateStudentActiveClass(
       account: string,
       classAddress: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<PopulatedTransaction>
 
-    changeActive(
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    changeActive(overrides?: Overrides & { from?: string | Promise<string> }): Promise<PopulatedTransaction>
 
     updateProjectListAddress(
       addressProjectList: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+      overrides?: Overrides & { from?: string | Promise<string> },
+    ): Promise<PopulatedTransaction>
 
-    isStudent(
-      account: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    isStudent(account: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getStudentByAddress(
-      account: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getStudentByAddress(account: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    countStudents(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    countStudents(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    listStudents(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-  };
+    listStudents(overrides?: CallOverrides): Promise<PopulatedTransaction>
+  }
 }

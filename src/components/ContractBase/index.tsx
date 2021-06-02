@@ -1,30 +1,34 @@
 import { ReactNode, useContext } from 'react'
+
 import {
   Alert,
   AlertDescription,
   AlertIcon,
   Box,
   BoxProps,
+  Center,
   chakra,
   Heading,
   HStack,
   IconButton,
+  Spinner,
   useClipboard,
   useColorModeValue,
 } from '@chakra-ui/react'
-import { IoMdWallet } from 'react-icons/io'
 import { useTranslation } from 'next-i18next'
-
-import { trimValue } from '@utils/trimValue'
-import { RLoginResponseContext } from '@context/RLoginProvider'
 import { FaCheckCircle, FaCopy } from 'react-icons/fa'
+import { IoMdWallet } from 'react-icons/io'
+
 import { Popup } from '@components/Popup'
-import { useAppSelector } from '@store/store'
-import { SUPPORTED_CHAINS } from '@constants/constants'
+import { DEPLOYED_CHAINS } from '@constants'
+import { ContractFactoryType, ContractNameType } from '@context/ContractProvider'
+import { Web3Context } from '@context/Web3Provider'
+import { useAppSelector } from '@store'
+import { trimValue } from '@utils/trimValue'
 
 interface ContractBaseProps {
-  contract: any
-  name: string
+  contract: ContractFactoryType
+  name: ContractNameType
   children: ReactNode
 }
 
@@ -39,30 +43,47 @@ const NotLoggedIn = (): JSX.Element => {
       alignItems='center'
       justifyContent='center'
       textAlign='center'
+      py={6}
+      mt={4}
     >
-      <AlertIcon as={IoMdWallet} boxSize='50px' mr={0} />
-      <AlertDescription my={4} maxWidth='sm'>
-        {t`contract.mustConnect`}
-      </AlertDescription>
+      <AlertIcon mb={4} as={IoMdWallet} boxSize='50px' mr={0} />
+      <AlertDescription maxWidth='sm'>{t`contract.mustConnect`}</AlertDescription>
+    </Alert>
+  )
+}
+
+const NotDeployed = (): JSX.Element => {
+  const { t } = useTranslation('common')
+
+  return (
+    <Alert
+      variant='subtle'
+      status='warning'
+      flexDirection='column'
+      alignItems='center'
+      justifyContent='center'
+      textAlign='center'
+      py={6}
+      mt={4}
+    >
+      <AlertIcon mb={4} boxSize='50px' mr={0} />
+      <AlertDescription maxWidth='sm'>{t`contract.notDeployed`}</AlertDescription>
     </Alert>
   )
 }
 
 export const ContractBase = ({ contract, name, children, ...rest }: ContractBaseProps & BoxProps): JSX.Element => {
   const { hasCopied, onCopy } = useClipboard(contract?.address)
-  const context = useContext(RLoginResponseContext)
-  const { rLoginResponse } = context
-  const { chainId } = useAppSelector(state => state.identity)
-
+  const { isLoggedIn } = useContext(Web3Context)
+  const { chainId, isLoading } = useAppSelector(state => state.identity)
 
   const color = useColorModeValue('primary.500', 'light.500')
-  const { t } = useTranslation('common')
   const bg = useColorModeValue('white', 'dark.400')
 
-  if (!contract) return <NotLoggedIn />
+  const showIsNotDeployed = isLoggedIn && !DEPLOYED_CHAINS.includes(chainId)
 
-  const showDeployedContract = rLoginResponse && SUPPORTED_CHAINS.includes(chainId)
-  const showIsNotDeployed = rLoginResponse && !SUPPORTED_CHAINS.includes(chainId)
+  if (showIsNotDeployed) return <NotDeployed />
+  if (!contract) return <NotLoggedIn />
 
   return (
     <Box bg={bg} p={8} boxShadow='md' borderRadius={10} w='full' mt={4} {...rest}>
@@ -79,7 +100,7 @@ export const ContractBase = ({ contract, name, children, ...rest }: ContractBase
             </chakra.a>
           </Heading>
         </Popup>
-        {rLoginResponse && contract.address && (
+        {isLoggedIn && contract.address && (
           <Popup label={trimValue(contract.address, 8)} hasArrow>
             <IconButton
               aria-label='Copy Address'
@@ -92,18 +113,13 @@ export const ContractBase = ({ contract, name, children, ...rest }: ContractBase
         )}
       </HStack>
 
-      {/* If it's not logged in */}
-      {!rLoginResponse && <NotLoggedIn />}
-
-      {/* if contract is not deployed on the network */}
-      {showIsNotDeployed && (
-        <Alert status='warning'>
-          <AlertIcon />
-          {t`contract.notDeployed`}
-        </Alert>
+      {isLoading ? (
+        <Center>
+          <Spinner />
+        </Center>
+      ) : (
+        children
       )}
-
-      {showDeployedContract && children}
     </Box>
   )
 }

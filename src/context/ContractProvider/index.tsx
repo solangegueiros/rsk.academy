@@ -1,92 +1,145 @@
 import { createContext, ReactNode, useCallback, useReducer } from 'react'
+
+import { useAppSelector } from '@store'
 import {
-  AcademyClassListFactory,
-  AcademyClassFactory,
-  AcademyProjectListFactory,
-  AcademyStudentQuizFactory,
-  AcademyStudentsFactory,
-  AcademyWalletFactory,
-  MasterNameFactory,
-  StudentPortfolioFactory,
-  AcademyClassDevFactory,
-  AcademyClassBusinessFactory,
+  AcademyClassListType as AcademyClassList,
+  AcademyClassType as AcademyClass,
+  AcademyProjectListType as AcademyProjectList,
+  AcademyStudentQuizType as AcademyStudentQuiz,
+  AcademyStudentsType as AcademyStudents,
+  AcademyWalletType as AcademyWallet,
+  MasterNameType as MasterName,
+  StudentPortfolioType as StudentPortfolio,
+  AcademyClassDevType as Developer,
+  AcademyClassBusinessType as Business,
 } from '@type_chain'
 
-import { useAppSelector } from '@store/store'
+export type ContractFactoryType =
+  | AcademyClassList
+  | AcademyClass
+  | AcademyProjectList
+  | AcademyStudentQuiz
+  | AcademyStudents
+  | AcademyWallet
+  | MasterName
+  | StudentPortfolio
+  | Developer
+  | Business
 
-const initialContracts = {
+export type ContractNameType =
+  | 'AcademyClassList'
+  | 'AcademyClass'
+  | 'AcademyProjectList'
+  | 'AcademyStudentQuiz'
+  | 'AcademyStudents'
+  | 'AcademyWallet'
+  | 'MasterName'
+  | 'StudentPortfolio'
+  | 'Developer'
+  | 'Business'
+
+type AllContractsType = {
+  AcademyClassList: {
+    name: 'AcademyClassList'
+    contract: AcademyClassList
+  }
+  AcademyClass: {
+    name: 'AcademyClass'
+    contract: AcademyClass
+  }
+  AcademyProjectList: {
+    name: 'AcademyProjectList'
+    contract: AcademyProjectList
+  }
+  AcademyStudentQuiz: {
+    name: 'AcademyStudentQuiz'
+    contract: AcademyStudentQuiz
+  }
+  AcademyStudents: {
+    name: 'AcademyStudents'
+    contract: AcademyStudents
+  }
+  AcademyWallet: {
+    name: 'AcademyWallet'
+    contract: AcademyWallet
+  }
+  MasterName: {
+    name: 'MasterName'
+    contract: MasterName
+  }
+  StudentPortfolio: {
+    name: 'StudentPortfolio'
+    contract: StudentPortfolio
+  }
+  Developer: {
+    name: 'Developer'
+    contract: Developer
+  }
+  Business: {
+    name: 'Business'
+    contract: Business
+  }
+}
+
+export const INITIAL_CONTRACTS: AllContractsType = {
   AcademyClassList: {
     name: 'AcademyClassList',
-    contract: AcademyClassListFactory,
-    isLoading: false,
-    isError: false,
+    contract: null,
   },
   AcademyClass: {
     name: 'AcademyClass',
-    contract: AcademyClassFactory,
-    isLoading: false,
-    isError: false,
+    contract: null,
   },
   AcademyProjectList: {
     name: 'AcademyProjectList',
-    contract: AcademyProjectListFactory,
-    isLoading: false,
-    isError: false,
+    contract: null,
   },
   AcademyStudentQuiz: {
     name: 'AcademyStudentQuiz',
-    contract: AcademyStudentQuizFactory,
-    isLoading: false,
-    isError: false,
+    contract: null,
   },
   AcademyStudents: {
     name: 'AcademyStudents',
-    contract: AcademyStudentsFactory,
-    isLoading: false,
-    isError: false,
+    contract: null,
   },
   AcademyWallet: {
     name: 'AcademyWallet',
-    contract: AcademyWalletFactory,
-    isLoading: false,
-    isError: false,
+    contract: null,
   },
   MasterName: {
     name: 'MasterName',
-    contract: MasterNameFactory,
-    isLoading: false,
-    isError: false,
+    contract: null,
   },
   StudentPortfolio: {
     name: 'StudentPortfolio',
-    contract: StudentPortfolioFactory,
-    isLoading: false,
-    isError: false,
+    contract: null,
   },
   Developer: {
     name: 'Developer',
-    contract: AcademyClassDevFactory,
-    isLoading: false,
-    isError: false,
+    contract: null,
   },
   Business: {
     name: 'Business',
-    contract: AcademyClassBusinessFactory,
-    isLoading: false,
-    isError: false,
+    contract: null,
   },
 }
 
-const contractReducer = (state: typeof initialContracts, { type, payload: contract }) => {
-  switch (type) {
-    case type:
+type ActionType = { type: ContractNameType | 'RESET'; payload: ContractFactoryType }
+type LoadContractType = (name: ContractNameType | 'RESET', contract: ContractFactoryType) => void
+export type ContractContextType = {
+  allContracts: Array<{ name: ContractNameType; contract: ContractFactoryType }>
+  loadContract: LoadContractType
+  resetContracts: () => void
+} & AllContractsType
+
+const contractReducer = (state: AllContractsType, action: ActionType) => {
+  switch (action.type) {
+    case action.type:
       return {
         ...state,
-        [type]: {
-          name: type,
-          contract,
-          isLoading: false,
-          isError: false,
+        [action.type]: {
+          name: action.type,
+          contract: action.payload,
         },
       }
     case 'RESET':
@@ -96,13 +149,13 @@ const contractReducer = (state: typeof initialContracts, { type, payload: contra
   }
 }
 
-export const ContractContext = createContext(null)
+export const ContractContext = createContext<ContractContextType>(null)
 
 export const ContractProvider = ({ children }: { children: ReactNode }): JSX.Element => {
   const { chainId } = useAppSelector(state => state.identity)
-  const [contractState, dispatch] = useReducer(contractReducer, initialContracts)
+  const [contractState, dispatch] = useReducer(contractReducer, INITIAL_CONTRACTS)
 
-  const loadContract = useCallback(
+  const loadContract = useCallback<LoadContractType>(
     (name, contract) =>
       dispatch({
         type: name,

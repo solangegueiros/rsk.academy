@@ -1,13 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { ADMIN_ACCOUNTS } from '@constants/constants'
-import { PayloadAction } from '@reduxjs/toolkit'
+import { ADMIN_ACCOUNTS } from '@constants'
 
 export type IdentityStateType = {
   account: string
   isAdmin: boolean
   chainId: number
   error: Error
+  isLoading: boolean
 }
 
 export const initialIdentityState: IdentityStateType = {
@@ -15,6 +15,7 @@ export const initialIdentityState: IdentityStateType = {
   isAdmin: false,
   chainId: null,
   error: null,
+  isLoading: false,
 }
 
 export const identityReducers = {
@@ -39,6 +40,9 @@ export const identityReducers = {
   setError: (state: IdentityStateType, { payload: { error } }: PayloadAction<{ error: Error }>): void => {
     state.error = error
   },
+  setLoading: (state: IdentityStateType, { payload }: PayloadAction<boolean>): void => {
+    state.isLoading = payload
+  },
 }
 
 export const identitySlice = createSlice({
@@ -47,4 +51,4 @@ export const identitySlice = createSlice({
   reducers: identityReducers,
 })
 
-export const { changeAccount, changeChainId, reset, setError, login, logout } = identitySlice.actions
+export const { changeAccount, changeChainId, reset, setError, login, logout, setLoading } = identitySlice.actions

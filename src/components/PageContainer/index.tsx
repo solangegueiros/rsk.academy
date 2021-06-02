@@ -1,8 +1,10 @@
 import { ReactNode } from 'react'
-import { Box, chakra, Flex } from '@chakra-ui/react'
+
+import { Box, chakra, Flex, Grid } from '@chakra-ui/react'
 import { SkipNavContent, SkipNavLink } from '@chakra-ui/skip-nav'
 
-import { Container, Header, Seo, PageTransition, Footer } from '@components'
+import { Container, Header, Seo, Footer } from '@components'
+
 import { Transactions } from '../Transactions'
 import { EditPageButton } from './EditPageButton'
 
@@ -30,26 +32,28 @@ export const PageContainer = (props: PageContainerProps): JSX.Element => {
       <Seo title={title} description={description} />
       <SkipNavLink zIndex={20}>Skip to Content</SkipNavLink>
       <Header />
-      <Container d='flex' as='main' maxW='full' minH='calc(100vh - 4.5rem)'>
-        <Flex flex='1'>
+      <Container as='main' minH='calc(100vh - 4.5rem)'>
+        <Grid gridTemplateColumns={{ sm: '1fr', md: '350px 1fr' }} gap={12} w='full'>
           {sidebar || null}
-          <Box flex='1' w='full'>
+          <Box overflow='hidden'>
             <SkipNavContent />
-            <Flex h='full' flexDir='column' id='content' px={5} mx='auto' maxW='64rem'>
-              <PageTransition>
-                <Box flex='1' h='full' d='flex' flexDir='column'>
-                  <chakra.h1 tabIndex={-1} outline={0} apply='mdx.h1' mb={8}>
-                    {title}
-                  </chakra.h1>
+            <Flex direction='column' h='full'>
+              <Box flex={1}>
+                <chakra.h1 tabIndex={-1} outline={0} apply='mdx.h1' mb={8}>
+                  {title}
+                </chakra.h1>
 
-                  <Box h='full'>{children}</Box>
+                <Box h='full'>{children}</Box>
+              </Box>
+              {editUrl && (
+                <Box mt='40px'>
+                  <EditPageButton href={editUrl} />
                 </Box>
-              </PageTransition>
-              <Box mt='40px'>{editUrl && <EditPageButton href={editUrl} />}</Box>
+              )}
               {pagination || null}
             </Flex>
           </Box>
-        </Flex>
+        </Grid>
       </Container>
       <Footer />
       <Transactions />

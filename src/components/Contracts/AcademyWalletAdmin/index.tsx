@@ -1,5 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import { useContext, useRef, useState } from 'react'
+
 import {
   Alert,
   AlertDescription,
@@ -31,13 +32,14 @@ export const AcademyWalletAdmin = (): JSX.Element => {
     try {
       const res = await AcademyWallet.contract.balanceOf(address.toLowerCase())
       account.current = address
-      setBalance(res)
+      setBalance(res.toNumber())
       setAddress('')
     } catch (err) {
       toast({
         status: 'error',
         title: 'Error!',
-        description: err.message || 'An error occured!',
+        description: err.message || 'An error occurred!',
+        isClosable: true,
       })
     }
   }
@@ -45,12 +47,13 @@ export const AcademyWalletAdmin = (): JSX.Element => {
   const getThisBalance = async () => {
     try {
       const res = await AcademyWallet.contract.thisBalance()
-      setContractBalance(res)
+      setContractBalance(res.toNumber())
     } catch (err) {
       toast({
         status: 'error',
         title: 'Error!',
-        description: err.message || 'An error occured!',
+        description: err.message || 'An error occurred!',
+        isClosable: true,
       })
     }
   }
