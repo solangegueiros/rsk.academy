@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 
 import { DarkModeSwitch, Transactions } from '@components'
-import { RLoginResponseContext } from '@context/RLoginProvider'
+import { Web3Context } from '@context/Web3Provider'
 import { useAppSelector } from '@store'
 
 import { MobileNavLink } from '../MobileNavLink'
@@ -28,7 +28,7 @@ export const MobileNavHeader = ({ shadow, onClose }: MobileNavHeaderProps): JSX.
   const closeBtnRef = useRef()
   const { t } = useTranslation('common')
   const { isAdmin } = useAppSelector(state => state.identity)
-  const { rLoginResponse } = useContext(RLoginResponseContext)
+  const { isLoggedIn } = useContext(Web3Context)
 
   const { locale, locales } = router
 
@@ -55,7 +55,7 @@ export const MobileNavHeader = ({ shadow, onClose }: MobileNavHeaderProps): JSX.
         <HStack w='full'>
           <MobileNavLink href={`/courses/dev/01/${locale}`}>{t`courses`}</MobileNavLink>
           <MobileNavLink href='/events'>{t`events`}</MobileNavLink>
-          {rLoginResponse && !isAdmin && (
+          {isLoggedIn && !isAdmin && (
             <>
               <MobileNavLink href='/portfolio'>{t`portfolio`}</MobileNavLink>
               <MobileNavLink href='/profile'>{t`profile`}</MobileNavLink>

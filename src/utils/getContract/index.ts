@@ -1,42 +1,33 @@
-import Web3 from 'web3'
-import { Contract } from 'web3-eth-contract'
-import { AbiItem } from 'web3-utils'
+import { Signer } from '@ethersproject/abstract-signer'
+import { AddressZero } from '@ethersproject/constants'
+import { Contract } from '@ethersproject/contracts'
+import { Web3Provider } from '@ethersproject/providers'
+import { getChecksumAddress } from '@thinkanddev/rskswap-sdk'
 
-import { CONTRACT_ADDRESSES } from '@constants'
-
-export type ContractAbiType = {
-  contractName: string
-  networks: Record<number, { address: string }>
-  abi?: AbiItem[]
+// account is not optional
+export function getSigner(library: Web3Provider, account: string): Signer {
+  return library.getSigner(account).connectUnchecked()
 }
 
-export type LoadedContractType<T> = {
-  contract: T
-  address: string
-  abi: ContractAbiType
+// account is optional
+export function getProviderOrSigner(library: Web3Provider, account?: string): Signer | Web3Provider {
+  return account ? getSigner(library, account) : library
 }
 
-export const getContract = (
-  contractAbi: ContractAbiType,
-  chainId: number,
-  provider: any,
-  dependedAddress?: string,
-): LoadedContractType<Contract> => {
-  const { contractName, networks, abi } = contractAbi
-  const web3 = new Web3(provider)
+// returns the checksummed address if the address is valid, otherwise returns false
+export function isAddress(value: string): string | false {
+  try {
+    return getChecksumAddress(value) // return getAddress(value)
+  } catch {
+    return false
+  }
+}
 
-  // If contract address depends on an external address
-  const address =
-    dependedAddress?.toLowerCase() ||
-    (CONTRACT_ADDRESSES[chainId] && CONTRACT_ADDRESSES[chainId][contractName]?.toLowerCase()) ||
-    networks[chainId]?.address.toLowerCase()
-
-  if (address) {
-    // Extend abi networks with depended address
-    networks[chainId] = { address }
+// account is optional
+export function getContract(address: string, ABI: any, library: Web3Provider, account?: string): Contract {
+  if (!isAddress(address) || address === AddressZero) {
+    throw Error(`Invalid 'address' parameter '${address}'.`)
   }
 
-  const contract = new web3.eth.Contract(abi, address)
-
-  return { contract, address, abi: contractAbi }
+  return new Contract(address, ABI, getProviderOrSigner(library, account))
 }

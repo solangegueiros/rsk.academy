@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { ADMIN_ACCOUNTS } from '@constants'
+import { DeployedNetworksType } from '@constants'
 
 export type IdentityStateType = {
   account: string
   isAdmin: boolean
-  chainId: number
+  chainId: DeployedNetworksType
   error: Error
+  isLoading: boolean
 }
 
 export const initialIdentityState: IdentityStateType = {
@@ -14,22 +15,25 @@ export const initialIdentityState: IdentityStateType = {
   isAdmin: false,
   chainId: null,
   error: null,
+  isLoading: false,
 }
 
 export const identityReducers = {
   login: (
     state: IdentityStateType,
-    { payload: { account, chainId } }: PayloadAction<{ account: string; chainId: number }>,
+    { payload: { account, chainId } }: PayloadAction<{ account: string; chainId: DeployedNetworksType }>,
   ): void => {
     state.account = account.toLowerCase()
     state.chainId = chainId
   },
   changeAccount: (state: IdentityStateType, { payload: { account } }: PayloadAction<{ account: string }>): void => {
     state.account = account.toLowerCase()
-    state.isAdmin = account.toLowerCase() === ADMIN_ACCOUNTS[state.chainId]?.toLowerCase()
     state.error = null
   },
-  changeChainId: (state: IdentityStateType, { payload: { chainId } }: PayloadAction<{ chainId: number }>): void => {
+  changeChainId: (
+    state: IdentityStateType,
+    { payload: { chainId } }: PayloadAction<{ chainId: DeployedNetworksType }>,
+  ): void => {
     state.chainId = chainId
     state.error = null
   },
@@ -37,6 +41,12 @@ export const identityReducers = {
   logout: (): IdentityStateType => ({ ...initialIdentityState }),
   setError: (state: IdentityStateType, { payload: { error } }: PayloadAction<{ error: Error }>): void => {
     state.error = error
+  },
+  setLoading: (state: IdentityStateType, { payload }: PayloadAction<boolean>): void => {
+    state.isLoading = payload
+  },
+  setAdmin: (state: IdentityStateType, { payload }: PayloadAction<boolean>): void => {
+    state.isAdmin = payload
   },
 }
 
@@ -46,4 +56,13 @@ export const identitySlice = createSlice({
   reducers: identityReducers,
 })
 
-export const { changeAccount, changeChainId, reset, setError, login, logout } = identitySlice.actions
+export const {
+  changeAccount,
+  changeChainId,
+  reset,
+  setError,
+  login,
+  logout,
+  setLoading,
+  setAdmin,
+} = identitySlice.actions

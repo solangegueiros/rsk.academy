@@ -87,6 +87,10 @@
           {
             "pattern": "@utils/**",
             "group": "internal"
+          },
+          {
+            "pattern": "@type_chain/**",
+            "group": "internal"
           }
         ],
         "pathGroupsExcludedImportTypes": ["react"],

@@ -25,8 +25,10 @@ import { Popup } from '@components/Popup'
 import { ContractContext } from '@context/ContractProvider'
 
 export const AcademyWallet = (): JSX.Element => {
-  const { AcademyWallet: contract } = useContext(ContractContext)
-  const [balance, setBalance] = useState<number | null>(null)
+  const {
+    AcademyWallet: { contract, name },
+  } = useContext(ContractContext)
+  const [balance, setBalance] = useState<number>(null)
   const [address, setAddress] = useState<string>('')
   const toast = useToast()
   const { t } = useTranslation('common')
@@ -39,21 +41,22 @@ export const AcademyWallet = (): JSX.Element => {
 
   const getBalance = async () => {
     try {
-      const res = await contract.contract?.methods.balanceOf(address.toLowerCase()).call()
+      const res = await contract?.balanceOf(address.toLowerCase())
       account.current = address
-      setBalance(res)
+      setBalance(res.toNumber())
       setAddress(null)
     } catch (err) {
       toast({
         status: 'error',
         title: 'Error!',
-        description: err.message || 'An error occured!',
+        description: err.message || 'An error occurred!',
+        isClosable: true,
       })
     }
   }
 
   return (
-    <ContractBase contract={contract}>
+    <ContractBase name={name} contract={contract}>
       <Box>
         <VStack mb={4} spacing={4}>
           <FormControl>

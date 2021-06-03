@@ -7,19 +7,19 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Layout, Seo, SubscribeAcademy } from '@components'
 import { COURSE_ADDRESSES } from '@constants'
-import { RLoginResponseContext } from '@context/RLoginProvider'
+import { Web3Context } from '@context/Web3Provider'
 import { useAppSelector } from '@store'
 
 const Profile = (): JSX.Element => {
   const { t } = useTranslation('common')
   const profile = useAppSelector(state => state.profile)
-  const { rLoginResponse } = useContext(RLoginResponseContext)
+  const { isLoggedIn } = useContext(Web3Context)
   const { isAdmin, chainId } = useAppSelector(state => state.identity)
   const {
     index,
     ownerAddress,
     portfolioAddress,
-    activeClassAddress,
+    activeClass,
     studentClasses,
     portfolioList,
     studentActiveClassName,
@@ -29,7 +29,7 @@ const Profile = (): JSX.Element => {
   const color = useColorModeValue('primary.500', 'light.500')
 
   const renderProfile = () => {
-    if (!rLoginResponse) return <Box>You must log in</Box>
+    if (!isLoggedIn) return <Box>You must log in</Box>
     if (isAdmin) return <Box>Portfolio page is for students</Box>
     if (!index)
       return (
@@ -97,7 +97,7 @@ const Profile = (): JSX.Element => {
                 Active Class:
               </Box>
               <pre>
-                {studentActiveClassName} - {activeClassAddress}
+                {studentActiveClassName} - {activeClass}
               </pre>
             </Box>
           )}

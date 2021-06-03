@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { ethers } from 'ethers'
 
 type ProfileStateType = {
-  index: string
+  index: ethers.BigNumber
   ownerAddress: string
   portfolioAddress: string
-  activeClassAddress: string
+  activeClass: string
   studentClasses: string[]
   portfolioList: [string, string][]
   studentActiveClassName: string
@@ -17,7 +18,7 @@ export const initialProfileState: ProfileStateType = {
   index: null,
   ownerAddress: null,
   portfolioAddress: null,
-  activeClassAddress: null,
+  activeClass: null,
   studentClasses: null,
   portfolioList: null,
   studentActiveClassName: null,
@@ -32,7 +33,7 @@ export const profileReducers = {
       index,
       ownerAddress,
       portfolioAddress,
-      activeClassAddress,
+      activeClass,
       studentClasses,
       portfolioList,
       studentActiveClassName,
@@ -44,7 +45,7 @@ export const profileReducers = {
     state.index = index
     state.ownerAddress = ownerAddress
     state.portfolioAddress = portfolioAddress
-    state.activeClassAddress = activeClassAddress
+    state.activeClass = activeClass
     state.studentClasses = studentClasses
     state.portfolioList = portfolioList
     state.studentActiveClassName = studentActiveClassName

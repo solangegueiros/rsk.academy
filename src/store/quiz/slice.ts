@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { questions } from '@configs/questions'
-import { getRandom } from 'src/utils/getRandom'
+import { getRandom } from '@utils/getRandom'
 
 export type ModuleType = '01' | '02' | '03'
 export type CourseType = 'dev' | 'business'
@@ -129,18 +129,10 @@ const quizReducers = {
       isCorrect,
     }
   },
-  pendingAnswers: (
+  resetQuizAnswers: (
     state: QuizStateType,
     { payload: { course, module } }: PayloadAction<{ course: CourseType; module: ModuleType }>,
   ) => {
-    state.answers[course][module].isLoading = true
-  },
-  finalizeAnswers: (
-    state: QuizStateType,
-    { payload: { course, module } }: PayloadAction<{ course: CourseType; module: ModuleType }>,
-  ) => {
-    state.answers[course][module].isLoading = false
-    state.answers[course][module].isError = false
     state.answers[course][module].result = {}
   },
   errorAnswers: (
@@ -189,7 +181,6 @@ export const {
   randomizeQuestions,
   setNextQuestion,
   setPreviousQuestion,
-  pendingAnswers,
-  finalizeAnswers,
   errorAnswers,
+  resetQuizAnswers,
 } = quizSlice.actions

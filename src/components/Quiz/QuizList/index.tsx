@@ -14,11 +14,12 @@ import {
   Alert,
   AlertDescription,
   AlertIcon,
+  Spinner,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { CONTRACT_ADDRESSES } from '@constants'
-import { RLoginResponseContext } from '@context/RLoginProvider'
+import { Web3Context } from '@context/Web3Provider'
 import { useSubmitAnswers } from '@hooks/transactions/useSubmitAnswers'
 import { useQuiz } from '@hooks/useQuiz'
 import { useAppSelector } from '@store'
@@ -52,7 +53,7 @@ export const QuizList = ({ course, module, numberOfQuestions }: QuizListProps): 
 
   const { submitAnswers, isLoading } = useSubmitAnswers(course, module, numberOfQuestions)
 
-  const { rLoginResponse } = useContext(RLoginResponseContext)
+  const { isLoggedIn } = useContext(Web3Context)
   const { t } = useTranslation('common')
 
   useEffect(() => {
@@ -63,11 +64,21 @@ export const QuizList = ({ course, module, numberOfQuestions }: QuizListProps): 
     await submitAnswers()
   }
 
-  if (!rLoginResponse) {
+  if (isLoading)
     return (
-      <Center h='full'>
-        <Text>You must be logged in</Text>
+      <Center>
+        <Spinner />
       </Center>
+    )
+
+  if (!isLoggedIn) {
+    return (
+      <Alert my={8} status='warning'>
+        <AlertIcon />
+        <AlertDescription>
+          <Text>You must be logged in</Text>
+        </AlertDescription>
+      </Alert>
     )
   }
 

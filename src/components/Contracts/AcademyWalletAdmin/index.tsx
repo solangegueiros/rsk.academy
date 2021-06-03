@@ -30,34 +30,36 @@ export const AcademyWalletAdmin = (): JSX.Element => {
 
   const getBalance = async () => {
     try {
-      const res = await AcademyWallet.contract.methods.balanceOf(address.toLowerCase()).call()
+      const res = await AcademyWallet.contract.balanceOf(address.toLowerCase())
       account.current = address
-      setBalance(res)
+      setBalance(res.toNumber())
       setAddress('')
     } catch (err) {
       toast({
         status: 'error',
         title: 'Error!',
-        description: err.message || 'An error occured!',
+        description: err.message || 'An error occurred!',
+        isClosable: true,
       })
     }
   }
 
   const getThisBalance = async () => {
     try {
-      const res = await AcademyWallet.contract.methods.thisBalance().call()
-      setContractBalance(res)
+      const res = await AcademyWallet.contract.thisBalance()
+      setContractBalance(res.toNumber())
     } catch (err) {
       toast({
         status: 'error',
         title: 'Error!',
-        description: err.message || 'An error occured!',
+        description: err.message || 'An error occurred!',
+        isClosable: true,
       })
     }
   }
 
   return (
-    <ContractBase contract={AcademyWallet}>
+    <ContractBase name={AcademyWallet.name} contract={AcademyWallet.contract}>
       <Box>
         <VStack spacing={4}>
           <FormControl>

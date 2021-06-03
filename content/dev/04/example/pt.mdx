@@ -1,0 +1,34 @@
+---
+title: 'Example PT'
+description: 'Example description PT'
+---
+
+Portuguese
+
+## Code test
+
+```js ln={8-10} viewlines
+const abi = UPDATE_ABI_HERE
+
+const Bytecode = UPDATE_BYTECODE_HERE
+
+const Contract = web3.eth.contract(abi)
+const instance = Contract.new(
+  {
+    from: web3.eth.accounts[0],
+    data: '0x' + Bytecode.object,
+    gas: '4700000',
+  },
+  function (e, contract) {
+    if (typeof contract.address !== 'undefined') {
+      console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash)
+    }
+  },
+)
+```
+
+## Code test 2
+
+```js
+const x = [12, 'a', { a: 3 }]
+```
