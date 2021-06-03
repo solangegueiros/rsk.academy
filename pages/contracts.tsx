@@ -18,7 +18,7 @@ const Contracts = (): JSX.Element => {
               <Text fontSize='1.5em' fontWeight='bold'>
                 {name}
               </Text>
-              <Code fontSize='1.5em'>{contract.address}</Code>
+              <Code fontSize='1.5em'>{contract?.address}</Code>
             </HStack>
           ))}
       </Box>
