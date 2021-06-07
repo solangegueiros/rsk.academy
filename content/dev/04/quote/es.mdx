@@ -3,264 +3,32 @@ title: 'Quote dApp ES'
 description: 'Quote dApp ES description'
 ---
 
-Crearemos un contrato inteligente para guardar un mensaje o cotización en Blockchain.
+We're excited that you chose RSK to help in your journey to become a Blockchain developer!
 
-El contrato inteligente se llama **Quote**.
+We believe that the best type of learning is the hands-on experience.
 
-Usaremos Remix para crear el contrato inteligente.
+We set to accomplish this through several coding tutorials, projects, and challenges defined for you.
 
-Abre [remix.ethereum.org](http://remix.ethereum.org/)
+## Curriculum Structure
 
-# Crea un smart contract
+The curriculum is split into
 
-1. Haz clic en el segundo botón en el lado izquierdo - file explorer
-2. Haz clic en **create a new file**
+distinct modules starting with programming basics and ends with deployment of decentralized applications on RSK Blockchain!
 
-![create a new file](/img/courses/dev/04/quote/image-01.png)
+The curriculum starts in the first module and progresses at a level of difficulty, sequentially to the others. Each module builds on knowledge from the previous module.
 
-Nombre del archivo / file name: **Name.sol**
+The course makes no assumptions about your previous knowledge and it starts from the very basics of programming.
 
-Copia y pega este ejemplo:
+At later stages in the curriculum you will learn how to port your programming knowledge over to development on your local machine so you can begin working on your own projects!
 
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity 0.8.1;
+## Slack Channel
 
-contract Quote {
-  address public owner;
-  string private message;
-  mapping (address => bool) public whiteList;
+Be sure to join our Slack channel and join in the discussion with the IOVLabs community!
 
-  constructor() {
-      owner = msg.sender;
-      whiteList[msg.sender] = true;
-  }
+[Slack Channel](https://join.slack.com/t/open-rsk-dev/shared_invite/zt-kk3yfuc6-qn~DrpMLvADkAUu1pbAcZA)
 
-  modifier onlyOwner {
-      require(msg.sender == owner,"Only owner");
-      _;
-  }
+# References
 
-  modifier onlyWhitelist {
-      require(whiteList[msg.sender] == true, "Only whitelist");
-      _;
-  }
+https://docs.soliditylang.org/
 
-  function setQuote(string memory _message) public onlyWhitelist {
-      message = _message;
-  }
-
-  function getQuote() public view returns (string memory) {
-      return message;
-  }
-
-  function addMember (address _member) public onlyOwner {
-      whiteList[_member] = true;
-  }
-
-  function delMember (address _member) public onlyOwner {
-      whiteList[_member] = false;
-  }
-}
-
-```
-
-## Quote.sol
-
-Entendamos el contrato inteligente.
-
-### Variables
-
-**owner**
-
-```solidity
-address public owner;
-```
-
-Dirección del creador del contrato inteligente;
-
-**message**
-
-```solidity
-string private message;
-```
-
-Mensaje almacenado en Blockchain.
-
-**whiteList**
-
-```solidity
-mapping (address => bool) public whiteList;
-```
-
-Lista de direcciones que define quién puede actualizar la variable **message**.
-
-### Constructor
-
-Función que se realiza ÚNICAMENTE durante la publicación del contrato inteligente.
-
-```solidity
-owner = msg.sender;
-whiteList[msg.sender] = true;
-```
-
-Estamos inicializando variables.
-
-**msg.sender** es la dirección que envió la transacción para crear el contrato inteligente.
-
-- Almacenamos el **msg.sender** en la variable **owner**.
-- Agregamos en la **whiteList**, es decir, decimos que está autorizado, con el valor booleano **true**.
-
-### Modifier
-
-El modificador define los requisitos que se comprobarán automáticamente antes de ejecutar una función.
-
-Es muy común usar el comando **require** dentro de un modificador.
-
-#### onlyOwner
-
-```solidity
-modifier onlyOwner {
-    require(msg.sender == owner,"Only owner");
-    _;
-}
-```
-
-Este modificador verifica si la persona que envía la transacción es el **owner** del contrato inteligente.
-De lo contrario, se envía el mensaje de error **\*Only owner**.
-
-#### onlyWhitelist
-
-```solidity
-modifier onlyWhitelist {
-    require(whiteList[msg.sender] == true, "Only whitelist");
-    _;
-}
-```
-
-Este modificador verifica que quien esté enviando la transacción tenga el valor **true** en **whiteList**.
-De lo contrario, se envía el mensaje de error **Only whitelist**.
-
-> Si la dirección no se inicializó previamente en la whitelist, el valor **default** es **false**.
-
-### Message functions
-
-Estas son las funciones relacionadas con el mensaje almacenado en el contrato inteligente.
-
-#### setQuote
-
-```solidity
-function setQuote(string memory _message) public onlyWhitelist {
-    message = _message;
-}
-
-```
-
-Función para grabar un mensaje, es decir, actualizar la variable **message**.
-
-Utiliza el modificador **onlyWhitelist**, es decir,
-solo aquellos en la whitelist pueden cambiar el mensaje almacenado.
-
-#### getQuote
-
-```solidity
-function getQuote() public view returns (string memory) {
-    return message;
-}
-
-```
-
-Función para devolver el mensaje guardado en la variable **message**.
-
-### Member administration
-
-Contamos con funciones para gestionar la whitelist, es decir, para definir quién está y quién no está en whitelist.
-
-Estas funciones están controladas por el modificador **onlyOwner**, es decir,
-solo el creador del contrato inteligente puede administrar la lista blanca.
-
-#### addMember
-
-```solidity
-function addMember (address _member) public onlyOwner {
-    whiteList[_member] = true;
-}
-
-```
-
-Define que para una dirección dada, que es la clave, se almacenará el valor **true**.
-
-#### delMember
-
-```solidity
-function delMember (address _member) public onlyOwner {
-    whiteList[_member] = false;
-}
-
-```
-
-Define que para una dirección dada, que es la clave, se almacenará el valor **false**, que es el valor predeterminado.
-Si en algún momento la dirección tuvo el valor ** verdadero ** asociado, es necesario configurar el valor **false** para que ya no tenga acceso.
-
-# Compila un contrato inteligente
-
-Si habilitó la compilación automática (auto-compile), el contrato inteligente ya está compilado y aparecerá una luz verde junto al tercer botón de la izquierda: Solidity compiler.
-
-![compilation successful](/img/courses/dev/04/quote/image-02.png)
-
-Si no lo ha habilitado:
-
-1. Clique no 3o botão do lado esquerdo - `Solidity compiler`
-2. Clique no botão Compile Name.sol
-3. Verifica el letrero verde en el tercer botón con el mensaje: compilation successful
-
-## Deploy de un contrato inteligente en RSK testnet
-
-### Requisitos
-
-1. Selecciones la red RSK en la billetera web, Nifty o Metamask.
-2. Tenga tR-BTC en su billetera.
-3. En Remix, en **Deploy and run transactions**,
-   en **Environment**, asegúrese de haber seleccionado la opción **Injected Web3**.
-
-## Desplegar
-
-En el panel lateral izquierdo, ubique el cuarto botón: **Deploy and run transactions**
-
-Dado que solo tenemos un contrato inteligente, se selecciona automáticamente de la lista.
-
-Haz clic en el botón **Deploy**.
-
-Tu billetera web abrirá una ventana emergente para confirmar la transacción configurada por Remix para publicar el contrato inteligente.
-
-Haz clic en **confirm / submit**.
-
-En la parte inferior, a la derecha, aparecerá el mensaje: _creation of Name pending..._
-
-Un bloque en la red RSK tarda, en promedio, 30 segundos para ser minado,
-así que debemos esperar este tiempo.
-
-Esta es la dirección de mi contrato inteligente **quote**:
-
-```
-0xF2FD988A92484ff16Edd5BD9DAbE5eb809c5B3Dd
-```
-
-# Interactuar con el contrato inteligente
-
-Ya hemos interactuado con el contrato inteligente publicado en JavascriptVM,
-y también podemos usar Remix para interactuar con un contrato inteligente publicado en cualquier red.
-
-El único cambio es el **Environment**, es decir,
-la red conectada, que ahora es **Injected Web3**.
-
-En la sección **deployed contracts**, en el contrato inteligente,
-haz clic en el símbolo **>** para ver los datos.
-
-![deployed contracts](/img/courses/dev/04/quote/image-03.png)
-
-## Consideraciones finales
-
-¡Felicidades!
-
-Publicó el contrato inteligente **Quote** en RSK Testnet Blockchain e interactuó con él.
+https://eth.wiki/

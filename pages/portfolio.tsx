@@ -8,12 +8,12 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Layout, Seo, AcademyWallet } from '@components'
 import { CONTRACTS } from '@components/Contracts'
-import { RLoginResponseContext } from '@context/RLoginProvider'
+import { Web3Context } from '@context/Web3Provider'
 import { useAppSelector } from '@store'
 
 const Portfolio = (): JSX.Element => {
   const { t } = useTranslation('common')
-  const { rLoginResponse } = useContext(RLoginResponseContext)
+  const { isLoggedIn } = useContext(Web3Context)
   const { isAdmin } = useAppSelector(state => state.identity)
   const { portfolioList } = useAppSelector(state => state.profile)
 
@@ -24,8 +24,8 @@ const Portfolio = (): JSX.Element => {
   return (
     <Layout>
       <Seo title={t`portfolio`} description={t`portfolio`} />
-      {!rLoginResponse && <Box>You must log in</Box>}
-      {rLoginResponse && isAdmin ? (
+      {!isLoggedIn && <Box>You must log in</Box>}
+      {isLoggedIn && isAdmin ? (
         <Box>Portfolio page is for students</Box>
       ) : (
         <SimpleGrid columns={{ md: 2 }} gap={4}>

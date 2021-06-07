@@ -5,36 +5,23 @@ import { Button, ButtonGroup, Input, VStack } from '@chakra-ui/react'
 import { ContractBase } from '@components'
 import { ContractContext } from '@context/ContractProvider'
 import { useTransactionCallback } from '@hooks/transactions/useTransactionCallback'
-import { useLoadSmartContracts } from '@hooks/useLoadContracts'
 import { useAppSelector } from '@store'
 
 export const MasterName = (): JSX.Element => {
-  const { MasterName: MasterNameContract } = useContext(ContractContext)
+  const {
+    MasterName: { contract, name: contractName },
+  } = useContext(ContractContext)
   const { account } = useAppSelector(state => state.identity)
-  const { loadContracts } = useLoadSmartContracts()
 
   const { studentName } = useAppSelector(state => state.profile)
-  const [name, setName] = useState<string>(studentName)
+  const [name, setName] = useState<string>(studentName || '')
   const [address, setAddress] = useState<string>('')
 
-  const onSetCompleted = () => loadContracts()
+  const { execute: onSetName, isLoading: isLoadingSet } = useTransactionCallback('Set Name')
+  const { execute: onDeleteName, isLoading: isLoadingDelete } = useTransactionCallback('Delete Name')
 
-  const onDeleteCompleted = () => loadContracts()
-
-  const { exec: handleSetName, isLoading: isLoadingSet } = useTransactionCallback({
-    name: 'Set Name',
-    from: account,
-    method: MasterNameContract.contract?.methods.addName,
-    args: [address, name],
-    onCompleted: onSetCompleted,
-  })
-
-  const { exec: handleDeleteName, isLoading: isLoadingDelete } = useTransactionCallback({
-    name: 'Delete Name',
-    from: account,
-    method: MasterNameContract.contract?.methods.deleteName,
-    onCompleted: onDeleteCompleted,
-  })
+  const handleSetName = () => onSetName(() => contract.addName(address, name))
+  const handleDeleteName = () => onDeleteName(() => contract.deleteName())
 
   useEffect(() => {
     if (studentName) setName(studentName)
@@ -42,10 +29,10 @@ export const MasterName = (): JSX.Element => {
   }, [studentName, account])
 
   return (
-    <ContractBase contract={MasterNameContract}>
+    <ContractBase name={contractName} contract={contract}>
       <VStack spacing={4}>
         <Input value={name} placeholder='Name' onChange={e => setName(e.target.value)} />
-        <Input value={address} placeholder='Address' onChange={e => setAddress(e.target.value)} />
+        <Input value={address} placeholder='Address' onChange={e => setAddress(e.target.value.toLowerCase())} />
         <ButtonGroup w='full'>
           <Button isLoading={isLoadingSet} isFullWidth onClick={handleSetName} isDisabled={!!studentName}>
             Set Name

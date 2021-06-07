@@ -9,35 +9,32 @@ import { useTransactionCallback } from '@hooks/transactions/useTransactionCallba
 import { useAppSelector } from '@store'
 
 interface SubscribeAcademyProps {
-  contractName: string
+  contractName: 'Developer' | 'Business'
   buttonText?: string
 }
 
 export const SubscribeAcademy = ({ contractName, buttonText }: SubscribeAcademyProps): JSX.Element => {
-  const context = useContext(ContractContext)
-  const contract = context[contractName]
+  const {
+    [contractName]: { contract },
+  } = useContext(ContractContext)
   const { studentClasses } = useAppSelector(state => state.profile)
-  const { account, chainId } = useAppSelector(state => state.identity)
+  const { chainId } = useAppSelector(state => state.identity)
 
   const hasSubscribed = studentClasses?.includes(
     CONTRACT_ADDRESSES[chainId] && CONTRACT_ADDRESSES[chainId][contractName],
   )
 
-  const { exec, isLoading } = useTransactionCallback({
-    name: `Subscribe course ${contractName}`,
-    from: account,
-    method: contract?.contract?.methods.subscribe,
-  })
+  const { execute, isLoading } = useTransactionCallback(`Subscribe ${contractName}`)
 
   return (
-    <ContractBase contract={contract}>
+    <ContractBase name={contractName} contract={contract}>
       {hasSubscribed ? (
         <Alert>
           <AlertIcon />
           <Text>You have already subscribed the course {contractName}</Text>
         </Alert>
       ) : (
-        <Button isLoading={isLoading} isFullWidth onClick={exec}>
+        <Button isLoading={isLoading} isFullWidth onClick={() => execute(() => contract.subscribe())}>
           {buttonText || 'Subscribe'}
         </Button>
       )}

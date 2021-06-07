@@ -1,56 +1,145 @@
 import { createContext, ReactNode, useCallback, useReducer } from 'react'
 
-import {
-  AcademyClassAbi,
-  AcademyClassListAbi,
-  AcademyProjectListAbi,
-  AcademyStudentsAbi,
-  AcademyWalletAbi,
-  MasterNameAbi,
-  MasterQuoteAbi,
-  StudentPortfolioAbi,
-} from '@contracts'
 import { useAppSelector } from '@store'
+import {
+  AcademyClassListType as AcademyClassList,
+  AcademyClassType as AcademyClass,
+  AcademyProjectListType as AcademyProjectList,
+  AcademyStudentQuizType as AcademyStudentQuiz,
+  AcademyStudentsType as AcademyStudents,
+  AcademyWalletType as AcademyWallet,
+  MasterNameType as MasterName,
+  StudentPortfolioType as StudentPortfolio,
+  AcademyClassDevType as Developer,
+  AcademyClassBusinessType as Business,
+} from '@type_chain'
 
-const ABIS = [
-  AcademyClassAbi,
-  AcademyClassListAbi,
-  AcademyProjectListAbi,
-  AcademyStudentsAbi,
-  AcademyWalletAbi,
-  MasterNameAbi,
-  MasterQuoteAbi,
-  StudentPortfolioAbi,
-]
+export type ContractFactoryType =
+  | AcademyClassList
+  | AcademyClass
+  | AcademyProjectList
+  | AcademyStudentQuiz
+  | AcademyStudents
+  | AcademyWallet
+  | MasterName
+  | StudentPortfolio
+  | Developer
+  | Business
 
-const initialContracts = ABIS.reduce((obj, { abi, contractName, networks }) => {
-  obj[contractName] = {
-    abi,
-    name: contractName,
-    deployedNetworks: Object.keys(networks),
-    isDeployedOnCurrentNetwork: null,
-    address: null,
-    contract: null,
-    isLoading: false,
-    isError: false,
+export type ContractNameType =
+  | 'AcademyClassList'
+  | 'AcademyClass'
+  | 'AcademyProjectList'
+  | 'AcademyStudentQuiz'
+  | 'AcademyStudents'
+  | 'AcademyWallet'
+  | 'MasterName'
+  | 'StudentPortfolio'
+  | 'Developer'
+  | 'Business'
+
+type AllContractsType = {
+  AcademyClassList: {
+    name: 'AcademyClassList'
+    contract: AcademyClassList
   }
-  return obj
-}, {})
+  AcademyClass: {
+    name: 'AcademyClass'
+    contract: AcademyClass
+  }
+  AcademyProjectList: {
+    name: 'AcademyProjectList'
+    contract: AcademyProjectList
+  }
+  AcademyStudentQuiz: {
+    name: 'AcademyStudentQuiz'
+    contract: AcademyStudentQuiz
+  }
+  AcademyStudents: {
+    name: 'AcademyStudents'
+    contract: AcademyStudents
+  }
+  AcademyWallet: {
+    name: 'AcademyWallet'
+    contract: AcademyWallet
+  }
+  MasterName: {
+    name: 'MasterName'
+    contract: MasterName
+  }
+  StudentPortfolio: {
+    name: 'StudentPortfolio'
+    contract: StudentPortfolio
+  }
+  Developer: {
+    name: 'Developer'
+    contract: Developer
+  }
+  Business: {
+    name: 'Business'
+    contract: Business
+  }
+}
 
-const contractReducer = (state: typeof initialContracts, { type, payload: { abi, contract, address, chainId } }) => {
-  switch (type) {
-    case abi.contractName:
+export const INITIAL_CONTRACTS: AllContractsType = {
+  AcademyClassList: {
+    name: 'AcademyClassList',
+    contract: null,
+  },
+  AcademyClass: {
+    name: 'AcademyClass',
+    contract: null,
+  },
+  AcademyProjectList: {
+    name: 'AcademyProjectList',
+    contract: null,
+  },
+  AcademyStudentQuiz: {
+    name: 'AcademyStudentQuiz',
+    contract: null,
+  },
+  AcademyStudents: {
+    name: 'AcademyStudents',
+    contract: null,
+  },
+  AcademyWallet: {
+    name: 'AcademyWallet',
+    contract: null,
+  },
+  MasterName: {
+    name: 'MasterName',
+    contract: null,
+  },
+  StudentPortfolio: {
+    name: 'StudentPortfolio',
+    contract: null,
+  },
+  Developer: {
+    name: 'Developer',
+    contract: null,
+  },
+  Business: {
+    name: 'Business',
+    contract: null,
+  },
+}
+
+type ActionType = { type: ContractNameType | 'RESET'; payload: ContractFactoryType }
+type LoadContractType = (name: ContractNameType | 'RESET', contract: ContractFactoryType) => void
+export type ContractContextType = {
+  allContracts: Array<{ name: ContractNameType; contract: ContractFactoryType }>
+  loadContract: LoadContractType
+  resetContracts: () => void
+} & AllContractsType
+
+const contractReducer = (state: AllContractsType, action: ActionType) => {
+  switch (action.type) {
+    case action.type:
       return {
         ...state,
-        [abi.contractName]: {
-          abi: abi.abi,
-          name: abi.contractName,
-          deployedNetworks: Object.keys(abi.networks),
-          isDeployedOnCurrentNetwork: Object.keys(abi.networks).includes(chainId?.toString()),
-          address,
-          contract,
-          isLoading: false,
-          isError: false,
+        [action.type]: {
+          name: action.type,
+          contract: action.payload,
         },
       }
     case 'RESET':
@@ -60,17 +149,17 @@ const contractReducer = (state: typeof initialContracts, { type, payload: { abi,
   }
 }
 
-export const ContractContext = createContext(null)
+export const ContractContext = createContext<ContractContextType>(null)
 
 export const ContractProvider = ({ children }: { children: ReactNode }): JSX.Element => {
   const { chainId } = useAppSelector(state => state.identity)
-  const [contractState, dispatch] = useReducer(contractReducer, initialContracts)
+  const [contractState, dispatch] = useReducer(contractReducer, INITIAL_CONTRACTS)
 
-  const loadContract = useCallback(
-    ({ abi, contract, address }) =>
+  const loadContract = useCallback<LoadContractType>(
+    (name, contract) =>
       dispatch({
-        type: abi.contractName,
-        payload: { abi, contract, address, chainId },
+        type: name,
+        payload: contract,
       }),
     [chainId],
   )

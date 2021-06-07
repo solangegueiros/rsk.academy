@@ -29,7 +29,7 @@ import {
   Container,
 } from '@components'
 import { NETWORK_LABELS } from '@constants'
-import { RLoginResponseContext } from '@context/RLoginProvider'
+import { Web3Context } from '@context/Web3Provider'
 import { useAppSelector } from '@store'
 
 const LoadingButton = () => <Button variant='outlined' isLoading={true} />
@@ -64,7 +64,7 @@ export const Header = (props: BoxProps): JSX.Element => {
   const bg = useColorModeValue('primary.50', 'dark.500')
   const colorScheme = useColorModeValue('primary', 'light')
   const { t } = useTranslation('common')
-  const { rLoginResponse } = useContext(RLoginResponseContext)
+  const { isLoggedIn } = useContext(Web3Context)
 
   const { chainId } = useAppSelector(state => state.identity)
 
@@ -89,9 +89,7 @@ export const Header = (props: BoxProps): JSX.Element => {
               {t`topBanner`}
             </Text>
             <HStack pos='absolute' right={0}>
-              {rLoginResponse && NETWORK_LABELS[chainId] && (
-                <Tag colorScheme={colorScheme}>{NETWORK_LABELS[chainId]}</Tag>
-              )}
+              {isLoggedIn && NETWORK_LABELS[chainId] && <Tag colorScheme={colorScheme}>{NETWORK_LABELS[chainId]}</Tag>}
               <LocaleSwitch />
               <DarkModeSwitch />
             </HStack>

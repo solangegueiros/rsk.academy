@@ -39,7 +39,9 @@
       "@utils": ["src/utils"],
       "@i18n": ["./i18n"],
       "@test/*": ["test/*"],
-      "@test": ["test"]
+      "@test": ["test"],
+      "@type_chain": ["type_chain"],
+      "@type_chain/*": ["type_chain/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

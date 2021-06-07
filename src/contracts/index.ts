@@ -5,7 +5,6 @@ import AcademyStudentQuizAbi from './AcademyStudentQuiz.json'
 import AcademyStudentsAbi from './AcademyStudents.json'
 import AcademyWalletAbi from './AcademyWallet.json'
 import MasterNameAbi from './MasterName.json'
-import MasterQuoteAbi from './MasterQuote.json'
 import StudentPortfolioAbi from './StudentPortfolio.json'
 
 export {
@@ -16,7 +15,6 @@ export {
   AcademyStudentsAbi,
   AcademyWalletAbi,
   MasterNameAbi,
-  MasterQuoteAbi,
   StudentPortfolioAbi,
 }
 
@@ -28,6 +26,5 @@ export const ABI_LIST = [
   AcademyStudentsAbi,
   AcademyWalletAbi,
   MasterNameAbi,
-  MasterQuoteAbi,
   StudentPortfolioAbi,
 ]

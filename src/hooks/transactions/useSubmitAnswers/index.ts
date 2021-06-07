@@ -1,12 +1,10 @@
-import { useContext } from 'react'
-
-import { toBN } from 'web3-utils'
+import { useContext, useEffect } from 'react'
 
 import { ContractContext } from '@context/ContractProvider'
 import { useQuiz } from '@hooks/useQuiz'
 import { useAppDispatch, useAppSelector } from '@store'
 import { saveQuizResult } from '@store/profile/slice'
-import { CourseType, finalizeAnswers, ModuleType, pendingAnswers } from '@store/quiz/slice'
+import { CourseType, ModuleType, resetQuizAnswers } from '@store/quiz/slice'
 
 import { useTransactionCallback } from '../useTransactionCallback'
 
@@ -32,37 +30,42 @@ export const useSubmitAnswers = (
 ): UseSubmitAnswersReturnType => {
   const { AcademyClass, AcademyStudentQuiz } = useContext(ContractContext)
   const dispatch = useAppDispatch()
-  const { userAnswers = {} } = useQuiz(course, module, numberOfQuestions)
   const { account } = useAppSelector(state => state.identity)
+  const { userAnswers = {} } = useQuiz(course, module, numberOfQuestions)
   const quizName = `${course}-${module}`
 
   const numberOfCorrectAnswers = Object.entries(userAnswers).filter(answers => answers[1].isCorrect).length
 
-  const totalQuestions = toBN(numberOfQuestions)
-  const correctAnswers = toBN(numberOfCorrectAnswers)
+  const totalQuestions = numberOfQuestions
+  const correctAnswers = numberOfCorrectAnswers
 
-  const { exec, isError, isLoading } = useTransactionCallback({
-    name: `Submit Answers ${quizName}`,
-    from: account,
-    method: AcademyClass.contract?.methods.addQuizAnswer,
-    args: [quizName, stringifyAnswers(userAnswers, quizName), totalQuestions, correctAnswers],
-  })
+  const { execute, isError, isLoading, receipt } = useTransactionCallback(`Submit ${quizName} Quiz`)
+
+  useEffect(() => {
+    if (receipt) {
+      AcademyStudentQuiz.contract['getStudentQuiz(address,string)'](account, quizName).then(result => {
+        const { total, grade, attempt, quiz, answer } = result
+
+        dispatch(
+          saveQuizResult({
+            quizName,
+            result: { total, grade, attempt, quiz, answer },
+          }),
+        )
+        dispatch(resetQuizAnswers({ course, module }))
+      })
+    }
+  }, [receipt])
 
   const submitAnswers = async () => {
-    dispatch(pendingAnswers({ course, module }))
-    await exec()
-
-    const result = await AcademyStudentQuiz.contract?.methods.getStudentQuiz(account, quizName).call()
-
-    const { total, grade, attempt, quiz, answer } = result
-
-    dispatch(
-      saveQuizResult({
+    execute(() =>
+      AcademyClass.contract.addQuizAnswer(
         quizName,
-        result: { total, grade, attempt, quiz, answer },
-      }),
+        stringifyAnswers(userAnswers, quizName),
+        totalQuestions,
+        correctAnswers,
+      ),
     )
-    dispatch(finalizeAnswers({ course, module }))
   }
 
   return { submitAnswers, isLoading, isError }

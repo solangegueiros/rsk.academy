@@ -7,7 +7,7 @@ import { Provider as ReduxProvider } from 'react-redux'
 
 import siteConfig from '@configs/site-config'
 import { ContractProvider } from '@context/ContractProvider'
-import { RLoginProvider } from '@context/RLoginProvider'
+import { RLoginProvider } from '@context/Web3Provider'
 import store from '@store'
 import { theme } from '@theme'
 
