@@ -74,7 +74,6 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
 
         const isAccountAdmin = await AcademyClassListSC.hasRole(DEFAULT_ADMIN_ROLE, account)
         dispatch(setAdmin(isAccountAdmin))
-        console.log(`isAccountAdmin`, isAccountAdmin)
 
         // Load Admin
         if (isAccountAdmin) {
@@ -171,9 +170,7 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
         }, 2000)
       }
     } catch (error) {
-      console.log(error)
-      console.log(error.data)
-      console.log(error.response)
+      console.error(error)
 
       if (error.event !== 'changed') {
         dispatch(setError({ error }))
