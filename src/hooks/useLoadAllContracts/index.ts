@@ -5,7 +5,7 @@ import { CONTRACT_ADDRESSES, DEFAULT_ADMIN_ROLE, DEPLOYED_CHAINS } from '@consta
 import { ContractContext } from '@context/ContractProvider'
 import { Web3Context } from '@context/Web3Provider'
 import { useAppDispatch, useAppSelector } from '@store'
-import { loadAdmin } from '@store/admin/slice'
+import { loadCounts } from '@store/admin/slice'
 import { setAdmin, setError, setLoading } from '@store/identity/slice'
 import { saveProfile, resetProfile } from '@store/profile/slice'
 import {
@@ -77,10 +77,10 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
 
         // Load Admin
         if (isAccountAdmin) {
-          const students = await DeveloperSC.listStudentsByAddress()
-          const nameList = await MasterNameSC.listNameInfo()
+          const studentCount = await DeveloperSC.countStudents()
+          const nameCount = await MasterNameSC.countNames()
 
-          dispatch(loadAdmin({ students, nameList, studentCount: students.length, nameCount: nameList.length }))
+          dispatch(loadCounts({ nameCount: nameCount.toNumber(), studentCount: studentCount.toNumber() }))
         }
 
         let quizResults: Record<string, { total: number; grade: number; attempt: number; answer: string }> = null
