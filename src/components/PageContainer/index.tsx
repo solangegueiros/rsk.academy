@@ -5,7 +5,6 @@ import { SkipNavContent, SkipNavLink } from '@chakra-ui/skip-nav'
 
 import { Container, Header, Seo, Footer } from '@components'
 
-import { Transactions } from '../Transactions'
 import { EditPageButton } from './EditPageButton'
 
 export interface FrontMatterType {
@@ -56,7 +55,6 @@ export const PageContainer = (props: PageContainerProps): JSX.Element => {
         </Grid>
       </Container>
       <Footer />
-      <Transactions />
     </>
   )
 }

@@ -41,5 +41,6 @@
   "contract.balanceIs": "Balance is",
   "quiz.yes": "True",
   "quiz.no": "False",
-  "quiz.subscribers": "Only course subscribers can take the quiz."
+  "quiz.subscribers": "Only course subscribers can take the quiz.",
+  "copy.address": "Copy address"
 }

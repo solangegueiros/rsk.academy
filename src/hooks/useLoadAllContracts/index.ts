@@ -5,7 +5,7 @@ import { CONTRACT_ADDRESSES, DEFAULT_ADMIN_ROLE, DEPLOYED_CHAINS } from '@consta
 import { ContractContext } from '@context/ContractProvider'
 import { Web3Context } from '@context/Web3Provider'
 import { useAppDispatch, useAppSelector } from '@store'
-import { loadAdmin } from '@store/admin/slice'
+import { loadCounts } from '@store/admin/slice'
 import { setAdmin, setError, setLoading } from '@store/identity/slice'
 import { saveProfile, resetProfile } from '@store/profile/slice'
 import {
@@ -74,14 +74,13 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
 
         const isAccountAdmin = await AcademyClassListSC.hasRole(DEFAULT_ADMIN_ROLE, account)
         dispatch(setAdmin(isAccountAdmin))
-        console.log(`isAccountAdmin`, isAccountAdmin)
 
         // Load Admin
         if (isAccountAdmin) {
-          const students = await DeveloperSC.listStudentsByAddress()
-          const nameList = await MasterNameSC.listNameInfo()
+          const studentCount = await DeveloperSC.countStudents()
+          const nameCount = await MasterNameSC.countNames()
 
-          dispatch(loadAdmin({ students, nameList, studentCount: students.length, nameCount: nameList.length }))
+          dispatch(loadCounts({ nameCount: nameCount.toNumber(), studentCount: studentCount.toNumber() }))
         }
 
         let quizResults: Record<string, { total: number; grade: number; attempt: number; answer: string }> = null
@@ -171,9 +170,7 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
         }, 2000)
       }
     } catch (error) {
-      console.log(error)
-      console.log(error.data)
-      console.log(error.response)
+      console.error(error)
 
       if (error.event !== 'changed') {
         dispatch(setError({ error }))
