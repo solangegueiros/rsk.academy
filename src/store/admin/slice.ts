@@ -21,12 +21,14 @@ const initialAdminState: AdminStateType = {
 }
 
 const adminReducers = {
-  loadAdmin: (state: AdminStateType, { payload }: PayloadAction<AdminStateType>) => {
-    const { students, nameList, studentCount, nameCount } = payload
-    state.students = [...students].sort((a, b) => a.localeCompare(b)).map(student => student.toLowerCase())
-    state.nameList = [...nameList]
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .map(n => ({ name: n.name, owner: n.owner.toLowerCase(), scName: n.scName.toLowerCase() }))
+  loadStudents: (state: AdminStateType, { payload }: PayloadAction<{ students: string[] }>) => {
+    state.students = [...payload.students].sort((a, b) => a.localeCompare(b)).map(student => student.toLowerCase())
+  },
+  loadNames: (state: AdminStateType, { payload }: PayloadAction<{ nameList: AdminNameListType[] }>) => {
+    state.nameList = [...payload.nameList].sort((a, b) => a.name.localeCompare(b.name))
+  },
+  loadCounts: (state: AdminStateType, { payload }: PayloadAction<{ studentCount: number; nameCount: number }>) => {
+    const { studentCount, nameCount } = payload
     state.studentCount = studentCount
     state.nameCount = nameCount
   },
@@ -39,4 +41,4 @@ export const adminSlice = createSlice({
   reducers: adminReducers,
 })
 
-export const { loadAdmin, resetAdmin } = adminSlice.actions
+export const { loadCounts, loadStudents, loadNames, resetAdmin } = adminSlice.actions

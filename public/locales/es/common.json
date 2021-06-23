@@ -41,5 +41,6 @@
   "contract.balanceIs": "El saldo es",
   "quiz.yes": "Verdadero",
   "quiz.no": "Falso",
-  "quiz.subscribers": "Solo los estudiantes inscritos en el curso pueden realizar la prueba."
+  "quiz.subscribers": "Solo los estudiantes inscritos en el curso pueden realizar la prueba.",
+  "copy.address": "Copiar dirección"
 }
