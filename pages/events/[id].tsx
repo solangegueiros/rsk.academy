@@ -87,7 +87,7 @@ const Event = ({ event }: { event: EventType }): JSX.Element => {
   } = event
 
   const isExpired = isPast(new Date(datetime))
-  const videoId = extractVideoIdFromUrl(video_link)
+  const videoId = video_link ? extractVideoIdFromUrl(video_link) : null
 
   return (
     <Layout>
