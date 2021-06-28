@@ -53,6 +53,7 @@
     "framer-motion": "^4.1.17",
     "google-spreadsheet": "^3.1.15",
     "gray-matter": "^4.0.3",
+    "identicon.js": "^2.3.3",
     "next": "^11.0.0",
     "next-i18next": "^8.2.0",
     "next-mdx-remote": "^3.0.2",
