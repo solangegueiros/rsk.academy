@@ -1,19 +1,40 @@
 /* eslint-disable max-lines-per-function */
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
-import { Button, ButtonGroup, IconButton, useClipboard, useToast } from '@chakra-ui/react'
+import {
+  Button,
+  ButtonGroup,
+  useClipboard,
+  useToast,
+  Image,
+  Box,
+  useColorModeValue,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  Text,
+  PopoverBody,
+  VStack,
+  InputGroup,
+  Input,
+  InputRightAddon,
+  FormControl,
+  Divider,
+  FormLabel,
+  Badge,
+} from '@chakra-ui/react'
 import { Web3Provider } from '@ethersproject/providers'
 import Portis from '@portis/web3'
 import RLogin from '@rsksmart/rlogin'
 import RNS from '@rsksmart/rns'
 import WalletConnectProvider from '@walletconnect/web3-provider'
+import Identicon from 'identicon.js'
 import { useTranslation } from 'next-i18next'
 import { FiLogOut } from 'react-icons/fi'
 import { MdContentCopy, MdErrorOutline } from 'react-icons/md'
 import Web3 from 'web3'
 
 import { RifIcon } from '@components'
-import { Popup } from '@components/Popup'
 import { SUPPORTED_CHAINS } from '@constants'
 import { Web3Context } from '@context/Web3Provider'
 import { useLoadAllContracts } from '@hooks/useLoadAllContracts'
@@ -56,20 +77,51 @@ const WalletConnect = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const { logout, login, isLoggedIn } = useContext(Web3Context)
   const { loadAllContracts } = useLoadAllContracts()
+  const [inputDomain, setInputDomain] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [isDomainError, setIsDomainError] = useState(false)
   const toast = useToast()
+  const color = useColorModeValue('primary.500', 'light.500')
+  const bg = useColorModeValue('white', 'dark.500')
 
   const { t } = useTranslation('common')
 
   const getDomain = async (account: string, chainId: number) => {
     let domain = null
+    const localDomain = localStorage.getItem(`rns-domain_${account}`)
+
     try {
       const rsnWeb3 = new Web3(chainId === 30 ? 'https://public-node.rsk.co' : 'https://public-node.testnet.rsk.co')
       const rns = new RNS(rsnWeb3)
       domain = await rns.reverse(account)
+      return domain
     } catch (error) {
       console.error('RNS error', error)
+      return localDomain
     }
-    return domain
+  }
+
+  const handleValidate = async () => {
+    let validatedAddress
+    try {
+      setIsLoading(true)
+      const rsnWeb3 = new Web3(chainId === 30 ? 'https://public-node.rsk.co' : 'https://public-node.testnet.rsk.co')
+      const rns = new RNS(rsnWeb3)
+      validatedAddress = await rns.addr(inputDomain + '.rsk')
+
+      if (validatedAddress) {
+        dispatch(changeDomain({ domain: inputDomain + '.rsk (not reversed)' }))
+        localStorage.setItem(`rns-domain_${validatedAddress.toLowerCase()}`, inputDomain + '.rsk (not reversed)')
+      }
+    } catch (error) {
+      console.error('RNS validate error', error)
+      setIsDomainError(true)
+      setTimeout(() => {
+        setIsDomainError(false)
+      }, 5000)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -127,16 +179,83 @@ const WalletConnect = (): JSX.Element => {
     }
 
     return (
-      <ButtonGroup w='200px' variant='outlined' role='group' isAttached>
-        <Popup label={t`copy.address`}>
-          <Button w='200px' onClick={onCopy} leftIcon={!hasCopied && <MdContentCopy />} isTruncated>
-            {hasCopied ? t`copied` : domain || trimValue(account)}
-          </Button>
-        </Popup>
-        <Popup label={t`logout`}>
-          <IconButton aria-label='Logout' ml='-1px' icon={<FiLogOut />} onClick={handleLogOut} />
-        </Popup>
-      </ButtonGroup>
+      <>
+        <Popover placement='bottom'>
+          <PopoverTrigger>
+            <Box overflow='hidden' boxSize='40px' borderRadius='md' borderColor={color} borderWidth={1}>
+              <Image
+                rounded='md'
+                cursor='pointer'
+                src={`data:image/svg+xml;base64,${new Identicon(account, {
+                  background: useColorModeValue([255, 255, 255, 255], [0, 0, 0, 0]),
+                  format: 'svg',
+                  size: 40,
+                  margin: '0.15',
+                }).toString()}`}
+                alt={account}
+              />
+            </Box>
+          </PopoverTrigger>
+          <PopoverContent bg={bg}>
+            <PopoverBody as={VStack} spacing={4} fontWeight='bold' p={4}>
+              {domain && (
+                <Text>
+                  {domain.split(' ')[0]}{' '}
+                  {domain.split(' ')[1] && (
+                    <Badge textTransform='capitalize' colorScheme='red'>
+                      Not reversed
+                    </Badge>
+                  )}
+                </Text>
+              )}
+              {!domain && (
+                <FormControl borderWidth={1} p={4} borderRadius='md'>
+                  <FormLabel fontWeight='bold'>Validate domain</FormLabel>
+                  <InputGroup>
+                    <Input type='tel' placeholder='Your domain' onChange={e => setInputDomain(e.target.value)} />
+                    <InputRightAddon children='.rsk' />
+                  </InputGroup>
+                  <Button
+                    colorScheme={isDomainError ? 'red' : 'primary'}
+                    isLoading={isLoading}
+                    mt={4}
+                    isFullWidth
+                    variant='outline'
+                    onClick={handleValidate}
+                    isDisabled={!inputDomain || inputDomain?.length < 3}
+                  >
+                    {isDomainError ? 'You are not owner the domain' : 'Validate'}
+                  </Button>
+                </FormControl>
+              )}
+
+              <Button
+                isFullWidth
+                variant='outlined'
+                onClick={onCopy}
+                leftIcon={!hasCopied && <MdContentCopy />}
+                isTruncated
+              >
+                {hasCopied ? t`copied` : trimValue(account, 6)}
+              </Button>
+
+              <Divider />
+
+              <Button
+                isFullWidth
+                colorScheme='red'
+                variant='solid'
+                aria-label='Logout'
+                ml='-1px'
+                leftIcon={<FiLogOut />}
+                onClick={handleLogOut}
+              >
+                Logout
+              </Button>
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
+      </>
     )
   }
 
