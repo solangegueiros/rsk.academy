@@ -339,6 +339,32 @@
           "path": "/courses/dev/05/quote-frontend"
         }
       ]
+    },
+    {
+      "title": {
+        "en": "06 - RNS",
+        "es": "06 - RNS",
+        "pt": "06 - RNS"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Overview",
+            "es": "Overview",
+            "pt": "Overview"
+          },
+          "path": "/courses/dev/06/intro"
+        },
+        {
+          "title": {
+            "en": "Create your RNS",
+            "es": "Crea tu RNS",
+            "pt": "Crie seu RNS"
+          },
+          "path": "/courses/dev/06/rns-create"
+        }
+      ]
     }
   ]
 }
