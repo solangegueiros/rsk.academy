@@ -21,7 +21,7 @@ import NextLink from 'next/link'
 import {
   DarkModeSwitch,
   LocaleSwitch,
-  MobileNavButton,
+  MobileNavButtonWithRef,
   MobileNavContent,
   NavLink,
   Logo,
@@ -36,7 +36,7 @@ const LoadingButton = () => <Button variant='outlined' isLoading={true} />
 
 const WalletConnect = dynamic(() => import('../WalletConnect'), {
   ssr: false,
-  loading: () => <LoadingButton />,
+  loading: LoadingButton,
 })
 
 const MainNavLinkGroup = (props: StackProps): JSX.Element => {
@@ -47,12 +47,7 @@ const MainNavLinkGroup = (props: StackProps): JSX.Element => {
     <HStack spacing='4' {...props}>
       <NavLink href='/courses/dev/_/welcome'>{t`courses`}</NavLink>
       <NavLink href='/events'>{t`events`}</NavLink>
-      {account && !isAdmin && (
-        <>
-          <NavLink href='/portfolio'>{t`portfolio`}</NavLink>
-          <NavLink href='/profile'>{t`profile`}</NavLink>
-        </>
-      )}
+      {account && !isAdmin && <NavLink href='/profile'>{t`profile`}</NavLink>}
       {isAdmin && <NavLink href='/admin'>{t`admin`}</NavLink>}
     </HStack>
   )
@@ -133,7 +128,7 @@ export const Header = (props: BoxProps): JSX.Element => {
                 <WalletConnect />
               </HStack>
             )}
-            <MobileNavButton ref={mobileNavBtnRef} aria-label='Open Menu' onClick={onOpen} />
+            <MobileNavButtonWithRef ref={mobileNavBtnRef} aria-label='Open Menu' onClick={onOpen} />
           </HStack>
         </Container>
       </Box>

@@ -45,7 +45,19 @@ export const useTransactionCallback = (name: string): UseTransactionCallbackRetu
       setResponse(_response)
       const _receipt = await _response.wait()
 
-      loadAllContracts()
+      if (_receipt.status === 0) {
+        setIsLoading(false)
+        setIsError(true)
+        setReceipt(_receipt)
+        toast({
+          status: 'error',
+          title: 'Transaction failed!',
+          position: 'top-right',
+          isClosable: true,
+        })
+        return dispatch(addTransaction({ name, account, hash: _receipt.transactionHash, type: 'failed' }))
+      }
+
       setReceipt(_receipt)
       setIsLoading(false)
 
@@ -56,6 +68,7 @@ export const useTransactionCallback = (name: string): UseTransactionCallbackRetu
         position: 'top-right',
         isClosable: true,
       })
+      loadAllContracts()
     } catch (error) {
       setIsLoading(false)
       setIsError(true)

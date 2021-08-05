@@ -1,5 +1,5 @@
 /* eslint-disable max-lines-per-function */
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 
 import {
   Button,
@@ -22,6 +22,7 @@ import {
   Divider,
   FormLabel,
   Badge,
+  useUpdateEffect,
 } from '@chakra-ui/react'
 import { Web3Provider } from '@ethersproject/providers'
 import Portis from '@portis/web3'
@@ -72,10 +73,10 @@ const rLogin = new RLogin({
 })
 
 const WalletConnect = (): JSX.Element => {
+  const { logout, login, isLoggedIn } = useContext(Web3Context)
   const { account, chainId, error, domain } = useAppSelector(state => state.identity)
   const { hasCopied, onCopy } = useClipboard(account)
   const dispatch = useAppDispatch()
-  const { logout, login, isLoggedIn } = useContext(Web3Context)
   const { loadAllContracts } = useLoadAllContracts()
   const [inputDomain, setInputDomain] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -83,6 +84,7 @@ const WalletConnect = (): JSX.Element => {
   const toast = useToast()
   const color = useColorModeValue('primary.500', 'light.500')
   const bg = useColorModeValue('white', 'dark.500')
+  const identiconBg = useColorModeValue([255, 255, 255, 255], [0, 0, 0, 0])
 
   const { t } = useTranslation('common')
 
@@ -124,7 +126,7 @@ const WalletConnect = (): JSX.Element => {
     }
   }
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     if (chainId && !SUPPORTED_CHAINS.includes(chainId)) {
       toast({ status: 'error', title: 'Unsupported Network', description: `Network Id: ${chainId}`, isClosable: true })
     } else if (isLoggedIn && chainId && Boolean(account)) {
@@ -187,7 +189,7 @@ const WalletConnect = (): JSX.Element => {
                 rounded='md'
                 cursor='pointer'
                 src={`data:image/svg+xml;base64,${new Identicon(account, {
-                  background: useColorModeValue([255, 255, 255, 255], [0, 0, 0, 0]),
+                  background: identiconBg,
                   format: 'svg',
                   size: 40,
                   margin: '0.15',
@@ -213,7 +215,7 @@ const WalletConnect = (): JSX.Element => {
                   <FormLabel fontWeight='bold'>Validate domain</FormLabel>
                   <InputGroup>
                     <Input type='tel' placeholder='Your domain' onChange={e => setInputDomain(e.target.value)} />
-                    <InputRightAddon children='.rsk' />
+                    <InputRightAddon>.rsk</InputRightAddon>
                   </InputGroup>
                   <Button
                     colorScheme={isDomainError ? 'red' : 'primary'}

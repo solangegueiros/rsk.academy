@@ -18,11 +18,13 @@ import { FaCopy, FaPaste } from 'react-icons/fa'
 
 import { Popup } from '@components/Popup'
 
-export const PopupLabel = forwardRef<HTMLDivElement, BoxProps>((props, ref) => (
+const PopupLabel = (props, ref) => (
   <HStack ref={ref}>
     <FaCopy /> <Text>Copy</Text>
   </HStack>
-))
+)
+
+export const PopupLabelWithRef = forwardRef<HTMLDivElement, BoxProps>(PopupLabel)
 
 export const LowerCase = (): JSX.Element => {
   const [input, setInput] = useState<string>('')

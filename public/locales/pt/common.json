@@ -24,7 +24,6 @@
   "error.network": "Rede não configurada",
   "error.connect": "Erro de conexão",
   "error.changeNetwork": "Altere a Rede",
-  "portfolio": "Portfolio",
   "courses": "Cursos",
   "projects": "Projetos",
   "profile": "Profile",
@@ -42,5 +41,9 @@
   "quiz.yes": "Verdadeiro",
   "quiz.no": "Falso",
   "quiz.subscribers": "Apenas os estudantes inscritos no curso podem fazer o teste.",
-  "copy.address": "Endereço de cópia"
+  "copy.address": "Endereço de cópia",
+  "certification.title": "Certificado de Conclusão",
+  "certification.first-text": "Se concede por la presente a",
+  "certification.second-text": "para certificar que completou o curso",
+  "certification.course-name": "Introducción a Blockchain para Desarrolladores"
 }

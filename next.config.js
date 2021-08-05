@@ -5,12 +5,24 @@ const { i18n } = require('./next-i18next.config')
 
 module.exports = {
   i18n,
-  webpack: {
-    node: {
-      fs: 'empty',
-      child_process: 'empty',
-      http2: 'empty',
-      net: 'empty',
-    },
+  webpack: config => {
+    config.resolve.alias.stream = 'stream-browserify'
+    config.resolve.alias.zlib = 'browserify-zlib'
+
+    config.resolve.fallback = {
+      fs: false,
+      child_process: false,
+      http2: false,
+      http: false,
+      https: false,
+      os: false,
+      net: false,
+      crypto: false,
+      stream: false,
+      zlib: false,
+      constants: false,
+    }
+
+    return config
   },
 }
