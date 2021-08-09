@@ -365,6 +365,24 @@
           "path": "/courses/dev/06/rns-create"
         }
       ]
-    }
+    },
+    {
+      "title": {
+        "en": "07 - Closing",
+        "es": "07 - Cierre",
+        "pt": "07 - Conclusão"
+      },
+      "heading": true,
+      "routes": [
+        {
+          "title": {
+            "en": "Message",
+            "es": "Mensaje",
+            "pt": "Mensagem"
+          },
+          "path": "/courses/dev/07/intro"
+        }
+      ]
+    }    
   ]
 }
