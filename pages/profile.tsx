@@ -72,8 +72,17 @@ const Profile = (): JSX.Element => {
     return (
       <>
         <Heading mb={8}>Profile</Heading>
-        <Box p={8} boxShadow='md' as='pre'>
-          <Heading>{studentName}</Heading>
+        <Box p={8} boxShadow='md'>
+          {studentName ? (
+            <Heading>{studentName}</Heading>
+          ) : (
+            <Alert status='warning'>
+              <AlertIcon /> Name Contract has not been deployed
+              <Navigate ml={4} href='/courses/dev/02/smart-contract-name'>
+                More Info
+              </Navigate>
+            </Alert>
+          )}
           <Table mt={8}>
             <Tbody>
               {ownerAddress && (
