@@ -30,7 +30,7 @@ const Admin = (): JSX.Element => {
       const studentList = await Developer.contract.listStudentsByAddress()
       dispatch(loadStudents({ students: studentList }))
     } catch (error) {
-      console.log(`error`, error)
+      console.error(`error`, error)
     }
     setIsStudentListLoading(false)
   }
@@ -39,10 +39,9 @@ const Admin = (): JSX.Element => {
     setIsNameListLoading(true)
     try {
       const nameList = await MasterName.contract.listNameInfo()
-      console.log(`nameList`, nameList)
       dispatch(loadNames({ nameList }))
     } catch (error) {
-      console.log(`error`, error)
+      console.error(`error`, error)
     }
     setIsNameListLoading(false)
   }

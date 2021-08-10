@@ -6,7 +6,7 @@ import { AiOutlineMenu } from 'react-icons/ai'
 type Props = IconButtonProps
 type Ref = HTMLButtonElement
 
-export const MobileNavButton = forwardRef<Ref, Props>((props, ref) => (
+const MobileNavButton = (props, ref) => (
   <IconButton
     ref={ref}
     display={{ base: 'flex', md: 'none' }}
@@ -17,4 +17,6 @@ export const MobileNavButton = forwardRef<Ref, Props>((props, ref) => (
     icon={<AiOutlineMenu />}
     {...props}
   />
-))
+)
+
+export const MobileNavButtonWithRef = forwardRef<Ref, Props>(MobileNavButton)

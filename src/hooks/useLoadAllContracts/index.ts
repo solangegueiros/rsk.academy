@@ -7,8 +7,9 @@ import { Web3Context } from '@context/Web3Provider'
 import { useAppDispatch, useAppSelector } from '@store'
 import { loadCounts } from '@store/admin/slice'
 import { setAdmin, setError, setLoading } from '@store/identity/slice'
-import { saveProfile, resetProfile } from '@store/profile/slice'
+import { loadProfile, resetProfile } from '@store/profile/slice'
 import {
+  AcademyCertificationFactory,
   AcademyClassListFactory,
   AcademyClassFactory,
   AcademyProjectListFactory,
@@ -32,6 +33,7 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
     try {
       if (account && signer && chainId && DEPLOYED_CHAINS.includes(chainId)) {
         const {
+          AcademyCertification,
           AcademyClassList,
           AcademyProjectList,
           AcademyStudentQuiz,
@@ -41,6 +43,10 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
           Developer,
           MasterName,
         } = CONTRACT_ADDRESSES[chainId]
+
+        // Load AcademyCertification
+        const AcademyCertificationSC = AcademyCertificationFactory.connect(AcademyCertification, signer)
+        loadContract('AcademyCertification', AcademyCertificationSC)
 
         // Load AcademyStudentsSC
         const AcademyStudentsSC = AcademyStudentsFactory.connect(AcademyStudents, signer)
@@ -152,9 +158,15 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
           }
         }
 
+        const isCertificateValid = await AcademyCertificationSC.validateStudent(account)
+        let certificate = null
+
+        if (isCertificateValid)
+          certificate = await AcademyCertificationSC.getCertificate(account, studentActiveClassName)
+
         setTimeout(() => {
           dispatch(
-            saveProfile({
+            loadProfile({
               index,
               ownerAddress,
               portfolioAddress,
@@ -165,6 +177,7 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
               classStudentInfo,
               studentName,
               quizResults,
+              certificatePdfHash: certificate?.storageHash || null,
             }),
           )
         }, 2000)

@@ -15,7 +15,7 @@ const LoadingButton = () => <Button variant='outlined' isLoading={true} />
 
 const WalletConnect = dynamic(() => import('../../WalletConnect'), {
   ssr: false,
-  loading: () => <LoadingButton />,
+  loading: LoadingButton,
 }) as React.FC<ButtonProps>
 
 interface MobileNavHeaderProps {
@@ -55,12 +55,7 @@ export const MobileNavHeader = ({ shadow, onClose }: MobileNavHeaderProps): JSX.
         <HStack w='full'>
           <MobileNavLink href={`/courses/dev/01/${locale}`}>{t`courses`}</MobileNavLink>
           <MobileNavLink href='/events'>{t`events`}</MobileNavLink>
-          {isLoggedIn && !isAdmin && (
-            <>
-              <MobileNavLink href='/portfolio'>{t`portfolio`}</MobileNavLink>
-              <MobileNavLink href='/profile'>{t`profile`}</MobileNavLink>
-            </>
-          )}
+          {isLoggedIn && !isAdmin && <MobileNavLink href='/profile'>{t`profile`}</MobileNavLink>}
           {isAdmin && <MobileNavLink href='/admin'>{t`admin`}</MobileNavLink>}
         </HStack>
         <HStack align='center'>
