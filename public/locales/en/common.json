@@ -24,7 +24,6 @@
   "error.network": "Wrong Network",
   "error.connect": "Error Connecting",
   "error.changeNetwork": "Change Network",
-  "portfolio": "Portfolio",
   "courses": "Courses",
   "projects": "Projects",
   "profile": "Profile",
@@ -42,5 +41,10 @@
   "quiz.yes": "True",
   "quiz.no": "False",
   "quiz.subscribers": "Only course subscribers can take the quiz.",
-  "copy.address": "Copy address"
+  "copy.address": "Copy address",
+  "certification.title": "Certificate of Completion",
+  "certification.first-text": "is hereby awarded to",
+  "certification.second-text": "for successfully completing the course",
+  "certification.course-name": "Introduction to Blockchain for Developers",
+  "certification.date-text": "Awarded"
 }

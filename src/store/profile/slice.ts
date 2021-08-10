@@ -1,6 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ethers } from 'ethers'
 
+type QuizResultType = Record<
+  string,
+  {
+    total: number
+    grade: number
+    attempt: number
+  }
+>
+
 type ProfileStateType = {
   index: ethers.BigNumber
   ownerAddress: string
@@ -11,7 +20,8 @@ type ProfileStateType = {
   studentActiveClassName: string
   classStudentInfo: any
   studentName: string
-  quizResults: any
+  quizResults: QuizResultType
+  certificatePdfHash: string
 }
 
 export const initialProfileState: ProfileStateType = {
@@ -25,10 +35,11 @@ export const initialProfileState: ProfileStateType = {
   classStudentInfo: null,
   studentName: null,
   quizResults: null,
+  certificatePdfHash: null,
 }
 
 export const profileReducers = {
-  saveProfile: (state: ProfileStateType, { payload }: PayloadAction<ProfileStateType>): void => {
+  loadProfile: (state: ProfileStateType, { payload }: PayloadAction<ProfileStateType>): void => {
     const {
       index,
       ownerAddress,
@@ -40,6 +51,7 @@ export const profileReducers = {
       classStudentInfo,
       studentName,
       quizResults,
+      certificatePdfHash,
     } = payload
 
     state.index = index
@@ -52,6 +64,7 @@ export const profileReducers = {
     state.classStudentInfo = classStudentInfo
     state.studentName = studentName
     state.quizResults = quizResults
+    state.certificatePdfHash = certificatePdfHash
   },
   saveQuizResult: (
     state: ProfileStateType,
@@ -63,6 +76,9 @@ export const profileReducers = {
   setStudentName: (state: ProfileStateType, { payload }: PayloadAction<string>): void => {
     state.studentName = payload
   },
+  loadCertificateHash: (state: ProfileStateType, { payload }: PayloadAction<string>): void => {
+    state.certificatePdfHash = payload
+  },
 }
 
 export const profileSlice = createSlice({
@@ -71,4 +87,4 @@ export const profileSlice = createSlice({
   reducers: profileReducers,
 })
 
-export const { saveProfile, resetProfile, saveQuizResult, setStudentName } = profileSlice.actions
+export const { loadProfile, resetProfile, saveQuizResult, setStudentName, loadCertificateHash } = profileSlice.actions

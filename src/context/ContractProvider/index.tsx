@@ -2,6 +2,7 @@ import { createContext, ReactNode, useCallback, useReducer } from 'react'
 
 import { useAppSelector } from '@store'
 import {
+  AcademyCertificationType as AcademyCertification,
   AcademyClassListType as AcademyClassList,
   AcademyClassType as AcademyClass,
   AcademyProjectListType as AcademyProjectList,
@@ -15,6 +16,7 @@ import {
 } from '@type_chain'
 
 export type ContractFactoryType =
+  | AcademyCertification
   | AcademyClassList
   | AcademyClass
   | AcademyProjectList
@@ -27,6 +29,7 @@ export type ContractFactoryType =
   | Business
 
 export type ContractNameType =
+  | 'AcademyCertification'
   | 'AcademyClassList'
   | 'AcademyClass'
   | 'AcademyProjectList'
@@ -39,6 +42,10 @@ export type ContractNameType =
   | 'Business'
 
 type AllContractsType = {
+  AcademyCertification: {
+    name: 'AcademyCertification'
+    contract: AcademyCertification
+  }
   AcademyClassList: {
     name: 'AcademyClassList'
     contract: AcademyClassList
@@ -82,6 +89,10 @@ type AllContractsType = {
 }
 
 export const INITIAL_CONTRACTS: AllContractsType = {
+  AcademyCertification: {
+    name: 'AcademyCertification',
+    contract: null,
+  },
   AcademyClassList: {
     name: 'AcademyClassList',
     contract: null,

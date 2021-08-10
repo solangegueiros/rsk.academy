@@ -34,17 +34,18 @@ export const MasterName = (): JSX.Element => {
         <Input value={name} placeholder='Name' onChange={e => setName(e.target.value)} />
         <Input value={address} placeholder='Address' onChange={e => setAddress(e.target.value.toLowerCase())} />
         <ButtonGroup w='full'>
-          <Button isLoading={isLoadingSet} isFullWidth onClick={handleSetName} isDisabled={!!studentName}>
+          <Button isFullWidth isLoading={isLoadingSet} onClick={handleSetName} isDisabled={!!studentName}>
             Set Name
           </Button>
           <Button
             isFullWidth
             isLoading={isLoadingDelete}
+            variant='solid'
             colorScheme='red'
             onClick={handleDeleteName}
             isDisabled={!studentName}
           >
-            Delete
+            Delete Name
           </Button>
         </ButtonGroup>
       </VStack>

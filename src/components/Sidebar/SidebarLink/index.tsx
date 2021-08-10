@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 type Props = { children: ReactNode; isActive: boolean }
 type Ref = HTMLAnchorElement
 
-const StyledLink = forwardRef<Ref, Props & LinkProps>((props, ref) => {
+const StyledLink = (props, ref) => {
   const { isActive, ...rest } = props
 
   return (
@@ -32,7 +32,9 @@ const StyledLink = forwardRef<Ref, Props & LinkProps>((props, ref) => {
       {...rest}
     />
   )
-})
+}
+
+const StyledLinkWithRef = forwardRef<Ref, Props & LinkProps>(StyledLink)
 
 export const SidebarLink = (props: BoxProps & LinkProps): JSX.Element => {
   const { href, children, ...rest } = props
@@ -43,7 +45,7 @@ export const SidebarLink = (props: BoxProps & LinkProps): JSX.Element => {
   return (
     <chakra.div userSelect='none' display='flex' alignItems='center' lineHeight='1.5rem' {...rest}>
       <NextLink href={href} passHref>
-        <StyledLink isActive={isActive}>{children}</StyledLink>
+        <StyledLinkWithRef isActive={isActive}>{children}</StyledLinkWithRef>
       </NextLink>
     </chakra.div>
   )

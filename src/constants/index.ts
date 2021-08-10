@@ -1,4 +1,5 @@
 type ContractNameType =
+  | 'AcademyCertification'
   | 'AcademyClassList'
   | 'AcademyProjectList'
   | 'AcademyStudentQuiz'
@@ -47,6 +48,7 @@ export const COURSE_ADDRESSES: Record<DeployedNetworksType, Record<string, strin
 
 export const CONTRACT_ADDRESSES: Record<DeployedNetworksType, Record<ContractNameType, string>> = {
   31: {
+    AcademyCertification: process.env.NEXT_PUBLIC_ACADEMY_CERTIFICATION,
     AcademyClassList: process.env.NEXT_PUBLIC_ACADEMY_CLASS_LIST,
     AcademyProjectList: process.env.NEXT_PUBLIC_ACADEMY_PROJECT_LIST,
     AcademyStudentQuiz: process.env.NEXT_PUBLIC_ACADEMY_STUDENT_QUIZ,
@@ -57,6 +59,7 @@ export const CONTRACT_ADDRESSES: Record<DeployedNetworksType, Record<ContractNam
     Business: COURSE_ADDRESSES[31].Business,
   },
   1337: {
+    AcademyCertification: process.env.NEXT_PUBLIC_LOCAL_ACADEMY_CERTIFICATION,
     AcademyWallet: process.env.NEXT_PUBLIC_LOCAL_ACADEMY_WALLET,
     AcademyProjectList: process.env.NEXT_PUBLIC_LOCAL_ACADEMY_PROJECT_LIST,
     AcademyStudents: process.env.NEXT_PUBLIC_LOCAL_ACADEMY_STUDENTS,

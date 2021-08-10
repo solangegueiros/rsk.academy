@@ -24,7 +24,6 @@
   "error.network": "Red Incorrecta",
   "error.connect": "Error de conexión",
   "error.changeNetwork": "Cambiar de Red",
-  "portfolio": "Portafolio",
   "courses": "Cursos",
   "projects": "Proyectos",
   "profile": "Profile",
@@ -42,5 +41,9 @@
   "quiz.yes": "Verdadero",
   "quiz.no": "Falso",
   "quiz.subscribers": "Solo los estudiantes inscritos en el curso pueden realizar la prueba.",
-  "copy.address": "Copiar dirección"
+  "copy.address": "Copiar dirección",
+  "certification.title": "Certificado de Finalización",
+  "certification.first-text": "Se concede por la presente a",
+  "certification.second-text": "para certificar que ha completado el curso",
+  "certification.course-name": "Introducción a Blockchain para Desarrolladores"
 }
