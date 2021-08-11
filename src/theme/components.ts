@@ -16,7 +16,10 @@ export const components = {
       flat: (props: ButtonProps): CSSObject => ({
         bg: mode('primary.500', 'light.500')(props),
         color: mode('white', 'dark.500')(props),
-        _hover: { bg: mode('primary.600', 'light.700')(props) },
+        _hover: {
+          bg: mode('primary.600', 'light.700')(props),
+          _disabled: { bg: mode('primary.300', 'light.400')(props) },
+        },
       }),
     },
     defaultProps: {

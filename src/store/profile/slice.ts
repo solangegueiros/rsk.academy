@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ethers } from 'ethers'
 
-type QuizResultType = Record<
-  string,
-  {
-    total: number
-    grade: number
-    attempt: number
-  }
->
+export type QuizResultType = {
+  id: string
+  total: number
+  grade: number
+  attempt: number
+  passed: boolean
+  answer?: string
+}
 
 type ProfileStateType = {
   index: ethers.BigNumber
@@ -20,8 +20,11 @@ type ProfileStateType = {
   studentActiveClassName: string
   classStudentInfo: any
   studentName: string
-  quizResults: QuizResultType
+  quizResults: QuizResultType[]
+  quizList: string[]
+  quizMinimum: number
   certificatePdfHash: string
+  isProfileLoading: boolean
 }
 
 export const initialProfileState: ProfileStateType = {
@@ -35,7 +38,10 @@ export const initialProfileState: ProfileStateType = {
   classStudentInfo: null,
   studentName: null,
   quizResults: null,
+  quizList: null,
+  quizMinimum: null,
   certificatePdfHash: null,
+  isProfileLoading: false,
 }
 
 export const profileReducers = {
@@ -51,6 +57,8 @@ export const profileReducers = {
       classStudentInfo,
       studentName,
       quizResults,
+      quizList,
+      quizMinimum,
       certificatePdfHash,
     } = payload
 
@@ -64,15 +72,15 @@ export const profileReducers = {
     state.classStudentInfo = classStudentInfo
     state.studentName = studentName
     state.quizResults = quizResults
+    state.quizList = quizList
+    state.quizMinimum = quizMinimum
     state.certificatePdfHash = certificatePdfHash
-  },
-  saveQuizResult: (
-    state: ProfileStateType,
-    { payload: { quizName, result } }: PayloadAction<{ quizName: string; result: any }>,
-  ): void => {
-    if (state.quizResults) state.quizResults[quizName] = result
+    state.isProfileLoading = false
   },
   resetProfile: (): ProfileStateType => initialProfileState,
+  setProfileLoading: (state: ProfileStateType, { payload }: PayloadAction<boolean>): void => {
+    state.isProfileLoading = payload
+  },
   setStudentName: (state: ProfileStateType, { payload }: PayloadAction<string>): void => {
     state.studentName = payload
   },
@@ -87,4 +95,5 @@ export const profileSlice = createSlice({
   reducers: profileReducers,
 })
 
-export const { loadProfile, resetProfile, saveQuizResult, setStudentName, loadCertificateHash } = profileSlice.actions
+export const { loadProfile, resetProfile, setStudentName, loadCertificateHash, setProfileLoading } =
+  profileSlice.actions

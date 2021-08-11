@@ -6,7 +6,7 @@ export type IdentityStateType = {
   isAdmin: boolean
   chainId: number
   error: Error
-  isLoading: boolean
+  isIdentityLoading: boolean
 }
 
 export const initialIdentityState: IdentityStateType = {
@@ -15,7 +15,7 @@ export const initialIdentityState: IdentityStateType = {
   isAdmin: false,
   chainId: null,
   error: null,
-  isLoading: false,
+  isIdentityLoading: false,
 }
 
 export const identityReducers = {
@@ -43,8 +43,8 @@ export const identityReducers = {
   setError: (state: IdentityStateType, { payload: { error } }: PayloadAction<{ error: Error }>): void => {
     state.error = error
   },
-  setLoading: (state: IdentityStateType, { payload }: PayloadAction<boolean>): void => {
-    state.isLoading = payload
+  setIdentityLoading: (state: IdentityStateType, { payload }: PayloadAction<boolean>): void => {
+    state.isIdentityLoading = payload
   },
   setAdmin: (state: IdentityStateType, { payload }: PayloadAction<boolean>): void => {
     state.isAdmin = payload
@@ -65,6 +65,6 @@ export const {
   setError,
   loginWallet,
   logout,
-  setLoading,
+  setIdentityLoading,
   setAdmin,
 } = identitySlice.actions
