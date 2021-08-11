@@ -68,7 +68,7 @@ export const Header = (props: BoxProps): JSX.Element => {
   }, [isOpen])
 
   return (
-    <>
+    <Box pos='sticky' top='0' left='0' right='0' zIndex='sticky'>
       <Box d={useBreakpointValue({ base: 'none', md: 'block' })} bg={bg}>
         <Container>
           <HStack w='full' py={2} justify='center' pos='relative'>
@@ -91,17 +91,7 @@ export const Header = (props: BoxProps): JSX.Element => {
           </HStack>
         </Container>
       </Box>
-      <Box
-        pos='sticky'
-        top='0'
-        left='0'
-        right='0'
-        maxW='full'
-        bg={useColorModeValue('white', 'dark.600')}
-        boxShadow='md'
-        zIndex='sticky'
-        {...props}
-      >
+      <Box maxW='full' bg={useColorModeValue('white', 'dark.600')} boxShadow='md' {...props}>
         <Container h='4.5rem'>
           <HStack justify='space-between' align='center' h='full' w='full'>
             <HStack spacing={16} h='full'>
@@ -133,7 +123,7 @@ export const Header = (props: BoxProps): JSX.Element => {
         </Container>
       </Box>
       <MobileNavContent isOpen={isOpen} onClose={onClose} />
-    </>
+    </Box>
   )
 }
 

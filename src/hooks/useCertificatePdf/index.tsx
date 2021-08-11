@@ -1,8 +1,6 @@
 import ReactPDF, { Document, View, Page, Svg, Path, Text, StyleSheet, Link, Font, usePDF } from '@react-pdf/renderer'
 import { useTranslation } from 'next-i18next'
 
-import { useAppSelector } from '@store'
-
 Font.register({ family: 'Style Script', src: '/font/StyleScript.ttf' })
 Font.register({ family: 'Rubik', fontWeight: 'normal', src: '/font/Rubik-Regular.ttf' })
 Font.register({ family: 'Rubik', fontWeight: 'bold', src: '/font/Rubik-Medium.ttf' })
@@ -41,10 +39,20 @@ const styles = StyleSheet.create({
   account: { fontSize: 16 },
 })
 
-export const useCertificatePdf = (): ReactPDF.UsePDFInstance => {
+interface UseCertificatePdfProps {
+  account: string
+  studentName: string
+  studentActiveClassName: string
+  activeClass: string
+}
+
+export const useCertificatePdf = ({
+  account,
+  studentName,
+  studentActiveClassName,
+  activeClass,
+}: UseCertificatePdfProps): [ReactPDF.UsePDFInstance, () => void] => {
   const { t } = useTranslation('common')
-  const { account } = useAppSelector(state => state.identity)
-  const { studentName, studentActiveClassName, activeClass } = useAppSelector(state => state.profile)
 
   const Doc = (
     <Document>
@@ -109,7 +117,5 @@ export const useCertificatePdf = (): ReactPDF.UsePDFInstance => {
     </Document>
   )
 
-  const [instance] = usePDF({ document: Doc })
-
-  return instance
+  return usePDF({ document: Doc })
 }

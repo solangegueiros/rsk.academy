@@ -6,8 +6,8 @@ import { ContractContext } from '@context/ContractProvider'
 import { Web3Context } from '@context/Web3Provider'
 import { useAppDispatch, useAppSelector } from '@store'
 import { loadCounts } from '@store/admin/slice'
-import { setAdmin, setError, setLoading } from '@store/identity/slice'
-import { loadProfile, resetProfile } from '@store/profile/slice'
+import { setAdmin, setError, setIdentityLoading } from '@store/identity/slice'
+import { loadProfile, QuizResultType, resetProfile, setProfileLoading } from '@store/profile/slice'
 import {
   AcademyCertificationFactory,
   AcademyClassListFactory,
@@ -29,7 +29,9 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
   const { loadContract, resetContracts } = useContext(ContractContext)
 
   const loadAllContracts = async () => {
-    dispatch(setLoading(true))
+    dispatch(setIdentityLoading(true))
+    dispatch(setProfileLoading(true))
+
     try {
       if (account && signer && chainId && DEPLOYED_CHAINS.includes(chainId)) {
         const {
@@ -89,7 +91,10 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
           dispatch(loadCounts({ nameCount: nameCount.toNumber(), studentCount: studentCount.toNumber() }))
         }
 
-        let quizResults: Record<string, { total: number; grade: number; attempt: number; answer: string }> = null
+        let quizResults: QuizResultType[] = null
+
+        const quizMinimum = await AcademyCertificationSC.quizMinimum()
+        const quizList = await AcademyCertificationSC.listQuiz()
 
         const quizNames: string[] = await AcademyStudentQuizSC.listQuizByStudent(account)
         if (quizNames.length > 0) {
@@ -104,16 +109,19 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
           )
 
           if (results) {
-            quizResults = results.reduce((obj, result) => {
-              const { total, grade, attempt, quiz, answer } = result
-              obj[quiz] = {
-                total,
-                grade,
-                attempt,
-                answer,
-              }
-              return obj
-            }, {})
+            quizResults = results
+              .filter(result => quizList.includes(result.quiz))
+              .map(result => {
+                const { total, grade, attempt, quiz, answer } = result
+                return {
+                  id: quiz,
+                  total,
+                  grade,
+                  attempt,
+                  answer,
+                  passed: quizMinimum.lte(grade * 10),
+                }
+              })
           }
         }
 
@@ -121,7 +129,7 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
         const studentInfo = await AcademyStudentsSC.getStudentByAddress(account)
 
         if (!studentInfo) {
-          console.warn('Student account is not exist!')
+          console.warn('Student account does not exist!')
           resetContracts()
           dispatch(resetProfile())
           return
@@ -164,23 +172,24 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
         if (isCertificateValid)
           certificate = await AcademyCertificationSC.getCertificate(account, studentActiveClassName)
 
-        setTimeout(() => {
-          dispatch(
-            loadProfile({
-              index,
-              ownerAddress,
-              portfolioAddress,
-              activeClass,
-              studentClasses,
-              portfolioList,
-              studentActiveClassName,
-              classStudentInfo,
-              studentName,
-              quizResults,
-              certificatePdfHash: certificate?.storageHash || null,
-            }),
-          )
-        }, 2000)
+        dispatch(
+          loadProfile({
+            index,
+            ownerAddress,
+            portfolioAddress,
+            activeClass,
+            studentClasses,
+            portfolioList,
+            studentActiveClassName,
+            classStudentInfo,
+            studentName,
+            quizResults,
+            quizList,
+            quizMinimum: quizMinimum.toNumber(),
+            certificatePdfHash: certificate?.storageHash || null,
+            isProfileLoading: false,
+          }),
+        )
       }
     } catch (error) {
       console.error(error)
@@ -188,8 +197,6 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
       if (error.event !== 'changed') {
         dispatch(setError({ error }))
       }
-    } finally {
-      dispatch(setLoading(false))
     }
   }
   return { loadAllContracts }

@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 import { Container, Flex, FlexProps } from '@chakra-ui/react'
 
-import { Header, Footer } from '@components'
+import { Header, Footer, Loader } from '@components'
 
 interface LayoutProps {
   children: ReactNode
@@ -22,6 +22,7 @@ export const Layout = ({ children, isStretched, ...rest }: LayoutProps & FlexPro
           py={8}
           maxW={isStretched ? 'full' : 1200}
         >
+          <Loader />
           {children}
         </Container>
       </Flex>

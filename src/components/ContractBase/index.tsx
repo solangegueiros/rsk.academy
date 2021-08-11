@@ -6,12 +6,10 @@ import {
   AlertIcon,
   Box,
   BoxProps,
-  Center,
   chakra,
   Heading,
   HStack,
   IconButton,
-  Spinner,
   useClipboard,
   useColorModeValue,
 } from '@chakra-ui/react'
@@ -75,7 +73,7 @@ const NotDeployed = (): JSX.Element => {
 export const ContractBase = ({ contract, name, children, ...rest }: ContractBaseProps & BoxProps): JSX.Element => {
   const { hasCopied, onCopy } = useClipboard(contract?.address)
   const { isLoggedIn } = useContext(Web3Context)
-  const { chainId, isLoading } = useAppSelector(state => state.identity)
+  const { chainId } = useAppSelector(state => state.identity)
 
   const color = useColorModeValue('primary.500', 'light.500')
   const bg = useColorModeValue('white', 'dark.400')
@@ -112,14 +110,7 @@ export const ContractBase = ({ contract, name, children, ...rest }: ContractBase
           </Popup>
         )}
       </HStack>
-
-      {isLoading ? (
-        <Center>
-          <Spinner />
-        </Center>
-      ) : (
-        children
-      )}
+      {children}
     </Box>
   )
 }

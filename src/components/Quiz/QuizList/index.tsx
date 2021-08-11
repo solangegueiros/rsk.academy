@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useMemo } from 'react'
 
 import {
   Box,
@@ -53,6 +53,8 @@ export const QuizList = ({ course, module, numberOfQuestions }: QuizListProps): 
 
   const { submitAnswers, isLoading } = useSubmitAnswers(course, module, numberOfQuestions)
 
+  const currentQuiz = useMemo(() => quizResults?.find(result => result.id === QUIZ_NAME), [quizResults, QUIZ_NAME])
+
   const { isLoggedIn } = useContext(Web3Context)
   const { t } = useTranslation('common')
 
@@ -95,7 +97,7 @@ export const QuizList = ({ course, module, numberOfQuestions }: QuizListProps): 
 
   return (
     <Box my={4} p={4}>
-      {quizResults && quizResults[QUIZ_NAME] && (
+      {currentQuiz && (
         <Box mx='auto' mb={8} p={8} boxShadow='lg' maxW='500px' borderWidth={1} borderColor={color}>
           <Heading textAlign='center' as='h4' size='md'>
             Quiz Results
@@ -103,12 +105,12 @@ export const QuizList = ({ course, module, numberOfQuestions }: QuizListProps): 
           <Table>
             <Tr>
               <Th>Attempt</Th>
-              <Td>{quizResults[QUIZ_NAME].attempt}</Td>
+              <Td>{currentQuiz.attempt}</Td>
             </Tr>
             <Tr>
               <Th>Grade</Th>
               <Td>
-                {quizResults[QUIZ_NAME].grade} / {quizResults[QUIZ_NAME].total}
+                {currentQuiz.grade} / {currentQuiz.total}
               </Td>
             </Tr>
           </Table>

@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 import { Box, chakra, Flex, Grid } from '@chakra-ui/react'
 import { SkipNavContent, SkipNavLink } from '@chakra-ui/skip-nav'
 
-import { Container, Header, Seo, Footer } from '@components'
+import { Container, Header, Seo, Footer, Loader } from '@components'
 
 import { EditPageButton } from './EditPageButton'
 
@@ -28,6 +28,7 @@ export const PageContainer = (props: PageContainerProps): JSX.Element => {
 
   return (
     <>
+      <Loader />
       <Seo title={title} description={description} />
       <SkipNavLink zIndex={20}>Skip to Content</SkipNavLink>
       <Header />
