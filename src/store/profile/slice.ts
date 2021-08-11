@@ -1,14 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ethers } from 'ethers'
 
-type QuizResultType = Record<
-  string,
-  {
-    total: number
-    grade: number
-    attempt: number
-  }
->
+export type QuizResultType = {
+  id: string
+  total: number
+  grade: number
+  attempt: number
+  passed: boolean
+}
 
 type ProfileStateType = {
   index: ethers.BigNumber
@@ -20,8 +19,10 @@ type ProfileStateType = {
   studentActiveClassName: string
   classStudentInfo: any
   studentName: string
-  quizResults: QuizResultType
+  quizResults: QuizResultType[]
+  quizMinimum: number
   certificatePdfHash: string
+  isProfileLoading: boolean
 }
 
 export const initialProfileState: ProfileStateType = {
@@ -35,7 +36,9 @@ export const initialProfileState: ProfileStateType = {
   classStudentInfo: null,
   studentName: null,
   quizResults: null,
+  quizMinimum: null,
   certificatePdfHash: null,
+  isProfileLoading: false,
 }
 
 export const profileReducers = {
@@ -51,6 +54,7 @@ export const profileReducers = {
       classStudentInfo,
       studentName,
       quizResults,
+      quizMinimum,
       certificatePdfHash,
     } = payload
 
@@ -64,7 +68,9 @@ export const profileReducers = {
     state.classStudentInfo = classStudentInfo
     state.studentName = studentName
     state.quizResults = quizResults
+    state.quizMinimum = quizMinimum
     state.certificatePdfHash = certificatePdfHash
+    state.isProfileLoading = false
   },
   saveQuizResult: (
     state: ProfileStateType,
@@ -73,6 +79,9 @@ export const profileReducers = {
     if (state.quizResults) state.quizResults[quizName] = result
   },
   resetProfile: (): ProfileStateType => initialProfileState,
+  setProfileLoading: (state: ProfileStateType, { payload }: PayloadAction<boolean>): void => {
+    state.isProfileLoading = payload
+  },
   setStudentName: (state: ProfileStateType, { payload }: PayloadAction<string>): void => {
     state.studentName = payload
   },
@@ -87,4 +96,5 @@ export const profileSlice = createSlice({
   reducers: profileReducers,
 })
 
-export const { loadProfile, resetProfile, saveQuizResult, setStudentName, loadCertificateHash } = profileSlice.actions
+export const { loadProfile, resetProfile, saveQuizResult, setStudentName, loadCertificateHash, setProfileLoading } =
+  profileSlice.actions

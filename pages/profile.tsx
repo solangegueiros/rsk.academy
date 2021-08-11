@@ -37,7 +37,7 @@ const Profile = (): JSX.Element => {
   const { t } = useTranslation('common')
   const profile = useAppSelector(state => state.profile)
   const { isLoggedIn } = useContext(Web3Context)
-  const { isAdmin, chainId } = useAppSelector(state => state.identity)
+  const { isAdmin, chainId, domain } = useAppSelector(state => state.identity)
   const {
     index,
     ownerAddress,
@@ -71,7 +71,6 @@ const Profile = (): JSX.Element => {
 
     return (
       <>
-        <Heading mb={8}>Profile</Heading>
         <Box p={8} boxShadow='md'>
           {studentName ? (
             <Heading>{studentName}</Heading>
@@ -93,6 +92,12 @@ const Profile = (): JSX.Element => {
                   </Td>
                 </Tr>
               )}
+
+              <Tr>
+                <Th fontSize='1em'>RNS Domain</Th>
+                <Td>{domain || 'No domain has been registered or set reversed!'}</Td>
+              </Tr>
+
               {portfolioAddress && (
                 <Tr>
                   <Th fontSize='1em'>Portfolio Address</Th>
@@ -131,14 +136,14 @@ const Profile = (): JSX.Element => {
 
         <Divider my={8} />
 
-        {quizResults && (
-          <Box>
-            <Heading mb={8}>Quiz Results</Heading>
+        <Box>
+          <Heading mb={8}>Quiz Results</Heading>
+          {quizResults ? (
             <HStack spacing={8} w='full' p={8} boxShadow='md'>
-              {Object.entries(quizResults).map(([quizName, { total, grade, attempt }], i) => (
+              {quizResults.map(({ total, passed, grade, attempt, id }, i) => (
                 <Alert
                   key={i}
-                  status={grade > 5 ? 'success' : 'error'}
+                  status={passed ? 'success' : 'error'}
                   variant='subtle'
                   flexDirection='column'
                   alignItems='center'
@@ -148,14 +153,29 @@ const Profile = (): JSX.Element => {
                 >
                   <AlertIcon boxSize='40px' mr={0} />
                   <AlertTitle mt={4} mb={1} fontSize='lg' textTransform='uppercase'>
-                    {quizName} <br />%{(grade / total) * 100}
+                    {id} <br />%{(grade / total) * 100}
                   </AlertTitle>
                   <AlertDescription maxWidth='sm'>Attempt: {attempt}</AlertDescription>
                 </Alert>
               ))}
             </HStack>
-          </Box>
-        )}
+          ) : (
+            <Alert
+              status='warning'
+              variant='subtle'
+              flexDirection='column'
+              alignItems='center'
+              justifyContent='center'
+              textAlign='center'
+              height='200px'
+            >
+              <AlertIcon boxSize='40px' mr={0} />
+              <AlertTitle mt={4} mb={1} fontSize='lg' textTransform='uppercase'>
+                You have not taken any quiz!
+              </AlertTitle>
+            </Alert>
+          )}
+        </Box>
 
         <Divider my={8} />
 

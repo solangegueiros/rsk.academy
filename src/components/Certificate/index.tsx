@@ -1,9 +1,28 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useContext, useMemo } from 'react'
 
-import { Alert, AlertIcon, Box, Button, Link, Text, VStack } from '@chakra-ui/react'
+import {
+  Alert,
+  AlertIcon,
+  Box,
+  Button,
+  Text,
+  VStack,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  AlertDescription,
+} from '@chakra-ui/react'
 import { Manager, Provider } from '@rsksmart/rif-storage'
+import { useRouter } from 'next/router'
+import { FaCertificate, FaFileDownload, FaFilePdf } from 'react-icons/fa'
 
+import { Navigate } from '@components/Markdown/Navigate'
 import { ContractContext } from '@context/ContractProvider'
 import { useTransactionCallback } from '@hooks/transactions/useTransactionCallback'
 import { useCertificatePdf } from '@hooks/useCertificatePdf'
@@ -16,19 +35,21 @@ const Certificate = (): JSX.Element => {
   const instance = useCertificatePdf()
   const { AcademyCertification } = useContext(ContractContext)
   const { account } = useAppSelector(state => state.identity)
-  const { studentName, studentActiveClassName, certificatePdfHash, quizResults, portfolioList } = useAppSelector(
-    state => state.profile,
-  )
+  const profile = useAppSelector(state => state.profile)
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const router = useRouter()
 
   const { execute, isLoading } = useTransactionCallback('Register Contract')
+
+  const { studentName, studentActiveClassName, certificatePdfHash, quizResults, portfolioList, quizMinimum } = profile
 
   const isValid = useMemo(
     () =>
       studentName &&
       studentActiveClassName &&
-      quizResults &&
       portfolioList &&
-      Object.values(quizResults).every(result => result.grade > 5),
+      quizResults &&
+      quizResults.every(result => result.passed),
     [studentName, studentActiveClassName, quizResults, portfolioList],
   )
 
@@ -44,8 +65,86 @@ const Certificate = (): JSX.Element => {
 
   return (
     <Box>
-      {isValid && certificatePdfHash && (
-        <Box pos='relative' w='full' pt='70%'>
+      <Modal isCentered size='lg' isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Get Certificate</ModalHeader>
+          <ModalCloseButton />
+
+          <ModalBody>
+            <VStack>
+              <Alert status='warning' textAlign='center' p={8} flexDir='column'>
+                <AlertIcon boxSize={12} mb={4} />
+                <AlertDescription>
+                  <Text fontWeight='bold'>Current Language: {router.locale.toUpperCase()}</Text>
+                  <Text>
+                    You can register only one certificate in the smart contract and cannot change it again. If you want
+                    to register your certificate in any other language (en, es, pt) please switch app to target
+                    language!
+                  </Text>
+                </AlertDescription>
+              </Alert>
+              <Alert status={studentActiveClassName ? 'success' : 'error'}>
+                <AlertIcon /> Subscribe Developers Classs
+              </Alert>
+
+              <Alert status={portfolioList?.[0] ? 'success' : 'error'}>
+                <AlertIcon /> Deploy Name Contract
+              </Alert>
+
+              <Alert status={quizResults?.every(result => result.passed) ? 'success' : 'error'}>
+                <AlertIcon /> Get at least %{quizMinimum} from each quiz
+              </Alert>
+            </VStack>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button variant='ghost' mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button isLoading={isLoading} onClick={register} rightIcon={<FaCertificate />} isDisabled={!isValid}>
+              Get Certificate
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+      {!certificatePdfHash ? (
+        <Button onClick={onOpen} size='lg' isLoading={isLoading} rightIcon={<FaFilePdf />}>
+          Get Certificate
+        </Button>
+      ) : (
+        <>
+          <Button
+            _hover={{ color: 'white' }}
+            mr={8}
+            as='a'
+            rightIcon={<FaFileDownload />}
+            href={instance.url}
+            download={`Rsk Academy ${studentName}`}
+          >
+            Download PDF
+          </Button>
+          <Navigate href={`https://ipfs.io/ipfs/${certificatePdfHash}/${account}`}>View on IPFS</Navigate>
+        </>
+      )}
+
+      <VStack my={8}>
+        {!isValid && <Text>You need to complete all steps to get your certificate</Text>}
+        <Alert status={studentActiveClassName ? 'success' : 'error'}>
+          <AlertIcon /> Subscribe Developers Classs
+        </Alert>
+
+        <Alert status={portfolioList?.[0] ? 'success' : 'error'}>
+          <AlertIcon /> Deploy Name Contract
+        </Alert>
+
+        <Alert status={quizResults?.every(result => result.passed) ? 'success' : 'error'}>
+          <AlertIcon /> Get at least %{quizMinimum} from each quiz
+        </Alert>
+      </VStack>
+
+      {certificatePdfHash && (
+        <Box pos='relative' w='full' pt='70%' my={8}>
           <embed
             style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
             type='application/pdf'
@@ -54,45 +153,6 @@ const Certificate = (): JSX.Element => {
             src={`${instance.url}#toolbar=0&navpanes=0&scrollbar=0`}
           />
         </Box>
-      )}
-
-      <VStack my={8}>
-        {<Text>You need to complete all steps to get your certificate</Text>}
-        {studentActiveClassName ? (
-          <Alert status='success'>
-            <AlertIcon /> Subscribe Developers Classs
-          </Alert>
-        ) : (
-          <Alert status='error'>
-            <AlertIcon /> Subscribe Developers Classs
-          </Alert>
-        )}
-        {portfolioList?.[0] ? (
-          <Alert status='success'>
-            <AlertIcon /> Deploy Name Contract
-          </Alert>
-        ) : (
-          <Alert status='error'>
-            <AlertIcon /> Deploy Name Contract
-          </Alert>
-        )}
-        {quizResults && Object.values(quizResults).every(result => result.grade > 5) ? (
-          <Alert status='success'>
-            <AlertIcon /> Get at least %60 from each quiz
-          </Alert>
-        ) : (
-          <Alert status='error'>
-            <AlertIcon /> Get at least %60 from each quiz
-          </Alert>
-        )}
-      </VStack>
-
-      {!certificatePdfHash ? (
-        <Button onClick={register} isLoading={isLoading} isDisabled={!isValid}>
-          Get Certificate
-        </Button>
-      ) : (
-        <Link href={`https://ipfs.io/ipfs/${certificatePdfHash}/${account}`}>View on IPFS</Link>
       )}
     </Box>
   )

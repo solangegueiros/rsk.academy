@@ -31,8 +31,15 @@ export const MasterName = (): JSX.Element => {
   return (
     <ContractBase name={contractName} contract={contract}>
       <VStack spacing={4}>
-        <Input value={name} placeholder='Name' onChange={e => setName(e.target.value)} />
-        <Input value={address} placeholder='Address' onChange={e => setAddress(e.target.value.toLowerCase())} />
+        <Input value={name} placeholder='Name' isDisabled={!!studentName} onChange={e => setName(e.target.value)} />
+
+        <Input
+          value={address}
+          placeholder='Address'
+          isDisabled={!!studentName}
+          onChange={e => setAddress(e.target.value.toLowerCase())}
+        />
+
         <ButtonGroup w='full'>
           <Button isFullWidth isLoading={isLoadingSet} onClick={handleSetName} isDisabled={!!studentName}>
             Set Name

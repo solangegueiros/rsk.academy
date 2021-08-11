@@ -7,11 +7,11 @@ export const Footer = (): JSX.Element => {
   const { t } = useTranslation('common')
 
   return (
-    <Box bg='dark.600' color='dark.50' py={16}>
+    <Box as='footer' bg='dark.600' color='dark.50' py={16}>
       <Container>
         <SimpleGrid gridTemplateColumns={{ base: '1fr', lg: '1fr 3fr' }} gap={16}>
           <VStack spacing={4}>
-            <Image maxW='300px' src='/img/powered_by_iov.svg' />
+            <Image maxW='300px' src='/img/powered_by_iov.svg' alt='rsk slogan' />
             <Text>{t`footer.rskDescription`}</Text>
           </VStack>
 
