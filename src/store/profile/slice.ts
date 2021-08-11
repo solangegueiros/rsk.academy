@@ -20,6 +20,7 @@ type ProfileStateType = {
   classStudentInfo: any
   studentName: string
   quizResults: QuizResultType[]
+  quizList: string[]
   quizMinimum: number
   certificatePdfHash: string
   isProfileLoading: boolean
@@ -36,6 +37,7 @@ export const initialProfileState: ProfileStateType = {
   classStudentInfo: null,
   studentName: null,
   quizResults: null,
+  quizList: null,
   quizMinimum: null,
   certificatePdfHash: null,
   isProfileLoading: false,
@@ -54,6 +56,7 @@ export const profileReducers = {
       classStudentInfo,
       studentName,
       quizResults,
+      quizList,
       quizMinimum,
       certificatePdfHash,
     } = payload
@@ -68,6 +71,7 @@ export const profileReducers = {
     state.classStudentInfo = classStudentInfo
     state.studentName = studentName
     state.quizResults = quizResults
+    state.quizList = quizList
     state.quizMinimum = quizMinimum
     state.certificatePdfHash = certificatePdfHash
     state.isProfileLoading = false

@@ -41,16 +41,17 @@ const Certificate = (): JSX.Element => {
 
   const { execute, isLoading } = useTransactionCallback('Register Contract')
 
-  const { studentName, studentActiveClassName, certificatePdfHash, quizResults, portfolioList, quizMinimum } = profile
+  const { studentName, studentActiveClassName, certificatePdfHash, quizResults, portfolioList, quizMinimum, quizList } =
+    profile
+
+  const passedQuizzes = useMemo(
+    () => quizList.every(quizName => quizResults?.find(result => result.id === quizName)?.passed),
+    [quizList, quizResults],
+  )
 
   const isValid = useMemo(
-    () =>
-      studentName &&
-      studentActiveClassName &&
-      portfolioList &&
-      quizResults &&
-      quizResults.every(result => result.passed),
-    [studentName, studentActiveClassName, quizResults, portfolioList],
+    () => studentName && studentActiveClassName && portfolioList && passedQuizzes,
+    [studentName, studentActiveClassName, portfolioList, passedQuizzes],
   )
 
   useEffect(() => {
@@ -96,7 +97,7 @@ const Certificate = (): JSX.Element => {
                 <AlertIcon /> Deploy Name Contract
               </Alert>
 
-              <Alert status={quizResults?.every(result => result.passed) ? 'success' : 'error'}>
+              <Alert status={passedQuizzes ? 'success' : 'error'}>
                 <AlertIcon /> Get at least %{quizMinimum} from each quiz
               </Alert>
             </VStack>
@@ -142,7 +143,7 @@ const Certificate = (): JSX.Element => {
           <AlertIcon /> Deploy Name Contract
         </Alert>
 
-        <Alert status={quizResults?.every(result => result.passed) ? 'success' : 'error'}>
+        <Alert status={passedQuizzes ? 'success' : 'error'}>
           <AlertIcon /> Get at least %{quizMinimum} from each quiz
         </Alert>
       </VStack>

@@ -184,6 +184,7 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
             classStudentInfo,
             studentName,
             quizResults,
+            quizList,
             quizMinimum: quizMinimum.toNumber(),
             certificatePdfHash: certificate?.storageHash || null,
             isProfileLoading: false,
