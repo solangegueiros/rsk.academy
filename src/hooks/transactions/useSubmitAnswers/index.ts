@@ -1,9 +1,9 @@
 import { useContext, useEffect } from 'react'
 
 import { ContractContext } from '@context/ContractProvider'
+import { useLoadAllContracts } from '@hooks/useLoadAllContracts'
 import { useQuiz } from '@hooks/useQuiz'
-import { useAppDispatch, useAppSelector } from '@store'
-import { saveQuizResult } from '@store/profile/slice'
+import { useAppDispatch } from '@store'
 import { CourseType, ModuleType, resetQuizAnswers } from '@store/quiz/slice'
 
 import { useTransactionCallback } from '../useTransactionCallback'
@@ -28,11 +28,11 @@ export const useSubmitAnswers = (
   module: ModuleType,
   numberOfQuestions: number,
 ): UseSubmitAnswersReturnType => {
-  const { AcademyClass, AcademyStudentQuiz } = useContext(ContractContext)
+  const { AcademyClass } = useContext(ContractContext)
   const dispatch = useAppDispatch()
-  const { account } = useAppSelector(state => state.identity)
   const { userAnswers = {} } = useQuiz(course, module, numberOfQuestions)
   const quizName = `${course}-${module}`
+  const { loadAllContracts } = useLoadAllContracts()
 
   const numberOfCorrectAnswers = Object.entries(userAnswers).filter(answers => answers[1].isCorrect).length
 
@@ -43,17 +43,8 @@ export const useSubmitAnswers = (
 
   useEffect(() => {
     if (receipt) {
-      AcademyStudentQuiz.contract['getStudentQuiz(address,string)'](account, quizName).then(result => {
-        const { total, grade, attempt, quiz, answer } = result
-
-        dispatch(
-          saveQuizResult({
-            quizName,
-            result: { total, grade, attempt, quiz, answer },
-          }),
-        )
-        dispatch(resetQuizAnswers({ course, module }))
-      })
+      dispatch(resetQuizAnswers({ course, module }))
+      loadAllContracts()
     }
   }, [receipt])
 

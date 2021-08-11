@@ -7,6 +7,7 @@ export type QuizResultType = {
   grade: number
   attempt: number
   passed: boolean
+  answer?: string
 }
 
 type ProfileStateType = {
@@ -76,12 +77,6 @@ export const profileReducers = {
     state.certificatePdfHash = certificatePdfHash
     state.isProfileLoading = false
   },
-  saveQuizResult: (
-    state: ProfileStateType,
-    { payload: { quizName, result } }: PayloadAction<{ quizName: string; result: any }>,
-  ): void => {
-    if (state.quizResults) state.quizResults[quizName] = result
-  },
   resetProfile: (): ProfileStateType => initialProfileState,
   setProfileLoading: (state: ProfileStateType, { payload }: PayloadAction<boolean>): void => {
     state.isProfileLoading = payload
@@ -100,5 +95,5 @@ export const profileSlice = createSlice({
   reducers: profileReducers,
 })
 
-export const { loadProfile, resetProfile, saveQuizResult, setStudentName, loadCertificateHash, setProfileLoading } =
+export const { loadProfile, resetProfile, setStudentName, loadCertificateHash, setProfileLoading } =
   profileSlice.actions

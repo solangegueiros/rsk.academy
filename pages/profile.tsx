@@ -15,6 +15,7 @@ import {
   Tr,
   Th,
   Td,
+  Text,
 } from '@chakra-ui/react'
 import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -48,6 +49,7 @@ const Profile = (): JSX.Element => {
     studentActiveClassName,
     studentName,
     quizResults,
+    quizList,
   } = profile
 
   const renderProfile = () => {
@@ -140,24 +142,43 @@ const Profile = (): JSX.Element => {
           <Heading mb={8}>Quiz Results</Heading>
           {quizResults ? (
             <HStack spacing={8} w='full' p={8} boxShadow='md'>
-              {quizResults.map(({ total, passed, grade, attempt, id }, i) => (
-                <Alert
-                  key={i}
-                  status={passed ? 'success' : 'error'}
-                  variant='subtle'
-                  flexDirection='column'
-                  alignItems='center'
-                  justifyContent='center'
-                  textAlign='center'
-                  height='200px'
-                >
-                  <AlertIcon boxSize='40px' mr={0} />
-                  <AlertTitle mt={4} mb={1} fontSize='lg' textTransform='uppercase'>
-                    {id} <br />%{(grade / total) * 100}
-                  </AlertTitle>
-                  <AlertDescription maxWidth='sm'>Attempt: {attempt}</AlertDescription>
-                </Alert>
-              ))}
+              {quizList.map((quizName, i) => {
+                const quiz = quizResults.find(result => result.id === quizName)
+                return (
+                  <Alert
+                    key={i}
+                    status={!quiz ? 'warning' : quiz?.passed ? 'success' : 'error'}
+                    variant='subtle'
+                    flexDirection='column'
+                    alignItems='center'
+                    justifyContent='center'
+                    textAlign='center'
+                    height='200px'
+                  >
+                    <AlertIcon boxSize='40px' mr={0} />
+                    <AlertTitle mt={4} mb={1} fontSize='lg' textTransform='uppercase'>
+                      {quizName}
+                    </AlertTitle>
+                    {quiz && (
+                      <AlertDescription>
+                        Result{' '}
+                        <Text as='span' fontWeight='bold' fontSize='1.2em'>
+                          %{(quiz.grade / quiz.total) * 100}
+                        </Text>
+                      </AlertDescription>
+                    )}
+                    {quiz && (
+                      <AlertDescription>
+                        Attempt:{' '}
+                        <Text as='span' fontWeight='bold' fontSize='1.2em'>
+                          {quiz.attempt}
+                        </Text>
+                      </AlertDescription>
+                    )}
+                    {!quiz && <AlertDescription>Quiz has not been taken</AlertDescription>}
+                  </Alert>
+                )
+              })}
             </HStack>
           ) : (
             <Alert
