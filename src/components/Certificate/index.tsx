@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useContext, useMemo } from 'react'
+import { useEffect, useContext, useMemo } from 'react'
 
 import {
   Alert,
@@ -32,11 +32,11 @@ const manager = new Manager()
 manager.addProvider(Provider.IPFS, { url: 'https://ipfs.infura.io:5001/api/v0/' })
 
 const Certificate = (): JSX.Element => {
-  const instance = useCertificatePdf()
   const { AcademyCertification } = useContext(ContractContext)
   const { account } = useAppSelector(state => state.identity)
   const profile = useAppSelector(state => state.profile)
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const [instance, updateInstance] = useCertificatePdf({ account, ...profile })
   const router = useRouter()
 
   const { execute, isLoading } = useTransactionCallback('Register Contract')
@@ -52,6 +52,10 @@ const Certificate = (): JSX.Element => {
       quizResults.every(result => result.passed),
     [studentName, studentActiveClassName, quizResults, portfolioList],
   )
+
+  useEffect(() => {
+    isValid && updateInstance()
+  }, [isValid, updateInstance])
 
   const register = async () => {
     const fileHash = await manager.put(Buffer.from(await instance.blob.arrayBuffer()), {

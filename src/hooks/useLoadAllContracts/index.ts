@@ -172,25 +172,23 @@ export function useLoadAllContracts(): { loadAllContracts: () => void } {
         if (isCertificateValid)
           certificate = await AcademyCertificationSC.getCertificate(account, studentActiveClassName)
 
-        setTimeout(() => {
-          dispatch(
-            loadProfile({
-              index,
-              ownerAddress,
-              portfolioAddress,
-              activeClass,
-              studentClasses,
-              portfolioList,
-              studentActiveClassName,
-              classStudentInfo,
-              studentName,
-              quizResults,
-              quizMinimum: quizMinimum.toNumber(),
-              certificatePdfHash: certificate?.storageHash || null,
-              isProfileLoading: false,
-            }),
-          )
-        }, 2000)
+        dispatch(
+          loadProfile({
+            index,
+            ownerAddress,
+            portfolioAddress,
+            activeClass,
+            studentClasses,
+            portfolioList,
+            studentActiveClassName,
+            classStudentInfo,
+            studentName,
+            quizResults,
+            quizMinimum: quizMinimum.toNumber(),
+            certificatePdfHash: certificate?.storageHash || null,
+            isProfileLoading: false,
+          }),
+        )
       }
     } catch (error) {
       console.error(error)
