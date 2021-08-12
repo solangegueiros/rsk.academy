@@ -86,10 +86,12 @@ export async function getEvents(): Promise<EventType[]> {
   return []
 }
 
-export async function getEvent(id: string | string[]): Promise<EventType> {
+export async function getEvent(id: string, locale: string): Promise<EventType> {
+  const _id = id.split('-')[0] + '-' + locale
+
   try {
     const events = await getEvents()
-    return events.find(e => e.id === id)
+    return events.find(e => e.id === _id)
   } catch (err) {
     console.error(err)
   }
@@ -97,10 +99,14 @@ export async function getEvent(id: string | string[]): Promise<EventType> {
   return null
 }
 
-export async function getEventPaths(): Promise<{ params: { id: string } }[]> {
+export async function getEventPaths(locales: string[]): Promise<{ params: { id: string } }[]> {
   try {
     const events = await getEvents()
-    return events.map(e => ({ params: { id: e.id } }))
+    const array = []
+    locales.forEach(locale => {
+      events.forEach(event => array.push({ params: { id: event.id.split('-')[0] }, locale }))
+    })
+    return array
   } catch (err) {
     console.error(err)
   }
