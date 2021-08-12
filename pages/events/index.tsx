@@ -66,7 +66,7 @@ const Events = ({ events }: EventsProps): JSX.Element => {
           <Heading mb={4}>{t`nextEvents`}</Heading>
           <VStack spacing={8} align='start' w='full'>
             {nextEvents.map(({ id, title, datetime, language, speaker, role, twitter, image }) => (
-              <NextLink href={`/events/${id}`} key={id}>
+              <NextLink href={`/events/${id.split('-')[0]}`} key={id}>
                 <Stack
                   direction={{ base: 'column', md: 'row' }}
                   _hover={{ boxShadow: 'lg' }}
@@ -76,7 +76,7 @@ const Events = ({ events }: EventsProps): JSX.Element => {
                   w='full'
                 >
                   <Center pl={2} w={{ base: 'full', md: '25%' }}>
-                    <Image src={image} />
+                    <Image src={image} alt={title} />
                   </Center>
                   <VStack w={{ base: 'full', md: '75%' }} justify='space-between' align='stretch'>
                     <VStack spacing={2} align='start' p={4}>
@@ -112,7 +112,7 @@ const Events = ({ events }: EventsProps): JSX.Element => {
           <Heading mb={4}>{t`pastEvents`}</Heading>
           <VStack spacing={4} align='start' w='full'>
             {pastEvents.map(({ id, title, datetime, language, image }) => (
-              <NextLink href={`/events/${id}`} key={id}>
+              <NextLink href={`/events/${id.split('-')[0]}`} key={id}>
                 <Stack
                   direction={{ base: 'column', md: 'row' }}
                   _hover={{ boxShadow: 'lg' }}
@@ -122,7 +122,7 @@ const Events = ({ events }: EventsProps): JSX.Element => {
                   w='full'
                 >
                   <Center pl={2} w={{ base: 'full', md: '25%' }}>
-                    <Image src={image} />
+                    <Image src={image} alt={title} />
                   </Center>
                   <VStack w={{ base: 'full', md: '75%' }} justify='space-between' align='stretch'>
                     <VStack spacing={2} align='start' p={4}>

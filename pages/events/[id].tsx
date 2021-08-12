@@ -172,8 +172,8 @@ const Event = ({ event }: { event: EventType }): JSX.Element => {
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = await getEventPaths()
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+  const paths = await getEventPaths(locales)
 
   return {
     paths,
@@ -182,14 +182,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params: { id } }) => {
-  const event = await getEvent(id)
+  const event = await getEvent(id as string, locale)
 
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
       event,
     },
-    revalidate: 5,
   }
 }
 
